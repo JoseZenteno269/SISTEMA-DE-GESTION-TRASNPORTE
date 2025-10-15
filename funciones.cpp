@@ -1,4 +1,5 @@
 #include<iostream>
+#include <algorithm>
 #include "funciones.h"
 #include "rlutil.h"
 #include "MICROS.h"
@@ -25,6 +26,26 @@ void cargarCadena(char *palabra, int tam){
     palabra[i]='\0';
     fflush(stdin);
 }
+
+//Genero interpretar(string g){
+//    transform(g.begin(), g.end(), g.begin(), ::tolower);
+//
+//    if(g=="masculino" or g=="hombre" or g=="m"){
+//        return MASCULINO;
+//    }else if(g=="famenino" or g=="mujer" or g=="f"){
+//        return FEMENINO;
+//    }else if(g=="otro" or g=="no binario" or g=="x"){
+//        return OTROS;
+//    }else return DESCONOCIDO;
+//}
+//string cargoGenero(string g){
+//    switch(g){
+//        case MASCULINO: return "Masculino";
+//        case FEMENINO:  return "Femenino";
+//        case OTROS:     return "Otro";
+//        default:        return "Desconocido";
+//    }
+//}
 
 void ingresar_usuario(){
     Usuarios usuarios;
@@ -67,11 +88,11 @@ void eliminar_usuario(){
         return;
     }
     Usuarios usuario=archivo.leerRegistros(pos);
-    if(usuario.getestado()==false){
+    if(usuario.getestado()==true){
         cout<<"EL USUARIO YA FUE DADO DE BAJA"<<endl;
         return;
     }else{
-        usuario.setestado(false);
+        usuario.setestado(true);
         archivo.modificarRegistro(usuario, pos);
         cout<<"SE DIO DE BAJA AL USUARIO CORRECTAMENTE"<<endl;
     }

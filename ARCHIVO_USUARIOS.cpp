@@ -5,6 +5,7 @@
 using namespace std;
 
 Archivo_usuarios::Archivo_usuarios(const char *a){strcpy(archivo,a);}
+
 int Archivo_usuarios::contarRegistros(){
     FILE *p=fopen(archivo, "rb");
     if(p==nullptr){

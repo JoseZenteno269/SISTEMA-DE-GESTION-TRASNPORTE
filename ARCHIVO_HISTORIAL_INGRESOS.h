@@ -21,10 +21,9 @@ public:
     const char *getnombre_usuario();
 
     int contarRegistros();
-    //int buscarRegistro(int);
+    int buscarRegistro(int);
     Archivo_historial_usuarios leerRegistros(int);
     bool grabarRegistro();
-    //bool modificarRegistro(Usuarios, int);
     void mostrar();
     void listar();
 };

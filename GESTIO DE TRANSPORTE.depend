@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1760483476 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\main.cpp
+1760569257 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\main.cpp
 	<iostream>
 	"rlutil.h"
 	<windows.h>
@@ -430,8 +430,9 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1760492192 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.cpp
+1760568678 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.cpp
 	<iostream>
+	<algorithm>
 	"funciones.h"
 	"rlutil.h"
 	"MICROS.h"
@@ -442,7 +443,7 @@
 	"FECHAS.h"
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
 
-1760485415 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.h
+1760567103 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.h
 
 1759698832 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\fechas.cpp
 	<iostream>
@@ -459,21 +460,23 @@
 
 1759348874 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\micros.h
 
-1759600642 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.cpp
+1760568172 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.cpp
 	<iostream>
 	"PERSONA.h"
 	"funciones.h"
 	<cstring>
 
-1759600627 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.h
+1760568172 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.h
+	"FECHAS.h"
+	"Domicilio.h"
 
-1760483158 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.cpp
+1760556247 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.cpp
 	<iostream>
 	"CHOFERES.h"
 	"funciones.h"
 	<cstring>
 
-1760483047 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.h
+1760556247 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.h
 	"PERSONA.h"
 	"FECHAS.h"
 
@@ -485,7 +488,7 @@
 
 1759602965 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\destinos.h
 
-1759700994 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\usuarios.cpp
+1760568425 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\usuarios.cpp
 	<iostream>
 	"USUARIOS.h"
 	<cstring>
@@ -495,7 +498,7 @@
 	"PERSONA.h"
 	"FECHAS.h"
 
-1760494642 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_usuarios.cpp
+1760568585 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_usuarios.cpp
 	<iostream>
 	"ARCHIVO_USUARIOS.h"
 	<cstring>
@@ -503,12 +506,12 @@
 1760494642 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_usuarios.h
 	"USUARIOS.h"
 
-1760483450 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_historial_ingresos.cpp
+1760572068 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_historial_ingresos.cpp
 	<iostream>
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
 	<cstring>
 
-1760483450 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_historial_ingresos.h
+1760572012 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_historial_ingresos.h
 	"USUARIOS.h"
 	"FECHAS.h"
 
@@ -519,4 +522,28 @@
 
 1760494642 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_choferes.h
 	"CHOFERES.h"
+
+1760555688 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_micros.cpp
+	<iostream>
+	"ARCHIVO_MICROS.h"
+	<cstring>
+
+1760555688 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_micros.h
+	"MICROS.h"
+
+1760555827 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_destinos.cpp
+	<iostream>
+	"ARCHIVO_DESTINOS.h"
+	<cstring>
+
+1760555442 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_destinos.h
+	"DESTINOS.h"
+
+1760563857 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\domicilio.cpp
+	<iostream>
+	"DOMICILIO.h"
+	"funciones.h"
+	<cstring>
+
+1760563857 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\domicilio.h
 

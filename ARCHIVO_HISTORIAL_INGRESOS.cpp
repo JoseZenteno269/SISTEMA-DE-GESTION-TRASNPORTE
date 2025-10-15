@@ -26,17 +26,17 @@ int Archivo_historial_usuarios::contarRegistros(){
     return bytes/sizeof(Archivo_historial_usuarios);
 }
 
-//int Archivo_historial_usuarios::buscarRegistro(int idu){
-//    Usuarios u;
-//    int contreg=contarRegistros();
-//    for(int i=0; i<contreg; i++){
-//        u=leerRegistros(i);
-//        if(u.getidUsuario()==idu){
-//            return i;
-//        }
-//    }
-//    return -2;
-//}
+int Archivo_historial_usuarios::buscarRegistro(int idu){
+    Archivo_historial_usuarios archivo;
+    int contreg=contarRegistros();
+    for(int i=0; i<contreg; i++){
+        archivo=leerRegistros(i);
+        if(archivo.getidusuario()==idu){
+            return i;
+        }
+    }
+    return -2;
+}
 
 Archivo_historial_usuarios Archivo_historial_usuarios::leerRegistros(int pos){
     FILE *p=fopen(archivo_historial, "rb");
@@ -61,8 +61,6 @@ bool Archivo_historial_usuarios::grabarRegistro(){
     fclose(p);
     return escribo;
 }
-
-//bool Archivo_historial_usuarios::modificarRegistro(Usuarios, int){}
 
 
 void Archivo_historial_usuarios::mostrar(){

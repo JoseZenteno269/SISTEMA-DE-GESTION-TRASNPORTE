@@ -2,6 +2,9 @@
 #define FUNCIONES_H_INCLUDED
 
 void cargarCadena(char *palabra, int tam);
+enum Genero{MASCULINO, FEMENINO, OTROS, DESCONOCIDO};
+Genero interpretar(std::string g);
+std::string cargoGenero(std::string g);
 
 void ingresar_usuario();
 void mostrar_usuarios();

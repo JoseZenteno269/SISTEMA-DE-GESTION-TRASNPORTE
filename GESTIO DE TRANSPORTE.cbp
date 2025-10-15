@@ -54,6 +54,8 @@
 		<Unit filename="CHOFERES.h" />
 		<Unit filename="DESTINOS.cpp" />
 		<Unit filename="DESTINOS.h" />
+		<Unit filename="DOMICILIO.cpp" />
+		<Unit filename="DOMICILIO.h" />
 		<Unit filename="FECHAS.cpp" />
 		<Unit filename="FECHAS.h" />
 		<Unit filename="MICROS.cpp" />

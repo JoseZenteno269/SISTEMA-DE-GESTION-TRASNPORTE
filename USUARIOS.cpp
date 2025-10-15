@@ -17,7 +17,6 @@ Fechas Usuarios::getingreso(){return ingreso; }
 bool Usuarios::getestado(){return estado; }
 
 void Usuarios::cargar(int idu){
-
     cout<<"ingrese ID de usuario: "<<(idUsuario=idu)<<endl;
     Personas::cargar();
     cout<<"ingrese fecha de ingreso: "<<endl;
@@ -25,6 +24,7 @@ void Usuarios::cargar(int idu){
     cout<<"Crear contraseña: "; cargarCadena(contrasena, 29);
     estado=true;
 }
+
 void Usuarios::mostrar(){
     cout<<"ID de usuario: "<<idUsuario<<endl;
     cout<<"contraseña: "<<contrasena<<endl;
