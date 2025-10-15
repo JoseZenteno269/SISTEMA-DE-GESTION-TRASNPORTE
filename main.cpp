@@ -18,6 +18,7 @@ int main(){
     //setBackgroundColor(BLUE);
 
     MENU();
+    //inicio_de_sesion();
 
     cout<<endl<<endl;
 

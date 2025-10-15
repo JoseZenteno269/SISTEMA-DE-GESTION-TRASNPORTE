@@ -53,45 +53,49 @@ void ingresar_usuario(){
     usuarios.cargar(idu);
     archivo.grabarRegistro(usuarios);
 }
-
 void mostrar_usuarios(){
     Archivo_usuarios archivo;
     archivo.listar();
 }
-
-bool inicio_de_sesion(){
-    Usuarios usuarios;
-    Archivo_usuarios archivos;
-    Archivo_historial_usuarios historial;
-    while(true){
-        bool bandera=false;
-        int id;
-        char contasena[30];
-        cout<<"ingrese ID de usuario: "; cin>>id;
-        cout<<"ingrese contraseña: "; cin>>contasena;
-        Fechas fecha;
-        cout<<"Fecha de ingreso: "<<endl;
-        fecha.cargar();
-        int contreg=archivos.contarRegistros();
-        for(int i=0; i<contreg; i++){
-            usuarios=archivos.leerRegistros(i);
-            if(usuarios.getidUsuario()==id and strcmp(usuarios.getcontrasena(),contasena)==0){
-                historial.setidusuario(id);
-                historial.setnombre_usuario(usuarios.getnombre());
-                historial.setingreso_sesion(fecha);
-                historial.grabarRegistro();
-                bandera=true;
-                break;
-            }
-        }
-        if(bandera==false){
-            cls();
-            cout<<"Usuario y/o Contraseña incorrectos"<<endl;
-            anykey();
-            cls();
-        }
-        if(bandera){return true; break; }
+void eliminar_usuario(){
+    Archivo_usuarios archivo;
+    int idu;
+    cout<<"INGRESE ID DE USUARIO A DAR DE BAJA: "; cin>>idu;
+    int pos=archivo.buscarRegistro(idu);
+    if(pos<0){
+        cout<<"NO EXISTE UN USUARIO CON ESE ID EN EL ARCHIVO"<<endl;
+        return;
     }
+    Usuarios usuario=archivo.leerRegistros(pos);
+    if(usuario.getestado()==false){
+        cout<<"EL USUARIO YA FUE DADO DE BAJA"<<endl;
+        return;
+    }else{
+        usuario.setestado(false);
+        archivo.modificarRegistro(usuario, pos);
+        cout<<"SE DIO DE BAJA AL USUARIO CORRECTAMENTE"<<endl;
+    }
+}
+void cambiar_contrasena(){
+    Archivo_usuarios archivo;
+    int idu;
+    cout<<"INGRESE LA ID A CAMBIAR LA CONTRASEÑA"<<endl;
+    cin>>idu;
+    int pos=archivo.buscarRegistro(idu);
+
+    if(pos<0){
+        cout<<"NO EXISTE EL USUARIO CON ESE ID EN EL ARCHIVO"<<endl;
+        return;
+    }
+    Usuarios ususario=archivo.leerRegistros(pos);
+    char nueva_contrasena[30];
+    if(ususario.getestado()){
+        cout<<"INGRESE NUEVA CONTRASEÑA"<<endl;
+        cin>>nueva_contrasena;
+        ususario.setcontrasena(nueva_contrasena);
+        archivo.modificarRegistro(ususario, pos);
+        cout<<"SE CAMBIO LA CONTRASEÑA CORRECTAMENTE"<<endl;
+    }else cout<<"USUARIO INEXISTENTE"<<endl;
 }
 
 void SUBMENU_1(){
@@ -118,7 +122,7 @@ void SUBMENU_5(){
         " INGRESAR NUEVO USUARIO",
         " MOSTRAR USUARIOS",
         " MOSTRAR SESIONES",
-        " ELIMINAR USUARIO",
+        " DAR DE BAJA USUARIO",
         " CAMBIAR CONTRASEÑA",
         " MENU PRINCIPAL"
     };
@@ -176,12 +180,15 @@ void SUBMENU_5(){
                 break;
             case 3:
                 cls();
-
+                eliminar_usuario();
                 anykey();
                 cls();
                 break;
             case 4:
-
+                cls();
+                cambiar_contrasena();
+                anykey();
+                cls();
                 break;
             case 5:
                 salir=true;
@@ -205,69 +212,102 @@ void MENU(){
         " USUARIOS",
         " SALIR"
     };
-    ///despues lo usamos
-    ///if(inicio_de_sesion()){
-        bool salir=false;
+    bool salir=false;
 
-        while(!salir){
-            cls();
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(73,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"------------MENU-------------"<<endl;
+        locate(44,11);
+        cout<<"-----------------------------"<<endl;
+        for(int i=0; i<opciones_menu; i++){
             setColor(WHITE);
-            for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
-            for(int i=0; i<7; i++){locate(73,11+i); cout << "|";}
-            locate(44,10);
-            cout<<"------------MENU-------------"<<endl;
-            locate(44,11);
-            cout<<"-----------------------------"<<endl;
-            for(int i=0; i<opciones_menu; i++){
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<menu[i]<<endl;
                 setColor(WHITE);
-                locate(45,12+i);
-                if(i==seleccion){
-                    setColor(GREEN);
-                    cout<<"> "<<menu[i]<<endl;
-                    setColor(WHITE);
-                } else {cout<<"  "<<menu[i]<<endl;}
-            }
-            setColor(WHITE);
-            locate(44,18);
-            cout<<"-----------------------------"<<endl;
+            } else {cout<<"  "<<menu[i]<<endl;}
+        }
+        setColor(WHITE);
+        locate(44,18);
+        cout<<"-----------------------------"<<endl;
 
-            setColor(WHITE);
-            int tecla=getkey();
+        setColor(WHITE);
+        int tecla=getkey();
 
-            if(tecla==KEY_UP){
-                seleccion--;
-                if(seleccion<0) seleccion=opciones_menu-1;
-            } else if(tecla==KEY_DOWN){
-                seleccion++;
-                if(seleccion>=opciones_menu) seleccion=0;
-            } else if(tecla==KEY_ENTER){
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0) seleccion=opciones_menu-1;
+        } else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_menu) seleccion=0;
+        } else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
                 cls();
-                switch(seleccion){
-                case 0:
-                    cls();
-                    SUBMENU_1();
-                    break;
-                case 1:
-                    cls();
-                    SUBMENU_2();
-                    break;
-                case 2:
-                    cls();
-                    SUBMENU_3();
-                    break;
-                case 3:
-                    cls();
-                    SUBMENU_4();
-                    break;
-                case 4:
-                    cls();
-                    SUBMENU_5();
-                    break;
-                case 5:
-                    salir=true;
-                    break;
-                }
+                SUBMENU_1();
+                break;
+            case 1:
+                cls();
+                SUBMENU_2();
+                break;
+            case 2:
+                cls();
+                SUBMENU_3();
+                break;
+            case 3:
+                cls();
+                SUBMENU_4();
+                break;
+            case 4:
+                cls();
+                SUBMENU_5();
+                break;
+            case 5:
+                salir=true;
+                break;
             }
         }
-    ///}
+    }
+
+}
+
+void inicio_de_sesion(){
+    Usuarios usuarios;
+    Archivo_usuarios archivos;
+    Archivo_historial_usuarios historial;
+    while(true){
+        bool bandera=false;
+        int id;
+        char contasena[30];
+        cout<<"ingrese ID de usuario: "; cin>>id;
+        cout<<"ingrese contraseña: "; cin>>contasena;
+        Fechas fecha;
+        cout<<"Fecha de ingreso: "<<endl;
+        fecha.cargar();
+        int contreg=archivos.contarRegistros();
+        for(int i=0; i<contreg; i++){
+            usuarios=archivos.leerRegistros(i);
+            if(usuarios.getidUsuario()==id and strcmp(usuarios.getcontrasena(),contasena)==0 and usuarios.getestado()){
+                historial.setidusuario(id);
+                historial.setnombre_usuario(usuarios.getnombre());
+                historial.setingreso_sesion(fecha);
+                historial.grabarRegistro();
+                bandera=true;
+                break;
+            }
+        }
+        if(bandera==false){
+            cls();
+            cout<<"Usuario y/o Contraseña incorrectos"<<endl;
+            anykey();
+            cls();
+        }
+        if(bandera){MENU(); break;}
+    }
 }

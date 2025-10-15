@@ -13,6 +13,7 @@ int Archivo_usuarios::contarRegistros(){
     }
     fseek(p,0,2);
     int bytes=ftell(p);
+    fclose(p);
     return bytes/sizeof (Usuarios);
 }
 
