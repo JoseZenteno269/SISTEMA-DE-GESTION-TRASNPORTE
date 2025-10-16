@@ -4,7 +4,7 @@
 #include "Domicilio.h"
 
 class Personas{
-protected:
+private:
     char nombre[40];
     char apellido[40];
     int dni;

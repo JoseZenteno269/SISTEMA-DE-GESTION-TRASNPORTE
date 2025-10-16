@@ -7,20 +7,23 @@ private:
     char marca[30];
     char tipo[30];
     int capacidad;
+    char tipoButaca[30];
     bool disponible;
 public:
-    Micros(int idm=11111, const char *mrc="desconocido", const char *t="sin definir", int c=99999);
+    Micros(int idm=11111, const char *mrc="desconocido", const char *t="sin definir", int c=99999, const char *tb="sin definir");
 
     void setidMicro(int );
     void setmarca(const char *mrc);
     void settipo(const char *t);
     void setcapacidad(int );
+    void settipoButaca(const char *tb);
     void setdisponible(bool );
 
     int getidMicro();
     const char *getmarca();
     const char *gettipo();
     int getcapacidad();
+    const char *gettipoButaca();
     bool getdisponible();
 
     void cargar();

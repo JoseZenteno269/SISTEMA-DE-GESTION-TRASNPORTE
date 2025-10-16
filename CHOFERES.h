@@ -6,6 +6,7 @@
 class Choferes:public Personas{
 private:
     int legajo;
+    char mail_laboral[40];
     bool estado;
     Fechas fecha_de_ingreso;
 public:
