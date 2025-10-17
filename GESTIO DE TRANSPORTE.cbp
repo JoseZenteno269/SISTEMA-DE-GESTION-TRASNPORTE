@@ -64,6 +64,8 @@
 		<Unit filename="PERSONA.h" />
 		<Unit filename="USUARIOS.cpp" />
 		<Unit filename="USUARIOS.h" />
+		<Unit filename="VIAJES.cpp" />
+		<Unit filename="VIAJES.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />

@@ -430,20 +430,23 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1760568678 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.cpp
+1760733010 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.cpp
 	<iostream>
-	<algorithm>
+	<cstring>
 	"funciones.h"
 	"rlutil.h"
 	"MICROS.h"
+	"ARCHIVO_MICROS.h"
 	"CHOFERES.h"
+	"ARCHIVO_CHOFERES.h"
 	"USUARIOS.h"
 	"ARCHIVO_USUARIOS.h"
-	"DESTINOS.h"
-	"FECHAS.h"
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
+	"DESTINOS.h"
+	"ARCHIVO_DESTINOS.h"
+	"FECHAS.h"
 
-1760567103 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.h
+1760733426 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\funciones.h
 
 1759698832 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\fechas.cpp
 	<iostream>
@@ -452,31 +455,31 @@
 
 1759698849 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\fechas.h
 
-1759436275 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\micros.cpp
+1760726619 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\micros.cpp
 	<iostream>
 	"MICROS.h"
 	<cstring>
 	"funciones.h"
 
-1760573004 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\micros.h
+1760726619 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\micros.h
 
-1760568172 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.cpp
+1760732297 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.cpp
 	<iostream>
 	"PERSONA.h"
 	"funciones.h"
 	<cstring>
 
-1760568172 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.h
+1760732371 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\persona.h
 	"FECHAS.h"
 	"Domicilio.h"
 
-1760556247 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.cpp
+1760733426 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.cpp
 	<iostream>
 	"CHOFERES.h"
 	"funciones.h"
 	<cstring>
 
-1760556247 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.h
+1760732297 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\choferes.h
 	"PERSONA.h"
 	"FECHAS.h"
 
@@ -531,12 +534,12 @@
 1760555688 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_micros.h
 	"MICROS.h"
 
-1760555827 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_destinos.cpp
+1760727472 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_destinos.cpp
 	<iostream>
 	"ARCHIVO_DESTINOS.h"
 	<cstring>
 
-1760555442 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_destinos.h
+1760727158 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\archivo_destinos.h
 	"DESTINOS.h"
 
 1760563857 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\domicilio.cpp
@@ -546,4 +549,15 @@
 	<cstring>
 
 1760563857 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\domicilio.h
+
+1760730535 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\viajes.cpp
+	<iostream>
+	"VIAJES.h"
+	<cstring>
+	"ARCHIVO_MICROS.h"
+	"ARCHIVO_CHOFERES.h"
+	"ARCHIVO_DESTINOS.h"
+
+1760667930 d:\utn\programacion\2025\programacion 2\codeblocks\gestio de transporte\viajes.h
+	"FECHAS.h"
 

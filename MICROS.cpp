@@ -28,8 +28,8 @@ int Micros::getcapacidad(){return capacidad; }
 const char *Micros::gettipoButaca(){return tipoButaca; }
 bool Micros::getdisponible(){return disponible; }
 
-void Micros::cargar(){
-    cout<<"ingrese ID de Micro: "; cin>>idMicro;
+void Micros::cargar(int idm){
+    cout<<"El ID de Micro: "<<(idMicro==idm)<<endl;
     cout<<"ingrese marca del micro: "; cargarCadena(marca, 29);
     cout<<"ingrese tipo del micro: "; cargarCadena(tipo, 29);
     cout<<"ingrese capacidad: "; cin>>capacidad;

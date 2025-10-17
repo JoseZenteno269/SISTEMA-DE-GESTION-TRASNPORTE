@@ -30,7 +30,7 @@ void Personas::cargar(){
     cout<<"ingrese apellido: "; cargarCadena(apellido, 39);
     cout<<"ingrese DNI: "; cin>>dni;
     cout<<"ingrese N° de contacto: "; cin>>telefono;
-    cout<<"ingrese su email: "; cargarCadena(email, 29);
+    cout<<"ingrese su email: "; cargarCadena(email, 99);
     ///cout<<"ingrese su genero: "; string g; getline(cin, g); setgenero(g);
     cout<<"ingrese fecha de nacimiento"<<endl;
     fecha_Nacimiento.cargar();

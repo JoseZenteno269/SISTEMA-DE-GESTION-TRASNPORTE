@@ -26,7 +26,7 @@ public:
     const char *gettipoButaca();
     bool getdisponible();
 
-    void cargar();
+    void cargar(int);
     void mostrar();
 };
 

@@ -8,7 +8,7 @@ private:
 public:
     Archivo_destinos (const char *a="Destinos.dat");
     int contarRegistros();
-    int buscarRegsitros(int);
+    int buscarRegistros(int);
     Destinos leerRegistros(int);
     bool grabarRegistro(Destinos);
     bool modificarRegistro(Destinos,int);

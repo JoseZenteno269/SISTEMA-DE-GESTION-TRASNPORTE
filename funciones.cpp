@@ -1,14 +1,17 @@
 #include<iostream>
-#include <algorithm>
+#include<cstring>
 #include "funciones.h"
 #include "rlutil.h"
 #include "MICROS.h"
+#include "ARCHIVO_MICROS.h"
 #include "CHOFERES.h"
+#include "ARCHIVO_CHOFERES.h"
 #include "USUARIOS.h"
 #include "ARCHIVO_USUARIOS.h"
-#include "DESTINOS.h"
-#include "FECHAS.h"
 #include "ARCHIVO_HISTORIAL_INGRESOS.h"
+#include "DESTINOS.h"
+#include "ARCHIVO_DESTINOS.h"
+#include "FECHAS.h"
 
 
 using namespace std;
@@ -27,26 +30,7 @@ void cargarCadena(char *palabra, int tam){
     fflush(stdin);
 }
 
-//Genero interpretar(string g){
-//    transform(g.begin(), g.end(), g.begin(), ::tolower);
-//
-//    if(g=="masculino" or g=="hombre" or g=="m"){
-//        return MASCULINO;
-//    }else if(g=="famenino" or g=="mujer" or g=="f"){
-//        return FEMENINO;
-//    }else if(g=="otro" or g=="no binario" or g=="x"){
-//        return OTROS;
-//    }else return DESCONOCIDO;
-//}
-//string cargoGenero(string g){
-//    switch(g){
-//        case MASCULINO: return "Masculino";
-//        case FEMENINO:  return "Femenino";
-//        case OTROS:     return "Otro";
-//        default:        return "Desconocido";
-//    }
-//}
-
+///Funciones usuarios
 void ingresar_usuario(){
     Usuarios usuarios;
     Archivo_usuarios archivo;
@@ -119,12 +103,258 @@ void cambiar_contrasena(){
     }else cout<<"USUARIO INEXISTENTE"<<endl;
 }
 
+///Funciones micros
+void ingresar_Micro(){
+    Micros micros;
+    Archivo_micros archivo;
+    int minimo=1000;
+    int maximo=9999;
+    bool idunico=false;
+    int idm;
+    int contreg=archivo.contarRegistros();
+    if(contreg<0){
+        cls();
+        idm=minimo+rand()%(maximo-minimo+1);
+    }else{
+        while(!idunico){
+            idm=minimo+rand()%(maximo-minimo+1);
+            idunico=true;
+            for(int i=0; i<contreg; i++){
+                micros=archivo.leerRegistros(i);
+                if(idm==micros.getidMicro()){
+                    idunico=false;
+                    break;
+                }
+            }
+        }
+    }
+    micros.cargar(idm);
+    archivo.grabarRegistro(micros);
+}
+void mostrar_Micro(){
+    Archivo_micros archivo;
+    archivo.listar();
+}
+void eliminar_Micro(){
+    Archivo_micros archivo;
+    int idm;
+    cout<<"INGRESE ID DE MICRO A DAR DE BAJA: "; cin>>idm;
+    int pos=archivo.buscarRegsitro(idm);
+    if(pos<0){
+        cout<<"NO EXISTE UN MICRO CON ESE ID EN EL ARCHIVO"<<endl;
+        return;
+    }
+    Micros micros=archivo.leerRegistros(pos);
+    if(micros.getdisponible()==false){
+        cout<<"EL MICRO YA FUE DADO DE BAJA"<<endl;
+        return;
+    }else{
+        micros.setdisponible(false);
+        archivo.modificarRegistro(micros, pos);
+        cout<<"SE DIO DE BAJA EL MICRO CORRECTAMENTE"<<endl;
+    }
+}
+
+///Funciones destinos
+void ingresar_destino(){
+
+}
+void mostrar_destino(){
+
+}
+void eliminar_destino(){
+
+}
+
+///Funciones choferes
+void ingresar_chofer(){
+    Choferes chofer;
+    Archivo_choferes archivo;
+    int minimo = 100;
+    int maximo = 999;
+    bool idunico = false;
+    int leg;
+    int contreg = archivo.contarRegistros();
+    if(contreg < 0){
+        cls();
+       leg = minimo+rand()%(maximo-minimo+1);
+    }
+    else{
+        while(!idunico){
+            leg=minimo+rand()%(maximo-minimo+1);
+            idunico=true;
+            for(int i=0; i<contreg; i++){
+                chofer=archivo.leerRegistros(i);
+                if(leg==chofer.getlegajo()){
+                    idunico=false;
+                    break;
+                }
+            }
+        }
+    }
+    chofer.cargar(leg);
+    archivo.grabarRegistro(chofer);
+}
+void mostrar_choferes(){
+    Archivo_choferes archivo;
+    archivo.listar();
+}
+void eliminar_chofer(){
+    Archivo_choferes archivo;
+    Choferes chofer;
+    int leg;
+    cout<<"INGRESE LEGAJO DEL CHOFER A DAR DE BAJA: "; cin>>leg;
+    int pos=archivo.buscarRegistro(leg);
+    if(pos<0){
+        cout<<"NO EXISTE UN CHOFER CON ESE LEGAJO EN EL ARCHIVO"<<endl;
+        return;
+    }
+    chofer=archivo.leerRegistros(pos);
+    if(chofer.getestado()==false){
+        cout<<"EL CHOFER YA FUE DADO DE BAJA"<<endl;
+        return;
+    }else{
+        chofer.setestado(false);
+        archivo.modificarRegistro(chofer, pos);
+        cout<<"SE DIO DE BAJA AL CHOFER CORRECTAMENTE"<<endl;
+    }
+}
+void cambiar_mail(){
+    Archivo_choferes archivo;
+    Choferes chofer;
+    int leg;
+    cout<<"INGRESE EL LEGAJO DEL CHOFER: ";
+    cin>>leg;
+    int pos=archivo.buscarRegistro(leg);
+
+    if(pos<0){
+        cout<<"NO EXISTE EL CHOFER CON ESE LEGAJO EN EL ARCHIVO"<<endl;
+        return;
+    }
+    chofer=archivo.leerRegistros(pos);
+    char Mail_Nuevo[40];
+    if(chofer.getestado()){
+        cout<<"INGRESE NUEVO MAIL"<<endl;
+        cin>>Mail_Nuevo;
+        chofer.setemail(Mail_Nuevo);
+        archivo.modificarRegistro(chofer, pos);
+        cout<<"SE CAMBIO EL MAIL CORRECTAMENTE"<<endl;
+    }else cout<<"CHOFER INEXISTENTE"<<endl;
+}
+
+///MENUS Y SUBMENUS
+/**
+    no hay archivos .dat cargados de sus clases que realizaron.
+    en el submenu 2 y submenu 4 dejar la parte de cambiar, despues vemos con que lo reemplazamos
+
+    realizen inmgresos al .dat asi ya quedan guardados, no den de baja ninguno,
+    y si no se agrega nada a las clases de destino, micros y choferes, realizen las cargas y
+    realizen una copia de ese archivo asi no perdemos nada
+
+
+    GONZALO, seguir con las funciones de destinos. realizar ingresos al archivo de destinos con 25 destinos
+
+    LEO, realizar ingresos al archivo de micros con 20 micros.
+    TIPOS DE MICRO:
+    "Común"
+    "Semi Cama"
+    "Cama Ejecutivo"
+    "Cama Suite" o "Suite"
+    "Doble Piso"
+    "Charter"
+    "Mini Bus"
+
+    TIPOS DE BUTACA:
+    "Estándar"
+    "Reclinable"
+    "Ergonómica"
+    "Cuero"
+    "Cuero Premium"
+    "Butaca 180°"
+    "Tela Acolchada"
+    "Con Apoyapiés"
+
+    ANGEL, completar el submenu 3 (deja de poner variables con nombres tontos y/o absurdos). realizar ingresos al archivo de choferes ingresando 20 choferes
+*/
 void SUBMENU_1(){
 
 }
 
 void SUBMENU_2(){
+    int seleccion=0;
+    const int opciones_submenu=5;
+    string submenu[opciones_submenu]={
+        " INGRESA MICRO",
+        " MOSTRAR MICROS",
+        " DAR DE BAJA MICRO",
+        " CAMBIAR ALGO",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
 
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<6; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<6; i++){locate(73,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"----------USUARIOS-----------"<<endl;
+        locate(44,11);
+        cout<<"-----------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,17);
+        cout<<"-----------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                cls();
+                ingresar_Micro();
+                anykey();
+                cls();
+                break;
+            case 1:
+                cls();
+                mostrar_Micro();
+                anykey();
+                cls();
+                break;
+            case 2:
+                cls();
+                eliminar_Micro();
+                anykey();
+                cls();
+                break;
+            case 3:
+                cls();
+
+                anykey();
+                cls();
+                break;
+            case 4:
+                salir=true;
+                break;
+            }
+
+        }
+    }
 }
 
 void SUBMENU_3(){
@@ -132,7 +362,79 @@ void SUBMENU_3(){
 }
 
 void SUBMENU_4(){
+    int seleccion=0;
+    const int opciones_submenu=5;
+    string submenu[opciones_submenu]={
+        " INGRESAR DESTINO",
+        " MOSTRAR DESTINO",
+        " DAR DE BAJA UN DESTINO",
+        " CAMBIAR ALGO",
+        " SALIR AL MENU"
+    };
+    bool salir=false;
 
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<6; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<6; i++){locate(73,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"----------USUARIOS-----------"<<endl;
+        locate(44,11);
+        cout<<"-----------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,17);
+        cout<<"-----------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                cls();
+                ingresar_destino();
+                anykey();
+                cls();
+                break;
+            case 1:
+                cls();
+                mostrar_destino();
+                anykey();
+                cls();
+                break;
+            case 2:
+                cls();
+                eliminar_destino();
+                anykey();
+                cls();
+                break;
+            case 3:
+                cls();
+
+                anykey();
+                cls();
+                break;
+            case 4:
+                salir=true;
+                break;
+            }
+        }
+    }
 }
 
 void SUBMENU_5(){
