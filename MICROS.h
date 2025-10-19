@@ -10,7 +10,6 @@ private:
     char tipoButaca[30];
     bool disponible;
 public:
-    Micros(int idm=11111, const char *mrc="desconocido", const char *t="sin definir", int c=99999, const char *tb="sin definir");
 
     void setidMicro(int );
     void setmarca(const char *mrc);

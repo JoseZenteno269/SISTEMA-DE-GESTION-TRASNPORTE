@@ -22,7 +22,7 @@ public:
     float getdistanciaKm();
     bool gethabilitado();
 
-    void cargar();
+    void cargar(int);
     void mostrar();
 
 };

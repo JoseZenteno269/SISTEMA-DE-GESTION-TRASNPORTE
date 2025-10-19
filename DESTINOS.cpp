@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void Destinos::setidDestino(int d){idDestino=d; }
+void Destinos::setidDestino(int idd){idDestino=idd; }
 void Destinos::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
 void Destinos::setprovincia(const char *p){strcpy(provincia, p);}
 void Destinos::setdistanciaKm(float dkm){distanciaKm=dkm; }
@@ -17,8 +17,8 @@ const char *Destinos::getprovincia(){return provincia; }
 float Destinos::getdistanciaKm(){return distanciaKm; }
 bool Destinos::gethabilitado(){return habilitado; }
 
-void Destinos::cargar(){
-    cout<<"ingrese ID de distancia: "; cin>>idDestino;
+void Destinos::cargar(int idd){
+    cout<<"ID de distancia: "<<(idDestino=idd)<<endl;
     cout<<"ingrese lugar de destino: "; cargarCadena(nombre_destino, 39);
     cout<<"ingrese provincia de destino: "; cargarCadena(provincia, 39);
     cout<<"ingrese distancia en KM: "; cin>>distanciaKm;

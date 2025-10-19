@@ -4,7 +4,14 @@
 
 using namespace std;
 
-Archivo_micros::Archivo_micros(const char *a){strcpy(archivo,a); }
+Archivo_micros::Archivo_micros(const char *a){
+    strcpy(archivo, a);
+    FILE *p=fopen(archivo, "rb"); // intento abrir en modo lectura
+    if(p==nullptr){               // si no existe, lo creo vacío
+        p=fopen(archivo, "wb");  // crear archivo vacío
+    }
+    if(p) fclose(p);
+}
 
 int Archivo_micros::contarRegistros(){
     FILE *p=fopen(archivo,"rb");

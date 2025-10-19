@@ -3,7 +3,7 @@
 #include <windows.h>
 #include "funciones.h"
 #include <ctime>
-#include "USUARIOS.h"
+#include "PERSONA.h"
 
 using namespace std;
 using namespace rlutil;

@@ -4,7 +4,15 @@
 
 using namespace std;
 
-Archivo_choferes::Archivo_choferes(const char *a){strcpy(archivo, a); }
+Archivo_choferes::Archivo_choferes(const char *a){
+    strcpy(archivo, a);
+    FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
+    if(p == nullptr){               // si no existe, lo creo vacío
+        p = fopen(archivo, "wb");  // crear archivo vacío
+    }
+    if(p) fclose(p);
+}
+
 int Archivo_choferes::contarRegistros(){
     FILE *p=fopen(archivo, "rb");
     if(p==nullptr){

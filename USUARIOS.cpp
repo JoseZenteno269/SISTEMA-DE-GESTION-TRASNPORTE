@@ -2,6 +2,7 @@
 #include "USUARIOS.h"
 #include<cstring>
 #include "funciones.h"
+#include "TIEMPO_ACTUAL.h"
 
 using namespace std;
 
@@ -20,7 +21,10 @@ void Usuarios::cargar(int idu){
     cout<<"ingrese ID de usuario: "<<(idUsuario=idu)<<endl;
     Personas::cargar();
     cout<<"ingrese fecha de ingreso: "<<endl;
-    ingreso.cargar();
+    Tiempo_Actual tiempo;
+    Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
+    fecha.mostrar();
+    setingreso(fecha);
     cout<<"Crear contraseña: "; cargarCadena(contrasena, 29);
     estado=true;
 }

@@ -24,6 +24,7 @@ void ingresar_chofer();
 void mostrar_choferes();
 void eliminar_chofer();
 void cambiar_mail_chofer();
+void cambiar_telefeno_chofer();
 
 ///MENUS Y SUBMENUS
 void SUBMENU_1();

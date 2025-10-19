@@ -10,7 +10,7 @@ protected:
     int dni;
     int telefono;
     char email[100];
-    ///std::string genero;
+    int genero;
     Fechas fecha_Nacimiento;
     Domicilio domicilio;
 public:
@@ -20,7 +20,7 @@ public:
     void setdni(int);
     void settelefono(int);
     void setemail(const char *);
-    ///void setgenero(std::string);
+    void setgenero(int);
     void setfecha_Nacimiento(Fechas);
     void setdomicilio(Domicilio);
 
@@ -29,9 +29,10 @@ public:
     int getdni();
     int gettelefono();
     const char *getemail();
-    ///std::string getgenero();
+    int getgenero();
     Fechas getfecha_Nacimiento();
     Domicilio getdomicilio();
+    const char* getgenerotexto() const;
 
     void cargar();
     void mostrar();

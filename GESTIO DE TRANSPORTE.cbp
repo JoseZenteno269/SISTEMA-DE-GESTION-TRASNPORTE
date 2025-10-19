@@ -62,6 +62,8 @@
 		<Unit filename="MICROS.h" />
 		<Unit filename="PERSONA.cpp" />
 		<Unit filename="PERSONA.h" />
+		<Unit filename="TIEMPO_ACTUAL.cpp" />
+		<Unit filename="TIEMPO_ACTUAL.h" />
 		<Unit filename="USUARIOS.cpp" />
 		<Unit filename="USUARIOS.h" />
 		<Unit filename="VIAJES.cpp" />

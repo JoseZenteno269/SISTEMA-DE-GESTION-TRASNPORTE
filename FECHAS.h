@@ -1,5 +1,6 @@
 #ifndef FECHAS_H_INCLUDED
 #define FECHAS_H_INCLUDED
+#include "TIEMPO_ACTUAL.h"
 
 class Fechas{
 private:

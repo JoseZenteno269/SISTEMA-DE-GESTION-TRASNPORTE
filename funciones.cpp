@@ -12,6 +12,7 @@
 #include "DESTINOS.h"
 #include "ARCHIVO_DESTINOS.h"
 #include "FECHAS.h"
+#include "TIEMPO_ACTUAL.h"
 
 
 using namespace std;
@@ -32,31 +33,29 @@ void cargarCadena(char *palabra, int tam){
 
 ///Funciones usuarios
 void ingresar_usuario(){
-    Usuarios usuarios;
+    Usuarios usuario;
     Archivo_usuarios archivo;
-    int minimo=10000;
-    int maximo=99999;
-    bool idunico=false;
     int idu;
+
     int contreg=archivo.contarRegistros();
+
     if(contreg<0){
-        cls();
-        idu=minimo+rand()%(maximo-minimo+1);
-    }else{
-        while(!idunico){
-            idu=minimo+rand()%(maximo-minimo+1);
-            idunico=true;
-            for(int i=0; i<contreg; i++){
-                usuarios=archivo.leerRegistros(i);
-                if(idu==usuarios.getidUsuario()){
-                    idunico=false;
-                    break;
-                }
-            }
-        }
+        cout<<"ERROR AL LEER EL ARCHIVO. NO SE PUEDE REGISTRAR."<<endl;
+        return;
     }
-    usuarios.cargar(idu);
-    archivo.grabarRegistro(usuarios);
+
+    if(contreg==0){
+        idu=10000;
+    }else{
+        int idmax=9999;
+        usuario=archivo.leerRegistros(contreg-1);
+        if(usuario.getidUsuario()>idmax)idmax=usuario.getidUsuario();
+        idu=idmax+1;
+    }
+    usuario.cargar(idu);
+
+    if (archivo.grabarRegistro(usuario))cout<<endl<<"USUARIO REGISTRADO SATISFACTORIAMENTE. ID: "<<idu<<endl;
+    else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
 }
 void mostrar_usuarios(){
     Archivo_usuarios archivo;
@@ -107,29 +106,28 @@ void cambiar_contrasena(){
 void ingresar_Micro(){
     Micros micros;
     Archivo_micros archivo;
-    int minimo=1000;
-    int maximo=9999;
-    bool idunico=false;
     int idm;
+
     int contreg=archivo.contarRegistros();
+
     if(contreg<0){
-        cls();
-        idm=minimo+rand()%(maximo-minimo+1);
-    }else{
-        while(!idunico){
-            idm=minimo+rand()%(maximo-minimo+1);
-            idunico=true;
-            for(int i=0; i<contreg; i++){
-                micros=archivo.leerRegistros(i);
-                if(idm==micros.getidMicro()){
-                    idunico=false;
-                    break;
-                }
-            }
-        }
+        cout<<"ERROR AL LEER EL ARCHIVO. NO SE PUEDE REGISTRAR."<<endl;
+        return;
     }
+
+    if(contreg==0){
+        idm=1000;
+    }else{
+        int idmax=999;
+        micros=archivo.leerRegistros(contreg-1);
+        if(micros.getidMicro()>idmax)idmax=micros.getidMicro();
+        idm=idmax+1;
+    }
+
     micros.cargar(idm);
-    archivo.grabarRegistro(micros);
+
+    if (archivo.grabarRegistro(micros))cout<<endl<<"USUARIO REGISTRADO SATISFACTORIAMENTE. ID: "<<idm<<endl;
+    else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
 }
 void mostrar_Micro(){
     Archivo_micros archivo;
@@ -157,43 +155,83 @@ void eliminar_Micro(){
 
 ///Funciones destinos
 void ingresar_destino(){
+    Destinos destinos;
+    Archivo_destinos archivo;
+    int idd;
 
+    int contreg=archivo.contarRegistros();
+
+    if(contreg<0){
+        cout<<"ERROR AL LEER EL ARCHIVO. NO SE PUEDE REGISTRAR."<<endl;
+        return;
+    }
+
+    if(contreg==0){
+        idd=100000;
+    }else{
+        int idmax=99999;
+        destinos=archivo.leerRegistros(contreg-1);
+        if(destinos.getidDestino()>idmax)idmax=destinos.getidDestino();
+        idd=idmax+1;
+    }
+    destinos.cargar(idd);
+
+    if (archivo.grabarRegistro(destinos))cout<<endl<<"USUARIO REGISTRADO SATISFACTORIAMENTE. ID: "<<idd<<endl;
+    else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
 }
 void mostrar_destino(){
-
+    Archivo_destinos archivo;
+    archivo.listar();
 }
 void eliminar_destino(){
+    Archivo_destinos archivo;
+    Destinos destinos;
+    int idd;
+    cout<<"INGRESE ID DEL DESTINO A DAR DE BAJA: ";
+    cin>>idd;
 
+    int pos=archivo.buscarRegistros(idd);
+    if (pos<0) {
+        cout<<"NO EXISTE UN DESTINO CON ESE ID EN EL ARCHIVO"<<endl;
+        return;
+    }
+
+    destinos=archivo.leerRegistros(pos);
+    if (destinos.gethabilitado()==false) {
+        cout<<"EL DESTINO YA FUE DADO DE BAJA"<<endl;
+        return;
+    }else{
+        destinos.sethabilitado(false);
+        archivo.modificarRegistro(destinos, pos);
+        cout << "SE DIO DE BAJA EL DESTINO CORRECTAMENTE" << endl;
+    }
 }
 
 ///Funciones choferes
 void ingresar_chofer(){
     Choferes chofer;
     Archivo_choferes archivo;
-    int minimo = 100;
-    int maximo = 999;
-    bool idunico = false;
     int leg;
-    int contreg = archivo.contarRegistros();
-    if(contreg < 0){
-        cls();
-       leg = minimo+rand()%(maximo-minimo+1);
+
+    int contreg=archivo.contarRegistros();
+
+    if(contreg<0){
+        cout<<"ERROR AL LEER EL ARCHIVO. NO SE PUEDE REGISTRAR."<<endl;
+        return;
     }
-    else{
-        while(!idunico){
-            leg=minimo+rand()%(maximo-minimo+1);
-            idunico=true;
-            for(int i=0; i<contreg; i++){
-                chofer=archivo.leerRegistros(i);
-                if(leg==chofer.getlegajo()){
-                    idunico=false;
-                    break;
-                }
-            }
-        }
+
+    if(contreg==0){
+        leg=100;
+    }else{
+        int idmax=99;
+        chofer=archivo.leerRegistros(contreg-1);
+        if(chofer.getlegajo()>idmax)idmax=chofer.getlegajo();
+        leg=idmax+1;
     }
     chofer.cargar(leg);
-    archivo.grabarRegistro(chofer);
+
+    if (archivo.grabarRegistro(chofer))cout<<endl<<"CHOFER REGISTRADO SATISFACTORIAMENTE. ID: "<<leg<<endl;
+    else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
 }
 void mostrar_choferes(){
     Archivo_choferes archivo;
@@ -219,7 +257,7 @@ void eliminar_chofer(){
         cout<<"SE DIO DE BAJA AL CHOFER CORRECTAMENTE"<<endl;
     }
 }
-void cambiar_mail(){
+void cambiar_mail_chofer(){
     Archivo_choferes archivo;
     Choferes chofer;
     int leg;
@@ -239,6 +277,29 @@ void cambiar_mail(){
         chofer.setemail(Mail_Nuevo);
         archivo.modificarRegistro(chofer, pos);
         cout<<"SE CAMBIO EL MAIL CORRECTAMENTE"<<endl;
+    }else cout<<"CHOFER INEXISTENTE"<<endl;
+}
+
+void cambiar_telefono_chofer(){
+    Archivo_choferes archivo;
+    Choferes chofer;
+    int leg;
+    cout<<"INGRESE EL LEGAJO DEL CHOFER: ";
+    cin>>leg;
+    int pos=archivo.buscarRegistro(leg);
+
+    if(pos<0){
+        cout<<"NO EXISTE EL CHOFER CON ESE LEGAJO EN EL ARCHIVO"<<endl;
+        return;
+    }
+    chofer=archivo.leerRegistros(pos);
+    int Tel_Nuevo;
+    if(chofer.getestado()){
+        cout<<"INGRESE NUEVO TELEFONO"<<endl;
+        cin>>Tel_Nuevo;
+        chofer.settelefono(Tel_Nuevo);
+        archivo.modificarRegistro(chofer, pos);
+        cout<<"SE CAMBIO EL TELEFONO CORRECTAMENTE"<<endl;
     }else cout<<"CHOFER INEXISTENTE"<<endl;
 }
 
@@ -358,7 +419,87 @@ void SUBMENU_2(){
 }
 
 void SUBMENU_3(){
+    int seleccion=0;
+    const int opciones_submenu=6;
+    string submenu[opciones_submenu]={
+        " ALTA DE NUEVO CONDUCTOR",
+        " LISTA DE CONDUCTORES",
+        " DAR DE BAJA",
+        " CAMBIAR MAIL ",
+        " CAMBIAR TELEFONO",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
 
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(73,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"----------CHOFERES-----------"<<endl;
+        locate(44,11);
+        cout<<"-----------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,18);
+        cout<<"-----------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                cls();
+                ingresar_chofer();
+                anykey();
+                cls();
+                break;
+            case 1:
+                cls();
+                mostrar_choferes();
+                anykey();
+                cls();
+                break;
+            case 2:
+                cls();
+                eliminar_chofer();
+                anykey();
+                cls();
+                break;
+            case 3:
+                cls();
+                cambiar_mail_chofer();
+                anykey();
+                cls();
+                break;
+            case 4:
+                cls();
+                cambiar_telefono_chofer();
+                anykey();
+                cls();
+                break;
+            case 5:
+                salir=true;
+                break;
+            }
+
+        }
+    }
 }
 
 void SUBMENU_4(){
@@ -604,15 +745,16 @@ void inicio_de_sesion(){
     Usuarios usuarios;
     Archivo_usuarios archivos;
     Archivo_historial_usuarios historial;
+    Tiempo_Actual tiempo;
     while(true){
         bool bandera=false;
         int id;
         char contasena[30];
         cout<<"ingrese ID de usuario: "; cin>>id;
         cout<<"ingrese contraseña: "; cin>>contasena;
-        Fechas fecha;
         cout<<"Fecha de ingreso: "<<endl;
-        fecha.cargar();
+        Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
+
         int contreg=archivos.contarRegistros();
         for(int i=0; i<contreg; i++){
             usuarios=archivos.leerRegistros(i);
