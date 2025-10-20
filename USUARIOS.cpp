@@ -20,7 +20,7 @@ bool Usuarios::getestado(){return estado; }
 void Usuarios::cargar(int idu){
     cout<<"ingrese ID de usuario: "<<(idUsuario=idu)<<endl;
     Personas::cargar();
-    cout<<"ingrese fecha de ingreso: "<<endl;
+    cout<<"Fecha de ingreso: "<<endl;
     Tiempo_Actual tiempo;
     Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
     fecha.mostrar();

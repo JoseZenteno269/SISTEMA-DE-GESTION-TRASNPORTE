@@ -13,6 +13,7 @@
 #include "ARCHIVO_DESTINOS.h"
 #include "FECHAS.h"
 #include "TIEMPO_ACTUAL.h"
+#include "HORA.h"
 
 
 using namespace std;
@@ -176,7 +177,7 @@ void ingresar_destino(){
     }
     destinos.cargar(idd);
 
-    if (archivo.grabarRegistro(destinos))cout<<endl<<"USUARIO REGISTRADO SATISFACTORIAMENTE. ID: "<<idd<<endl;
+    if(archivo.grabarRegistro(destinos))cout<<endl<<"USUARIO REGISTRADO SATISFACTORIAMENTE. ID: "<<idd<<endl;
     else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
 }
 void mostrar_destino(){
@@ -279,7 +280,6 @@ void cambiar_mail_chofer(){
         cout<<"SE CAMBIO EL MAIL CORRECTAMENTE"<<endl;
     }else cout<<"CHOFER INEXISTENTE"<<endl;
 }
-
 void cambiar_telefono_chofer(){
     Archivo_choferes archivo;
     Choferes chofer;
@@ -302,6 +302,7 @@ void cambiar_telefono_chofer(){
         cout<<"SE CAMBIO EL TELEFONO CORRECTAMENTE"<<endl;
     }else cout<<"CHOFER INEXISTENTE"<<endl;
 }
+
 
 ///MENUS Y SUBMENUS
 /**
@@ -752,8 +753,8 @@ void inicio_de_sesion(){
         char contasena[30];
         cout<<"ingrese ID de usuario: "; cin>>id;
         cout<<"ingrese contraseña: "; cin>>contasena;
-        cout<<"Fecha de ingreso: "<<endl;
         Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
+        Hora actual;
 
         int contreg=archivos.contarRegistros();
         for(int i=0; i<contreg; i++){
@@ -762,6 +763,7 @@ void inicio_de_sesion(){
                 historial.setidusuario(id);
                 historial.setnombre_usuario(usuarios.getnombre());
                 historial.setingreso_sesion(fecha);
+                historial.setinicio(actual);
                 historial.grabarRegistro();
                 bandera=true;
                 break;

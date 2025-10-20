@@ -11,6 +11,7 @@ void Personas::setdni(int d){dni=d; }
 void Personas::settelefono(int t){telefono=t; }
 void Personas::setemail(const char *e){strcpy(email,e);}
 void Personas::setgenero(int g){genero=g;}
+void Personas::setnacionalidad(const char *nac){strcpy(nacionalidad, nac); }
 void Personas::setfecha_Nacimiento(Fechas f){fecha_Nacimiento = f;}
 void Personas::setdomicilio(Domicilio d){domicilio=d;}
 
@@ -21,6 +22,7 @@ int Personas::getdni(){return dni; }
 int Personas::gettelefono(){return telefono; }
 const char *Personas::getemail(){return email;}
 int Personas::getgenero(){return genero;}
+const char *Personas::getnacionalidad(){return nacionalidad; }
 Fechas Personas::getfecha_Nacimiento(){return fecha_Nacimiento;}
 Domicilio Personas::getdomicilio(){return domicilio;}
 
@@ -43,6 +45,7 @@ void Personas::cargar(){
     cout<<"ingrese N° de contacto: "; cin>>telefono;
     cout<<"ingrese su email: "; cargarCadena(email, 99);
     cout<<"ingrese su genero(1=masculino, 2=femenino, 3=no binario) : "; cin>>genero;
+    cout<<"ingrese su nacionalidad: "; cargarCadena(nacionalidad, 39);
     cout<<"ingrese fecha de nacimiento"<<endl;
     fecha_Nacimiento.cargar();
     cout<<"ingrese su domicilio: "<<endl;
@@ -56,6 +59,7 @@ void Personas::mostrar(){
     cout<<"N° de contacto: "<<telefono<<endl;
     cout<<"Email: "<<email<<endl;
     cout<<"genero: "<<getgenerotexto()<<endl;
+    cout<<"Nacionalidad: "<<nacionalidad<<endl;
     cout<<"Fecha de nacimiento: "<<endl;
     fecha_Nacimiento.mostrar();
     cout<<"Domicilio: "<<endl;

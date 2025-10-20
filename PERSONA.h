@@ -11,6 +11,7 @@ protected:
     int telefono;
     char email[100];
     int genero;
+    char nacionalidad[40];
     Fechas fecha_Nacimiento;
     Domicilio domicilio;
 public:
@@ -21,6 +22,7 @@ public:
     void settelefono(int);
     void setemail(const char *);
     void setgenero(int);
+    void setnacionalidad(const char *);
     void setfecha_Nacimiento(Fechas);
     void setdomicilio(Domicilio);
 
@@ -30,6 +32,7 @@ public:
     int gettelefono();
     const char *getemail();
     int getgenero();
+    const char *getnacionalidad();
     Fechas getfecha_Nacimiento();
     Domicilio getdomicilio();
     const char* getgenerotexto() const;

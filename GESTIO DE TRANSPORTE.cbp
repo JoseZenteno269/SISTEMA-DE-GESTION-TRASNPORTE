@@ -48,8 +48,12 @@
 		<Unit filename="ARCHIVO_HISTORIAL_INGRESOS.h" />
 		<Unit filename="ARCHIVO_MICROS.cpp" />
 		<Unit filename="ARCHIVO_MICROS.h" />
+		<Unit filename="ARCHIVO_PASAJEROS.cpp" />
+		<Unit filename="ARCHIVO_PASAJEROS.h" />
 		<Unit filename="ARCHIVO_USUARIOS.cpp" />
 		<Unit filename="ARCHIVO_USUARIOS.h" />
+		<Unit filename="ARCHIVO_VIAJES.cpp" />
+		<Unit filename="ARCHIVO_VIAJES.h" />
 		<Unit filename="CHOFERES.cpp" />
 		<Unit filename="CHOFERES.h" />
 		<Unit filename="DESTINOS.cpp" />
@@ -58,8 +62,14 @@
 		<Unit filename="DOMICILIO.h" />
 		<Unit filename="FECHAS.cpp" />
 		<Unit filename="FECHAS.h" />
+		<Unit filename="HORA.cpp" />
+		<Unit filename="HORA.h" />
 		<Unit filename="MICROS.cpp" />
 		<Unit filename="MICROS.h" />
+		<Unit filename="PASAJE.cpp" />
+		<Unit filename="PASAJE.h" />
+		<Unit filename="PASAJEROS.cpp" />
+		<Unit filename="PASAJEROS.h" />
 		<Unit filename="PERSONA.cpp" />
 		<Unit filename="PERSONA.h" />
 		<Unit filename="TIEMPO_ACTUAL.cpp" />

@@ -3,7 +3,6 @@
 #include "PERSONA.h"
 #include "FECHAS.h"
 
-
 class Usuarios:public Personas{
 private:
     int idUsuario;

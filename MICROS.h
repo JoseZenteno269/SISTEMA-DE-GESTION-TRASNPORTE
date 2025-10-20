@@ -8,6 +8,7 @@ private:
     char tipo[30];
     int capacidad;
     char tipoButaca[30];
+    int numero_butaca;
     bool disponible;
 public:
 
@@ -16,6 +17,7 @@ public:
     void settipo(const char *t);
     void setcapacidad(int );
     void settipoButaca(const char *tb);
+    void setnumero_butaca(int);
     void setdisponible(bool );
 
     int getidMicro();
@@ -23,6 +25,7 @@ public:
     const char *gettipo();
     int getcapacidad();
     const char *gettipoButaca();
+    int getnumero_butaca();
     bool getdisponible();
 
     void cargar(int);

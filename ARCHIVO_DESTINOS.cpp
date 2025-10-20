@@ -25,7 +25,7 @@ int Archivo_destinos::contarRegistros(){
     return bytes/sizeof(Destinos);
 }
 
-int Archivo_destinos::buscarRegistros(int idd ){
+int Archivo_destinos::buscarRegistros(int idd){
     Destinos destino;
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
@@ -39,20 +39,19 @@ int Archivo_destinos::buscarRegistros(int idd ){
 Destinos Archivo_destinos::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Destinos destino;
-
     if(p==nullptr){
         destino.setidDestino(-3);
         return destino;
     }
     fseek(p,pos*sizeof destino,0);
     destino.setidDestino(-4);
-    fread (&destino,sizeof destino,1,p);
+    fread(&destino,sizeof destino,1,p);
     fclose(p);
     return destino;
 }
 
-bool Archivo_destinos::grabarRegistro(Destinos destino ){
-    FILE *p=fopen(archivo,"rb");
+bool Archivo_destinos::grabarRegistro(Destinos destino){
+    FILE *p=fopen(archivo,"ab");
     if(p==nullptr){
         return false;
     }

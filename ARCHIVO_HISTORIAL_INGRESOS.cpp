@@ -8,10 +8,12 @@ Archivo_historial_usuarios::Archivo_historial_usuarios(const char *ah){strcpy(ar
 
 void Archivo_historial_usuarios::setidusuario(int idu){idusuario=idu;}
 void Archivo_historial_usuarios::setingreso_sesion(Fechas is){ingreso_sesion=is; }
+void Archivo_historial_usuarios::setinicio(Hora i){inicio=i; }
 void Archivo_historial_usuarios::setnombre_usuario(const char *nu){strcpy(nombre_usuario,nu); }
 
 int Archivo_historial_usuarios::getidusuario(){return idusuario; }
 Fechas Archivo_historial_usuarios::getingreso_sesion(){return ingreso_sesion; }
+Hora Archivo_historial_usuarios::getinicio(){return inicio; }
 const char *Archivo_historial_usuarios::getnombre_usuario(){return nombre_usuario; }
 
 int Archivo_historial_usuarios::contarRegistros(){
@@ -69,6 +71,8 @@ void Archivo_historial_usuarios::mostrar(){
     cout<<"Nombre: "<<nombre_usuario<<endl;
     cout<<"Fecha:"<<endl;
     ingreso_sesion.mostrar();
+    cout<<"Hora de ingreso: ";
+    inicio.mostrar();
     cout<<"=============================="<<endl;
 }
 
