@@ -7,26 +7,27 @@ using namespace std;
 
 void Destinos::setidDestino(int idd){idDestino=idd; }
 void Destinos::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
-void Destinos::setprovincia(const char *p){strcpy(provincia, p);}
 void Destinos::setdistanciaKm(float dkm){distanciaKm=dkm; }
+void Destinos::setduracion(Hora hd){duracion=hd; }
 void Destinos::sethabilitado(bool h){habilitado=h; }
 
 int Destinos::getidDestino(){return idDestino; }
 const char *Destinos::getnombre_destino(){return nombre_destino; }
-const char *Destinos::getprovincia(){return provincia; }
 float Destinos::getdistanciaKm(){return distanciaKm; }
+Hora Destinos::getduracion(){return duracion; }
 bool Destinos::gethabilitado(){return habilitado; }
 
 void Destinos::cargar(int idd){
     cout<<"ID de distancia: "<<(idDestino=idd)<<endl;
     cout<<"ingrese lugar de destino: "; cargarCadena(nombre_destino, 39);
-    cout<<"ingrese provincia de destino: "; cargarCadena(provincia, 39);
+    cout<<"ingrese hora de duracion de viaje: "<<endl;
+    duracion.cargar();
     cout<<"ingrese distancia en KM: "; cin>>distanciaKm;
     habilitado=true;
 }
 void Destinos::mostrar(){
     cout<<"ID de destino: "<<idDestino<<endl;
     cout<<"Lugar de destino: "<<nombre_destino<<endl;
-    cout<<"Provincia de destino: "<<provincia<<endl;
+    cout<<"Duracion del viaje: "; duracion.mostrar();
     cout<<"Distancia: "<<distanciaKm<<endl;
 }

@@ -50,6 +50,8 @@
 		<Unit filename="ARCHIVO_MICROS.h" />
 		<Unit filename="ARCHIVO_PASAJEROS.cpp" />
 		<Unit filename="ARCHIVO_PASAJEROS.h" />
+		<Unit filename="ARCHIVO_PROVINCIAS.cpp" />
+		<Unit filename="ARCHIVO_PROVINCIAS.h" />
 		<Unit filename="ARCHIVO_USUARIOS.cpp" />
 		<Unit filename="ARCHIVO_USUARIOS.h" />
 		<Unit filename="ARCHIVO_VIAJES.cpp" />
@@ -72,6 +74,8 @@
 		<Unit filename="PASAJEROS.h" />
 		<Unit filename="PERSONA.cpp" />
 		<Unit filename="PERSONA.h" />
+		<Unit filename="PROVINCIAS.cpp" />
+		<Unit filename="PROVINCIAS.h" />
 		<Unit filename="TIEMPO_ACTUAL.cpp" />
 		<Unit filename="TIEMPO_ACTUAL.h" />
 		<Unit filename="USUARIOS.cpp" />
