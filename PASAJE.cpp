@@ -12,6 +12,7 @@ void Pasajes::setiddestino(int idd){iddestino=idd; }
 void Pasajes::setlegajo_chofer(int leg){legajo_chofer=leg; }
 void Pasajes::setidmicro(int idm){idmicro=idm; }
 void Pasajes::setbutaca(int but){butaca=but; }
+void Pasajes::setprecioxkm(int pxkm){precioxkm=pxkm; }
 void Pasajes::settipo_butaca(const char* tb){strcpy(tipo_butaca, tb); }
 void Pasajes::setfecha_Inicio(Fechas fi){fecha_Inicio=fi; }
 void Pasajes::setfecha_Fin(Fechas ff){fecha_Fin=ff; }
@@ -26,6 +27,7 @@ int Pasajes::getiddestino(){return iddestino; }
 int Pasajes::getlegajo_chofer(){return legajo_chofer; }
 int Pasajes::getidmicro(){return idmicro; }
 int Pasajes::getbutaca(){return butaca; }
+int Pasajes::getprecioxkm(){return precioxkm; }
 const char *Pasajes::gettipo_butaca(){return tipo_butaca; }
 Fechas Pasajes::getfecha_Inicio(){return fecha_Inicio; }
 Fechas Pasajes::getfecha_Fin(){return fecha_Fin; }
@@ -72,7 +74,7 @@ Pasajes Pasajes::leerRegistros(int pos){
     return archivo;
 }
 
-bool Pasajes::grabarRegistro(){
+bool Pasajes::grabarRegistro(Pasajes pasaje1){
     FILE *p=fopen(archivo, "ab");
     if(p==nullptr){
         return false;
@@ -91,10 +93,11 @@ void Pasajes::mostrar(){
     cout<<"ID de Micro: "<<idmicro<<endl;
     cout<<"Numero de Butaca: "<<butaca<<endl;
     cout<<"Tipo de Butaca: "<<tipo_butaca<<endl;
-    cout<<"Fecha de Inicio de Viaje: "<<endl; fecha_Inicio.mostrar();
-    cout<<"Fecha de Fin Viaje: "<<endl; fecha_Fin.mostrar();
-    cout<<"Hora de Inicio de Viaje"<<endl; hora_Inicio.mostrar();
-    cout<<"Hora de Fin de Viaje: "<<endl; hora_Fin.mostrar();
+    cout<<"Precio $:"<<precioxkm<<endl;
+    cout<<"Fecha de Inicio de Viaje: "; fecha_Inicio.mostrar();
+    cout<<"Fecha de Fin Viaje: "; fecha_Fin.mostrar();
+    cout<<"Hora de Inicio de Viaje: "; hora_Inicio.mostrar();
+    cout<<"Hora de Fin de Viaje: "; hora_Fin.mostrar();
     cout<<"Lugar de Destino: "<<nombre_destino<<endl;
     cout<<"Provincia de Destino: "<<provincia_destino<<endl;
     cout<<"========================================"<<endl;

@@ -11,6 +11,7 @@ void Micros::setmarca(const char *mrc){strcpy(marca, mrc); }
 void Micros::settipo(const char *t){strcpy(tipo, t); }
 void Micros::setcapacidad(int c){capacidad=c; }
 void Micros::settipoButaca(const char *tb){strcpy(tipoButaca,tb); }
+//void Micros::setpatente(const char *p){strcpy(patente,p); }
 void Micros::setdisponible(bool disp){disponible=disp; }
 
 int Micros::getidMicro(){return idMicro; }
@@ -18,6 +19,7 @@ const char *Micros::getmarca(){return marca; }
 const char *Micros::gettipo(){return tipo; }
 int Micros::getcapacidad(){return capacidad; }
 const char *Micros::gettipoButaca(){return tipoButaca; }
+//const char *Micros::getpatente(){return patente; }
 bool Micros::getdisponible(){return disponible; }
 
 void Micros::capacidadportipo(){
@@ -60,6 +62,8 @@ void Micros::cargar(int idm){
         if (strcmp(tipoButaca,"comun")==0||strcmp(tipoButaca,"cama")==0||strcmp(tipoButaca,"semi-cama")==0) butacaOk=true;
         else cout<<"BUTACA INVALIDO, BUTACAS DISPONIBLES comun, cama, semi-cama"<<endl;
     }
+    //cout<<"ingrese la patente del micro: "; cargarCadena(patente, 19);
+
     capacidadportipo();
     butacaOk=true;
     disponible=true;
@@ -72,4 +76,5 @@ void Micros::mostrar(){
     cout<<"Tipo del micro: "<<tipo<<endl;
     cout<<"Capacidad: "<<capacidad<<endl;
     cout<<"Tipo de Butaca: "<<tipoButaca<<endl;
+    //cout<<"Patente: "<<patente<<endl;
 }

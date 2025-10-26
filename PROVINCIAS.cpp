@@ -7,14 +7,23 @@
 using namespace std;
 
 void Provincia::setNombre(const char *n){strcpy(nombre,n);}
-void Provincia::setcodigo_provincias(int cdp){codigo_provincias=cdp; }
+void Provincia::setcodigo_provincias(const char *cdp){strcpy(codigo_provincias, cdp); }
+void Provincia::setidprovincia(int idp){idprovincia=idp; }
 
 const char *Provincia::getNombre(){return nombre;}
-int Provincia::getcodigo_provincias(){return codigo_provincias; }
+const char *Provincia::getcodigo_provincias(){return codigo_provincias; }
+int Provincia::getidprovincia(){return idprovincia; }
 
 void Provincia::cargar(){
-    cout<<"ingrese el nombre de la provincia: "; cargarCadena(nombre,29);
+    cout<<"ingrese el nombre de la provincia: "; cargarCadena(nombre,39);
+    cout<<"ingrese Codigo de provincia: "; cargarCadena(codigo_provincias, 4);
     Archivo_provincias archivo;
-    codigo_provincias=archivo.contarRegistros()+1;
+    idprovincia=archivo.contarRegistros();
 }
-void Provincia::mostrar(){}
+void Provincia::mostrar(){
+    cout<<"============================================"<<endl;
+    cout<<"Nombre de la provincia: "<<nombre<<endl;
+    cout<<"Codigo de provincia: "<<codigo_provincias<<endl;
+    cout<<"ID de provincia: "<<idprovincia<<endl;
+    cout<<"============================================"<<endl;
+}

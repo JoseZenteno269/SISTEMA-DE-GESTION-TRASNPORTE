@@ -30,7 +30,7 @@ int Archivo_provincias::buscarRegistros(int cp){
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         provincia=leerRegistros(i);
-        if(provincia.getcodigo_provincias()==cp){
+        if(provincia.getidprovincia()==cp){
             return i;
         }
     }
@@ -40,11 +40,11 @@ Provincia Archivo_provincias::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Provincia provincia;
     if(p==nullptr){
-        provincia.setcodigo_provincias(-3);
+        provincia.setidprovincia(-3);
         return provincia;
     }
     fseek(p,pos*sizeof provincia,0);
-    provincia.setcodigo_provincias(-4);
+    provincia.setidprovincia(-4);
     fread(&provincia,sizeof provincia,1,p);
     fclose(p);
     return provincia;
@@ -61,7 +61,7 @@ bool Archivo_provincias::grabarRegistro(Provincia provincia){
 }
 
 bool Archivo_provincias::modificarRegistro(Provincia provincia ,int pos){
-    FILE *p=fopen(archivo,"rb");
+    FILE *p=fopen(archivo,"rb+");
     if(p==nullptr){
         return false;
     }

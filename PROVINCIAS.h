@@ -3,14 +3,17 @@
 
 class Provincia{
 private:
-    char nombre[30];
-    int codigo_provincias;
+    char nombre[40];
+    char codigo_provincias[5];
+    int idprovincia;
 public:
     void setNombre(const char *);
-    void setcodigo_provincias(int);
+    void setcodigo_provincias(const char *);
+    void setidprovincia(int);
 
     const char *getNombre();
-    int getcodigo_provincias();
+    const char *getcodigo_provincias();
+    int getidprovincia();
 
     void cargar();
     void mostrar();

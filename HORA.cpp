@@ -52,8 +52,8 @@ void Hora::cargar(){
         cout<<"Ingrese minutos (0-59): ";
         cin>>m;
 
-        if(!validar(h, m))
-            cout<<"Hora o minutos inválidos, ingrese nuevamente\n";
+        if(!validar(h, m))cout<<"Hora o minutos inválidos, ingrese nuevamente\n";
+
     } while(!validar(h,m));
 
     hora=h;

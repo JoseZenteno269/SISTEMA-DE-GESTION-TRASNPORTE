@@ -6,7 +6,7 @@ class Archivo_provincias{
 private:
     char archivo[30];
 public:
-    Archivo_provincias(const char *a="Destinos.dat");
+    Archivo_provincias(const char *a="Provincias.dat");
     int contarRegistros();
     int buscarRegistros(int);
     Provincia leerRegistros(int);

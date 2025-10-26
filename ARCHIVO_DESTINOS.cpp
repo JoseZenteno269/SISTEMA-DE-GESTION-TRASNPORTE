@@ -61,7 +61,7 @@ bool Archivo_destinos::grabarRegistro(Destinos destino){
 }
 
 bool Archivo_destinos::modificarRegistro(Destinos destino ,int pos){
-    FILE *p=fopen(archivo,"rb");
+    FILE *p=fopen(archivo,"rb+");
     if(p==nullptr){
         return false;
     }

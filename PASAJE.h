@@ -11,6 +11,7 @@ private:
     int legajo_chofer;
     int idmicro;
     int butaca;
+    float precioxkm;
     char tipo_butaca[30];
     Fechas fecha_Inicio;
     Fechas fecha_Fin;
@@ -29,6 +30,7 @@ public:
     void setlegajo_chofer(int);
     void setidmicro(int);
     void setbutaca(int);
+    void setprecioxkm(int);
     void settipo_butaca(const char*);
     void setfecha_Inicio(Fechas);
     void setfecha_Fin(Fechas);
@@ -43,6 +45,7 @@ public:
     int getlegajo_chofer();
     int getidmicro();
     int getbutaca();
+    int getprecioxkm();
     const char *gettipo_butaca();
     Fechas getfecha_Inicio();
     Fechas getfecha_Fin();
@@ -54,7 +57,7 @@ public:
     int contarRegistros();
     int buscarRegistro(int);
     Pasajes leerRegistros(int);
-    bool grabarRegistro();
+    bool grabarRegistro(Pasajes);
     void mostrar();
     void listar();
 };

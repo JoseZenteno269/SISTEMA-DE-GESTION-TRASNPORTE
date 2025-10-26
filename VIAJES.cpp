@@ -14,6 +14,7 @@ void Viajes::setidViaje(int idv){idViaje=idv; }
 void Viajes::setidMicro(int idm){idMicro=idm; }
 void Viajes::setidChofer(int idc){idChofer=idc; }
 void Viajes::setidDestino(int idd){idDestino=idd; }
+void Viajes::setprecio(int p){precio=p; }
 void Viajes::setfecha_Inicio_Viaje(Fechas fiv){fecha_Inicio_Viaje=fiv; }
 void Viajes::setfecha_Fin_Viaje(Fechas ffv){fecha_Fin_Viaje=ffv; }
 void Viajes::sethora_Inicio_Viaje(Hora hiv){hora_Inicio_Viaje=hiv; }
@@ -24,14 +25,15 @@ int Viajes::getidViaje(){return idViaje; }
 int Viajes::getidMicro(){return idMicro; }
 int Viajes::getidChofer(){return idChofer; }
 int Viajes::getidDestino(){return idDestino; }
+int Viajes::getprecio(){return precio; }
 Fechas Viajes::getfecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
 Fechas Viajes::getfecha_Fin_Viaje(){return fecha_Fin_Viaje; }
 Hora Viajes::gethora_Inicio_Viaje(){return hora_Inicio_Viaje; }
 Hora Viajes::gethora_Fin_Viaje(){return hora_Fin_Viaje; }
 bool Viajes::getrealizado(){return realizado; }
 
-void Viajes::cargar(){
-    cout<<"ingrese ID de viaje: "; cin>>idViaje;
+void Viajes::cargar(int idv){
+    cout<<"ID de viaje: "<<(idViaje=idv)<<endl;
 
     while(true){
         Micros micro;
@@ -80,6 +82,7 @@ void Viajes::cargar(){
         }
         if(seguir)break; else cout<<"ingresar nuevamente el ID de destino"<<endl;
     }
+
     cout<<"ingrese fecha de inicio de viaje: "<<endl;
     fecha_Inicio_Viaje.cargar();
     cout<<"ingrese fecha de fin de viaje: "<<endl;
@@ -91,16 +94,14 @@ void Viajes::cargar(){
     realizado=true;
 }
 void Viajes::mostrar(){
+    cout<<"##################################################"<<endl;
     cout<<"ID de viaje: "<<idViaje<<endl;
     cout<<"ID de micro: "<<idMicro<<endl;
     cout<<"ID de chofer a designar: "<<idChofer<<endl;
     cout<<"ID de destino: "<<idDestino<<endl;
-    cout<<"Fecha de inicio de viaje: "<<endl;
-    fecha_Inicio_Viaje.mostrar();
-    cout<<"Fecha de fin de viaje: "<<endl;
-    fecha_Fin_Viaje.mostrar();
-    cout<<"Hora de inicio de viaje: "<<endl;
-    hora_Inicio_Viaje.mostrar();
-    cout<<"Hora de fin de viaje: "<<endl;
-    hora_Fin_Viaje.mostrar();
+    cout<<"Fecha de inicio de viaje: "; fecha_Inicio_Viaje.mostrar();
+    cout<<"Fecha de fin de viaje: "; fecha_Fin_Viaje.mostrar();
+    cout<<"Hora de inicio de viaje: "; hora_Inicio_Viaje.mostrar();
+    cout<<"Hora de fin de viaje: "; hora_Fin_Viaje.mostrar();
+    cout<<"##################################################"<<endl;
 }
