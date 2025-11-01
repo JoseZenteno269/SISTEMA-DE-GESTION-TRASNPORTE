@@ -6,7 +6,7 @@ class Archivo_destinos{
 private:
     char archivo[30];
 public:
-    Archivo_destinos (const char *a="Destinos.dat");
+    Archivo_destinos(const char *a="Destinos.dat");
     int contarRegistros();
     int buscarRegistros(int);
     Destinos leerRegistros(int);

@@ -13,7 +13,7 @@ public:
     int getnumero_pasaje();
     bool gethabilitado();
 
-    void cargar();
+    void cargar(int);
     void mostrar();
 };
 

@@ -20,18 +20,38 @@ const char *Domicilio::getpartido(){return partido; }
 const char *Domicilio::getprovincia(){return provincia; }
 
 void Domicilio::Cargar(){
-    cout<<"INGRESE EL NOMBRE DE LA CALLE: ";
-    cargarCadena(calle,29);
-    cout<<"INGRESE LA ALTURA: ";
-    cin>>altura;
-    cout<<"INGRESE EL CODIGO POSTAL: ";
-    cargarCadena(codigoPostal,5);
-    cout<<"INGRESE LA LOCALIDAD: ";
-    cargarCadena(localidad,29);
-    cout<<"INGRESE EL PARTIDO: ";
-    cargarCadena(partido,29);
-    cout<<"INGRESE LA PROVINCIA: ";
-    cargarCadena(provincia,29);
+    while(true){
+        cout<<"INGRESE EL NOMBRE DE LA CALLE: "; cargarCadena(calle,29);
+        if(validarPalabra(calle))break;
+    }
+
+    while(true){
+        cout<<"INGRESE LA ALTURA: "; cin>>altura;
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }else{
+            int longitud=to_string(altura).length();
+            if(longitud>=2 and longitud<=6)break;
+        }
+    }
+
+    cout<<"INGRESE EL CODIGO POSTAL: "; cargarCadena(codigoPostal,9);
+
+    while(true){
+        cout<<"INGRESE LA LOCALIDAD: "; cargarCadena(localidad,29);
+        if(validarPalabra(localidad))break;
+    }
+
+    while(true){
+        cout<<"INGRESE EL PARTIDO: "; cargarCadena(partido,29);
+        if(validarPalabra(partido))break;
+    }
+
+    while(true){
+        cout<<"INGRESE LA PROVINCIA: "; cargarCadena(provincia,29);
+        if(validarPalabra(provincia))break;
+    }
 }
 
 void Domicilio::Mostrar(){

@@ -3,6 +3,15 @@
 
 void cargarCadena(char *palabra, int tam);
 
+const char *funcion_provincias(int pos);
+
+void calendario(int, int);
+int viajes_disponibles();
+
+bool validarPatente(const char *patente);
+bool validarPalabra(const char *palabra);
+//int selecion_de_butacas(int cant, Micros micro);
+
 ///Funciones viajes-pasajes
 void venta_de_pasaje();
 void pasajes_vendidos();
@@ -19,6 +28,8 @@ void cambiar_contrasena();
 void ingresar_Micro();
 void mostrar_Micro();
 void eliminar_Micro();
+void cambiar_patente_Micro();
+void cambiar_unidad_Micro();
 
 ///Funciones destinos-provincias
 void ingresar_destino();

@@ -8,7 +8,7 @@ private:
     char tipo[30];
     int capacidad;
     char tipoButaca[30];
-    //char patente[20];
+    char patente[10];
     bool disponible;
 public:
 
@@ -17,7 +17,7 @@ public:
     void settipo(const char *t);
     void setcapacidad(int );
     void settipoButaca(const char *tb);
-    //void setpatente(const char *p);
+    void setpatente(const char *p);
     void setdisponible(bool );
 
     int getidMicro();
@@ -25,7 +25,7 @@ public:
     const char *gettipo();
     int getcapacidad();
     const char *gettipoButaca();
-    //const char *getpatente();
+    const char *getpatente();
     bool getdisponible();
     void capacidadportipo();
 

@@ -5,7 +5,7 @@ class Domicilio{
 private:
     char calle[30];
     int altura;
-    char codigoPostal[6];
+    char codigoPostal[10];
     char localidad[30];
     char partido[30];
     char provincia[30];

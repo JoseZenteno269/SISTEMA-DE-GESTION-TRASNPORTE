@@ -60,7 +60,4 @@ void Fechas::cargar(){
 }
 void Fechas::mostrar(){
     cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
-    //cout<<"Día: "<<dia<<endl;
-    //cout<<"Mes: "<<mes<<endl;
-    //cout<<"Año: "<<anio<<endl;
 }

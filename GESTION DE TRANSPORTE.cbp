@@ -48,6 +48,8 @@
 		<Unit filename="ARCHIVO_HISTORIAL_INGRESOS.h" />
 		<Unit filename="ARCHIVO_MICROS.cpp" />
 		<Unit filename="ARCHIVO_MICROS.h" />
+		<Unit filename="ARCHIVO_PASAJE.cpp" />
+		<Unit filename="ARCHIVO_PASAJE.h" />
 		<Unit filename="ARCHIVO_PASAJEROS.cpp" />
 		<Unit filename="ARCHIVO_PASAJEROS.h" />
 		<Unit filename="ARCHIVO_PROVINCIAS.cpp" />

@@ -7,8 +7,8 @@ class Personas{
 protected:
     char nombre[40];
     char apellido[40];
-    int dni;
-    int telefono;
+    long long dni;
+    long long telefono;
     char email[100];
     int genero;
     char nacionalidad[40];
@@ -18,8 +18,8 @@ public:
 
     void setnombre(const char *);
     void setapellido(const char *);
-    void setdni(int);
-    void settelefono(int);
+    void setdni(long long );
+    void settelefono(long long );
     void setemail(const char *);
     void setgenero(int);
     void setnacionalidad(const char *);
@@ -28,8 +28,8 @@ public:
 
     const char *getnombre();
     const char *getapellido();
-    int getdni();
-    int gettelefono();
+    long long getdni();
+    long long gettelefono();
     const char *getemail();
     int getgenero();
     const char *getnacionalidad();
