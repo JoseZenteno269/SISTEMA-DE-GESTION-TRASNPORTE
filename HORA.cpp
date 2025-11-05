@@ -61,7 +61,7 @@ void Hora::cargar(){
 }
 
 void Hora::mostrar(){
-    cout<<(hora<10 ? "0" : "")<<hora<<":"<<(minuto < 10 ? "0" : "")<<minuto<<endl;
+    cout<<(hora<10 ? "0" : "")<<hora<<":"<<(minuto<10 ? "0" : "")<<minuto<<endl;
 }
 
 

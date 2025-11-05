@@ -1,6 +1,5 @@
 #ifndef FECHAS_H_INCLUDED
 #define FECHAS_H_INCLUDED
-#include "TIEMPO_ACTUAL.h"
 
 class Fechas{
 private:
@@ -18,6 +17,7 @@ public:
     int getmes();
     int getanio();
 
+    bool validar(int, int, int);
     void cargar();
     void mostrar();
 };

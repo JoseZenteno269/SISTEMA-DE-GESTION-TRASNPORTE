@@ -94,14 +94,22 @@ void Viajes::cargar(int idv){
     realizado=true;
 }
 void Viajes::mostrar(){
-    cout<<"##################################################"<<endl;
+    cout<<"--------------------------------------------------"<<endl;
     cout<<"ID de viaje: "<<idViaje<<endl;
-    cout<<"ID de micro: "<<idMicro<<endl;
+    Micros micro;
+    Archivo_micros archivo1;
+    int pos1=archivo1.buscarRegsitro(idMicro);
+    micro=archivo1.leerRegistros(pos1);
+    micro.mostrar();
     cout<<"ID de chofer a designar: "<<idChofer<<endl;
-    cout<<"ID de destino: "<<idDestino<<endl;
+    Destinos destino;
+    Archivo_destinos archivo2;
+    int pos2=archivo2.buscarRegistros(idDestino);
+    destino=archivo2.leerRegistros(pos2);
+    destino.mostrar();
     cout<<"Fecha de inicio de viaje: "; fecha_Inicio_Viaje.mostrar();
     cout<<"Fecha de fin de viaje: "; fecha_Fin_Viaje.mostrar();
     cout<<"Hora de inicio de viaje: "; hora_Inicio_Viaje.mostrar();
     cout<<"Hora de fin de viaje: "; hora_Fin_Viaje.mostrar();
-    cout<<"##################################################"<<endl;
+    cout<<"--------------------------------------------------"<<endl;
 }

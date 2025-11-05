@@ -10,6 +10,7 @@ int viajes_disponibles();
 
 bool validarPatente(const char *patente);
 bool validarPalabra(const char *palabra);
+bool esBisiesto(int anio);
 //int selecion_de_butacas(int cant, Micros micro);
 
 ///Funciones viajes-pasajes

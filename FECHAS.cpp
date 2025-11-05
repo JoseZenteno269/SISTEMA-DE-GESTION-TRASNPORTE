@@ -1,6 +1,7 @@
 #include<iostream>
 #include "FECHAS.h"
 #include "rlutil.h"
+#include "funciones.h"
 
 using namespace std;
 using namespace rlutil;
@@ -19,7 +20,6 @@ int Fechas::getdia(){return dia; }
 int Fechas::getmes(){return mes; }
 int Fechas::getanio(){return anio; }
 
-
 void Fechas::cargar(){
     int D, M, A;
     int diasMes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
@@ -34,7 +34,7 @@ void Fechas::cargar(){
     }
     anio=A;
 
-    if((anio%4==0 && anio%100!=0) || (anio%400==0)){
+    if(esBisiesto(anio)){
         diasMes[1]=29;
     }
 

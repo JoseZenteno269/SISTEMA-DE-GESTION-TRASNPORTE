@@ -93,3 +93,4 @@ void Micros::mostrar(){
     cout<<"Tipo de Butaca: "<<tipoButaca<<endl;
     cout<<"Patente: "<<patente<<endl;
 }
+

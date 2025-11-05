@@ -9,7 +9,7 @@ private:
     int idMicro;
     int idChofer;
     int idDestino;
-    int precio=100;
+    int precio;
     Fechas fecha_Inicio_Viaje;
     Fechas fecha_Fin_Viaje;
     Hora hora_Inicio_Viaje;
@@ -40,7 +40,7 @@ public:
 
     void cargar(int);
     void mostrar();
-
+    //void mostrar();
 };
 
 

@@ -1,5 +1,5 @@
 #include<iostream>
-#include <iomanip>
+#include<iomanip>
 #include<cstring>
 #include "funciones.h"
 #include "rlutil.h"
@@ -121,46 +121,42 @@ int viajes_disponibles(){
 
     Tiempo_Actual tiempo;
 
+    int mes, anio;
+    mes=tiempo.getMes();
+    anio=tiempo.getAnio();
     while(true){
-        int mes, anio;
-        mes=tiempo.getMes();
-        anio=tiempo.getAnio();
+        int dia;
         while(true){
-            int dia;
             calendario(mes, anio);
-            while(true){
+            int tecla=getkey();
+            if(tecla==KEY_RIGHT){
+                mes++;
+                if(mes==13){mes=1; anio++; }
+            } else if(tecla==KEY_LEFT){
+                mes--;
+                if(mes==0){mes=12; anio--; }
+            } else if(tecla==KEY_ENTER)break;
+        }
+        cout<<"ingrese el dia para ver los viajes disponibles"<<endl;
+        cin>>dia;
+
+        int contreg=archivo.contarRegistros();
+
+        for(int i=0; i<contreg; i++){
+            viaje=archivo.leerRegistros(i);
+            if(dia==viaje.getfecha_Inicio_Viaje().getdia() and mes==viaje.getfecha_Inicio_Viaje().getmes() and anio==viaje.getfecha_Inicio_Viaje().getanio()){
+                viaje.mostrar();
+                cout<<"ingrese el ID de viaje a selecionar o preciones (ESC) para salir: ";
                 int tecla=getkey();
-                if(tecla==KEY_RIGHT){
-                    mes++;
-                    if(mes==13){mes=1; anio++; }
-                } else if(tecla==KEY_LEFT){
-                    mes--;
-                    if(mes==0){mes=12; anio--; }
-                } else if(tecla==KEY_ENTER)break;
-                calendario(mes, anio);
-            }
-            cout<<"ingrese el dia para ver los viajes disponibles"<<endl;
-            cin>>dia;
+                if(tecla==KEY_ESCAPE)break;
 
-            int contreg=archivo.contarRegistros();
-
-            for(int i=0; i<contreg; i++){
-                viaje=archivo.leerRegistros(i);
-                if(dia==viaje.getfecha_Inicio_Viaje().getdia() and mes==viaje.getfecha_Inicio_Viaje().getmes() and anio==viaje.getfecha_Inicio_Viaje().getanio()){
-                    viaje.mostrar();
-                    cout<<"ingrese el ID de viaje a selecionar o preciones (ESC) para salir: ";
-                    int idv;
-                    int tecla=getkey();
-                    if(tecla==KEY_ESCAPE)break;
-                    cin>>idv;
-                    return idv;
-                }else {cout<<"Sin viajes disponibles (preciones una tecla)"<<endl; anykey();}
+                int idv;
+                cin>>idv;
+                return idv;
             }
         }
-        cout<<"(ESC) para salir o precione una tecla para continuar"<<endl;
-        int tecla=_getch();
-        cls();
-        if(tecla==27)break;
+        cout<<"Sin viajes disponibles (preciones una tecla)"<<endl;
+        anykey();
     }
     return -1;
 }
@@ -182,7 +178,6 @@ int selecion_de_butacas(int cant, Micros micro){
             }
 
             int tecla=getkey();
-
             if(tecla==KEY_UP){
                 posSeleccionada-=columnas;
                 if(posSeleccionada<=0)posSeleccionada+=cant;
@@ -296,24 +291,23 @@ void venta_de_pasaje(){
         int numeroPasaje=contregPasajeros+1;
         pasaje.setpasaje(numeroPasaje);
 
-        bool viajeValido=false;
-        while(!viajeValido){
-
+        while(true){
             for(int i=0; i<contregViajes; i++){
                 viaje=archivoViajes.leerRegistros(i);
                 if(viaje.getidViaje()==idViaje){
                     pasaje.setidviaje(viaje.getidViaje());
                     for(int x=0; x<contregMicros; x++){
-                        micro=archivoMicros.leerRegistros(i);
+                        micro=archivoMicros.leerRegistros(x);
                         if(viaje.getidMicro()==micro.getidMicro()){
                             int butaca=selecion_de_butacas(micro.getcapacidad(), micro);
                             pasaje.setbutaca(butaca);
-                            pasaje.settipo_butaca(micro.gettipo());
+                            pasaje.settipo_butaca(micro.gettipoButaca());
                             for(int z=0; z<contregDestinos; z++){
-                                destino=archivoDestinos.leerRegistros(i);
+                                destino=archivoDestinos.leerRegistros(z);
                                 if(viaje.getidDestino()==destino.getidDestino()){
                                     pasaje.setnombre_destino(destino.getnombre_destino());
                                     pasaje.setprovincia_destino(destino.getnombre_provincia());
+                                    pasaje.setprecioxkm(viaje.getprecio()*destino.getdistanciaKm());
                                 }
                             }
                         }
@@ -321,22 +315,16 @@ void venta_de_pasaje(){
                 }
             }
             pasajero.cargar(pasaje.getpasaje());
-            archivoPasajeros.grabarRegistro(pasajero);
 
-            archivoPasaje.grabarRegistro(pasaje);
-
-            cout<<"Pasaje "<<numeroPasaje<<" registrado correctamente.\n";
-            viajeValido=true;
-            break;
-
+            if(archivoPasaje.grabarRegistro(pasaje) and archivoPasajeros.grabarRegistro(pasajero)){cout<<"Pasaje "<<numeroPasaje<<" registrado correctamente.\n"; break; }
+            else cout<<"Error al registrar "<<endl;
         }
     }
 }
 
 void mostrar_pasajes_vendidos(){
-    Archivo_pasajes archivo;
-    archivo.listar();
-
+    Archivo_pasajes archivopasaje;
+    archivopasaje.listar();
 }
 void cargar_viaje(){
     Viajes viaje;
@@ -366,7 +354,31 @@ void mostrar_viajes(){
     Archivo_viajes archivo;
     archivo.listar();
 }
+void valor_kilometro(){
+    Viajes viaje;
+    viaje.setprecio(100);
 
+    cout<<"VALOR ACTUAL DEL KILOMETRO $"<<viaje.getprecio()<<endl;
+
+    while(true){
+        cout<<"DESEA CAMBIAR EL PRECIO POR KILOMETRO?? \n(ENTER)para cambiar precio o (ESC)para salir"<<endl;
+        int tecla=getkey();
+        if(tecla==KEY_ENTER){
+            int precio_nuevo;
+            cout<<"INGRESE EL VALOR DEL KILOMETRO RECORRIDO PARA TODOS LOS VIAJES"<<endl;
+            cin>>precio_nuevo;
+            if(precio_nuevo<=0)cout<<"EL VALOR DEL PRECIO POR KILOMETRO NO PUEDE SER CERO O NEGRATIVO"<<endl;
+            else{
+                cout<<"SE CAMBIO CORRECTAMENTE"<<endl;
+                viaje.setprecio(precio_nuevo);
+                break;
+            }
+
+        }else if(tecla==KEY_ESCAPE){
+            break;
+        }
+    }
+}
 
 ///Funciones usuarios
 void ingresar_usuario(){
@@ -760,12 +772,13 @@ void viajes_chofer_mes(){}
 ///MENUS Y SUBMENUS
 void SUBMENU_1(){
     int seleccion=0;
-    const int opciones_submenu=5;
+    const int opciones_submenu=6;
     string submenu[opciones_submenu]={
         " COMPRA DE PASAJE",
         " PASAJES VENDIDOS",
         " CARGAR VIAJES",
         " MOSTRAR VIAJES DISPONIBLES",
+        " PRECIO X KILOMETRO",
         " MENU PRINCIPAL"
     };
     bool salir=false;
@@ -773,8 +786,8 @@ void SUBMENU_1(){
     while(!salir){
         cls();
         setColor(WHITE);
-        for(int i=0; i<6; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<6; i++){locate(75,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(75,11+i); cout << "|";}
         locate(44,10);
         cout<<"-----------USUARIOS------------"<<endl;
         locate(44,11);
@@ -789,7 +802,7 @@ void SUBMENU_1(){
             }else cout<<"  "<<submenu[i]<<endl;
         }
         setColor(WHITE);
-        locate(44,17);
+        locate(44,18);
         cout<<"-------------------------------"<<endl;
         setColor(WHITE);
         int tecla=getkey();
@@ -827,6 +840,12 @@ void SUBMENU_1(){
                 cls();
                 break;
             case 4:
+                cls();
+                valor_kilometro();
+                anykey();
+                cls();
+                break;
+            case 5:
                 salir=true;
                 break;
             }

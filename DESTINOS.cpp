@@ -38,7 +38,7 @@ void Destinos::cargar(int idd){
 }
 void Destinos::mostrar(){
     cout<<"ID de destino: "<<idDestino<<endl;
-    cout<<"nombre provincia: "<<nombre_provincia<<endl;
+    cout<<"Provincia: "<<nombre_provincia<<endl;
     cout<<"Lugar de destino: "<<nombre_destino<<endl;
     cout<<"Duracion del viaje: "; duracion.mostrar();
     cout<<"Distancia: "<<distanciaKm<<endl;

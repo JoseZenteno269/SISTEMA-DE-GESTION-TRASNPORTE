@@ -19,18 +19,6 @@ int main(){
     //ShowWindow(console, SW_MAXIMIZE);
     //setBackgroundColor(BLUE);
 
-    //Pasajeros pasajero;
-    //Archivo_pasajeros archivo;
-    //int contreg=archivo.contarRegistros();
-    //for (int i=0; i<contreg; i++){
-    //    pasajero=archivo.leerRegistros(i);
-    //    pasajero.mostrar();
-    //}
-    //return 0;
-
-    //viajes_disponibles();
-    //return 0;
-
     MENU();
     //inicio_de_sesion();
 

@@ -28,7 +28,7 @@ void Pasajes::mostrar(){
     cout<<"ID de viaje: "<<idviaje<<endl;
     cout<<"Numero de Butaca: "<<butaca<<endl;
     cout<<"Tipo de Butaca: "<<tipo_butaca<<endl;
-    //cout<<"Precio $:"<<precioxkm<<endl;
+    cout<<"Precio $"<<precioxkm<<endl;
     cout<<"Lugar de Destino: "<<nombre_destino<<endl;
     cout<<"Provincia de Destino: "<<provincia_destino<<endl;
     cout<<"========================================"<<endl;

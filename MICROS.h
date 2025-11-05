@@ -31,6 +31,7 @@ public:
 
     void cargar(int);
     void mostrar();
+
 };
 
 
