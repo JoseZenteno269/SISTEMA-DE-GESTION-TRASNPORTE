@@ -16,9 +16,9 @@ void Fechas::setdia(int d){dia=d; }
 void Fechas::setmes(int m){mes=m; }
 void Fechas::setanio(int a){anio=a; }
 
-int Fechas::getdia(){return dia; }
-int Fechas::getmes(){return mes; }
-int Fechas::getanio(){return anio; }
+int Fechas::getdia() const { return dia; }
+int Fechas::getmes() const { return mes; }
+int Fechas::getanio() const { return anio; }
 
 void Fechas::cargar(){
     int D, M, A;
