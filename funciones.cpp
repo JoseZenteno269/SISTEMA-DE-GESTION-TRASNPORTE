@@ -1368,18 +1368,23 @@ void inicio_de_sesion(){
     Archivo_usuarios archivos;
     Archivo_historial_usuarios historial;
     Tiempo_Actual tiempo;
+
     while(true){
+        cls();
         bool bandera=false;
         int id;
         char contasena[30];
+
         cout<<"ingrese ID de usuario: "; cin>>id;
         cout<<"ingrese contraseña: "; cin>>contasena;
         Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
         Hora actual;
 
         int contreg=archivos.contarRegistros();
+
         for(int i=0; i<contreg; i++){
             usuarios=archivos.leerRegistros(i);
+
             if(usuarios.getidUsuario()==id and strcmp(usuarios.getcontrasena(),contasena)==0 and usuarios.getestado()){
                 historial.setidusuario(id);
                 historial.setnombre_usuario(usuarios.getnombre());
@@ -1390,12 +1395,99 @@ void inicio_de_sesion(){
                 break;
             }
         }
+
         if(bandera==false){
             cls();
             cout<<"Usuario y/o Contraseña incorrectos"<<endl;
             anykey();
             cls();
         }
-        if(bandera){MENU(); break;}
+        if(bandera){
+        switch(usuarios.getnivel()){
+            case 1:
+                cls();
+                MENU_ADMIN();
+                bandera = true;
+                break;
+            case 2:
+                cls();
+                MENU_VENTAS();
+                break;
+            default:
+                cout << "ID EXISTENTE, ERROR EN LOS DATOS DEL USUARIO" << endl;
+                break;
+            }
+        }
     }
 }
+void MENU_VENTAS(){
+
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " VENTA DE PASAJE",
+        " PASAJES VENDIDOS",
+        " MOSTRAR VIAJES DISPONIBLES",
+        " CERRAR SESION"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-----------USUARIOS------------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,18);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                cls();
+                venta_de_pasaje();
+                anykey();
+                cls();
+                break;
+            case 1:
+                cls();
+                mostrar_pasajes_vendidos();
+                anykey();
+                cls();
+                break;
+            case 2:
+                cls();
+                mostrar_viajes();
+                anykey();
+                cls();
+                break;
+            case 3:
+                salir=true;
+                break;
+
+            }
+        }
+    }
+}
+void MENU_ADMIN(){MENU();}

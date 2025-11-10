@@ -16,6 +16,8 @@ int Usuarios::getidUsuario(){return idUsuario; }
 const char *Usuarios::getcontrasena(){return contrasena; }
 Fechas Usuarios::getingreso(){return ingreso; }
 bool Usuarios::getestado(){return estado; }
+void Usuarios::setnivel(int n){ nivel = n; }
+int Usuarios::getnivel(){ return nivel; }
 
 void Usuarios::cargar(int idu){
     cout<<"ingrese ID de usuario: "<<(idUsuario=idu)<<endl;
@@ -25,6 +27,8 @@ void Usuarios::cargar(int idu){
     Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
     fecha.mostrar();
     setingreso(fecha);
+    cout<<"Nivel de usuario (1=Admin, 2=Vendedor): ";
+    cin>>nivel;
     cout<<"Crear contraseña: "; cargarCadena(contrasena, 29);
     estado=true;
 }

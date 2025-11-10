@@ -19,8 +19,8 @@ int main(){
     //ShowWindow(console, SW_MAXIMIZE);
     //setBackgroundColor(BLUE);
 
-    MENU();
-    //inicio_de_sesion();
+    //MENU();
+    inicio_de_sesion();
 
     cout<<endl<<endl;
 

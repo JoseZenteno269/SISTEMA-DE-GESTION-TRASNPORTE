@@ -8,6 +8,7 @@ private:
     int idUsuario;
     char contrasena[30];
     Fechas ingreso;
+    int nivel;
     bool estado;
 public:
 
@@ -15,11 +16,13 @@ public:
     void setcontrasena(const char *);
     void setingreso(Fechas );
     void setestado(bool );
+    void setnivel(int);
 
     int getidUsuario();
     const char *getcontrasena();
     Fechas getingreso();
     bool getestado();
+    int getnivel();
 
     void cargar(int);
     void mostrar();
