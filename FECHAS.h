@@ -13,9 +13,9 @@ public:
     void setmes(int );
     void setanio(int );
 
-    int getdia();
-    int getmes();
-    int getanio();
+    int getdia() const;
+    int getmes() const;
+    int getanio() const;
 
     bool validar(int, int, int);
     void cargar();

@@ -28,6 +28,18 @@
 using namespace std;
 using namespace rlutil;
 
+bool esFechaPosterior(const Fechas &fechaIngresada, const Fechas &actual) {
+    if (fechaIngresada.getanio() > actual.getanio()) return true;
+    if (fechaIngresada.getanio() < actual.getanio()) return false;
+
+    if (fechaIngresada.getmes() > actual.getmes()) return true;
+    if (fechaIngresada.getmes() < actual.getmes()) return false;
+
+    if (fechaIngresada.getdia() > actual.getdia()) return true;
+
+    return false;
+}
+
 void cargarCadena(char *palabra, int tam){
     int i=0;
     fflush(stdin);

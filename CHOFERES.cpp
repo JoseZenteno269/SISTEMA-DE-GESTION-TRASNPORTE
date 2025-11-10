@@ -27,8 +27,8 @@ void Choferes::cargar(int leg){
     cout<<endl;
     cout<<"FECHA DE INGRESO"<<endl;
     Tiempo_Actual tiempo;
-    Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
-    fecha.mostrar();
+    Fechas fecha;
+    fecha.cargar();
     setfecha_de_ingreso(fecha);
     estado=true;
 

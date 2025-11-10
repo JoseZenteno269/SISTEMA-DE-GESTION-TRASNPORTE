@@ -27,8 +27,11 @@ void Usuarios::cargar(int idu){
     Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
     fecha.mostrar();
     setingreso(fecha);
+    while(true){
     cout<<"Nivel de usuario (1=Admin, 2=Vendedor): ";
     cin>>nivel;
+    if(nivel>0 && nivel<3) break;
+    }
     cout<<"Crear contraseña: "; cargarCadena(contrasena, 29);
     estado=true;
 }
