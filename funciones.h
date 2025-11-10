@@ -1,5 +1,7 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
+#include "FECHAS.h"
+bool esFechaPosterior(const Fechas &, const Fechas &);
 
 void cargarCadena(char *palabra, int tam);
 
