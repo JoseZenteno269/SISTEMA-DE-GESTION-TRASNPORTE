@@ -1,7 +1,5 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
-#include "FECHAS.h"
-bool esFechaPosterior(const Fechas &, const Fechas &);
 
 void cargarCadena(char *palabra, int tam);
 
@@ -66,5 +64,7 @@ void SUBMENU_5();
 void SUBMENU_6();
 void MENU();
 void inicio_de_sesion();
+void MENU_ADMIN();
+void MENU_VENTAS();
 
 #endif // FUNCIONES_H_INCLUDED

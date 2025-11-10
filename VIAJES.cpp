@@ -7,9 +7,6 @@
 #include "CHOFERES.h"
 #include "ARCHIVO_DESTINOS.h"
 #include "DESTINOS.h"
-#include "TIEMPO_ACTUAL.h"
-#include "funciones.h"
-#include "ARCHIVO_VIAJES.h"
 
 using namespace std;
 
@@ -36,152 +33,66 @@ Hora Viajes::gethora_Fin_Viaje(){return hora_Fin_Viaje; }
 bool Viajes::getrealizado(){return realizado; }
 
 void Viajes::cargar(int idv){
-    cout << "ID de viaje: " << (idViaje = idv) << endl;
-
-    while(true){
-        Destinos destino;
-        Archivo_destinos archivo;
-        bool existe = false;
-
-        cout << "Ingrese ID de destino: ";
-        cin >> idDestino;
-
-        int contreg = archivo.contarRegistros();
-        for(int i = 0; i < contreg; i++){
-            destino = archivo.leerRegistros(i);
-            if(idDestino == destino.getidDestino()){
-                existe = true;
-                break;
-            }
-        }
-
-        if(existe) break;
-        else cout << "ID de destino no existe. Ingrese nuevamente.\n";
-    }
-
-    Fechas actual;
-    Tiempo_Actual tiempo;
-    actual.setanio(tiempo.getAnio());
-    actual.setmes(tiempo.getMes());
-    actual.setdia(tiempo.getDia());
-
-    bool fechaInciOK = false;
-    while(!fechaInciOK){
-        cout << "Ingrese fecha de inicio de viaje: " << endl;
-        fecha_Inicio_Viaje.cargar();
-        if(esFechaPosterior(fecha_Inicio_Viaje, actual)){
-            fechaInciOK = true;
-            cout << "Fecha válida.\n";
-        } else {
-            cout << "ERROR: NO SE PERMITEN VIAJES EN EL TIEMPO. Intente de nuevo.\n";
-        }
-    }
-
-    bool fechaFinOK = false;
-    while(!fechaFinOK){
-        cout << "Ingrese fecha de fin de viaje: " << endl;
-        fecha_Fin_Viaje.cargar();
-        if(esFechaPosterior(fecha_Fin_Viaje, fecha_Inicio_Viaje)){
-            fechaFinOK = true;
-            cout << "Fecha válida.\n";
-        } else {
-            cout << "ERROR: La fecha de fin debe ser posterior a la de inicio.\n";
-        }
-    }
+    cout<<"ID de viaje: "<<(idViaje=idv)<<endl;
 
     while(true){
         Micros micro;
         Archivo_micros archivo;
-        bool existe = false;
-
-        cout << "Ingrese ID de micro: ";
-        cin >> idMicro;
-
-        int contreg = archivo.contarRegistros();
-        for(int i = 0; i < contreg; i++){
-            micro = archivo.leerRegistros(i);
-            if(idMicro == micro.getidMicro()){
-                existe = true;
+        bool seguir=false;
+        cout<<"ingrese ID de micro: "; cin>>idMicro;
+        int contreg=archivo.contarRegistros();
+        for(int i=0; i<contreg; i++){
+            micro=archivo.leerRegistros(i);
+            if(idMicro==micro.getidMicro()){
+                seguir=true;
                 break;
             }
         }
-
-        if(!existe){
-            cout << "ID de micro no existe. Ingrese nuevamente.\n";
-        } else {
-            Archivo_viajes archViajes;
-            int n = archViajes.contarRegistros();
-            bool disponible = true;
-
-            for(int i = 0; i < n; i++){
-                Viajes vExistente = archViajes.leerRegistros(i);
-                if(vExistente.getidMicro() == idMicro){
-                    Fechas inicioExistente = vExistente.getfecha_Inicio_Viaje();
-                    Fechas finExistente = vExistente.getfecha_Fin_Viaje();
-                    if(!(esFechaPosterior(fecha_Inicio_Viaje, finExistente) ||
-                         esFechaPosterior(inicioExistente, fecha_Fin_Viaje))){
-                        disponible = false;
-                        break;
-                    }
-                }
-            }
-
-            if(disponible) break;
-            else cout << "ERROR: El micro ya tiene un viaje en esas fechas. Intente otro.\n";
-        }
+        if(seguir)break; else cout<<"ingresar nuevamente el ID de micro"<<endl;
     }
 
     while(true){
         Choferes chofer;
         Archivo_choferes archivo;
-        bool existe = false;
-
-        cout << "Ingrese Legajo de chofer a designar: ";
-        cin >> idChofer;
-
-        int contreg = archivo.contarRegistros();
-        for(int i = 0; i < contreg; i++){
-            chofer = archivo.leerRegistros(i);
-            if(idChofer == chofer.getlegajo()){
-                existe = true;
+        bool seguir=false;
+        cout<<"ingrese Legajo de chofer a designar: "; cin>>idChofer;
+        int contreg=archivo.contarRegistros();
+        for(int i=0; i<contreg; i++){
+            chofer=archivo.leerRegistros(i);
+            if(idChofer==chofer.getlegajo()){
+                seguir=true;
                 break;
             }
         }
-
-        if(!existe){
-            cout << "Legajo de chofer no existe. Ingrese nuevamente.\n";
-        } else {
-            Archivo_viajes archViajes;
-            int n = archViajes.contarRegistros();
-            bool disponible = true;
-
-            for(int i = 0; i < n; i++){
-                Viajes vExistente = archViajes.leerRegistros(i);
-                if(vExistente.getidChofer() == idChofer){
-                    Fechas inicioExistente = vExistente.getfecha_Inicio_Viaje();
-                    Fechas finExistente = vExistente.getfecha_Fin_Viaje();
-                    if(!(esFechaPosterior(fecha_Inicio_Viaje, finExistente) ||
-                         esFechaPosterior(inicioExistente, fecha_Fin_Viaje))){
-                        disponible = false;
-                        break;
-                    }
-                }
-            }
-
-            if(disponible) break;
-            else cout << "ERROR: El chofer ya tiene un viaje en esas fechas. Intente otro.\n";
-        }
+        if(seguir)break; else cout<<"ingresar nuevamente el Legajo del chofer"<<endl;
     }
 
-    cout << "Ingrese hora de inicio de viaje: " << endl;
+    while(true){
+        Destinos destino;
+        Archivo_destinos archivo;
+        bool seguir=false;
+        cout<<"ingrese ID de destino: "; cin>>idDestino;
+        int contreg=archivo.contarRegistros();
+        for(int i=0; i<contreg; i++){
+            destino=archivo.leerRegistros(i);
+            if(idDestino==destino.getidDestino()){
+                seguir=true;
+                break;
+            }
+        }
+        if(seguir)break; else cout<<"ingresar nuevamente el ID de destino"<<endl;
+    }
+
+    cout<<"ingrese fecha de inicio de viaje: "<<endl;
+    fecha_Inicio_Viaje.cargar();
+    cout<<"ingrese fecha de fin de viaje: "<<endl;
+    fecha_Fin_Viaje.cargar();
+    cout<<"ingrese hora de inicio de viaje: "<<endl;
     hora_Inicio_Viaje.cargar();
-    cout << "Ingrese hora de fin de viaje: " << endl;
+    cout<<"ingrese hora de fin de viaje: "<<endl;
     hora_Fin_Viaje.cargar();
-
-    realizado = true;
-    cout << "Viaje cargado correctamente.\n";
+    realizado=true;
 }
-
 void Viajes::mostrar(){
     cout<<"--------------------------------------------------"<<endl;
     cout<<"ID de viaje: "<<idViaje<<endl;
