@@ -1,4 +1,5 @@
 #include<iostream>
+#include "funciones.h"
 #include "VIAJES.h"
 #include<cstring>
 #include "ARCHIVO_MICROS.h"
@@ -17,7 +18,6 @@ void Viajes::setidViaje(int idv){idViaje=idv; }
 void Viajes::setidMicro(int idm){idMicro=idm; }
 void Viajes::setidChofer(int idc){idChofer=idc; }
 void Viajes::setidDestino(int idd){idDestino=idd; }
-void Viajes::setprecio(int p){precio=p; }
 void Viajes::setfecha_Inicio_Viaje(Fechas fiv){fecha_Inicio_Viaje=fiv; }
 void Viajes::setfecha_Fin_Viaje(Fechas ffv){fecha_Fin_Viaje=ffv; }
 void Viajes::sethora_Inicio_Viaje(Hora hiv){hora_Inicio_Viaje=hiv; }
@@ -28,7 +28,6 @@ int Viajes::getidViaje(){return idViaje; }
 int Viajes::getidMicro(){return idMicro; }
 int Viajes::getidChofer(){return idChofer; }
 int Viajes::getidDestino(){return idDestino; }
-int Viajes::getprecio(){return precio; }
 Fechas Viajes::getfecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
 Fechas Viajes::getfecha_Fin_Viaje(){return fecha_Fin_Viaje; }
 Hora Viajes::gethora_Inicio_Viaje(){return hora_Inicio_Viaje; }
@@ -36,6 +35,7 @@ Hora Viajes::gethora_Fin_Viaje(){return hora_Fin_Viaje; }
 bool Viajes::getrealizado(){return realizado; }
 
 void Viajes::cargar(int idv){
+<<<<<<< HEAD
     cout << "ID de viaje: " << (idViaje = idv) << endl;
 
     while(true){
@@ -129,10 +129,34 @@ void Viajes::cargar(int idv){
             if(disponible) break;
             else cout << "ERROR: El micro ya tiene un viaje en esas fechas. Intente otro.\n";
         }
+=======
+    Archivo_micros archivomicro;
+    Archivo_choferes archivochofer;
+    Destinos destino;
+    Archivo_destinos archivodestino;
+    Tiempo_Actual actual;
+    Fechas presente(actual.getDia(), actual.getMes(), actual.getAnio());
+
+
+    cout<<"ID de viaje: "<<(idViaje=idv)<<endl;
+
+    while(true){
+        Micros micro;
+        cout<<"ingrese ID de micro (0 para salir): "; cin>>idMicro;
+        if(idMicro==0){cout<<"Operación cancelada"<<endl; break;}
+        int pos=archivomicro.buscarRegsitro(idMicro);
+        if(pos<0){
+            cout<<"ERROR, sin registros"<<endl;
+            continue;
+        }
+        micro=archivomicro.leerRegistros(pos);
+        if(idMicro==micro.getidMicro())break;
+>>>>>>> a802f24 (AL DIA(creo))
     }
 
     while(true){
         Choferes chofer;
+<<<<<<< HEAD
         Archivo_choferes archivo;
         bool existe = false;
 
@@ -180,21 +204,60 @@ void Viajes::cargar(int idv){
 
     realizado = true;
     cout << "Viaje cargado correctamente.\n";
+=======
+        cout<<"ingrese Legajo de chofer a designar (0 para salir): "; cin>>idChofer;
+        if(idChofer==0){cout<<"Operación cancelada"<<endl; break;}
+        int pos=archivochofer.buscarRegistro(idChofer);
+        if(pos<0){
+            cout<<"ERROR, sin registros"<<endl;
+            continue;
+        }
+        chofer=archivochofer.leerRegistros(pos);
+        if(idChofer==chofer.getlegajo())break;
+    }
+
+    while(true){
+        Destinos destino;
+        cout<<"ingrese ID de destino (0 para salir): "; cin>>idDestino;
+        if(idDestino==0){cout<<"Operación cancelada"<<endl; break;}
+        int pos=archivodestino.buscarRegistros(idDestino);
+        if(pos<0){
+            cout<<"ERROR, sin registros"<<endl;
+            break;
+        }
+        destino=archivodestino.leerRegistros(pos);
+        if(idDestino==destino.getidDestino())break;
+    }
+
+    while(true){
+        cout<<"ingrese fecha de inicio de viaje: "<<endl;
+        fecha_Inicio_Viaje.cargar();
+        if(esFechaPosterior(fecha_Inicio_Viaje, presente))break;
+        cout<<"ERROR no se puede ingresar una fecha anterior a la actual"<<endl;
+    }
+
+    cout<<"ingrese hora de inicio de viaje: "<<endl;
+    hora_Inicio_Viaje.cargar();
+
+    fecha_y_hora_fin(destino, archivodestino, fecha_Fin_Viaje, hora_Fin_Viaje, fecha_Inicio_Viaje, hora_Inicio_Viaje, idDestino);
+
+    realizado=true;
+>>>>>>> a802f24 (AL DIA(creo))
 }
 
 void Viajes::mostrar(){
     cout<<"--------------------------------------------------"<<endl;
     cout<<"ID de viaje: "<<idViaje<<endl;
     Micros micro;
-    Archivo_micros archivo1;
-    int pos1=archivo1.buscarRegsitro(idMicro);
-    micro=archivo1.leerRegistros(pos1);
+    Archivo_micros archivomicro;
+    int pos1=archivomicro.buscarRegsitro(idMicro);
+    micro=archivomicro.leerRegistros(pos1);
     micro.mostrar();
     cout<<"ID de chofer a designar: "<<idChofer<<endl;
     Destinos destino;
-    Archivo_destinos archivo2;
-    int pos2=archivo2.buscarRegistros(idDestino);
-    destino=archivo2.leerRegistros(pos2);
+    Archivo_destinos archivodestino;
+    int pos2=archivodestino.buscarRegistros(idDestino);
+    destino=archivodestino.leerRegistros(pos2);
     destino.mostrar();
     cout<<"Fecha de inicio de viaje: "; fecha_Inicio_Viaje.mostrar();
     cout<<"Fecha de fin de viaje: "; fecha_Fin_Viaje.mostrar();

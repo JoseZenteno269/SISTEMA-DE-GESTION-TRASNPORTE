@@ -32,7 +32,7 @@ void Destinos::cargar(int idd){
     }
     cout<<"ingrese lugar de destino: "; cargarCadena(nombre_destino, 39);
     cout<<"ingrese hora de duracion de viaje: "<<endl;
-    duracion.cargar();
+    duracion.cargar_viaje();
     cout<<"ingrese distancia en KM: "; cin>>distanciaKm;
     habilitado=true;
 }

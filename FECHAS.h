@@ -17,7 +17,6 @@ public:
     int getmes() const;
     int getanio() const;
 
-    bool validar(int, int, int);
     void cargar();
     void mostrar();
 };

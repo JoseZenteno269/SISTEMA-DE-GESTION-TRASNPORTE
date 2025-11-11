@@ -20,7 +20,7 @@ int Pasajes::getprecioxkm(){return precioxkm; }
 const char *Pasajes::gettipo_butaca(){return tipo_butaca; }
 const char *Pasajes::getnombre_destino(){return nombre_destino; }
 const char *Pasajes::getprovincia_destino(){return provincia_destino; }
-Viajes Pasajes::getdatos(){return datos; }
+
 
 void Pasajes::mostrar(){
     cout<<"========================================"<<endl;

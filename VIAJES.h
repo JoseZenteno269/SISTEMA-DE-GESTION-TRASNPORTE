@@ -2,6 +2,7 @@
 #define VIAJES_H_INCLUDED
 #include "FECHAS.h"
 #include "HORA.h"
+#include "TIEMPO_ACTUAL.h"
 
 class Viajes{
 private:
@@ -9,7 +10,6 @@ private:
     int idMicro;
     int idChofer;
     int idDestino;
-    int precio;
     Fechas fecha_Inicio_Viaje;
     Fechas fecha_Fin_Viaje;
     Hora hora_Inicio_Viaje;
@@ -20,7 +20,6 @@ public:
     void setidMicro(int);
     void setidChofer(int);
     void setidDestino(int);
-    void setprecio(int);
     void setfecha_Inicio_Viaje(Fechas);
     void setfecha_Fin_Viaje(Fechas);
     void sethora_Inicio_Viaje(Hora);
@@ -31,7 +30,6 @@ public:
     int getidMicro();
     int getidChofer();
     int getidDestino();
-    int getprecio();
     Fechas getfecha_Inicio_Viaje();
     Fechas getfecha_Fin_Viaje();
     Hora gethora_Inicio_Viaje();

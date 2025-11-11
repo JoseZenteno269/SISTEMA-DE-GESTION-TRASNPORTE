@@ -33,7 +33,6 @@ public:
     const char *gettipo_butaca();
     const char *getnombre_destino();
     const char *getprovincia_destino();
-    Viajes getdatos();
 
     void mostrar();
 };

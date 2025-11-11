@@ -1,19 +1,49 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
+<<<<<<< HEAD
 #include "FECHAS.h"
 bool esFechaPosterior(const Fechas &, const Fechas &);
+=======
+#include "MICROS.h"
+#include "ARCHIVO_MICROS.h"
+#include "CHOFERES.h"
+#include "ARCHIVO_CHOFERES.h"
+#include "USUARIOS.h"
+#include "ARCHIVO_USUARIOS.h"
+#include "HISTORIAL_INGRESOS.h"
+#include "ARCHIVO_HISTORIAL_INGRESOS.h"
+#include "DESTINOS.h"
+#include "ARCHIVO_DESTINOS.h"
+#include "FECHAS.h"
+#include "TIEMPO_ACTUAL.h"
+#include "HORA.h"
+#include "PROVINCIAS.h"
+#include "ARCHIVO_PROVINCIAS.h"
+#include "VIAJES.h"
+#include "ARCHIVO_VIAJES.h"
+#include "PASAJE.h"
+#include "ARCHIVO_PASAJE.h"
+#include "PASAJEROS.h"
+#include "ARCHIVO_PASAJEROS.h"
+#include "PRECIO.h"
+#include "ARCHIVO_PRECIO.h"
+>>>>>>> a802f24 (AL DIA(creo))
 
-void cargarCadena(char *palabra, int tam);
-
-const char *funcion_provincias(int pos);
-
+void fecha_y_hora_fin(Destinos , Archivo_destinos , Fechas &, Hora &, Fechas , Hora , int);
+void ocultarCursor();
+void mostrarCursor();
+bool esFechaPosterior(Fechas, Fechas);
+void cargarCadena(char *, int );
+const char *funcion_provincias(int );
+bool validarPatente(const char *);
+bool validarPalabra(const char *);
+bool esBisiesto(int );
+int diasEnMes(int , int );
+std::string nombreMes(int);
+int diaSemanaPrimeroMes(int, int);
 void calendario(int, int);
 int viajes_disponibles();
-
-bool validarPatente(const char *patente);
-bool validarPalabra(const char *palabra);
-bool esBisiesto(int anio);
-//int selecion_de_butacas(int cant, Micros micro);
+int selecion_de_butacas(int , Micros , int );
 
 ///Funciones viajes-pasajes
 void venta_de_pasaje();
@@ -65,6 +95,7 @@ void SUBMENU_4();
 void SUBMENU_5();
 void SUBMENU_6();
 void MENU();
+void MENU_VENTAS();
 void inicio_de_sesion();
 void MENU_ADMIN();
 void MENU_VENTAS();

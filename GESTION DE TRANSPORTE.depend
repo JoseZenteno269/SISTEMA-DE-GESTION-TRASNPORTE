@@ -618,7 +618,7 @@
 1760494642 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_choferes.h
 	"CHOFERES.h"
 
-1760901337 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\choferes.h
+1762814318 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\choferes.h
 	"PERSONA.h"
 	"FECHAS.h"
 
@@ -626,7 +626,7 @@
 	"FECHAS.h"
 	"Domicilio.h"
 
-1762140412 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\fechas.h
+1762815170 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\fechas.h
 
 1760902441 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\tiempo_actual.h
 
@@ -643,21 +643,19 @@
 1761936158 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\destinos.h
 	"HORA.h"
 
-1760990013 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_historial_ingresos.cpp
+1762866324 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_historial_ingresos.cpp
 	<iostream>
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
 	<cstring>
 
-1760989622 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_historial_ingresos.h
-	"USUARIOS.h"
-	"FECHAS.h"
-	"HORA.h"
+1762866256 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_historial_ingresos.h
+	"HISTORIAL_INGRESOS.h"
 
-1760989622 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\usuarios.h
+1762817415 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\usuarios.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1760996620 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\hora.h
+1762807620 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\hora.h
 	<ctime>
 
 1760993496 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_micros.cpp
@@ -697,20 +695,44 @@
 1760985044 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_viajes.h
 	"VIAJES.h"
 
-1762116520 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.h
+1762873441 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.h
 	"FECHAS.h"
 	"HORA.h"
+	"TIEMPO_ACTUAL.h"
 
-1760913584 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\choferes.cpp
+1762817426 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\choferes.cpp
 	<iostream>
 	"CHOFERES.h"
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
 	<cstring>
 
-1762139509 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.h
+1762882123 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.h
+	"MICROS.h"
+	"ARCHIVO_MICROS.h"
+	"CHOFERES.h"
+	"ARCHIVO_CHOFERES.h"
+	"USUARIOS.h"
+	"ARCHIVO_USUARIOS.h"
+	"HISTORIAL_INGRESOS.h"
+	"ARCHIVO_HISTORIAL_INGRESOS.h"
+	"DESTINOS.h"
+	"ARCHIVO_DESTINOS.h"
+	"FECHAS.h"
+	"TIEMPO_ACTUAL.h"
+	"HORA.h"
+	"PROVINCIAS.h"
+	"ARCHIVO_PROVINCIAS.h"
+	"VIAJES.h"
+	"ARCHIVO_VIAJES.h"
+	"PASAJE.h"
+	"ARCHIVO_PASAJE.h"
+	"PASAJEROS.h"
+	"ARCHIVO_PASAJEROS.h"
+	"PRECIO.h"
+	"ARCHIVO_PRECIO.h"
 
-1762116551 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\destinos.cpp
+1762807620 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\destinos.cpp
 	<iostream>
 	"DESTINOS.h"
 	"funciones.h"
@@ -722,10 +744,11 @@
 	"funciones.h"
 	<cstring>
 
-1761942500 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\fechas.cpp
+1762817497 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\fechas.cpp
 	<iostream>
 	"FECHAS.h"
 	"rlutil.h"
+	"funciones.h"
 
 1753029034 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\rlutil.h
 	<iostream>
@@ -741,46 +764,27 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1762138801 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
+1762881860 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
 	"funciones.h"
 	"rlutil.h"
-	"MICROS.h"
-	"ARCHIVO_MICROS.h"
-	"CHOFERES.h"
-	"ARCHIVO_CHOFERES.h"
-	"USUARIOS.h"
-	"ARCHIVO_USUARIOS.h"
-	"ARCHIVO_HISTORIAL_INGRESOS.h"
-	"DESTINOS.h"
-	"ARCHIVO_DESTINOS.h"
-	"FECHAS.h"
-	"TIEMPO_ACTUAL.h"
-	"HORA.h"
-	"PROVINCIAS.h"
-	"ARCHIVO_PROVINCIAS.h"
-	"VIAJES.h"
-	"ARCHIVO_VIAJES.h"
-	"PASAJE.h"
-	"ARCHIVO_PASAJE.h"
-	"PASAJEROS.h"
-	"ARCHIVO_PASAJEROS.h"
 
-1761439275 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\hora.cpp
+1762807620 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\hora.cpp
 	<iostream>
 	"HORA.h"
 
-1761773155 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\main.cpp
+1762880983 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\main.cpp
 	<iostream>
+	<conio.h>
 	"rlutil.h"
 	<windows.h>
 	"funciones.h"
 	<ctime>
-	"PERSONA.h"
-	"PASAJEROS.h"
-	"ARCHIVO_PASAJEROS.h"
+	<iomanip>
+	"TIEMPO_ACTUAL.h"
+	"FECHAS.h"
 
 1762112933 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\micros.cpp
 	<iostream>
@@ -788,7 +792,7 @@
 	<cstring>
 	"funciones.h"
 
-1762138861 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasaje.cpp
+1762807620 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasaje.cpp
 	<iostream>
 	<cstring>
 	"PASAJE.h"
@@ -797,7 +801,7 @@
 	<iostream>
 	"PASAJEROS.h"
 
-1762000614 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\persona.cpp
+1762817912 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\persona.cpp
 	<iostream>
 	"PERSONA.h"
 	"funciones.h"
@@ -807,15 +811,16 @@
 	"TIEMPO_ACTUAL.h"
 	<ctime>
 
-1760990129 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\usuarios.cpp
+1762817415 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\usuarios.cpp
 	<iostream>
 	"USUARIOS.h"
 	<cstring>
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
 
-1762138405 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
+1762880978 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
 	<iostream>
+	"funciones.h"
 	"VIAJES.h"
 	<cstring>
 	"ARCHIVO_MICROS.h"
@@ -825,7 +830,7 @@
 	"ARCHIVO_DESTINOS.h"
 	"DESTINOS.h"
 
-1761961094 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasaje.h
+1762807620 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasaje.h
 	"FECHAS.h"
 	"HORA.h"
 	"VIAJES.h"
@@ -855,6 +860,7 @@
 1761932209 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_pasaje.h
 	"PASAJE.h"
 
+<<<<<<< HEAD
 1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.cpp
 	<iostream>
 	"ARCHIVO_CHOFERES.h"
@@ -1354,4 +1360,28 @@
 	<cstring>
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
+=======
+1762865332 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_precio.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PRECIO.h"
+
+1762801295 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_precio.h
+	"PRECIO.h"
+
+1762728950 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\precio.h
+
+1762729526 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\precio.cpp
+	<iostream>
+	"PRECIO.h"
+
+1762866344 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\historial_ingresos.h
+	"FECHAS.h"
+	"HORA.h"
+
+1762866355 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\historial_ingresos.cpp
+	<iostream>
+	<cstring>
+	"HISTORIAL_INGRESOS.h"
+>>>>>>> a802f24 (AL DIA(creo))
 

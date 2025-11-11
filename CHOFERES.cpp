@@ -10,14 +10,11 @@ void Choferes::setlegajo(int l){legajo=l; }
 void Choferes::setmail_laboral(const char *ml){strcpy(mail_laboral, ml); }
 void Choferes::setestado(bool e){estado=e; }
 void Choferes::setfecha_de_ingreso(Fechas f){fecha_de_ingreso=f; }
-void Choferes::setrecaudacion(float r){recaudacion = r;}
 
 int Choferes::getlegajo(){return legajo; }
 const char *Choferes::getmail_laboral(){return mail_laboral; }
 bool Choferes::getestado(){return estado; }
 Fechas Choferes::getfecha_de_ingreso(){return fecha_de_ingreso; }
-float Choferes::getrecaudacion(){return recaudacion;}
-void Choferes::agregarRecaudacion(float monto){recaudacion += monto;}
 
 void Choferes::cargar(int leg){
     cout<<"El N° de legajo: "<<(legajo=leg)<<endl;

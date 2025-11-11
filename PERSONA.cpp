@@ -56,9 +56,7 @@ void Personas::cargar(){
             cin.ignore(1000, '\n');
         }else{
             int longitud=to_string(dni).length();
-            if(longitud>=7 and longitud<=11){
-                break;
-            }
+            if(longitud>=7 and longitud<=11) break;
         }
     }
 
@@ -69,9 +67,7 @@ void Personas::cargar(){
             cin.ignore(1000, '\n');
         }else{
             int longitud=to_string(telefono).length();
-            if(longitud==10){
-                break;
-            }
+            if(longitud==10) break;
         }
     }
     cout<<"ingrese su email: "; cargarCadena(email, 99);
@@ -81,6 +77,7 @@ void Personas::cargar(){
         if(cin.fail()){
             cin.clear();
             cin.ignore(1000, '\n');
+            continue;
         }else break;
     }
 

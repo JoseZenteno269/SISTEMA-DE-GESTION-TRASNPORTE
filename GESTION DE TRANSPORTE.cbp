@@ -52,6 +52,8 @@
 		<Unit filename="ARCHIVO_PASAJE.h" />
 		<Unit filename="ARCHIVO_PASAJEROS.cpp" />
 		<Unit filename="ARCHIVO_PASAJEROS.h" />
+		<Unit filename="ARCHIVO_PRECIO.cpp" />
+		<Unit filename="ARCHIVO_PRECIO.h" />
 		<Unit filename="ARCHIVO_PROVINCIAS.cpp" />
 		<Unit filename="ARCHIVO_PROVINCIAS.h" />
 		<Unit filename="ARCHIVO_USUARIOS.cpp" />
@@ -66,6 +68,8 @@
 		<Unit filename="DOMICILIO.h" />
 		<Unit filename="FECHAS.cpp" />
 		<Unit filename="FECHAS.h" />
+		<Unit filename="HISTORIAL_INGRESOS.cpp" />
+		<Unit filename="HISTORIAL_INGRESOS.h" />
 		<Unit filename="HORA.cpp" />
 		<Unit filename="HORA.h" />
 		<Unit filename="MICROS.cpp" />
@@ -76,6 +80,8 @@
 		<Unit filename="PASAJEROS.h" />
 		<Unit filename="PERSONA.cpp" />
 		<Unit filename="PERSONA.h" />
+		<Unit filename="PRECIO.cpp" />
+		<Unit filename="PRECIO.h" />
 		<Unit filename="PROVINCIAS.cpp" />
 		<Unit filename="PROVINCIAS.h" />
 		<Unit filename="TIEMPO_ACTUAL.cpp" />

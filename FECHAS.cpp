@@ -21,43 +21,45 @@ int Fechas::getmes() const { return mes; }
 int Fechas::getanio() const { return anio; }
 
 void Fechas::cargar(){
-    int D, M, A;
+
     int diasMes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
-    cout<<"Año: ";
-    cin>>A;
-    while(A<1900 or A>2100 or cin.fail()){
-        cin.clear();
-        cin.ignore(1000, '\n');
-        cout<<"ingrese nuevamente el Año: ";
-        cin>>A;
+    while(true){
+        cout<<"Año: ";
+        cin>>anio;
+        if(anio<1900 or anio>2100 or cin.fail()){
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }else break;
     }
-    anio=A;
 
     if(esBisiesto(anio)){
         diasMes[1]=29;
     }
 
-    cout<<"Mes: ";
-    cin>>M;
-    while(M<1 or M>12 or cin.fail()){
-        cin.clear();
-        cin.ignore(1000,'\n');
-        cout<<"ingrese nuevamebte el Mes: ";
-        cin>>M;
+    while(true){
+        cout<<"Mes: ";
+        cin>>mes;
+        if(mes<1 or mes>12 or cin.fail()){
+            cin.clear();
+            cin.ignore(1000,'\n');
+            continue;
+        }else break;
     }
-    mes=M;
 
-    cout<<"Día: ";
-    cin>>D;
-    while(D<1 or D>diasMes[mes-1] or cin.fail()){
-        cin.clear();
-        cin.ignore(1000,'\n');
-        cout<<"ingrese nuevamente el Día: ";
-        cin>>D;
+    while(true){
+        cout<<"Día: ";
+        cin>>dia;
+        if(dia<1 or dia>diasMes[mes-1] or cin.fail()){
+            cin.clear();
+            cin.ignore(1000,'\n');
+            continue;
+        }else break;
     }
-    dia=D;
+
 }
+
 void Fechas::mostrar(){
     cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
 }
