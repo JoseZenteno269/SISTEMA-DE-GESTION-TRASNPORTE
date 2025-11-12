@@ -61,7 +61,7 @@ void Personas::cargar(){
     }
 
     while(true){
-        cout<<"ingrese N° de contacto: "; cin>>telefono;
+        cout<<"ingrese N° de contacto (10 digitos): "; cin>>telefono;
         if(cin.fail()){
             cin.clear();
             cin.ignore(1000, '\n');

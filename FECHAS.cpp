@@ -16,13 +16,11 @@ void Fechas::setdia(int d){dia=d; }
 void Fechas::setmes(int m){mes=m; }
 void Fechas::setanio(int a){anio=a; }
 
-int Fechas::getdia() const { return dia; }
-int Fechas::getmes() const { return mes; }
-int Fechas::getanio() const { return anio; }
+int Fechas::getdia(){return dia; }
+int Fechas::getmes(){return mes; }
+int Fechas::getanio(){return anio; }
 
 void Fechas::cargar(){
-
-    int diasMes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
     while(true){
         cout<<"Año: ";
@@ -32,10 +30,6 @@ void Fechas::cargar(){
             cin.ignore(1000, '\n');
             continue;
         }else break;
-    }
-
-    if(esBisiesto(anio)){
-        diasMes[1]=29;
     }
 
     while(true){
@@ -48,10 +42,12 @@ void Fechas::cargar(){
         }else break;
     }
 
+    int diasMes=diasEnMes(mes, anio);
+
     while(true){
         cout<<"Día: ";
         cin>>dia;
-        if(dia<1 or dia>diasMes[mes-1] or cin.fail()){
+        if(dia<1 or dia>diasMes or cin.fail()){
             cin.clear();
             cin.ignore(1000,'\n');
             continue;

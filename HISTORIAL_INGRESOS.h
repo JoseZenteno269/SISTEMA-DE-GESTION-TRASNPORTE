@@ -10,7 +10,7 @@ private:
     Fechas ingreso_sesion;
     Hora inicio;
 public:
-     void setidusuario(int );
+    void setidusuario(int );
     void setingreso_sesion(Fechas );
     void setinicio(Hora );
     void setnombre_usuario(const char *);

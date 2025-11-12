@@ -20,16 +20,13 @@ int main(){
     //HWND console = GetConsoleWindow();
     //ShowWindow(console, SW_MAXIMIZE);
     //setBackgroundColor(BLUE);
-
-<<<<<<< HEAD
-    //MENU();
-    inicio_de_sesion();
-=======
-    ocultarCursor();
+    hidecursor();
 
     MENU();
     //inicio_de_sesion();
->>>>>>> a802f24 (AL DIA(creo))
+
+    showcursor();
+
 
     cout<<endl<<endl;
 

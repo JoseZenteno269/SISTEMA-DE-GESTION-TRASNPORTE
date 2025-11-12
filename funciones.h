@@ -1,9 +1,5 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
-<<<<<<< HEAD
-#include "FECHAS.h"
-bool esFechaPosterior(const Fechas &, const Fechas &);
-=======
 #include "MICROS.h"
 #include "ARCHIVO_MICROS.h"
 #include "CHOFERES.h"
@@ -27,9 +23,9 @@ bool esFechaPosterior(const Fechas &, const Fechas &);
 #include "ARCHIVO_PASAJEROS.h"
 #include "PRECIO.h"
 #include "ARCHIVO_PRECIO.h"
->>>>>>> a802f24 (AL DIA(creo))
 
 void fecha_y_hora_fin(Destinos , Archivo_destinos , Fechas &, Hora &, Fechas , Hora , int);
+bool chequearSalidaESC(std::string);
 void ocultarCursor();
 void mostrarCursor();
 bool esFechaPosterior(Fechas, Fechas);
@@ -94,10 +90,7 @@ void SUBMENU_3();
 void SUBMENU_4();
 void SUBMENU_5();
 void SUBMENU_6();
+void MENU_VENTAS();
 void MENU();
-void MENU_VENTAS();
 void inicio_de_sesion();
-void MENU_ADMIN();
-void MENU_VENTAS();
-
 #endif // FUNCIONES_H_INCLUDED

@@ -58,10 +58,8 @@ int Hora::getminuto(){return minuto; }
 
 void Hora::cargar(){
     while(true){
-        cout<<"Ingrese hora (0-23): ";
-        cin>>hora;
-        cout<<"Ingrese minutos (0-59): ";
-        cin>>minuto;
+        cout<<"Ingrese hora (0-23): "; cin>>hora;
+        cout<<"Ingrese minutos (0-59): "; cin>>minuto;
 
         if(!validar(hora, minuto))cout<<"Hora o minutos inválidos, ingrese nuevamente\n";
         else break;
@@ -70,10 +68,8 @@ void Hora::cargar(){
 
 void Hora::cargar_viaje(){
     while(true){
-        cout<<"Ingrese hora (0-95): ";
-        cin>>hora;
-        cout<<"Ingrese minutos (0-59): ";
-        cin>>minuto;
+        cout<<"Ingrese hora (0-95): "; cin>>hora;
+        cout<<"Ingrese minutos (0-59): "; cin>>minuto;
 
         if(!validar_viaje(hora, minuto))cout<<"Hora o minutos inválidos, ingrese nuevamente\n";
         else break;

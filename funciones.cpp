@@ -7,16 +7,6 @@
 using namespace std;
 using namespace rlutil;
 
-<<<<<<< HEAD
-bool esFechaPosterior(const Fechas &fechaIngresada, const Fechas &actual) {
-    if (fechaIngresada.getanio() > actual.getanio()) return true;
-    if (fechaIngresada.getanio() < actual.getanio()) return false;
-
-    if (fechaIngresada.getmes() > actual.getmes()) return true;
-    if (fechaIngresada.getmes() < actual.getmes()) return false;
-
-    if (fechaIngresada.getdia() > actual.getdia()) return true;
-=======
 void fecha_y_hora_fin(Destinos destino, Archivo_destinos archivodestino, Fechas &fecha_Fin_Viaje, Hora &hora_Fin_Viaje, Fechas fecha_Inicio_Viaje, Hora hora_Inicio_Viaje, int idDestino){
     int pos=archivodestino.buscarRegistros(idDestino);
     destino=archivodestino.leerRegistros(pos);
@@ -57,23 +47,20 @@ void fecha_y_hora_fin(Destinos destino, Archivo_destinos archivodestino, Fechas 
     }
 }
 
-void ocultarCursor(){
-    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_CURSOR_INFO info;
-    info.dwSize=100;
-    info.bVisible=FALSE;
-    SetConsoleCursorInfo(hConsole, &info);
+bool chequearSalidaESC(string mensaje){
+    cls();
+    cout<<mensaje<<endl<<endl;
+    cout<<"Presione ESC para cancelar y volver al menu"<<endl;
+    cout<<"Presione cualquier otra tecla para continuar..."<<endl;
+
+    int tecla=getkey();
+    cls();
+    if(tecla==KEY_ESCAPE)return true;
+
+    return false;
 }
 
-void mostrarCursor(){
-    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_CURSOR_INFO info;
-    info.dwSize=100;
-    info.bVisible=TRUE;
-    SetConsoleCursorInfo(hConsole, &info);
-}
-
-bool esFechaPosterior(Fechas inicio ,Fechas presente) {
+bool esFechaPosterior(Fechas inicio ,Fechas presente){
     if(inicio.getanio()>presente.getanio())return true;
     if(inicio.getanio()<presente.getanio())return false;
 
@@ -81,7 +68,6 @@ bool esFechaPosterior(Fechas inicio ,Fechas presente) {
     if(inicio.getmes()<presente.getmes())return false;
 
     if(inicio.getdia()>=presente.getdia())return true;
->>>>>>> a802f24 (AL DIA(creo))
 
     return false;
 }
@@ -174,6 +160,7 @@ void calendario(int mes, int anio){
 }
 
 int viajes_disponibles(){
+    cls();
     Viajes viaje;
     Archivo_viajes archivo;
 
@@ -444,7 +431,6 @@ void venta_de_pasaje(){
     system("pause");
     system("cls");
 }
-
 void mostrar_pasajes_vendidos(){
     cls();
     Archivo_pasajes archivopasaje;
@@ -454,6 +440,8 @@ void mostrar_pasajes_vendidos(){
 }
 void cargar_viaje(){
     cls();
+    if(chequearSalidaESC("Usted esta por ingresar un nuevo Viaje."))return;
+
     Viajes viaje;
     Archivo_viajes archivo;
     int idv;
@@ -474,6 +462,9 @@ void cargar_viaje(){
         idv=idmax+1;
     }
     viaje.cargar(idv);
+
+    if(viaje.getidMicro()==0 or viaje.getidDestino()==0 or viaje.getidChofer()==0)return;
+
     if(archivo.grabarRegistro(viaje))cout<<endl<<"VIAJE REGISTRADO SATISFACTORIAMENTE. ID: "<<idv<<endl;
     else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
 
@@ -529,6 +520,7 @@ void valor_kilometro(){
 ///Funciones usuarios
 void ingresar_usuario(){
     cls();
+    if(chequearSalidaESC("Usted esta por ingresar un nuevo Usuario."))return;
     Usuarios usuario;
     Archivo_usuarios archivo;
     int idu;
@@ -566,6 +558,7 @@ void mostrar_usuarios(){
 }
 void eliminar_usuario(){
     cls();
+    if(chequearSalidaESC("Usted esta por eliminar un Usuario."))return;
     Archivo_usuarios archivo;
     int idu;
     cout<<"INGRESE ID DE USUARIO A DAR DE BAJA: "; cin>>idu;
@@ -616,6 +609,7 @@ void cambiar_contrasena(){
 ///Funciones micros
 void ingresar_Micro(){
     cls();
+    if(chequearSalidaESC("Usted esta por ingresar un nuevo Micro."))return;
     Micros micros;
     Archivo_micros archivo;
     int idm;
@@ -652,6 +646,7 @@ void mostrar_Micro(){
 }
 void eliminar_Micro(){
     cls();
+    if(chequearSalidaESC("Usted esta por eliminar un Micro."))return;
     Archivo_micros archivo;
     int idm;
     cout<<"INGRESE ID DE MICRO A DAR DE BAJA: "; cin>>idm;
@@ -727,6 +722,7 @@ void cambiar_unidad_Micro(){
 ///Funciones destinos-pasajes
 void ingresar_destino(){
     cls();
+    if(chequearSalidaESC("Usted esta por ingresar un nuevo Destino."))return;
     Destinos destinos;
     Archivo_destinos archivo;
     int idd;
@@ -764,6 +760,7 @@ void mostrar_destino(){
 }
 void eliminar_destino(){
     cls();
+    if(chequearSalidaESC("Usted esta por eliminar un Destino."))return;
     Archivo_destinos archivo;
     Destinos destinos;
     int idd;
@@ -817,6 +814,7 @@ void mostar_provincias(){
 ///Funciones choferes
 void ingresar_chofer(){
     cls();
+    if(chequearSalidaESC("Usted esta por ingresar un nuevo Chofer."))return;
     Choferes chofer;
     Archivo_choferes archivo;
     int leg;
@@ -854,6 +852,7 @@ void mostrar_choferes(){
 }
 void eliminar_chofer(){
     cls();
+    if(chequearSalidaESC("Usted esta por eliminar un Chofer."))return;
     Archivo_choferes archivo;
     Choferes chofer;
     int leg;
@@ -929,43 +928,68 @@ void cambiar_telefono_chofer(){
     system("cls");
 }
 
-//void por_anio(){
-//    Pasajes pasaje;
-//    cout<<"ingrese un año: "<<endl;
-//    int anio;
-//    cin>>anio;
-//    float acumulador=0;
-//    int tam=pasaje.contarRegistros();
-//    for(int i=0; i<tam; i++){
-//        pasaje=pasaje.leerRegistros(i);
-//        if(pasaje.getfecha_Inicio().getanio()==anio){
-//            acumulador += pasaje.getprecioxkm();
-//        }
-//    }
-//    cout<<"RECAUDACION TOTAL EN EL AÑO "<<anio<<": "<<acumulador<<endl;
-//}
-//void por_micro(){
-//    Archivo_micros archivo;
-//    Micros micros;
-//    Pasajes pasaje;
-//    cout<<"ingrese el ID del micro: "<<endl;
-//    int id;
-//    cin>>id;
-//    float acumulador;
-//    int cantreg1=archivo.contarRegistros();
-//    int cantreg2=pasaje.contarRegistros();
-//
-//    for (int i=0; i<cantreg1; i++){
-//        micros=archivo.leerRegistros(i);
-//        if (micros.getidMicro()==id){
-//            for(int z=0; z<cantreg2; z++){
-//                pasaje=pasaje.leerRegistros(i);
-//                if(pasaje.getidmicro()==micros.getidMicro()) acumulador += pasaje.getprecioxkm();
-//            }
-//        }
-//    }
-//    cout << "RECAUDACION TOTAL DEL MICRO ES DE :" << acumulador << endl;
-//}
+void por_anio(){
+    Pasajes pasaje;
+    Archivo_pasajes archivopasaje;
+
+    Viajes viaje;
+    Archivo_viajes archivoviaje;
+
+    int anio;
+    cout<<"ingrese un año: "; cin>>anio;
+
+    float acumulador=0;
+
+    int tam=archivopasaje.contarRegistros();
+    int cant=archivoviaje.contarRegistros();
+
+    for(int i=0; i<tam; i++){
+        pasaje=archivopasaje.leerRegistros(i);
+        for(int x=0; x<cant; x++){
+            viaje=archivoviaje.leerRegistros(x);
+            if(viaje.getidViaje()==pasaje.getidviaje()){
+                if(viaje.getfecha_Inicio_Viaje().getanio()==anio){
+                    acumulador+=pasaje.getprecioxkm();
+                }
+            }
+        }
+    }
+    cout<<"RECAUDACION TOTAL EN EL AÑO "<<anio<<": "<<acumulador<<endl;
+}
+void por_micro(){
+    Micros micros;
+    Archivo_micros archivomicro;
+
+    Pasajes pasaje;
+    Archivo_pasajes archivopasaje;
+
+    Viajes viaje;
+    Archivo_viajes archivoviaje;
+
+    int id;
+    cout<<"ingrese el ID del micro: "; cin>>id;
+    float acumulador;
+    int cantregmicro=archivomicro.contarRegistros();
+    int cantregviaje=archivoviaje.contarRegistros();
+    int cantregpasaje=archivopasaje.contarRegistros();
+
+    int posmicro=archivomicro.buscarRegsitro(id);
+    micros=archivomicro.leerRegistros(posmicro);
+
+    for(int i=0; i<cantregviaje; i++){
+        viaje=archivoviaje.leerRegistros(i);
+        if(viaje.getidMicro()==micros.getidMicro()){
+            for(int z=0; z<cantregpasaje; z++){
+                pasaje=archivopasaje.leerRegistros(i);
+                if(pasaje.getidviaje()==viaje.getidViaje()){
+                    acumulador+=pasaje.getprecioxkm();
+                }
+            }
+        }
+    }
+
+    cout << "RECAUDACION TOTAL DEL MICRO "<<micros.getidMicro()<<" ES DE $"<<acumulador<<endl;
+}
 void por_destino(){
     /**
     Archivo_destinos archivo;
@@ -1032,18 +1056,23 @@ void SUBMENU_1(){
             switch(seleccion){
             case 0:
                 venta_de_pasaje();
+                cls();
                 break;
             case 1:
                 mostrar_pasajes_vendidos();
+                cls();
                 break;
             case 2:
                 cargar_viaje();
+                cls();
                 break;
             case 3:
                 mostrar_viajes();
+                cls();
                 break;
             case 4:
                 valor_kilometro();
+                cls();
                 break;
             case 5:
                 salir=true;
@@ -1100,6 +1129,7 @@ void SUBMENU_2(){
             switch(seleccion){
             case 0:
                 ingresar_Micro();
+                cls();
                 break;
             case 1:
                 cls();
@@ -1371,8 +1401,10 @@ void SUBMENU_6(){
 
             switch(seleccion){
             case 0:
+                por_anio();
                 break;
             case 1:
+                por_micro();
                 break;
             case 2:
                 break;
@@ -1484,6 +1516,7 @@ void MENU_VENTAS(){
     bool salir=false;
 
     while(!salir){
+        cls();
         setColor(WHITE);
         for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
         for(int i=0; i<7; i++){locate(75,11+i); cout << "|";}
@@ -1512,22 +1545,28 @@ void MENU_VENTAS(){
             seleccion++;
             if(seleccion>=opciones_submenu)seleccion=0;
         }else if(tecla==KEY_ENTER){
+            cls();
             switch(seleccion){
             case 0:
+                cls();
                 venta_de_pasaje();
+                anykey();
                 cls();
                 break;
             case 1:
+                cls();
                 mostrar_pasajes_vendidos();
+                anykey();
                 cls();
                 break;
             case 2:
+                cls();
                 mostrar_viajes();
+                anykey();
                 cls();
                 break;
             case 3:
                 salir=true;
-                cls();
                 break;
 
             }
@@ -1578,19 +1617,11 @@ void inicio_de_sesion(){
             cls();
         }
         if(bandera){
-<<<<<<< HEAD
-        switch(usuarios.getnivel()){
-            case 1:
-                cls();
-                MENU_ADMIN();
-                bandera = true;
-=======
             switch(usuarios.getnivel()){
             case 1:
                 cls();
                 MENU();
                 bandera=true;
->>>>>>> a802f24 (AL DIA(creo))
                 break;
             case 2:
                 cls();
@@ -1603,74 +1634,3 @@ void inicio_de_sesion(){
         }
     }
 }
-void MENU_VENTAS(){
-
-    int seleccion=0;
-    const int opciones_submenu=4;
-    string submenu[opciones_submenu]={
-        " VENTA DE PASAJE",
-        " PASAJES VENDIDOS",
-        " MOSTRAR VIAJES DISPONIBLES",
-        " CERRAR SESION"
-    };
-    bool salir=false;
-
-    while(!salir){
-        cls();
-        setColor(WHITE);
-        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<7; i++){locate(75,11+i); cout << "|";}
-        locate(44,10);
-        cout<<"-----------USUARIOS------------"<<endl;
-        locate(44,11);
-        cout<<"-------------------------------"<<endl;
-        for(int i=0; i<opciones_submenu; i++){
-            setColor(WHITE);
-            locate(45,12+i);
-            if(i==seleccion){
-                setColor(GREEN);
-                cout<<"> "<<submenu[i]<<endl;
-                setColor(WHITE);
-            }else cout<<"  "<<submenu[i]<<endl;
-        }
-        setColor(WHITE);
-        locate(44,18);
-        cout<<"-------------------------------"<<endl;
-        setColor(WHITE);
-        int tecla=getkey();
-        if(tecla==KEY_UP){
-            seleccion--;
-            if(seleccion<0)seleccion=opciones_submenu-1;
-        }else if(tecla==KEY_DOWN){
-            seleccion++;
-            if(seleccion>=opciones_submenu)seleccion=0;
-        }else if(tecla==KEY_ENTER){
-            cls();
-            switch(seleccion){
-            case 0:
-                cls();
-                venta_de_pasaje();
-                anykey();
-                cls();
-                break;
-            case 1:
-                cls();
-                mostrar_pasajes_vendidos();
-                anykey();
-                cls();
-                break;
-            case 2:
-                cls();
-                mostrar_viajes();
-                anykey();
-                cls();
-                break;
-            case 3:
-                salir=true;
-                break;
-
-            }
-        }
-    }
-}
-void MENU_ADMIN(){MENU();}

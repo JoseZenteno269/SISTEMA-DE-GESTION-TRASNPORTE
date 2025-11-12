@@ -17,14 +17,12 @@ public:
     void setingreso(Fechas );
     void setnivel(int);
     void setestado(bool );
-    void setnivel(int);
 
     int getidUsuario();
     const char *getcontrasena();
     Fechas getingreso();
     int getnivel();
     bool getestado();
-    int getnivel();
 
     void cargar(int);
     void mostrar();

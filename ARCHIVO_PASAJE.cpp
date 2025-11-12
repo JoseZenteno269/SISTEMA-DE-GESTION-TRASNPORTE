@@ -4,7 +4,14 @@
 
 using namespace std;
 
-Archivo_pasajes::Archivo_pasajes(const char *p){strcpy(archivo, p); }
+Archivo_pasajes::Archivo_pasajes(const char *a){
+    strcpy(archivo, a);
+    FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
+    if(p == nullptr){               // si no existe, lo creo vacío
+        p = fopen(archivo, "wb");  // crear archivo vacío
+    }
+    if(p) fclose(p);
+}
 
 int Archivo_pasajes::contarRegistros(){
     FILE *p=fopen(archivo, "rb");
