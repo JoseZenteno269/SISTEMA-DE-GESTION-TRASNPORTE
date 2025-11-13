@@ -24,6 +24,8 @@
 #include "PRECIO.h"
 #include "ARCHIVO_PRECIO.h"
 
+float plusxbutaca(Viajes);
+
 void fecha_y_hora_fin(Destinos , Archivo_destinos , Fechas &, Hora &, Fechas , Hora , int);
 bool chequearSalidaESC(std::string);
 void ocultarCursor();
@@ -93,4 +95,5 @@ void SUBMENU_6();
 void MENU_VENTAS();
 void MENU();
 void inicio_de_sesion();
+void mostrarCartelUTN();
 #endif // FUNCIONES_H_INCLUDED

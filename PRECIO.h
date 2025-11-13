@@ -4,14 +4,27 @@
 class PrecioxKilometro{
 private:
     float Precio;
-
+    float Preciobutaca_cama;
+    float Preciobutaca_semicama;
+    float Preciobutaca_comun;
 public:
     void setPrecio(float);
+    void setPreciobutaca_cama(float);
+    void setPreciobutaca_semicama(float);
+    void setPreciobutaca_comun(float);
 
-    int getPrecio();
+    float getPrecio();
+    float getPreciobutaca_cama();
+    float getPreciobutaca_semicama();
+    float getPreciobutaca_comun();
 
     void cargar();
     void mostrar();
+
+    void cargarvalorbutaca();
+    void mostrarvalorbutaca();
+
+
 };
 
 

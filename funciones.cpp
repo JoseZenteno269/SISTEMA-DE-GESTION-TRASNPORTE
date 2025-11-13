@@ -4,8 +4,33 @@
 #include "funciones.h"
 #include "rlutil.h"
 
+
 using namespace std;
 using namespace rlutil;
+
+float plusxbutaca(Viajes viaje){
+    Archivo_micros archivoMicro;
+    Archivo_Precio Precio;
+    Micros micro;
+    PrecioxKilometro valorbutaca;
+
+    valorbutaca=Precio.leerRegistros();
+    int N = archivoMicro.contarRegistros();
+
+    for (int i = 0; i < N; i++) {
+        micro = archivoMicro.leerRegistros(i);
+
+        if (viaje.getidMicro() == micro.getidMicro()) {
+            const char *tipo = micro.gettipoButaca();
+
+            if (strcmp(tipo, "cama") == 0) return valorbutaca.getPreciobutaca_cama();
+            if (strcmp(tipo, "semi-cama") == 0) return valorbutaca.getPreciobutaca_semicama();
+            if (strcmp(tipo, "comun") == 0) return valorbutaca.getPreciobutaca_comun();
+        }
+    }
+
+    return 0.0f;
+}
 
 void fecha_y_hora_fin(Destinos destino, Archivo_destinos archivodestino, Fechas &fecha_Fin_Viaje, Hora &hora_Fin_Viaje, Fechas fecha_Inicio_Viaje, Hora hora_Inicio_Viaje, int idDestino){
     int pos=archivodestino.buscarRegistros(idDestino);
@@ -928,6 +953,7 @@ void cambiar_telefono_chofer(){
     system("cls");
 }
 
+///Funciones Reportes
 void por_anio(){
     Pasajes pasaje;
     Archivo_pasajes archivopasaje;
@@ -1013,13 +1039,12 @@ void viajes_chofer_mes(){}
 ///MENUS Y SUBMENUS
 void SUBMENU_1(){
     int seleccion=0;
-    const int opciones_submenu=6;
+    const int opciones_submenu=5;
     string submenu[opciones_submenu]={
         " COMPRA DE PASAJE",
         " PASAJES VENDIDOS",
         " CARGAR VIAJES",
         " MOSTRAR VIAJES DISPONIBLES",
-        " PRECIO X KILOMETRO",
         " MENU PRINCIPAL"
     };
     bool salir=false;
@@ -1071,10 +1096,6 @@ void SUBMENU_1(){
                 cls();
                 break;
             case 4:
-                valor_kilometro();
-                cls();
-                break;
-            case 5:
                 salir=true;
                 break;
             }
@@ -1424,25 +1445,109 @@ void SUBMENU_6(){
     }
 }
 
+void SUBMENU_7(){
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " PRECIO X KM",
+        " PRECIO X BUTACA",
+        " MOSTRAR PRECIO X BUTACA",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+
+    while(!salir){
+        setColor(WHITE);
+        for(int i=0; i<9; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(86,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-----------------PRECIOS-----------------"<<endl;
+        locate(44,11);
+        cout<<"------------------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,20);
+        cout<<"------------------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+
+            switch (seleccion) {
+                case 0:
+                    cls();
+                    valor_kilometro();
+                    cls();
+                    break;
+
+                case 1:
+                    cls();
+                    {
+                        PrecioxKilometro butaca;
+                        butaca.cargarvalorbutaca();
+
+                        Archivo_Precio archivo;
+                        archivo.grabarRegistro(butaca);
+
+                        cout << "Valores guardados correctamente.\n";
+                          system("pause");
+                    }
+                    cls();
+                    break;
+
+                case 2:
+                    cls();
+                    {
+                        Archivo_Precio archivo;
+                        PrecioxKilometro butaca = archivo.leerRegistros();
+                        butaca.mostrarvalorbutaca();
+                            system("pause");
+                    }
+                    cls();
+                    break;
+
+                case 3:
+                    salir = true;
+                    break;
+            }
+        }
+    }
+}
+
 void MENU(){
     int seleccion=0;
     int opcion;
-    const int opciones_menu=7;
+    const int opciones_menu=8;
     string menu[opciones_menu]={
-        " INCIAR VIAJE",
+        " VENTA PASAJES",
         " MICROS",
         " CHOFERES",
         " DESTINOS",
         " USUARIOS",
         " REPORTES",
+        " PRECIOS",
         " SALIR"
     };
     bool salir=false;
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<8; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<8; i++){locate(73,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(73,11+i); cout << "|";}
         locate(44,10);
         cout<<"------------MENU-------------"<<endl;
         locate(44,11);
@@ -1457,7 +1562,7 @@ void MENU(){
             } else {cout<<"  "<<menu[i]<<endl;}
         }
         setColor(WHITE);
-        locate(44,19);
+        locate(44,20);
         cout<<"-----------------------------"<<endl;
 
         setColor(WHITE);
@@ -1497,6 +1602,10 @@ void MENU(){
                 cls();
                 break;
             case 6:
+                SUBMENU_7();
+                cls();
+                break;
+            case 7:
                 salir=true;
                 break;
             }
@@ -1574,63 +1683,111 @@ void MENU_VENTAS(){
     }
 }
 
-void inicio_de_sesion(){
+#include <iostream>
+#include <cstring>
+#include "rlutil.h"
+using namespace std;
+using namespace rlutil;
+
+#include <iostream>
+#include <cstring>
+#include "rlutil.h"
+using namespace std;
+using namespace rlutil;
+
+void inicio_de_sesion() {
     Usuarios usuarios;
     Archivo_usuarios archivos;
-
     Historial_ingreso historial;
     Archivo_historial_usuarios historial_usuario;
-
     Tiempo_Actual tiempo;
 
-    while(true){
+    while (true) {
         cls();
-        bool bandera=false;
-        int id;
-        char contasena[30];
+        mostrarCartelUTN();
+        setColor(GREEN);
+        locate(40, 17); cout << "======= INICIO DE SESION =======";
+        setColor(WHITE);
 
-        cout<<"ingrese ID de usuario: "; cin>>id;
-        cout<<"ingrese contraseña: "; cin>>contasena;
+        bool bandera = false;
+        int id;
+        char contrasena[30];
+
+        locate(40, 20); cout << "Ingrese ID de usuario: ";
+        cin >> id;
+        locate(40, 23); cout << "Ingrese contrasena: ";
+        cin >> contrasena;
+
         Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
         Hora actual;
 
-        int contreg=archivos.contarRegistros();
+        int contreg = archivos.contarRegistros();
 
-        for(int i=0; i<contreg; i++){
-            usuarios=archivos.leerRegistros(i);
+        for (int i = 0; i < contreg; i++) {
+            usuarios = archivos.leerRegistros(i);
 
-            if(usuarios.getidUsuario()==id and strcmp(usuarios.getcontrasena(),contasena)==0 and usuarios.getestado()){
+            if (usuarios.getidUsuario() == id &&
+                strcmp(usuarios.getcontrasena(), contrasena) == 0 &&
+                usuarios.getestado()) {
+
                 historial.setidusuario(id);
                 historial.setnombre_usuario(usuarios.getnombre());
                 historial.setingreso_sesion(fecha);
                 historial.setinicio(actual);
                 historial_usuario.grabarRegistro(historial);
-                bandera=true;
+
+                bandera = true;
                 break;
             }
         }
 
-        if(bandera==false){
-            cls();
-            cout<<"Usuario y/o Contraseña incorrectos"<<endl;
+        cls();
+
+        if (!bandera) {
+            setColor(RED);
+            locate(45, 13); cout << "Usuario y/o contrasena incorrectos";
+            setColor(WHITE);
+            locate(45, 15); cout << "Presione una tecla para continuar...";
             anykey();
-            cls();
         }
-        if(bandera){
-            switch(usuarios.getnivel()){
-            case 1:
-                cls();
-                MENU();
-                bandera=true;
-                break;
-            case 2:
-                cls();
-                MENU_VENTAS();
-                break;
-            default:
-                cout << "ID EXISTENTE, ERROR EN LOS DATOS DEL USUARIO" << endl;
-                break;
+        else {
+            switch (usuarios.getnivel()) {
+                case 1:
+                    cls();
+                    MENU();
+                    break;
+                case 2:
+                    cls();
+                    MENU_VENTAS();
+                    break;
+                default:
+                    setColor(RED);
+                    locate(42, 13);
+                    cout << "ERROR EN LOS DATOS DEL USUARIO";
+                    setColor(WHITE);
+                    anykey();
+                    break;
             }
         }
     }
 }
+
+void mostrarCartelUTN() {
+    setColor(GREEN);
+    locate(15, 2); cout << "#####################################################################################";
+    locate(15, 3); cout << "#                                                                                   #";
+    locate(15, 4); cout << "#   ###       ###   ###     ######        ###     ###   ###########   ####     ##   #";
+    locate(15, 5); cout << "#   ###       ###   ###    ###  ###       ###     ###   ###########   #####    ##   #";
+    locate(15, 6); cout << "#    ###     ###    ###   ###    ###      ###     ###       ###       ## ###   ##   #";
+    locate(15, 7); cout << "#     ###   ###     ###   ##########      ###     ###       ###       ##  ###  ##   #";
+    locate(15, 8); cout << "#      ### ###      ###   ##########      ###     ###       ###       ##   ### ##   #";
+    locate(15, 9); cout << "#       #####       ###   ###    ###      ###########       ###       ##    #####   #";
+    locate(15,10); cout << "#        ###        ###   ###    ###      ###########       ###       ##     ####   #";
+    locate(15,11); cout << "#                                                                                   #";
+    locate(15,12); cout << "#                           # # #  V I A   U T N  # # #                             #";
+    locate(15,13); cout << "#                                                                                   #";
+    locate(15,14); cout << "#####################################################################################";
+    setColor(WHITE);
+}
+
+

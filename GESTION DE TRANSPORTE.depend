@@ -865,143 +865,165 @@
 
 1761932209 D
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.cpp
 	<iostream>
 	"ARCHIVO_CHOFERES.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.h
 	"CHOFERES.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.h
 	"FECHAS.h"
 	"Domicilio.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.h
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.cpp
 	<iostream>
 	"ARCHIVO_DESTINOS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.h
 	"DESTINOS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.h
 	"HORA.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.h
 	<ctime>
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.cpp
 	<iostream>
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.h
-	"USUARIOS.h"
-	"FECHAS.h"
-	"HORA.h"
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.h
+	"HISTORIAL_INGRESOS.h"
 
-1762803632 c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.cpp
 	<iostream>
 	"ARCHIVO_MICROS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.h
 	"MICROS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJE.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.h
 	"PASAJE.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.h
 	"FECHAS.h"
 	"HORA.h"
 	"VIAJES.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.h
 	"FECHAS.h"
 	"HORA.h"
+	"TIEMPO_ACTUAL.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJEROS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.h
 	"PASAJEROS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.h
 	"PERSONA.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PROVINCIAS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.h
 	"PROVINCIAS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.cpp
 	<iostream>
 	"ARCHIVO_USUARIOS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.h
 	"USUARIOS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.cpp
+1763010219 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.cpp
 	<iostream>
 	"ARCHIVO_VIAJES.h"
+	"funciones.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.h
+1763010219 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.h
 	"VIAJES.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.cpp
 	<iostream>
 	"CHOFERES.h"
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
 	<cstring>
 
-1762803632 c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.h
+1763043216 c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.h
+	"MICROS.h"
+	"ARCHIVO_MICROS.h"
+	"CHOFERES.h"
+	"ARCHIVO_CHOFERES.h"
+	"USUARIOS.h"
+	"ARCHIVO_USUARIOS.h"
+	"HISTORIAL_INGRESOS.h"
+	"ARCHIVO_HISTORIAL_INGRESOS.h"
+	"DESTINOS.h"
+	"ARCHIVO_DESTINOS.h"
 	"FECHAS.h"
+	"TIEMPO_ACTUAL.h"
+	"HORA.h"
+	"PROVINCIAS.h"
+	"ARCHIVO_PROVINCIAS.h"
+	"VIAJES.h"
+	"ARCHIVO_VIAJES.h"
+	"PASAJE.h"
+	"ARCHIVO_PASAJE.h"
+	"PASAJEROS.h"
+	"ARCHIVO_PASAJEROS.h"
+	"PRECIO.h"
+	"ARCHIVO_PRECIO.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.h
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.cpp
 	<iostream>
 	"DOMICILIO.h"
 	"funciones.h"
 	<cstring>
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.cpp
 	<iostream>
 	"FECHAS.h"
 	"rlutil.h"
 	"funciones.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\rlutil.h
+1763009215 c:\users\angel\desktop\sistema-de-gestion-trasporte\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
@@ -1015,88 +1037,76 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1762803632 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.cpp
+1763048510 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
 	"funciones.h"
 	"rlutil.h"
-	"MICROS.h"
-	"ARCHIVO_MICROS.h"
-	"CHOFERES.h"
-	"ARCHIVO_CHOFERES.h"
-	"USUARIOS.h"
-	"ARCHIVO_USUARIOS.h"
-	"ARCHIVO_HISTORIAL_INGRESOS.h"
-	"DESTINOS.h"
-	"ARCHIVO_DESTINOS.h"
-	"FECHAS.h"
-	"TIEMPO_ACTUAL.h"
-	"HORA.h"
-	"PROVINCIAS.h"
-	"ARCHIVO_PROVINCIAS.h"
-	"VIAJES.h"
-	"ARCHIVO_VIAJES.h"
-	"PASAJE.h"
-	"ARCHIVO_PASAJE.h"
-	"PASAJEROS.h"
-	"ARCHIVO_PASAJEROS.h"
+	<iostream>
+	<cstring>
+	"rlutil.h"
+	<iostream>
+	<cstring>
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.cpp
 	<iostream>
 	"HORA.h"
 
-1762804072 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\main.cpp
+1763042916 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\main.cpp
 	<iostream>
+	<conio.h>
 	"rlutil.h"
 	<windows.h>
 	"funciones.h"
 	<ctime>
-	"PERSONA.h"
-	"PASAJEROS.h"
-	"ARCHIVO_PASAJEROS.h"
+	<iomanip>
+	"TIEMPO_ACTUAL.h"
+	"FECHAS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.cpp
 	<iostream>
 	"MICROS.h"
 	<cstring>
 	"funciones.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.cpp
 	<iostream>
 	<cstring>
 	"PASAJE.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.cpp
 	<iostream>
 	"PASAJEROS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.cpp
 	<iostream>
 	"PERSONA.h"
 	"funciones.h"
 	<cstring>
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.cpp
 	<iostream>
 	"PROVINCIAS.h"
 	<cstring>
 	"funciones.h"
 	"ARCHIVO_PROVINCIAS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.cpp
 	"TIEMPO_ACTUAL.h"
 	<ctime>
 
-1762803632 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.cpp
 	<iostream>
 	"USUARIOS.h"
 	<cstring>
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.cpp
 	<iostream>
+	"funciones.h"
 	"VIAJES.h"
 	<cstring>
 	"ARCHIVO_MICROS.h"
@@ -1109,7 +1119,7 @@
 	"funciones.h"
 	"ARCHIVO_VIAJES.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.cpp
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.cpp
 	<iostream>
 	"DESTINOS.h"
 	"funciones.h"
@@ -1391,4 +1401,31 @@
 	"HISTORIAL_INGRESOS.h"
 
 1762866355 2f24 (AL DIA(creo))
+
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\historial_ingresos.h
+	"FECHAS.h"
+	"HORA.h"
+
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_precio.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PRECIO.h"
+
+1763009214 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_precio.h
+	"PRECIO.h"
+
+1763012116 c:\users\angel\desktop\sistema-de-gestion-trasporte\precio.h
+
+1763009214 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\historial_ingresos.cpp
+	<iostream>
+	<cstring>
+	"HISTORIAL_INGRESOS.h"
+
+1763012116 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\precio.cpp
+	<iostream>
+	<cstring>
+	"PRECIO.h"
+	"ARCHIVO_MICROS.h"
+	"MICROS.h"
+	"VIAJES.h"
 
