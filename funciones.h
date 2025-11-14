@@ -24,8 +24,7 @@
 #include "PRECIO.h"
 #include "ARCHIVO_PRECIO.h"
 
-float plusxbutaca(Viajes);
-
+bool validar_numero();
 void fecha_y_hora_fin(Destinos , Archivo_destinos , Fechas &, Hora &, Fechas , Hora , int);
 bool chequearSalidaESC(std::string);
 void ocultarCursor();
@@ -48,6 +47,9 @@ void venta_de_pasaje();
 void pasajes_vendidos();
 void cargar_viaje();
 void mostrar_viajes();
+void valor_kilometro();
+void cargar_precio_butaca();
+void mostrar_precio_butacas();
 
 ///Funciones usuarios
 void ingresar_usuario();
@@ -92,6 +94,7 @@ void SUBMENU_3();
 void SUBMENU_4();
 void SUBMENU_5();
 void SUBMENU_6();
+void SUBMENU_7();
 void MENU_VENTAS();
 void MENU();
 void inicio_de_sesion();

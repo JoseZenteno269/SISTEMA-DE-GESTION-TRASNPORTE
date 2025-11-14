@@ -27,13 +27,8 @@ void Domicilio::Cargar(){
 
     while(true){
         cout<<"INGRESE LA ALTURA: "; cin>>altura;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(1000, '\n');
-        }else{
-            int longitud=to_string(altura).length();
-            if(longitud>=2 and longitud<=6)break;
-        }
+        int longitud=to_string(altura).length();
+        if(validar_numero() and (longitud>=1 and longitud<=6))break;
     }
 
     cout<<"INGRESE EL CODIGO POSTAL: "; cargarCadena(codigoPostal,9);

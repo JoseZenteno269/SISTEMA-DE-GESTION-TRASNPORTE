@@ -13,7 +13,6 @@ public:
     bool grabarRegistro(Viajes);
     bool modificarRegistro(Viajes, int);
     void listar();
-    void listar_Disponibles();
 };
 
 

@@ -23,35 +23,20 @@ int Fechas::getanio(){return anio; }
 void Fechas::cargar(){
 
     while(true){
-        cout<<"Año: ";
-        cin>>anio;
-        if(anio<1900 or anio>2100 or cin.fail()){
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
-        }else break;
+        cout<<"Año: "; cin>>anio;
+        if(validar_numero() and (anio>1900 and anio<2100))break;
     }
 
     while(true){
-        cout<<"Mes: ";
-        cin>>mes;
-        if(mes<1 or mes>12 or cin.fail()){
-            cin.clear();
-            cin.ignore(1000,'\n');
-            continue;
-        }else break;
+        cout<<"Mes: "; cin>>mes;
+        if(validar_numero() and (mes>=1 and mes<=12))break;
     }
 
     int diasMes=diasEnMes(mes, anio);
 
     while(true){
-        cout<<"Día: ";
-        cin>>dia;
-        if(dia<1 or dia>diasMes or cin.fail()){
-            cin.clear();
-            cin.ignore(1000,'\n');
-            continue;
-        }else break;
+        cout<<"Día: "; cin>>dia;
+        if(validar_numero() and (dia>=1 and dia<=diasMes))break;
     }
 
 }

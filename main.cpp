@@ -5,13 +5,12 @@
 #include"funciones.h"
 #include<ctime>
 #include<iomanip>
-#include "TIEMPO_ACTUAL.h"
-#include "FECHAS.h"
 
 using namespace std;
 using namespace rlutil;
 
 int main(){
+
     cout<<fixed<<setprecision(2);
     srand(time(NULL));
     setlocale(LC_ALL, "spanish");
@@ -20,13 +19,12 @@ int main(){
     //HWND console = GetConsoleWindow();
     //ShowWindow(console, SW_MAXIMIZE);
     //setBackgroundColor(BLUE);
+
     hidecursor();
+    MENU();
+    //inicio_de_sesion();
 
-    //MENU();
-    inicio_de_sesion();
-
-    showcursor();
-
+    //showcursor();
 
     cout<<endl<<endl;
 

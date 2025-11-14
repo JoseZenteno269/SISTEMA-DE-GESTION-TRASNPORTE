@@ -7,6 +7,7 @@ private:
     float Preciobutaca_cama;
     float Preciobutaca_semicama;
     float Preciobutaca_comun;
+
 public:
     void setPrecio(float);
     void setPreciobutaca_cama(float);
@@ -20,11 +21,8 @@ public:
 
     void cargar();
     void mostrar();
-
     void cargarvalorbutaca();
     void mostrarvalorbutaca();
-
-
 };
 
 

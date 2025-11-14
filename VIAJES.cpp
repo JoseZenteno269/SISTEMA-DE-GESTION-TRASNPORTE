@@ -47,6 +47,7 @@ void Viajes::cargar(int idv){
     while(true){
         Micros micro;
         cout<<"ingrese ID de micro (0 para salir): "; cin>>idMicro;
+        if(!validar_numero())continue;
         if(idMicro==0){cout<<"Operación cancelada"<<endl; break;}
         int pos=archivomicro.buscarRegsitro(idMicro);
         if(pos<0){
@@ -60,6 +61,7 @@ void Viajes::cargar(int idv){
     while(true){
         Choferes chofer;
         cout<<"ingrese Legajo de chofer a designar (0 para salir): "; cin>>idChofer;
+        if(!validar_numero())continue;
         if(idChofer==0){cout<<"Operación cancelada"<<endl; break;}
         int pos=archivochofer.buscarRegistro(idChofer);
         if(pos<0){
@@ -73,6 +75,7 @@ void Viajes::cargar(int idv){
     while(true){
         Destinos destino;
         cout<<"ingrese ID de destino (0 para salir): "; cin>>idDestino;
+        if(!validar_numero())continue;
         if(idDestino==0){cout<<"Operación cancelada"<<endl; break;}
         int pos=archivodestino.buscarRegistros(idDestino);
         if(pos<0){

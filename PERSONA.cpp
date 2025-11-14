@@ -50,35 +50,22 @@ void Personas::cargar(){
     }
 
     while(true){
-        cout<<"ingrese DNI: "; cin>>dni;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(1000, '\n');
-        }else{
-            int longitud=to_string(dni).length();
-            if(longitud>=7 and longitud<=11) break;
-        }
+        cout<<"ingrese DNI (7-11 digitos): "; cin>>dni;
+        int longitud=to_string(dni).length();
+        if(validar_numero() and longitud>=7 and longitud<=11) break;
     }
 
     while(true){
         cout<<"ingrese N° de contacto (10 digitos): "; cin>>telefono;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(1000, '\n');
-        }else{
-            int longitud=to_string(telefono).length();
-            if(longitud==10) break;
-        }
+        int longitud=to_string(telefono).length();
+        if(validar_numero() and longitud==10) break;
     }
+
     cout<<"ingrese su email: "; cargarCadena(email, 99);
 
     while(true){
         cout<<"ingrese su genero(1=masculino, 2=femenino, 3=no binario) : "; cin>>genero;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
-        }else break;
+        if(validar_numero() and (genero==1 or genero==2 or genero==3))break;
     }
 
     while(true){
@@ -100,9 +87,9 @@ void Personas::mostrar(){
     cout<<"Email: "<<email<<endl;
     cout<<"genero: "<<getgenerotexto()<<endl;
     cout<<"Nacionalidad: "<<nacionalidad<<endl;
-    cout<<"Fecha de nacimiento: "<<endl;
+    cout<<"Fecha de nacimiento: ";
     fecha_Nacimiento.mostrar();
-    cout<<"Domicilio: "<<endl;
+    cout<<"Datos Domicilio"<<endl;
     domicilio.Mostrar();
 }
 

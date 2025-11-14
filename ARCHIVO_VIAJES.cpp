@@ -1,6 +1,5 @@
 #include<iostream>
 #include "ARCHIVO_VIAJES.h"
-#include"funciones.h"
 #include<cstring>
 
 using namespace std;
@@ -77,24 +76,6 @@ void Archivo_viajes::listar(){
     for(int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
         if(viaje.getrealizado()){
-            viaje.mostrar();
-            cout<<endl;
-        }
-    }
-}
-void Archivo_viajes::listar_Disponibles(){
-    Viajes viaje;
-    int contreg=contarRegistros();
-
-    Fechas actual;
-    Tiempo_Actual tiempo;
-    actual.setanio(tiempo.getAnio());
-    actual.setmes(tiempo.getMes());
-    actual.setdia(tiempo.getDia());
-
-    for(int i=0;i<contreg;i++){
-        viaje=leerRegistros(i);
-        if(viaje.getrealizado() && esFechaPosterior(viaje.getfecha_Inicio_Viaje(), actual)){
             viaje.mostrar();
             cout<<endl;
         }

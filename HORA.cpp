@@ -1,5 +1,6 @@
 #include<iostream>
 #include "HORA.h"
+#include "funciones.h"
 
 using namespace std;
 
@@ -58,8 +59,15 @@ int Hora::getminuto(){return minuto; }
 
 void Hora::cargar(){
     while(true){
-        cout<<"Ingrese hora (0-23): "; cin>>hora;
-        cout<<"Ingrese minutos (0-59): "; cin>>minuto;
+        while(true){
+            cout<<"Ingrese hora (0-23): "; cin>>hora;
+            if(validar_numero())break;
+        }
+
+        while(true){
+            cout<<"Ingrese minutos (0-59): "; cin>>minuto;
+            if(validar_numero())break;
+        }
 
         if(!validar(hora, minuto))cout<<"Hora o minutos inválidos, ingrese nuevamente\n";
         else break;
@@ -68,10 +76,17 @@ void Hora::cargar(){
 
 void Hora::cargar_viaje(){
     while(true){
-        cout<<"Ingrese hora (0-95): "; cin>>hora;
-        cout<<"Ingrese minutos (0-59): "; cin>>minuto;
+        while(true){
+            cout<<"Ingrese hora (0-95): "; cin>>hora;
+            if(validar_numero())break;
+        }
 
-        if(!validar_viaje(hora, minuto))cout<<"Hora o minutos inválidos, ingrese nuevamente\n";
+        while(true){
+            cout<<"Ingrese minutos (0-59): "; cin>>minuto;
+            if(validar_numero())break;
+        }
+
+        if(!validar_viaje(hora, minuto))cout<<"Hora o minutos invalidos, ingrese nuevamente\n";
         else break;
     }
 }

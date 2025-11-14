@@ -46,10 +46,7 @@ void Choferes::generarMailLaboral(){
 
     if(nombre[0]=='\0' or apellido[0]=='\0'){
     strcpy(mail_laboral, "desconocido@viautn.com");
-    }
-    else{
-    sprintf(mail_laboral, "%c%s%d@viautn.com", nombre[0], apellido, legajo);
-    }
+    }else sprintf(mail_laboral, "%c%s%d@viautn.com", nombre[0], apellido, legajo);
 }
 
 int Choferes::calcularAntiguedad(){
