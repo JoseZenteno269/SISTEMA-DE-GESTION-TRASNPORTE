@@ -11,7 +11,9 @@
 #include "TIEMPO_ACTUAL.h"
 #include "funciones.h"
 #include "ARCHIVO_VIAJES.h"
+#include "rlutil.h"
 
+using namespace rlutil;
 using namespace std;
 
 void Viajes::setidViaje(int idv){idViaje=idv; }
@@ -37,89 +39,278 @@ bool Viajes::getrealizado(){return realizado; }
 void Viajes::cargar(int idv){
     Archivo_micros archivomicro;
     Archivo_choferes archivochofer;
-    Destinos destino;
     Archivo_destinos archivodestino;
     Tiempo_Actual actual;
     Fechas presente(actual.getDia(), actual.getMes(), actual.getAnio());
 
-    cout<<"ID de viaje: "<<(idViaje=idv)<<endl;
+    cls();
+    setColor(GREEN);
+    locate(40,3); cout << "----------------------------------------------";
+    locate(40,4); cout << "              CARGA DE NUEVO VIAJE           ";
+    locate(40,5); cout << "----------------------------------------------";
+    setColor(WHITE);
+    locate(40,6); cout << "ID de viaje asignado: " << (idViaje = idv);
+
+    Micros micro;
 
     while(true){
-        Micros micro;
-        cout<<"ingrese ID de micro (0 para salir): "; cin>>idMicro;
-        if(!validar_numero())continue;
-        if(idMicro==0){cout<<"Operación cancelada"<<endl; break;}
-        int pos=archivomicro.buscarRegsitro(idMicro);
-        if(pos<0){
-            cout<<"ERROR, sin registros"<<endl;
+        LimpiarLineas(8,16,40);
+        setColor(CYAN);
+        locate(40,8); cout << "Ingrese ID de micro (0 para salir): ";
+        setColor(WHITE);
+        locate(40,9); cin >> idMicro;
+
+        if(!validar_numero()) continue;
+        if(idMicro == 0){ setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
+
+        int pos = archivomicro.buscarRegsitro(idMicro);
+        if(pos < 0){
+            setColor(RED);
+            LimpiarLineas(8,16,40);
+            locate(40,8);
+            cout << "ERROR, micro no registrado";
+            setColor(WHITE);
+            anykey();
             continue;
         }
-        micro=archivomicro.leerRegistros(pos);
-        if(idMicro==micro.getidMicro())break;
+
+        micro = archivomicro.leerRegistros(pos);
+        break;
+
     }
 
+    Destinos destino;
+
     while(true){
-        Choferes chofer;
-        cout<<"ingrese Legajo de chofer a designar (0 para salir): "; cin>>idChofer;
-        if(!validar_numero())continue;
-        if(idChofer==0){cout<<"Operación cancelada"<<endl; break;}
-        int pos=archivochofer.buscarRegistro(idChofer);
-        if(pos<0){
-            cout<<"ERROR, sin registros"<<endl;
+        LimpiarLineas(8,16,40);
+        setColor(CYAN);
+        locate(40,8); cout << "Ingrese ID de destino (0 para salir): ";
+        setColor(WHITE);
+        locate(40,9); cin >> idDestino;
+
+        if(!validar_numero()) continue;
+        if(idDestino == 0){ setColor(RED); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
+
+        int pos = archivodestino.buscarRegistros(idDestino);
+        if(pos < 0){
+            setColor(RED);
+            LimpiarLineas(8,16,40);
+            locate(40,8);
+            cout << "ERROR, destino no registrado";
+            setColor(WHITE);
+            anykey();
             continue;
         }
-        chofer=archivochofer.leerRegistros(pos);
-        if(idChofer==chofer.getlegajo())break;
+
+        destino = archivodestino.leerRegistros(pos);
+        break;
+
+    }
+
+    Choferes chofer;
+    while(true){
+        LimpiarLineas(8,16,40);
+        setColor(CYAN);
+        locate(40,8); cout << "Ingrese ID de chofer (0 para salir): ";
+        setColor(WHITE);
+        locate(40,9); cin >> idChofer;
+         if(!validar_numero()) continue;
+        if(idChofer == 0){ setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
+
+        int pos = archivochofer.buscarRegistro(idChofer);
+        if(pos < 0){
+            setColor(RED);
+            LimpiarLineas(8,16,40);
+        locate(40,8);
+        cout << "ERROR, chofer no registrado";
+        setColor(WHITE);
+        anykey();
+         continue;
+         }
+
+        chofer = archivochofer.leerRegistros(pos);
+        break;
     }
 
     while(true){
-        Destinos destino;
-        cout<<"ingrese ID de destino (0 para salir): "; cin>>idDestino;
-        if(!validar_numero())continue;
-        if(idDestino==0){cout<<"Operación cancelada"<<endl; break;}
-        int pos=archivodestino.buscarRegistros(idDestino);
-        if(pos<0){
-            cout<<"ERROR, sin registros"<<endl;
-            break;
-        }
-        destino=archivodestino.leerRegistros(pos);
-        if(idDestino==destino.getidDestino())break;
+        LimpiarLineas(8,16,40);
+        setColor(CYAN);
+        locate(40,8); cout << "Ingrese fecha de inicio (dd/mm/yyyy): ";
+        setColor(WHITE);
+        locate(40,9); fecha_Inicio_Viaje.cargar();
+
+        if(esFechaPosterior(fecha_Inicio_Viaje, presente)) break;
+        setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "ERROR: no puede ser anterior a la fecha actual"; setColor(WHITE); anykey();
+
     }
 
-    if(idMicro==0 or idChofer==0 or idDestino==0)return;
+    LimpiarLineas(8,15,40);
+    setColor(CYAN);
+    locate(40,8); cout << "Ingrese hora de inicio (hh:mm): ";
+    setColor(WHITE);
+    locate(40,9); hora_Inicio_Viaje.cargar();
 
-    while(true){
-        cout<<"ingrese fecha de inicio de viaje: "<<endl;
-        fecha_Inicio_Viaje.cargar();
-        if(esFechaPosterior(fecha_Inicio_Viaje, presente))break;
-        cout<<"ERROR no se puede ingresar una fecha anterior a la actual"<<endl;
-    }
+    fecha_y_hora_fin(
+        destino,
+        archivodestino,
+        fecha_Fin_Viaje,
+        hora_Fin_Viaje,
+        fecha_Inicio_Viaje,
+        hora_Inicio_Viaje,
+        idDestino
+    );
 
-    cout<<"ingrese hora de inicio de viaje: "<<endl;
-    hora_Inicio_Viaje.cargar();
+    realizado = true;
+    LimpiarLineas(8,18,40);
+    setColor(GREEN);
+    locate(40,8); cout << "Viaje cargado correctamente";
+    setColor(WHITE);
+    anykey();
+    cls();
 
-    fecha_y_hora_fin(destino, archivodestino, fecha_Fin_Viaje, hora_Fin_Viaje, fecha_Inicio_Viaje, hora_Inicio_Viaje, idDestino);
-
-    realizado=true;
 }
 
 void Viajes::mostrar(){
-    cout<<"--------------------------------------------------"<<endl;
-    cout<<"ID de viaje: "<<idViaje<<endl;
+    cls();
+
+    setColor(YELLOW);
+    locate(40, 3);  cout << "----------------------------------------------";
+    locate(40, 4);  cout << "             INFORMACION DEL VIAJE            ";
+    locate(40, 5);  cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40, 7);  cout << "==============================================";
+    locate(40, 8);  cout << "ID de Viaje:               " << idViaje;
+
+    // MICRO
     Micros micro;
     Archivo_micros archivomicro;
-    int pos1=archivomicro.buscarRegsitro(idMicro);
-    micro=archivomicro.leerRegistros(pos1);
-    micro.mostrar();
-    cout<<"ID de chofer a designar: "<<idChofer<<endl;
+    int pos1 = archivomicro.buscarRegsitro(idMicro);
+    if(pos1 >= 0){
+        micro = archivomicro.leerRegistros(pos1);
+
+        locate(40, 9);  cout << "ID de Micro:               " << idMicro;
+        locate(40, 10); cout << "Marca/Modelo:              " << micro.getmarca();
+        locate(40, 11); cout << "Patente:                   " << micro.getpatente();
+    }
+    else {
+        locate(40, 9); cout << "Error al cargar datos del micro";
+    }
+
+    // CHOFER
+    locate(40, 13); cout << "ID de chofer:              " << idChofer;
+
+    // DESTINO
     Destinos destino;
     Archivo_destinos archivodestino;
-    int pos2=archivodestino.buscarRegistros(idDestino);
-    destino=archivodestino.leerRegistros(pos2);
-    destino.mostrar();
-    cout<<"Fecha de inicio de viaje: "; fecha_Inicio_Viaje.mostrar();
-    cout<<"Fecha de fin de viaje: "; fecha_Fin_Viaje.mostrar();
-    cout<<"Hora de inicio de viaje: "; hora_Inicio_Viaje.mostrar();
-    cout<<"Hora de fin de viaje: "; hora_Fin_Viaje.mostrar();
-    cout<<"--------------------------------------------------"<<endl;
+    int pos2 = archivodestino.buscarRegistros(idDestino);
+
+    if(pos2 >= 0){
+        destino = archivodestino.leerRegistros(pos2);
+
+        locate(40, 15); cout << "Destino:                   " << destino.getnombre_destino();
+        locate(40, 16); cout << "Provincia:                 " << destino.getnombre_provincia();
+    }
+    else {
+        locate(40, 15); cout << "Destino no encontrado";
+    }
+
+    // FECHAS Y HORARIOS
+    locate(40, 18); cout << "Fecha de inicio:           ";
+    fecha_Inicio_Viaje.mostrarEn(18, 70);
+
+    locate(40, 19); cout << "Fecha de fin:              ";
+    fecha_Fin_Viaje.mostrarEn(19, 70);
+
+    locate(40, 20); cout << "Hora de inicio:            ";
+    hora_Inicio_Viaje.mostrarEn(20, 70);
+
+    locate(40, 21); cout << "Hora de fin:               ";
+    hora_Fin_Viaje.mostrarEn(21, 70);
+
+    locate(40, 23); cout << "==============================================";
+
+    anykey();
+}
+
+void Viajes::listartabla() {
+    cls();
+    Archivo_viajes Arch_Via;
+    Archivo_micros Arch_Mic;
+    Archivo_destinos Arch_Dest;
+    Archivo_Precio Arch_Precio;
+
+    int contViajes = Arch_Via.contarRegistros();
+    if (contViajes <= 0) {
+        setColor(RED);
+        locate(40, 10); cout << "NO HAY VIAJES REGISTRADOS";
+        setColor(WHITE);
+        anykey();
+        cls();
+        return;
+    }
+
+    Precios precioBase = Arch_Precio.leerRegistros();
+
+    setColor(YELLOW);
+    locate(5, 3);  cout << "--------------------------------------------------------------------------------------------------------";
+    locate(5, 4);  cout << "                                             LISTADO DE VIAJES                                           ";
+    locate(5, 5);  cout << "--------------------------------------------------------------------------------------------------------";
+    setColor(WHITE);
+
+    locate(5, 7);
+    cout << "ID VIAJE";
+    locate(15, 7); cout << "ID MICRO";
+    locate(25, 7); cout << "PROVINCIA";
+    locate(40, 7); cout << "DESTINO";
+    locate(55, 7); cout << "DURACION";
+    locate(65, 7); cout << "DISTANCIA";
+    locate(75, 7); cout << "PRECIO";
+    locate(85, 7); cout << "FECHA";
+    locate(100, 7); cout << "HORA INICIO";
+
+    locate(5, 8); cout << "--------------------------------------------------------------------------------------------------------";
+
+    int fila = 9;
+    Viajes viaje;
+
+    for (int i = 0; i < contViajes; i++) {
+        viaje = Arch_Via.leerRegistros(i);
+
+        int idMicro = viaje.getidMicro();
+        string provincia = "-";
+        string nombreDestino = "-";
+        float distancia = 0;
+        Hora duracion;
+
+        int posDest = Arch_Dest.buscarRegistros(viaje.getidDestino());
+        if (posDest >= 0) {
+            Destinos destino = Arch_Dest.leerRegistros(posDest);
+            nombreDestino = destino.getnombre_destino();
+            provincia = destino.getnombre_provincia();
+            distancia = destino.getdistanciaKm();
+            duracion = destino.getduracion();
+        }
+
+        float precioTotal = distancia * precioBase.getPrecio();
+
+        locate(5, fila); cout << viaje.getidViaje();
+        locate(15, fila); cout << idMicro;
+        locate(25, fila); cout << provincia;
+        locate(40, fila); cout << nombreDestino;
+        locate(55, fila); duracion.mostrarEn(fila, 55);
+        locate(65, fila); cout << distancia;
+        locate(75, fila); cout << precioTotal;
+        locate(85, fila); viaje.getfecha_Inicio_Viaje().mostrarEn(fila, 85);
+        locate(100, fila); viaje.gethora_Inicio_Viaje().mostrarEn(fila, 100);
+
+        fila++;
+    }
+
+    setColor(YELLOW);
+    locate(5, fila); cout << "--------------------------------------------------------------------------------------------------------";
+    setColor(WHITE);
+
+    anykey();
+    cls();
 }

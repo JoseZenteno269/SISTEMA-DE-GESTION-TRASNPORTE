@@ -865,143 +865,167 @@
 
 1761932209 D
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.cpp
 	<iostream>
 	"ARCHIVO_CHOFERES.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_choferes.h
 	"CHOFERES.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.h
+1763441952 c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.h
 	"FECHAS.h"
 	"Domicilio.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.h
+1763422012 c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.h
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.h
+1763442570 c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.cpp
 	<iostream>
 	"ARCHIVO_DESTINOS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_destinos.h
 	"DESTINOS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.h
+1763444521 c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.h
 	"HORA.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.h
+1763444706 c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.h
 	<ctime>
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.cpp
+1763421472 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.cpp
 	<iostream>
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.h
-	"USUARIOS.h"
-	"FECHAS.h"
-	"HORA.h"
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_historial_ingresos.h
+	"HISTORIAL_INGRESOS.h"
 
-1762803632 c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.h
+1763245915 c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.cpp
 	<iostream>
 	"ARCHIVO_MICROS.h"
 	<cstring>
+	"rlutil.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_micros.h
 	"MICROS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.h
+1763444368 c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJE.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasaje.h
 	"PASAJE.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.h
 	"FECHAS.h"
 	"HORA.h"
 	"VIAJES.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.h
+1763444960 c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.h
 	"FECHAS.h"
 	"HORA.h"
+	"TIEMPO_ACTUAL.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJEROS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_pasajeros.h
 	"PASAJEROS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.h
 	"PERSONA.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PROVINCIAS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_provincias.h
 	"PROVINCIAS.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.cpp
 	<iostream>
 	"ARCHIVO_USUARIOS.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.h
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_usuarios.h
 	"USUARIOS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.cpp
+1763445265 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.cpp
 	<iostream>
 	"ARCHIVO_VIAJES.h"
 	<cstring>
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.h
+1763445265 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_viajes.h
 	"VIAJES.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.cpp
+1763443695 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\choferes.cpp
 	<iostream>
 	"CHOFERES.h"
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
 	<cstring>
+	"rlutil.h"
 
-1762803632 c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.h
+1763448895 c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.h
+	"MICROS.h"
+	"ARCHIVO_MICROS.h"
+	"CHOFERES.h"
+	"ARCHIVO_CHOFERES.h"
+	"USUARIOS.h"
+	"ARCHIVO_USUARIOS.h"
+	"HISTORIAL_INGRESOS.h"
+	"ARCHIVO_HISTORIAL_INGRESOS.h"
+	"DESTINOS.h"
+	"ARCHIVO_DESTINOS.h"
 	"FECHAS.h"
+	"TIEMPO_ACTUAL.h"
+	"HORA.h"
+	"PROVINCIAS.h"
+	"ARCHIVO_PROVINCIAS.h"
+	"VIAJES.h"
+	"ARCHIVO_VIAJES.h"
+	"PASAJE.h"
+	"ARCHIVO_PASAJE.h"
+	"PASAJEROS.h"
+	"ARCHIVO_PASAJEROS.h"
+	"PRECIO.h"
+	"ARCHIVO_PRECIO.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.h
+1763245915 c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.h
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.cpp
+1763442581 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\domicilio.cpp
 	<iostream>
 	"DOMICILIO.h"
 	"funciones.h"
 	<cstring>
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.cpp
+1763422012 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\fechas.cpp
 	<iostream>
 	"FECHAS.h"
 	"rlutil.h"
 	"funciones.h"
 
-1762803089 c:\users\angel\desktop\sistema-de-gestion-trasporte\rlutil.h
+1763245915 c:\users\angel\desktop\sistema-de-gestion-trasporte\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
@@ -1015,88 +1039,75 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1762803632 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.cpp
+1763489880 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
 	"funciones.h"
 	"rlutil.h"
-	"MICROS.h"
-	"ARCHIVO_MICROS.h"
-	"CHOFERES.h"
-	"ARCHIVO_CHOFERES.h"
-	"USUARIOS.h"
-	"ARCHIVO_USUARIOS.h"
-	"ARCHIVO_HISTORIAL_INGRESOS.h"
-	"DESTINOS.h"
-	"ARCHIVO_DESTINOS.h"
-	"FECHAS.h"
-	"TIEMPO_ACTUAL.h"
-	"HORA.h"
-	"PROVINCIAS.h"
-	"ARCHIVO_PROVINCIAS.h"
-	"VIAJES.h"
-	"ARCHIVO_VIAJES.h"
-	"PASAJE.h"
-	"ARCHIVO_PASAJE.h"
-	"PASAJEROS.h"
-	"ARCHIVO_PASAJEROS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.cpp
+1763444706 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\hora.cpp
 	<iostream>
 	"HORA.h"
+	"funciones.h"
+	"rlutil.h"
 
-1762804072 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\main.cpp
+1763275679 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\main.cpp
 	<iostream>
+	<conio.h>
 	"rlutil.h"
 	<windows.h>
 	"funciones.h"
 	<ctime>
-	"PERSONA.h"
-	"PASAJEROS.h"
-	"ARCHIVO_PASAJEROS.h"
+	<iomanip>
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.cpp
+1763444428 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\micros.cpp
 	<iostream>
 	"MICROS.h"
 	<cstring>
 	"funciones.h"
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.cpp
+1763484098 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasaje.cpp
 	<iostream>
 	<cstring>
 	"PASAJE.h"
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.cpp
+1763490150 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\pasajeros.cpp
 	<iostream>
 	"PASAJEROS.h"
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.cpp
+1763443624 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\persona.cpp
 	<iostream>
 	"PERSONA.h"
 	"funciones.h"
 	<cstring>
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.cpp
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\provincias.cpp
 	<iostream>
 	"PROVINCIAS.h"
 	<cstring>
 	"funciones.h"
 	"ARCHIVO_PROVINCIAS.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.cpp
+1763245915 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\tiempo_actual.cpp
 	"TIEMPO_ACTUAL.h"
 	<ctime>
 
-1762803632 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.cpp
+1763441310 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\usuarios.cpp
 	<iostream>
 	"USUARIOS.h"
 	<cstring>
 	"funciones.h"
 	"TIEMPO_ACTUAL.h"
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.cpp
+1763486577 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\viajes.cpp
 	<iostream>
+	"funciones.h"
 	"VIAJES.h"
 	<cstring>
 	"ARCHIVO_MICROS.h"
@@ -1108,12 +1119,14 @@
 	"TIEMPO_ACTUAL.h"
 	"funciones.h"
 	"ARCHIVO_VIAJES.h"
+	"rlutil.h"
 
-1762803089 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.cpp
+1763444534 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\destinos.cpp
 	<iostream>
 	"DESTINOS.h"
 	"funciones.h"
 	<cstring>
+	"rlutil.h"
 
 1762803089 source:c:\users\angel\desktop\utn\sistema-de-gestion-trasporte-a700b0230e1262aa797cb59efbe9d5d9d110eec1\archivo_choferes.cpp
 	<iostream>
@@ -1392,4 +1405,319 @@
 	"HISTORIAL_INGRESOS.h"
 
 1762866355 2f24 (AL DIA(creo))
+
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\historial_ingresos.h
+	"FECHAS.h"
+	"HORA.h"
+
+1763245914 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_precio.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PRECIO.h"
+
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\archivo_precio.h
+	"PRECIO.h"
+
+1763245914 c:\users\angel\desktop\sistema-de-gestion-trasporte\precio.h
+
+1763426028 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\historial_ingresos.cpp
+	<iostream>
+	<cstring>
+	"HISTORIAL_INGRESOS.h"
+	"rlutil.h"
+
+1763430237 source:c:\users\angel\desktop\sistema-de-gestion-trasporte\precio.cpp
+	<iostream>
+	"PRECIO.h"
+	"funciones.h"
+	"rlutil.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_choferes.cpp
+	<iostream>
+	"ARCHIVO_CHOFERES.h"
+	<cstring>
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_choferes.h
+	"CHOFERES.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\choferes.h
+	"PERSONA.h"
+	"FECHAS.h"
+
+1763495402 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\persona.h
+	"FECHAS.h"
+	"Domicilio.h"
+
+1763501439 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\fechas.h
+
+1763504057 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\domicilio.h
+
+1763493707 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_destinos.cpp
+	<iostream>
+	"ARCHIVO_DESTINOS.h"
+	<cstring>
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_destinos.h
+	"DESTINOS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\destinos.h
+	"HORA.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\hora.h
+	<ctime>
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_historial_ingresos.cpp
+	<iostream>
+	"ARCHIVO_HISTORIAL_INGRESOS.h"
+	<cstring>
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_historial_ingresos.h
+	"HISTORIAL_INGRESOS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\historial_ingresos.h
+	"FECHAS.h"
+	"HORA.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_micros.cpp
+	<iostream>
+	"ARCHIVO_MICROS.h"
+	<cstring>
+	"rlutil.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_micros.h
+	"MICROS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\micros.h
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_pasaje.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PASAJE.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_pasaje.h
+	"PASAJE.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\pasaje.h
+	"FECHAS.h"
+	"HORA.h"
+	"VIAJES.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\viajes.h
+	"FECHAS.h"
+	"HORA.h"
+	"TIEMPO_ACTUAL.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\tiempo_actual.h
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_pasajeros.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PASAJEROS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_pasajeros.h
+	"PASAJEROS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\pasajeros.h
+	"PERSONA.h"
+
+1763493195 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_precio.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PRECIO.h"
+
+1763493180 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_precio.h
+	"PRECIO.h"
+
+1763493169 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\precio.h
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_provincias.cpp
+	<iostream>
+	<cstring>
+	"ARCHIVO_PROVINCIAS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_provincias.h
+	"PROVINCIAS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\provincias.h
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_usuarios.cpp
+	<iostream>
+	"ARCHIVO_USUARIOS.h"
+	<cstring>
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_usuarios.h
+	"USUARIOS.h"
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\usuarios.h
+	"PERSONA.h"
+	"FECHAS.h"
+
+1763505299 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_viajes.cpp
+	<iostream>
+	"ARCHIVO_VIAJES.h"
+	<cstring>
+
+1763492337 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\archivo_viajes.h
+	"VIAJES.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\choferes.cpp
+	<iostream>
+	"CHOFERES.h"
+	"funciones.h"
+	"TIEMPO_ACTUAL.h"
+	<cstring>
+	"rlutil.h"
+
+1763505797 c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\funciones.h
+	"MICROS.h"
+	"ARCHIVO_MICROS.h"
+	"CHOFERES.h"
+	"ARCHIVO_CHOFERES.h"
+	"USUARIOS.h"
+	"ARCHIVO_USUARIOS.h"
+	"HISTORIAL_INGRESOS.h"
+	"ARCHIVO_HISTORIAL_INGRESOS.h"
+	"DESTINOS.h"
+	"ARCHIVO_DESTINOS.h"
+	"FECHAS.h"
+	"TIEMPO_ACTUAL.h"
+	"HORA.h"
+	"PROVINCIAS.h"
+	"ARCHIVO_PROVINCIAS.h"
+	"VIAJES.h"
+	"ARCHIVO_VIAJES.h"
+	"PASAJE.h"
+	"ARCHIVO_PASAJE.h"
+	"PASAJEROS.h"
+	"ARCHIVO_PASAJEROS.h"
+	"PRECIO.h"
+	"ARCHIVO_PRECIO.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\destinos.cpp
+	<iostream>
+	"DESTINOS.h"
+	"funciones.h"
+	<cstring>
+	"rlutil.h"
+
+1763504287 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\domicilio.cpp
+	<iostream>
+	"DOMICILIO.h"
+	"funciones.h"
+	<cstring>
+	"rlutil.h"
+
+1763501439 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\fechas.cpp
+	<iostream>
+	"FECHAS.h"
+	"rlutil.h"
+	"funciones.h"
+
+1763505797 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\funciones.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	"funciones.h"
+	"rlutil.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\historial_ingresos.cpp
+	<iostream>
+	<cstring>
+	"HISTORIAL_INGRESOS.h"
+	"rlutil.h"
+
+1763494262 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\hora.cpp
+	<iostream>
+	"HORA.h"
+	"funciones.h"
+	"rlutil.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\main.cpp
+	<iostream>
+	<conio.h>
+	"rlutil.h"
+	<windows.h>
+	"funciones.h"
+	<ctime>
+	<iomanip>
+
+1763505797 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\micros.cpp
+	<iostream>
+	"MICROS.h"
+	<cstring>
+	"funciones.h"
+	"rlutil.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\pasaje.cpp
+	<iostream>
+	<cstring>
+	"PASAJE.h"
+	"rlutil.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\pasajeros.cpp
+	<iostream>
+	"PASAJEROS.h"
+	"rlutil.h"
+
+1763504501 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\persona.cpp
+	<iostream>
+	"PERSONA.h"
+	"funciones.h"
+	<cstring>
+	"rlutil.h"
+
+1763493169 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\precio.cpp
+	<iostream>
+	"PRECIO.h"
+	"funciones.h"
+	"rlutil.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\provincias.cpp
+	<iostream>
+	"PROVINCIAS.h"
+	<cstring>
+	"funciones.h"
+	"ARCHIVO_PROVINCIAS.h"
+
+1763492337 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\tiempo_actual.cpp
+	"TIEMPO_ACTUAL.h"
+	<ctime>
+
+1763494512 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\usuarios.cpp
+	<iostream>
+	"USUARIOS.h"
+	<cstring>
+	"funciones.h"
+	"TIEMPO_ACTUAL.h"
+	"rlutil.h"
+
+1763505128 source:c:\users\zente.r7asusrog\onedrive\escritorio\sistema-de-gestion-trasporte-visual final\sistema-de-gestion-trasporte\viajes.cpp
+	<iostream>
+	"funciones.h"
+	"VIAJES.h"
+	<cstring>
+	"ARCHIVO_MICROS.h"
+	"MICROS.h"
+	"ARCHIVO_CHOFERES.h"
+	"CHOFERES.h"
+	"ARCHIVO_DESTINOS.h"
+	"DESTINOS.h"
+	"TIEMPO_ACTUAL.h"
+	"funciones.h"
+	"ARCHIVO_VIAJES.h"
+	"rlutil.h"
 

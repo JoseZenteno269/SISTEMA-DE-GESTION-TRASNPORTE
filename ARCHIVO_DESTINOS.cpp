@@ -28,12 +28,13 @@ int Archivo_destinos::contarRegistros(){
 int Archivo_destinos::buscarRegistros(int idd){
     Destinos destino;
     int contreg=contarRegistros();
-    for(int i=0;i<contreg;i++){
+    for(int i=0; i<contreg; i++){
         destino=leerRegistros(i);
         if(destino.getidDestino()==idd){
             return i;
         }
     }
+    return -2;
 }
 
 Destinos Archivo_destinos::leerRegistros(int pos){

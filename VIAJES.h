@@ -39,6 +39,7 @@ public:
     void cargar(int);
     void mostrar();
     //void mostrar();
+    void listartabla();
 };
 
 

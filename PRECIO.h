@@ -1,7 +1,7 @@
 #ifndef PRECIO_H_INCLUDED
 #define PRECIO_H_INCLUDED
 
-class PrecioxKilometro{
+class Precios{
 private:
     float Precio;
     float Preciobutaca_cama;
@@ -21,9 +21,6 @@ public:
 
     void cargar();
     void mostrar();
-    void cargarvalorbutaca();
-    void mostrarvalorbutaca();
 };
-
 
 #endif // PRECIO_H_INCLUDED

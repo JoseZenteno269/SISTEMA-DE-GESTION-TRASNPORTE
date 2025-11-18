@@ -2,6 +2,8 @@
 #include "MICROS.h"
 #include<cstring>
 #include "funciones.h"
+#include "rlutil.h"
+using namespace rlutil;
 
 using namespace std;
 
@@ -29,50 +31,153 @@ void Micros::capacidadportipo(){
 }
 
 void Micros::cargar(int idm){
-    cout<<"El ID de Micro: "<<(idMicro=idm)<<endl;
+    system("cls");
+
+    setColor(GREEN);
+    locate(40, 3);  cout<<"------------------------------------------";
+    locate(40, 4);  cout<<"          REGISTRO DE NUEVO MICRO        ";
+    locate(40, 5);  cout<<"------------------------------------------";
+    setColor(WHITE);
+
+    locate(40, 7);
+    cout<<"El ID de Micro: "<<(idMicro=idm);
 
     while(true){
-        cout<<"ingrese marca del micro: "; cargarCadena(marca, 29);
+        setColor(CYAN);
+        locate(40, 9);  cout<<"Ingrese marca (Volvo / Scania / Mercedes-Benz):                ";
+        setColor(WHITE);
+
+        locate(40, 10);
+        cargarCadena(marca, 29);
+
         for(int i=0; marca[i]; i++) marca[i]=tolower(marca[i]);
 
-        if (strcmp(marca,"volvo")==0 or strcmp(marca,"scania")==0 or strcmp(marca,"mercedes-benz")==0) break;
-        else cout<<"MARCA INVALIDA, MARCAS DISPONIBLES SCANIA, VOLVO, Mercedes-Benz"<<endl;
+        if(strcmp(marca, "volvo")==0 or strcmp(marca, "scania")==0 or strcmp(marca, "mercedes-benz")==0){
+            LimpiarLineas(9, 15, 40);
+            break;
+        }
+
+        setColor(RED);
+        locate(40, 12);
+        cout << "Marca inválida. Intente nuevamente.";
+        setColor(WHITE);
+        anykey();
+        LimpiarLineas(9, 15, 40);
     }
 
     while(true){
-        cout<<"ingrese  tipo del micro: "; cargarCadena(tipo, 29);
+        setColor(CYAN);
+        locate(40, 9);  cout << "Ingrese tipo del micro (simple-piso / doble-piso):             ";
+        setColor(WHITE);
+
+        locate(40, 10);
+        cargarCadena(tipo, 29);
+
         for(int i=0; tipo[i]; i++) tipo[i]=tolower(tipo[i]);
 
-        if(strcmp(tipo,"simple-piso")==0 or strcmp(tipo,"doble-piso")==0) break;
-        else cout<<"TIPO INVALIDO, TIPOS DISPONIBLES simple-piso doble-piso"<<endl;
+        if(strcmp(tipo, "simple-piso")==0 or strcmp(tipo, "doble-piso")==0){
+            LimpiarLineas(9, 15, 40);
+            break;
+        }
+
+        setColor(RED);
+        locate(40, 12);
+        cout<<"Tipo inválido. Intente nuevamente.";
+        setColor(WHITE);
+
+        anykey();
+        LimpiarLineas(9, 15, 40);
     }
 
     while(true){
-        cout<<"ingrese tipo de butaca: "; cargarCadena(tipoButaca, 29);
+        setColor(CYAN);
+        locate(40, 9);  cout<<"Ingrese butaca (comun / cama / semi-cama):                     ";
+        setColor(WHITE);
+
+        locate(40, 10);
+        cargarCadena(tipoButaca, 29);
+
         for(int i=0; tipoButaca[i]; i++) tipoButaca[i]=tolower(tipoButaca[i]);
 
-        if (strcmp(tipoButaca,"comun")==0 or strcmp(tipoButaca,"cama")==0 or strcmp(tipoButaca,"semi-cama")==0) break;
-        else cout<<"BUTACA INVALIDO, BUTACAS DISPONIBLES comun, cama, semi-cama"<<endl;
+        if(strcmp(tipoButaca, "comun")==0 or strcmp(tipoButaca, "cama")==0 or strcmp(tipoButaca, "semi-cama")==0){
+            LimpiarLineas(9, 15, 40);
+            break;
+        }
+
+        setColor(RED);
+        locate(40, 12);
+        cout << "Butaca inválida. Intente nuevamente.";
+        setColor(WHITE);
+        anykey();
+        LimpiarLineas(9, 15, 40);
     }
 
     while(true){
-        cout<<"ingrese la patente del micro (formato AA111AA): "; cargarCadena(patente, 9);
+        setColor(CYAN);
+        locate(40, 9);  cout<<"Ingrese patente (AA111AA):                                     ";
+        setColor(WHITE);
+
+        locate(40, 10);
+        cargarCadena(patente, 9);
+
         for(int i=0; patente[i]; i++) patente[i]=toupper(patente[i]);
 
-        if(validarPatente(patente))break;
-        else cout<<"Patente inválida, intente nuevamente.\n";
+        if(validarPatente(patente)){
+            if(existePatente(patente, idMicro)){
+                setColor(RED);
+                LimpiarLineas(9, 15, 40);
+                locate(40, 12);
+                cout << "ERROR: La patente ya existe. Intente con otra.";
+                setColor(WHITE);
+            } else {
+                break;
+            }
+        }else{
+            setColor(RED);
+            locate(40, 12);
+            cout << "Patente inválida. Intente nuevamente.";
+            setColor(WHITE);
+
+        }
+
+//        if(validarPatente(patente)){
+//            LimpiarLineas(9, 15, 40);
+//            break;
+//        }
+
+//        setColor(RED);
+//        locate(40, 12);
+//        cout << "Patente inválida. Intente nuevamente.";
+//        setColor(WHITE);
+//        anykey();
+//        LimpiarLineas(9, 15, 40);
     }
+
     capacidadportipo();
     disponible=true;
+
+    system("cls");
 }
 
+void Micros::mostrar(int X, int Y){
+    setColor(YELLOW);
+    locate(X, Y);     cout << "------------------------------------------";
+    locate(X, Y + 1); cout << "              INFORMACION DEL MICRO        ";
+    locate(X, Y + 2); cout << "------------------------------------------";
+    setColor(WHITE);
 
-void Micros::mostrar(){
-    cout<<"ID de Micro: "<<idMicro<<endl;
-    cout<<"Marca del micro: "<<marca<<endl;
-    cout<<"Tipo del micro: "<<tipo<<endl;
-    cout<<"Capacidad: "<<capacidad<<endl;
-    cout<<"Tipo de Butaca: "<<tipoButaca<<endl;
-    cout<<"Patente: "<<patente<<endl;
+    locate(X, Y + 4); cout << "ID de Micro:           " << idMicro;
+    locate(X, Y + 5); cout << "Marca:                 " << marca;
+    locate(X, Y + 6); cout << "Tipo:                  " << tipo;
+    locate(X, Y + 7); cout << "Capacidad:             " << capacidad;
+    locate(X, Y + 8); cout << "Tipo de Butaca:        " << tipoButaca;
+    locate(X, Y + 9); cout << "Patente:               " << patente;
+
+    setColor(YELLOW);
+    locate(X, Y + 11); cout << "------------------------------------------";
+    setColor(WHITE);
+
+    anykey();
+    LimpiarLineas(Y, Y + 11, X);
 }
 

@@ -1,6 +1,8 @@
 #include<iostream>
 #include "ARCHIVO_MICROS.h"
 #include<cstring>
+#include "rlutil.h"
+using namespace rlutil;
 
 using namespace std;
 
@@ -80,4 +82,72 @@ void Archivo_micros::listar(){
             cout<<endl;
         }
     }
+}
+void Archivo_micros::listartabla(){
+    system("cls");
+
+    Micros micro;
+    int contreg = contarRegistros();
+
+    if(contreg <= 0){
+        setColor(RED);
+        locate(40, 10); cout << "NO HAY MICROS REGISTRADOS";
+        setColor(WHITE);
+        system("pause");
+        system("cls");
+        return;
+    }
+
+    setColor(YELLOW);
+    locate(20, 3);  cout << "-------------------------------------------------------------------------------";
+    locate(20, 4);  cout << "                             LISTADO DE MICROS                                  ";
+    locate(20, 5);  cout << "-------------------------------------------------------------------------------";
+    setColor(WHITE);
+
+
+    locate(20, 7); cout << "ID";
+    locate(27, 7); cout << "MARCA";
+    locate(43, 7); cout << "TIPO";
+    locate(59, 7); cout << "CAP";
+    locate(65, 7); cout << "BUTACA";
+    locate(78, 7); cout << "PATENTE";
+
+    locate(20, 8);
+    cout << "-------------------------------------------------------------------------------";
+
+    int fila = 9;
+
+    for(int i = 0; i < contreg; i++){
+        micro = leerRegistros(i);
+
+        if(micro.getdisponible()){
+
+            locate(20, fila);
+            cout << micro.getidMicro();
+
+            locate(27, fila);
+            cout << micro.getmarca();
+
+            locate(43, fila);
+            cout << micro.gettipo();
+
+            locate(59, fila);
+            cout << micro.getcapacidad();
+
+            locate(65, fila);
+            cout << micro.gettipoButaca();
+
+            locate(78, fila);
+            cout << micro.getpatente();
+
+            fila++;
+        }
+    }
+
+    setColor(YELLOW);
+    locate(20, fila + 2);
+    cout << "-------------------------------------------------------------------------------";
+    setColor(WHITE);
+
+    anykey();
 }

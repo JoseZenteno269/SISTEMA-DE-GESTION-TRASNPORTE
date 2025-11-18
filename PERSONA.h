@@ -38,7 +38,8 @@ public:
     const char* getgenerotexto() const;
 
     void cargar();
-    void mostrar();
+    void modificar();
+    void mostrar(int);
 };
 
 #endif // PERSONA_H_INCLUDED

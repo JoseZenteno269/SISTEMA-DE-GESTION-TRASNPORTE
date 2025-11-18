@@ -30,7 +30,7 @@ public:
     void capacidadportipo();
 
     void cargar(int);
-    void mostrar();
+    void mostrar(int X=40,int Y=3);
 
 };
 

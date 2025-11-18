@@ -1,5 +1,7 @@
 #include<iostream>
 #include "PASAJEROS.h"
+#include "rlutil.h"
+using namespace rlutil;
 
 using namespace std;
 
@@ -10,11 +12,30 @@ int Pasajeros::getnumero_pasaje(){return numero_pasaje; }
 bool Pasajeros::gethabilitado(){return habilitado; }
 
 void Pasajeros::cargar(int np){
-    cout<<"Numero de pasaje: "<<(numero_pasaje=np)<<endl;
+    numero_pasaje = np;
+
+    setColor(YELLOW);
+    locate(40, 3); cout << "==========================================";
+    locate(40, 4); cout << "           REGISTRO DEL PASAJERO          ";
+    locate(40, 5); cout << "==========================================";
+    setColor(WHITE);
+
+    locate(40, 7); cout << "Numero de pasaje: " << numero_pasaje;
+
     Personas::cargar();
-    habilitado=true;
+    habilitado = true;
 }
+
 void Pasajeros::mostrar(){
-    cout<<"Numero de pasaje: "<<numero_pasaje<<endl;
-    Personas::mostrar();
+    setColor(YELLOW);
+    locate(40, 3);  cout << "==========================================";
+    locate(40, 4);  cout << "            INFORMACION DEL PASAJERO       ";
+    locate(40, 5);  cout << "==========================================";
+    setColor(WHITE);
+
+    locate(40, 7); cout << "Numero de pasaje:       " << numero_pasaje;
+
+    Personas::mostrar(8);
+
+
 }

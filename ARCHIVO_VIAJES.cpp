@@ -81,3 +81,19 @@ void Archivo_viajes::listar(){
         }
     }
 }
+
+void Archivo_viajes::listartabla(){
+    Viajes viaje;
+    bool mostrar=false;
+    int contreg=contarRegistros();
+    for(int i=0;i<contreg;i++){
+        viaje=leerRegistros(i);
+        if(viaje.getrealizado()){
+            mostrar=true;
+        }
+    }
+        if(mostrar){
+            viaje.listartabla();
+        }
+}
+

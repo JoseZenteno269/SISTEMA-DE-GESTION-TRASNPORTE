@@ -13,9 +13,9 @@ Archivo_Precio::Archivo_Precio(const char *a){
     if(p) fclose(p);
 }
 
-PrecioxKilometro Archivo_Precio::leerRegistros(){
+Precios Archivo_Precio::leerRegistros(){
     FILE *p=fopen(archivo, "rb");
-    PrecioxKilometro precio;
+    Precios precio;
     if(p==nullptr){
         precio.setPrecio(-1);
         return precio;
@@ -27,7 +27,7 @@ PrecioxKilometro Archivo_Precio::leerRegistros(){
     return precio;
 }
 
-bool Archivo_Precio::grabarRegistro(PrecioxKilometro precio){
+bool Archivo_Precio::grabarRegistro(Precios precio){
     FILE *p=fopen(archivo, "wb");
     if(p==nullptr){
         return false;
@@ -44,7 +44,7 @@ void Archivo_Precio::listar(){
         return;
     }
 
-    PrecioxKilometro precio;
+    Precios precio;
     while(fread(&precio, sizeof precio, 1, p)==1){
         precio.mostrar();
     }

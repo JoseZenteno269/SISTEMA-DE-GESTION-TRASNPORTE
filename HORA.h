@@ -25,7 +25,8 @@ public:
 
     void cargar();
     void cargar_viaje();
-    void mostrar();
+    void mostrar(int,int);
+    void mostrarEn(int X = 40, int Y = 14);
 };
 
 

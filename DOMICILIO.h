@@ -26,7 +26,8 @@ public:
     const char *getprovincia();
 
     void Cargar();
-    void Mostrar();
+    void CargarEn(int x=40, int y=20);
+    void Mostrar(int X=40,int Y=20);
 };
 
 

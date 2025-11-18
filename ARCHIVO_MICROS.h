@@ -13,6 +13,7 @@ public:
     bool grabarRegistro(Micros);
     bool modificarRegistro(Micros, int);
     void listar();
+    void listartabla();
 };
 
 

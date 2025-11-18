@@ -3,7 +3,9 @@
 #include "funciones.h"
 #include "TIEMPO_ACTUAL.h"
 #include<cstring>
+#include "rlutil.h"
 
+using namespace rlutil;
 using namespace std;
 
 void Choferes::setlegajo(int l){legajo=l; }
@@ -17,31 +19,66 @@ bool Choferes::getestado(){return estado; }
 Fechas Choferes::getfecha_de_ingreso(){return fecha_de_ingreso; }
 
 void Choferes::cargar(int leg){
-    cout<<"El N° de legajo: "<<(legajo=leg)<<endl;
-    cout<<endl;
+    cls();
+
+    setColor(YELLOW);
+    locate(40,3); cout << "----------------------------------------------";
+    locate(40,4); cout << "              CARGA DE CHOFER                 ";
+    locate(40,5); cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40,6);
+    setColor(CYAN);
+    cout << "El N° de legajo: ";
+    setColor(WHITE);
+    locate(70,6); cout << (legajo = leg);
+
     Personas::cargar();
+
     generarMailLaboral();
-    cout<<endl;
-    cout<<"FECHA DE INGRESO"<<endl;
+
+    setColor(CYAN);
+    locate(40,9); cout << "FECHA DE INGRESO: ";
+    setColor(WHITE);
     Tiempo_Actual tiempo;
     Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
     setfecha_de_ingreso(fecha);
-    fecha.mostrar();
-    estado=true;
+    fecha.mostrarEn(60,9);
 
+    estado = true;
+
+    anykey();
+    cls();
 }
+
 void Choferes::mostrar(){
-    cout<<"N° de legajo: "<<legajo<<endl;
-    cout<<"Email Laboral: "<<mail_laboral<<endl;
-    cout<<endl;
-    cout<<"DATOS PERSONALES"<<endl;
-    Personas::mostrar();
-    cout<<endl;
-    cout<<"FECHA DE INGRESO"<<endl;
-    fecha_de_ingreso.mostrar();
-    int Antiguedad=calcularAntiguedad();
-    cout<<"Antiguedad: "<<Antiguedad<<" años"<<endl;
+    setColor(YELLOW);
+    locate(40, 2); cout << "----------------------------------------------";
+    locate(40, 3); cout << "              INFORMACION DEL CHOFER          ";
+    locate(40, 4); cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40, 6); cout << "N° de legajo: " << legajo;
+    locate(40, 7); cout << "Email Laboral: " << mail_laboral;
+
+    setColor(GREEN);
+    locate(40, 9); cout << "-------------- DATOS PERSONALES --------------";
+    setColor(WHITE);
+    Personas::mostrar(10);
+
+    setColor(GREEN);
+    locate(40, 27); cout << "--------------- FECHA DE INGRESO -------------";
+    setColor(WHITE);
+    fecha_de_ingreso.mostrarEn(40,28);
+
+    int Antiguedad = calcularAntiguedad();
+    locate(40, 29); cout << "Antiguedad: " << Antiguedad << " años";
+
+    anykey();
+    LimpiarLineas(2, 31, 40);
 }
+
+
 void Choferes::generarMailLaboral(){
 
     if(nombre[0]=='\0' or apellido[0]=='\0'){

@@ -24,6 +24,9 @@
 #include "PRECIO.h"
 #include "ARCHIVO_PRECIO.h"
 
+bool existePatente(const char *patente, int idMicroAExcluir);
+void LimpiarLineas(int,int,int);
+float plusxbutaca(Viajes viaje);
 bool validar_numero();
 void fecha_y_hora_fin(Destinos , Archivo_destinos , Fechas &, Hora &, Fechas , Hora , int);
 bool chequearSalidaESC(std::string);
@@ -31,7 +34,7 @@ void ocultarCursor();
 void mostrarCursor();
 bool esFechaPosterior(Fechas, Fechas);
 void cargarCadena(char *, int );
-const char *funcion_provincias(int );
+const char *funcion_provincias(int,int );
 bool validarPatente(const char *);
 bool validarPalabra(const char *);
 bool esBisiesto(int );
