@@ -2,248 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="ARCHIVO_HISTORIAL_INGRESOS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="DESTINOS.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="135" topLine="0" />
+			<Cursor1 position="292" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="funciones.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1571" topLine="84" />
-		</Cursor>
-	</File>
-	<File name="DOMICILIO.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6330" topLine="178" />
-		</Cursor>
-	</File>
-	<File name="USUARIOS.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2579" topLine="43" />
-		</Cursor>
-	</File>
-	<File name="FECHAS.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="324" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="HORA.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="66" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_VIAJES.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="93" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="PASAJE.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="123" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_PASAJEROS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="121" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="HISTORIAL_INGRESOS.h" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="310" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="VIAJES.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4748" topLine="114" />
-		</Cursor>
-	</File>
-	<File name="DOMICILIO.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="316" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_USUARIOS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="99" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="FECHAS.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2916" topLine="71" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_PRECIO.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="400" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="DESTINOS.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2986" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_CHOFERES.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1930" topLine="36" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_DESTINOS.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="99" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_PROVINCIAS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="111" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="PASAJE.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2142" topLine="21" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_MICROS.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="99" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="CHOFERES.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="468" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_PASAJE.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="99" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="HISTORIAL_INGRESOS.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1272" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="CHOFERES.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2203" topLine="49" />
-		</Cursor>
-	</File>
-	<File name="funciones.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="132477" topLine="211" />
-		</Cursor>
-		<Folding>
-			<Collapse line="9" />
-			<Collapse line="23" />
-			<Collapse line="29" />
-			<Collapse line="51" />
-			<Collapse line="57" />
-			<Collapse line="73" />
-			<Collapse line="113" />
-			<Collapse line="170" />
-			<Collapse line="209" />
-			<Collapse line="221" />
-			<Collapse line="234" />
-			<Collapse line="242" />
-			<Collapse line="278" />
-			<Collapse line="290" />
-			<Collapse line="302" />
-			<Collapse line="306" />
-			<Collapse line="312" />
-			<Collapse line="317" />
-			<Collapse line="326" />
-			<Collapse line="385" />
-			<Collapse line="496" />
-			<Collapse line="610" />
-			<Collapse line="710" />
-			<Collapse line="717" />
-			<Collapse line="767" />
-			<Collapse line="819" />
-			<Collapse line="832" />
-			<Collapse line="977" />
-			<Collapse line="999" />
-			<Collapse line="1006" />
-			<Collapse line="1066" />
-			<Collapse line="1077" />
-			<Collapse line="1131" />
-			<Collapse line="1185" />
-			<Collapse line="1240" />
-			<Collapse line="1280" />
-			<Collapse line="1293" />
-			<Collapse line="1349" />
-			<Collapse line="1354" />
-			<Collapse line="1406" />
-			<Collapse line="1459" />
-			<Collapse line="1539" />
-			<Collapse line="1592" />
-			<Collapse line="1653" />
-			<Collapse line="1664" />
-			<Collapse line="1718" />
-			<Collapse line="1771" />
-			<Collapse line="1812" />
-			<Collapse line="1820" />
-			<Collapse line="1870" />
-			<Collapse line="1880" />
-			<Collapse line="1938" />
-			<Collapse line="1995" />
-			<Collapse line="2052" />
-			<Collapse line="2109" />
-			<Collapse line="2152" />
-			<Collapse line="2213" />
-			<Collapse line="2283" />
-			<Collapse line="2345" />
-			<Collapse line="2445" />
-			<Collapse line="2537" />
-			<Collapse line="2615" />
-			<Collapse line="2700" />
-			<Collapse line="2732" />
-			<Collapse line="2769" />
-			<Collapse line="2799" />
-			<Collapse line="2834" />
-			<Collapse line="2845" />
-			<Collapse line="2873" />
-			<Collapse line="2901" />
-			<Collapse line="2936" />
-			<Collapse line="2969" />
-			<Collapse line="3014" />
-			<Collapse line="3042" />
-			<Collapse line="3078" />
-			<Collapse line="3109" />
-			<Collapse line="3142" />
-			<Collapse line="3172" />
-			<Collapse line="3202" />
-			<Collapse line="3233" />
-			<Collapse line="3265" />
-			<Collapse line="3311" />
-			<Collapse line="3356" />
-			<Collapse line="3427" />
-			<Collapse line="3502" />
-			<Collapse line="3579" />
-			<Collapse line="3646" />
-			<Collapse line="3722" />
-			<Collapse line="3798" />
-			<Collapse line="3862" />
-			<Collapse line="3937" />
-			<Collapse line="4002" />
-			<Collapse line="4095" />
-			<Collapse line="4165" />
-			<Collapse line="4220" />
-			<Collapse line="4279" />
-			<Collapse line="4338" />
-			<Collapse line="4393" />
-			<Collapse line="4448" />
-			<Collapse line="4503" />
-			<Collapse line="4562" />
-			<Collapse line="4706" />
-		</Folding>
-	</File>
-	<File name="PROVINCIAS.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2444" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="MICROS.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3993" topLine="104" />
+			<Cursor1 position="2996" topLine="99" />
 		</Cursor>
 	</File>
 	<File name="ARCHIVO_USUARIOS.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -251,24 +17,19 @@
 			<Cursor1 position="835" topLine="34" />
 		</Cursor>
 	</File>
-	<File name="PRECIO.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="PRECIO.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2950" topLine="55" />
+			<Cursor1 position="62" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ARCHIVO_MICROS.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ARCHIVO_PASAJEROS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2268" topLine="91" />
+			<Cursor1 position="121" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="FECHAS.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="524" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="PERSONA.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="966" topLine="0" />
+			<Cursor1 position="2916" topLine="71" />
 		</Cursor>
 	</File>
 	<File name="ARCHIVO_HISTORIAL_INGRESOS.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -276,39 +37,14 @@
 			<Cursor1 position="991" topLine="12" />
 		</Cursor>
 	</File>
-	<File name="PASAJEROS.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="PRECIO.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="809" topLine="0" />
+			<Cursor1 position="2950" topLine="55" />
 		</Cursor>
 	</File>
-	<File name="ARCHIVO_VIAJES.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CHOFERES.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2031" topLine="42" />
-		</Cursor>
-	</File>
-	<File name="MICROS.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="679" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_PROVINCIAS.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="182" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="DESTINOS.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="292" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="ARCHIVO_PASAJE.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1681" topLine="26" />
-		</Cursor>
-	</File>
-	<File name="USUARIOS.h" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="514" topLine="0" />
+			<Cursor1 position="468" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="PASAJEROS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -316,9 +52,240 @@
 			<Cursor1 position="324" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="ARCHIVO_MICROS.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3747" topLine="112" />
+		</Cursor>
+	</File>
+	<File name="VIAJES.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9904" topLine="262" />
+		</Cursor>
+	</File>
+	<File name="PROVINCIAS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="29" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_PRECIO.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="400" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="PASAJE.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="123" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CHOFERES.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2203" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="MICROS.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="679" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_PROVINCIAS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="111" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="HISTORIAL_INGRESOS.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1272" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_PROVINCIAS.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="182" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DOMICILIO.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="316" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_PRECIO.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="260" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="PASAJEROS.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="809" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_MICROS.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="99" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="FECHAS.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="324" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_VIAJES.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="93" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="DESTINOS.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2986" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="233" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="PROVINCIAS.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2444" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="ARCHIVO_DESTINOS.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2045" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="MICROS.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5318" topLine="145" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_PASAJEROS.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2034" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="HISTORIAL_INGRESOS.h" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="310" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_USUARIOS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="99" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="USUARIOS.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2579" topLine="43" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_CHOFERES.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1930" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="funciones.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="84886" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="678" />
+			<Collapse line="711" />
+			<Collapse line="762" />
+			<Collapse line="973" />
+			<Collapse line="1024" />
+			<Collapse line="1059" />
+			<Collapse line="1095" />
+			<Collapse line="1149" />
+			<Collapse line="1239" />
+			<Collapse line="1258" />
+			<Collapse line="1276" />
+			<Collapse line="1401" />
+			<Collapse line="1454" />
+			<Collapse line="1534" />
+			<Collapse line="1557" />
+			<Collapse line="1610" />
+			<Collapse line="1661" />
+			<Collapse line="1718" />
+			<Collapse line="1771" />
+			<Collapse line="1810" />
+			<Collapse line="1819" />
+			<Collapse line="1864" />
+			<Collapse line="1875" />
+			<Collapse line="1938" />
+			<Collapse line="1995" />
+			<Collapse line="2051" />
+			<Collapse line="2108" />
+			<Collapse line="2147" />
+			<Collapse line="2203" />
+			<Collapse line="2281" />
+			<Collapse line="2537" />
+			<Collapse line="2557" />
+			<Collapse line="2700" />
+			<Collapse line="2730" />
+			<Collapse line="2752" />
+			<Collapse line="2789" />
+			<Collapse line="2828" />
+			<Collapse line="3065" />
+			<Collapse line="3112" />
+			<Collapse line="3129" />
+			<Collapse line="3189" />
+			<Collapse line="3220" />
+			<Collapse line="3273" />
+			<Collapse line="3324" />
+			<Collapse line="3385" />
+			<Collapse line="3459" />
+			<Collapse line="3535" />
+			<Collapse line="3609" />
+			<Collapse line="3755" />
+			<Collapse line="3893" />
+			<Collapse line="3966" />
+			<Collapse line="4039" />
+			<Collapse line="4124" />
+			<Collapse line="4185" />
+			<Collapse line="4249" />
+			<Collapse line="4357" />
+			<Collapse line="4409" />
+			<Collapse line="4464" />
+			<Collapse line="4528" />
+			<Collapse line="4666" />
+		</Folding>
+	</File>
+	<File name="PERSONA.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="13188" topLine="148" />
+		</Cursor>
+		<Folding>
+			<Collapse line="41" />
+			<Collapse line="178" />
+		</Folding>
+	</File>
+	<File name="ARCHIVO_PASAJE.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1681" topLine="26" />
+		</Cursor>
+	</File>
+	<File name="PASAJE.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2142" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_VIAJES.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2031" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="HORA.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="66" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ARCHIVO_DESTINOS.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="99" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="VIAJES.h" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="889" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="HORA.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -345,38 +312,29 @@
 			<Cursor1 position="162" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="VIAJES.h" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="PERSONA.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="889" topLine="0" />
+			<Cursor1 position="966" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="PROVINCIAS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ARCHIVO_PASAJE.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="29" topLine="0" />
+			<Cursor1 position="99" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ARCHIVO_PASAJEROS.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="DOMICILIO.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2034" topLine="36" />
+			<Cursor1 position="6330" topLine="178" />
 		</Cursor>
 	</File>
-	<File name="PRECIO.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ARCHIVO_HISTORIAL_INGRESOS.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="62" topLine="0" />
+			<Cursor1 position="135" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="ARCHIVO_PRECIO.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="USUARIOS.h" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="260" topLine="0" />
+			<Cursor1 position="514" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="PERSONA.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="13188" topLine="148" />
-		</Cursor>
-		<Folding>
-			<Collapse line="41" />
-			<Collapse line="178" />
-		</Folding>
 	</File>
 </CodeBlocks_layout_file>

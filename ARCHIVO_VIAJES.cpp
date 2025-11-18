@@ -77,7 +77,7 @@ void Archivo_viaje::listar(){
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
-        if(viaje.getRealizado()){
+        if(viaje.getEstado()){
             viaje.mostrar();
             cout<<endl;
         }

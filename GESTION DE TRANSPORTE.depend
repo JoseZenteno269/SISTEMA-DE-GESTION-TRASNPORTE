@@ -1747,64 +1747,64 @@
 	"ARCHIVO_VIAJES.h"
 	"rlutil.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_choferes.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_choferes.cpp
 	<iostream>
 	"ARCHIVO_CHOFERES.h"
 	<cstring>
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_choferes.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_choferes.h
 	"CHOFERES.h"
 
-1763558560 c:\users\zente\onedrive\escritorio\gestion de transporte\choferes.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\choferes.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1763558559 c:\users\zente\onedrive\escritorio\gestion de transporte\persona.h
+1764174732 c:\users\zente\onedrive\escritorio\gestion de transporte\persona.h
 	"FECHAS.h"
 	"Domicilio.h"
 
-1763558560 c:\users\zente\onedrive\escritorio\gestion de transporte\fechas.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\fechas.h
 
-1763504058 c:\users\zente\onedrive\escritorio\gestion de transporte\domicilio.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\domicilio.h
 
-1763493708 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_destinos.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_destinos.cpp
 	<iostream>
 	"ARCHIVO_DESTINOS.h"
 	<cstring>
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_destinos.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_destinos.h
 	"DESTINOS.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\destinos.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\destinos.h
 	"HORA.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\hora.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\hora.h
 	<ctime>
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_historial_ingresos.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_historial_ingresos.cpp
 	<iostream>
 	"ARCHIVO_HISTORIAL_INGRESOS.h"
 	<cstring>
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_historial_ingresos.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_historial_ingresos.h
 	"HISTORIAL_INGRESOS.h"
 
-1763558560 c:\users\zente\onedrive\escritorio\gestion de transporte\historial_ingresos.h
+1764173504 c:\users\zente\onedrive\escritorio\gestion de transporte\historial_ingresos.h
 	"FECHAS.h"
 	"HORA.h"
 
-1763526648 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_micros.cpp
+1764210249 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_micros.cpp
 	<iostream>
 	"ARCHIVO_MICROS.h"
 	<cstring>
 	"rlutil.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_micros.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_micros.h
 	"MICROS.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\micros.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\micros.h
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\rlutil.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
@@ -1818,80 +1818,80 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1763556509 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasaje.cpp
+1764194758 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasaje.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJE.h"
 	"rlutil.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasaje.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasaje.h
 	"PASAJE.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\pasaje.h
+1764172180 c:\users\zente\onedrive\escritorio\gestion de transporte\pasaje.h
 	"FECHAS.h"
 	"HORA.h"
 	"VIAJES.h"
 
-1763558559 c:\users\zente\onedrive\escritorio\gestion de transporte\viajes.h
+1764248878 c:\users\zente\onedrive\escritorio\gestion de transporte\viajes.h
 	"FECHAS.h"
 	"HORA.h"
 	"TIEMPO_ACTUAL.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\tiempo_actual.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\tiempo_actual.h
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasajeros.cpp
+1764193776 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasajeros.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJEROS.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasajeros.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_pasajeros.h
 	"PASAJEROS.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\pasajeros.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\pasajeros.h
 	"PERSONA.h"
 
-1763493196 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_precio.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_precio.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PRECIO.h"
 
-1763493182 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_precio.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_precio.h
 	"PRECIO.h"
 
-1763493170 c:\users\zente\onedrive\escritorio\gestion de transporte\precio.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\precio.h
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_provincias.cpp
+1764170674 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_provincias.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PROVINCIAS.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_provincias.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_provincias.h
 	"PROVINCIAS.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\provincias.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\provincias.h
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_usuarios.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_usuarios.cpp
 	<iostream>
 	"ARCHIVO_USUARIOS.h"
 	<cstring>
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_usuarios.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_usuarios.h
 	"USUARIOS.h"
 
-1763558560 c:\users\zente\onedrive\escritorio\gestion de transporte\usuarios.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\usuarios.h
 	"PERSONA.h"
 	"FECHAS.h"
 
-1763555650 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_viajes.cpp
+1764248878 source:c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_viajes.cpp
 	<iostream>
 	"ARCHIVO_VIAJES.h"
 	<cstring>
 	"rlutil.h"
 
-1763492338 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_viajes.h
+1764122334 c:\users\zente\onedrive\escritorio\gestion de transporte\archivo_viajes.h
 	"VIAJES.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\choferes.cpp
+1764199300 source:c:\users\zente\onedrive\escritorio\gestion de transporte\choferes.cpp
 	<iostream>
 	"CHOFERES.h"
 	"funciones.h"
@@ -1899,7 +1899,7 @@
 	<cstring>
 	"rlutil.h"
 
-1763558559 c:\users\zente\onedrive\escritorio\gestion de transporte\funciones.h
+1764246653 c:\users\zente\onedrive\escritorio\gestion de transporte\funciones.h
 	"MICROS.h"
 	"ARCHIVO_MICROS.h"
 	"CHOFERES.h"
@@ -1924,46 +1924,50 @@
 	"PRECIO.h"
 	"ARCHIVO_PRECIO.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\destinos.cpp
+1764170650 source:c:\users\zente\onedrive\escritorio\gestion de transporte\destinos.cpp
 	<iostream>
 	"DESTINOS.h"
 	"funciones.h"
 	<cstring>
 	"rlutil.h"
 
-1763515906 source:c:\users\zente\onedrive\escritorio\gestion de transporte\domicilio.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\domicilio.cpp
 	<iostream>
 	"DOMICILIO.h"
 	"funciones.h"
 	<cstring>
 	"rlutil.h"
 
-1763501440 source:c:\users\zente\onedrive\escritorio\gestion de transporte\fechas.cpp
+1764173596 source:c:\users\zente\onedrive\escritorio\gestion de transporte\fechas.cpp
 	<iostream>
 	"FECHAS.h"
 	"rlutil.h"
 	"funciones.h"
 
-1763558159 source:c:\users\zente\onedrive\escritorio\gestion de transporte\funciones.cpp
+1764250134 source:c:\users\zente\onedrive\escritorio\gestion de transporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
 	"funciones.h"
 	"rlutil.h"
+	"limits"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\historial_ingresos.cpp
+1764173462 source:c:\users\zente\onedrive\escritorio\gestion de transporte\historial_ingresos.cpp
 	<iostream>
 	<cstring>
 	"HISTORIAL_INGRESOS.h"
+	"USUARIOS.h"
+	"ARCHIVO_USUARIOS.h"
 	"rlutil.h"
+	<iomanip>
 
-1763555828 source:c:\users\zente\onedrive\escritorio\gestion de transporte\hora.cpp
+1764172182 source:c:\users\zente\onedrive\escritorio\gestion de transporte\hora.cpp
 	<iostream>
 	"HORA.h"
 	"funciones.h"
 	"rlutil.h"
 
-1763553639 source:c:\users\zente\onedrive\escritorio\gestion de transporte\main.cpp
+1764247847 source:c:\users\zente\onedrive\escritorio\gestion de transporte\main.cpp
 	<iostream>
 	<conio.h>
 	"rlutil.h"
@@ -1972,49 +1976,57 @@
 	<ctime>
 	<iomanip>
 
-1763550931 source:c:\users\zente\onedrive\escritorio\gestion de transporte\micros.cpp
+1764210403 source:c:\users\zente\onedrive\escritorio\gestion de transporte\micros.cpp
 	<iostream>
 	"MICROS.h"
 	<cstring>
 	"funciones.h"
 	"rlutil.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\pasaje.cpp
+1764180774 source:c:\users\zente\onedrive\escritorio\gestion de transporte\pasaje.cpp
 	<iostream>
 	<cstring>
 	"PASAJE.h"
 	"rlutil.h"
+	"VIAJES.h"
+	"ARCHIVO_VIAJES.h"
+	"DESTINOS.h"
+	"ARCHIVO_DESTINOS.h"
+	"PASAJEROS.h"
+	"ARCHIVO_PASAJEROS.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\pasajeros.cpp
+1764193892 source:c:\users\zente\onedrive\escritorio\gestion de transporte\pasajeros.cpp
 	<iostream>
 	"PASAJEROS.h"
 	"rlutil.h"
+	"funciones.h"
 
-1763552126 source:c:\users\zente\onedrive\escritorio\gestion de transporte\persona.cpp
+1764202250 source:c:\users\zente\onedrive\escritorio\gestion de transporte\persona.cpp
 	<iostream>
 	"PERSONA.h"
 	"funciones.h"
 	<cstring>
 	"rlutil.h"
 
-1763493170 source:c:\users\zente\onedrive\escritorio\gestion de transporte\precio.cpp
+1764248615 source:c:\users\zente\onedrive\escritorio\gestion de transporte\precio.cpp
 	<iostream>
 	"PRECIO.h"
 	"funciones.h"
 	"rlutil.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\provincias.cpp
+1764208834 source:c:\users\zente\onedrive\escritorio\gestion de transporte\provincias.cpp
 	<iostream>
 	"PROVINCIAS.h"
 	<cstring>
 	"funciones.h"
 	"ARCHIVO_PROVINCIAS.h"
+	"rlutil.h"
 
-1763492338 source:c:\users\zente\onedrive\escritorio\gestion de transporte\tiempo_actual.cpp
+1764122334 source:c:\users\zente\onedrive\escritorio\gestion de transporte\tiempo_actual.cpp
 	"TIEMPO_ACTUAL.h"
 	<ctime>
 
-1763515806 source:c:\users\zente\onedrive\escritorio\gestion de transporte\usuarios.cpp
+1764202988 source:c:\users\zente\onedrive\escritorio\gestion de transporte\usuarios.cpp
 	<iostream>
 	"USUARIOS.h"
 	<cstring>
@@ -2022,7 +2034,7 @@
 	"TIEMPO_ACTUAL.h"
 	"rlutil.h"
 
-1763556126 source:c:\users\zente\onedrive\escritorio\gestion de transporte\viajes.cpp
+1764249040 source:c:\users\zente\onedrive\escritorio\gestion de transporte\viajes.cpp
 	<iostream>
 	"funciones.h"
 	"VIAJES.h"

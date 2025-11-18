@@ -84,6 +84,7 @@ void Archivo_micro::listar(){
     }
 }
 void Archivo_micro::listartabla(){
+    system("mode con: cols=120 lines=100");
     system("cls");
     Micro micro;
     int contreg = contarRegistros();
@@ -137,4 +138,5 @@ void Archivo_micro::listartabla(){
     setColor(WHITE);
 
     anykey();
+    system("mode con: cols=120 lines=30");
 }

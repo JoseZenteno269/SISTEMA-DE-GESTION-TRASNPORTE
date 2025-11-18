@@ -14,7 +14,7 @@ private:
     Fecha fecha_Fin_Viaje;
     Hora hora_Inicio_Viaje;
     Hora hora_Fin_Viaje;
-    bool realizado;
+    bool estado;
 public:
     void setIdViaje(int);
     void setIdMicro(int);
@@ -24,7 +24,7 @@ public:
     void setFecha_Fin_Viaje(Fecha);
     void setHora_Inicio_Viaje(Hora);
     void setHora_Fin_Viaje(Hora);
-    void setRealizado(bool);
+    void setEstado(bool);
 
     int getIdViaje();
     int getIdMicro();
@@ -34,7 +34,7 @@ public:
     Fecha getFecha_Fin_Viaje();
     Hora getHora_Inicio_Viaje();
     Hora getHora_Fin_Viaje();
-    bool getRealizado();
+    bool getEstado();
 
     void cargar(int);
     void mostrar();

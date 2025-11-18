@@ -1,34 +1,33 @@
-#include<iostream>
-#include<conio.h>
-#include"rlutil.h"
-#include<windows.h>
-#include"funciones.h"
-#include<ctime>
-#include<iomanip>
+#include "funciones.h"
+#include "rlutil.h"
+#include <conio.h>
+#include <ctime>
+#include <iomanip>
+#include <iostream>
+#include <windows.h>
 
 using namespace std;
 using namespace rlutil;
 
-int main(){
-    system("mode con: cols=120 lines=100");
-    cout<<fixed<<setprecision(2);
-    srand(time(NULL));
-    setlocale(LC_ALL, "spanish");
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
-    //HWND console = GetConsoleWindow();
-    //ShowWindow(console, SW_MAXIMIZE);
-    //setBackgroundColor(BLUE);
+int main() {
+  system("mode con: cols=120 lines=30");
+  cout << fixed << setprecision(2);
+  srand(time(NULL));
+  setlocale(LC_ALL, "spanish");
+  SetConsoleCP(CP_UTF8);
+  SetConsoleOutputCP(CP_UTF8);
+  // HWND console = GetConsoleWindow();
+  // ShowWindow(console, SW_MAXIMIZE);
+  // setBackgroundColor(BLUE);
 
-    hidecursor();
-    //MENU();
-    inicio_de_sesion();
-    showcursor();
+  hidecursor();
+  // MENU();
+  inicio_de_sesion();
+  showcursor();
 
-    cout<<endl<<endl;
+  cout << endl << endl;
 
-    system("pause");
+  system("pause");
 
-    return 0;
+  return 0;
 }
-

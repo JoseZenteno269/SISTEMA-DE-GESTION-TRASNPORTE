@@ -24,9 +24,15 @@ void Precio::cargar(){
         setColor(WHITE);
         locate(40,11); cin>>Precio;
 
-        if(validar_numero()){
+        if(validar_numero() and Precio>0){
             LimpiarLineas(10,12,40);
             break;
+        }else {
+            setColor(RED);
+            locate(40,12); cout << "Valor invalido. Intente nuevamente.";
+            setColor(WHITE);
+            anykey();
+            LimpiarLineas(10,12,40);
         }
     }
 
@@ -36,16 +42,17 @@ void Precio::cargar(){
         setColor(WHITE);
         locate(40,11); cin>>Preciobutaca_cama;
 
-        if(validar_numero()){
+        if(validar_numero() and Preciobutaca_cama>0){
             LimpiarLineas(10,12,40);
             break;
+        }else {
+            setColor(RED);
+            locate(40,12); cout << "Valor invalido. Intente nuevamente.";
+            setColor(WHITE);
+            anykey();
+            LimpiarLineas(10,12,40);
         }
 
-        setColor(RED);
-        locate(40,12); cout << "Valor invalido. Intente nuevamente.";
-        setColor(WHITE);
-        anykey();
-        LimpiarLineas(10,12,40);
     }
 
     while(true){
@@ -54,16 +61,16 @@ void Precio::cargar(){
         setColor(WHITE);
         locate(40,11); cin>>Preciobutaca_semicama;
 
-        if(validar_numero()){
+        if(validar_numero() and Preciobutaca_semicama>0){
             LimpiarLineas(10,12,40);
             break;
+        }else {
+            setColor(RED);
+            locate(40,12); cout << "Valor invalido. Intente nuevamente.";
+            setColor(WHITE);
+            anykey();
+            LimpiarLineas(10,12,40);
         }
-
-        setColor(RED);
-        locate(40,12); cout<<"Valor invalido. Intente nuevamente.";
-        setColor(WHITE);
-        anykey();
-        LimpiarLineas(10,12,40);
     }
 
     while(true){
@@ -72,16 +79,16 @@ void Precio::cargar(){
         setColor(WHITE);
         locate(40,11); cin>>Preciobutaca_comun;
 
-        if(validar_numero()){
+        if(validar_numero() and Preciobutaca_comun>0){
             LimpiarLineas(10,12,40);
             break;
+        }else {
+            setColor(RED);
+            locate(40,12); cout << "Valor invalido. Intente nuevamente.";
+            setColor(WHITE);
+            anykey();
+            LimpiarLineas(10,12,40);
         }
-
-        setColor(RED);
-        locate(40,12); cout<<"Valor invalido. Intente nuevamente.";
-        setColor(WHITE);
-        anykey();
-        LimpiarLineas(10,12,40);
     }
 }
 void Precio::mostrar(){

@@ -163,11 +163,22 @@ void Persona::cargar(){
         LimpiarLineas(9,14,40);
     }
 
-    setColor(CYAN);
-    locate(40,9); cout << "Fecha de nacimiento: ";
-    setColor(WHITE);
-    locate(40,10); fecha_Nacimiento.cargar();
-    LimpiarLineas(9,14,40);
+    while(true){
+        setColor(CYAN);
+        locate(40,9); cout << "Fecha de nacimiento: ";
+        setColor(WHITE);
+        locate(40,10); fecha_Nacimiento.cargar();
+        int edad=calcularEdad();
+        if(edad<18){
+            LimpiarLineas(7, 17, 40);
+            locate(40, 11);
+            cout<<"no es mayor de edad"<<endl;
+            anykey();
+            LimpiarLineas(11, 15, 40);
+            continue;
+        }else break;
+    }
+    LimpiarLineas(7,14,40);
 
     setColor(CYAN);
     locate(40,9); cout << "Ingrese domicilio: ";

@@ -24,7 +24,7 @@ void Viaje::setFecha_Inicio_Viaje(Fecha fiv){fecha_Inicio_Viaje=fiv; }
 void Viaje::setFecha_Fin_Viaje(Fecha ffv){fecha_Fin_Viaje=ffv; }
 void Viaje::setHora_Inicio_Viaje(Hora hiv){hora_Inicio_Viaje=hiv; }
 void Viaje::setHora_Fin_Viaje(Hora hfv){hora_Fin_Viaje=hfv; }
-void Viaje::setRealizado(bool r){realizado=r; }
+void Viaje::setEstado(bool r){estado=r; }
 
 int Viaje::getIdViaje(){return idViaje; }
 int Viaje::getIdMicro(){return idMicro; }
@@ -34,7 +34,7 @@ Fecha Viaje::getFecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
 Fecha Viaje::getFecha_Fin_Viaje(){return fecha_Fin_Viaje; }
 Hora Viaje::getHora_Inicio_Viaje(){return hora_Inicio_Viaje; }
 Hora Viaje::getHora_Fin_Viaje(){return hora_Fin_Viaje; }
-bool Viaje::getRealizado(){return realizado; }
+bool Viaje::getEstado(){return estado; }
 
 void Viaje::cargar(int idv){
     Archivo_micro archivomicro;
@@ -74,9 +74,17 @@ void Viaje::cargar(int idv){
             anykey();
             continue;
         }
-
         micro=archivomicro.leerRegistros(pos);
-        break;
+        if(micro.getDisponible()){
+            break;
+        } else {
+            locate(40, 8);
+            setColor(RED);
+            cout<<"El micro esta dado de baja, no se puede asignar"<<endl;
+            anykey();
+            LimpiarLineas(8, 12, 40);
+            setColor(WHITE);
+        }
     }
 
     Destino destino;
@@ -102,7 +110,16 @@ void Viaje::cargar(int idv){
         }
 
         destino = archivodestino.leerRegistros(pos);
-        break;
+        if(destino.getHabilitado()){
+            break;
+        } else {
+            locate(40, 8);
+            setColor(RED);
+            cout<<"El destino esta dado de baja, no se puede asignar"<<endl;
+            anykey();
+            LimpiarLineas(8, 12, 40);
+            setColor(WHITE);
+        }
 
     }
 
@@ -126,8 +143,18 @@ void Viaje::cargar(int idv){
             anykey();
             continue;
         }
+
         chofer = archivochofer.leerRegistros(pos);
-        break;
+        if(chofer.getEstado()){
+            break;
+        } else {
+            locate(40, 8);
+            setColor(RED);
+            cout<<"El chofer esta dado de baja, no se puede asignar"<<endl;
+            anykey();
+            LimpiarLineas(8, 12, 40);
+            setColor(WHITE);
+        }
     }
 
     while(true){
@@ -148,7 +175,7 @@ void Viaje::cargar(int idv){
 
     fecha_y_hora_fin(destino, archivodestino, fecha_Fin_Viaje, hora_Fin_Viaje, fecha_Inicio_Viaje, hora_Inicio_Viaje,idDestino);
 
-    realizado = true;
+    estado = true;
     setColor(WHITE);
     cls();
 
@@ -218,6 +245,7 @@ void Viaje::mostrar(){
 
 void Viaje::listartabla() {
     cls();
+    system("mode con: cols=120 lines=100");
     Archivo_viaje Arch_Via;
     Archivo_micro Arch_Mic;
     Archivo_destino Arch_Dest;
@@ -259,7 +287,7 @@ void Viaje::listartabla() {
 
     for (int i = 0; i < contViajes; i++) {
         viaje = Arch_Via.leerRegistros(i);
-        if(viaje.getRealizado()){
+        if(viaje.getEstado()){
 
             int posDest = Arch_Dest.buscarRegistros(viaje.getIdDestino());
             if (posDest<0)continue;
@@ -287,5 +315,6 @@ void Viaje::listartabla() {
     setColor(WHITE);
 
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }

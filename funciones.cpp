@@ -4,6 +4,7 @@
 #include "funciones.h"
 #include "rlutil.h"
 #include "limits"
+
 using namespace std;
 using namespace rlutil;
 
@@ -119,7 +120,7 @@ bool estaOcupadoEnViaje(int idMicro, int idChofer, Fecha fechaNuevo, Hora horaNu
     for (int i = 0; i < cantidadViajes; i++) {
         viajeExistente = archivoViajes.leerRegistros(i);
 
-        if (viajeExistente.getRealizado() == false) continue;
+        if (viajeExistente.getEstado() == false) continue;
 
         if (viajeExistente.getIdMicro() != idMicro && viajeExistente.getIdChofer() != idChofer) {
             continue;
@@ -356,7 +357,7 @@ void calendario(int mes, int anio){
         bool tieneViaje=false;
         for(int i=0; i<contreg; i++){
             Viaje viaje=archivo.leerRegistros(i);
-            if(viaje.getFecha_Inicio_Viaje().getDia() == dia and viaje.getFecha_Inicio_Viaje().getMes() == mes and viaje.getFecha_Inicio_Viaje().getAnio() == anio){
+            if(viaje.getFecha_Inicio_Viaje().getDia() == dia and viaje.getFecha_Inicio_Viaje().getMes() == mes and viaje.getFecha_Inicio_Viaje().getAnio() == anio and viaje.getEstado()){
                 tieneViaje=true;
                 break;
             }
@@ -450,7 +451,7 @@ int viajes_disponibles(){
         for(int i=0; i<contreg; i++) {
             viaje = archivo.leerRegistros(i);
             if(dia==viaje.getFecha_Inicio_Viaje().getDia() and mes==viaje.getFecha_Inicio_Viaje().getMes() and anio==viaje.getFecha_Inicio_Viaje().getAnio()
-               and esFechaPosterior(fechas, fechas1)){
+               and esFechaPosterior(fechas, fechas1) and viaje.getEstado()){
                 LimpiarLineas(3,25,40);
                 viaje.mostrar();
                 bandera=true;
@@ -652,12 +653,29 @@ void venta_de_pasaje(){
     locate(40, 5); cout<<"Ingrese cantidad de personas: ";
     setColor(WHITE);
     int cantPasajes;
+
+    int pos=archivoMicros.buscarRegsitro(viaje.getIdMicro());
+    micro=archivoMicros.leerRegistros(pos);
+
+    int cont=archivoPasaje.contarRegistros();
+    int* ocupadas=new int[cont];
+    int numOcupadas=0;
+    for(int i=0; i<cont; i++){
+        Pasaje=archivoPasaje.leerRegistros(i);
+        if(Pasaje.getIdviaje()==idViaje){
+            ocupadas[numOcupadas++]=Pasaje.getButaca();
+        }
+    }
+
+    int capacidad=micro.getCapacidad()-numOcupadas;
+
     while(true){
         locate(40, 6); cin>>cantPasajes;
-        if(validar_numero())break;
+        if(validar_numero() and cantPasajes>0 and cantPasajes<=capacidad)break;
         LimpiarLineas(6, 9, 40);
     }
 
+    delete [] ocupadas;
     for(int i=0; i<cantPasajes; i++){
         setColor(YELLOW);
         locate(40,5); cout<<"=== Pasajero "<<i+1<<" ===";
@@ -800,7 +818,7 @@ void eliminar_viaje(){
 
     Viaje viajes=archivo.leerRegistros(pos);
 
-    if(!viajes.getRealizado()){
+    if(!viajes.getEstado()){
         setColor(YELLOW);
         locate(40, 12); cout<<"EL USUARIO YA FUE DADO DE BAJA";
         anykey();
@@ -808,7 +826,7 @@ void eliminar_viaje(){
         return;
     }
 
-    viajes.setRealizado(false);
+    viajes.setEstado(false);
     archivo.modificarRegistro(viajes, pos);
 
     setColor(GREEN);
@@ -2344,6 +2362,7 @@ void por_provincia(){
     cls();
 }
 void cantPasajes_destino_fecha(){
+    system("mode con: cols=120 lines=100");
     cls();
     setColor(GREEN);
     locate(40,4); cout<<"REPORTE: PASAJES VENDIDOS POR DESTINO";
@@ -2426,8 +2445,6 @@ void cantPasajes_destino_fecha(){
             }
         }
     }
-
-    system("mode con: cols=120 lines=70");
     cls();
     locate(40,4); cout << "RESULTADOS DEL REPORTE";
     int y = 8;
@@ -2441,9 +2458,11 @@ void cantPasajes_destino_fecha(){
 
     locate(35, y+2);
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 void kilometros_micro(){
+    system("mode con: cols=120 lines=100");
     cls();
     Micro micro;
     Viaje viaje;
@@ -2533,6 +2552,7 @@ void kilometros_micro(){
     setColor(WHITE);
     delete[] micros;
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 void recaudacion_por_genero_anio(){
@@ -2613,7 +2633,7 @@ void recaudacion_por_genero_anio(){
     anykey();
     cls();
 }
-void viajes_chofer_mes(){
+void viajes_chofer_anio(){
     cls();
     Archivo_viaje archivoviaje;
     Archivo_chofer archivochoferes;
@@ -2844,6 +2864,7 @@ void Pasajeros(){
 
 //UNIDADES
 void Micros_ordenados_Fabricante(){
+    system("mode con: cols=120 lines=70");
     cls();
     Archivo_micro arch;
     int n = arch.contarRegistros();
@@ -2869,9 +2890,11 @@ void Micros_ordenados_Fabricante(){
     delete[] v;
     setColor(WHITE);
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 void Micros_ordenados_Carroceria(){
+    system("mode con: cols=120 lines=70");
     cls();
     Archivo_micro arch;
     int n = arch.contarRegistros();
@@ -2897,9 +2920,11 @@ void Micros_ordenados_Carroceria(){
     delete[] v;
     setColor(WHITE);
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 void Micros_ordenados_Asientos(){
+    system("mode con: cols=120 lines=70");
     cls();
     Archivo_micro arch;
     int n = arch.contarRegistros();
@@ -2930,6 +2955,7 @@ void Micros_ordenados_Asientos(){
     delete[] v;
     setColor(WHITE);
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 
@@ -2967,52 +2993,10 @@ void Ventas_ordenados_Precio(){
     anykey();
     cls();
 }
-void Ventas_ordenados_destinos(){
-    cls();
-    Archivo_pasaje archPasaje;
-    Archivo_viaje archViaje;
-    Archivo_destino archDestino;
-
-    int n = archPasaje.contarRegistros();
-    if(n <= 0){ anykey(); return; }
-
-    Pasaje *v = new Pasaje[n];
-    for(int i=0; i<n; i++) v[i] = archPasaje.leerRegistros(i);
-
-    for(int i=0; i<n-1; i++){
-        for(int j=0; j<n-1-i; j++){
-            int idDest_j = archViaje.leerRegistros(v[j].getIdviaje()).getIdDestino();
-            int idDest_j1 = archViaje.leerRegistros(v[j+1].getIdviaje()).getIdDestino();
-
-            char nombre_j[40], nombre_j1[40];
-            strcpy(nombre_j, archDestino.leerRegistros(idDest_j).getNombre_destino());
-            strcpy(nombre_j1, archDestino.leerRegistros(idDest_j1).getNombre_destino());
-
-            if(strcasecmp(nombre_j, nombre_j1) > 0){
-                swap(v[j], v[j+1]);
-            }
-        }
-    }
-
-    setColor(GREEN); locate(40,1); cout<<"-------------------------------\n";
-    setColor(WHITE); locate(40,2); cout<<"VENTAS ORDENADAS POR DESTINO\n";
-    setColor(GREEN); locate(40,3); cout<<"-------------------------------\n";
-
-    for(int i=0; i<n; i++){
-        int idDest = archViaje.leerRegistros(v[i].getIdviaje()).getIdDestino();
-        Destino dest = archDestino.leerRegistros(idDest);
-        setColor(WHITE); locate(40,5+i); cout<<"Destino: ";
-        setColor(CYAN); cout<<dest.getNombre_destino();
-    }
-
-    delete[] v;
-    setColor(WHITE);
-    anykey();
-    cls();
-}
 
 //DESTINOS
 void Destinos_ordenados_Provincia(){
+    system("mode con: cols=120 lines=70");
     cls();
     Archivo_destino arch;
     int n = arch.contarRegistros();
@@ -3038,9 +3022,11 @@ void Destinos_ordenados_Provincia(){
     delete[] v;
     setColor(WHITE);
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 void Destinos_ordenados_Kilometros(){
+    system("mode con: cols=120 lines=70");
     cls();
     Archivo_destino arch;
     int n = arch.contarRegistros();
@@ -3071,6 +3057,7 @@ void Destinos_ordenados_Kilometros(){
     delete[] v;
     setColor(WHITE);
     anykey();
+    system("mode con: cols=120 lines=30");
     cls();
 }
 
@@ -3220,7 +3207,7 @@ void buscar_x_cant_lugares(){
         m = archivo.leerRegistros(i);
         if(m.getCapacidad() == cant){
             locate(40,fila); m.mostrar(40, fila);
-            fila+=3;
+            LimpiarLineas(12, 20, 40);
             encontrado=true;
         }
     }
@@ -3730,7 +3717,7 @@ void SUBMENU_6(){
         " PASAJES VENDIDOS POR DESTINO ENTRE FECHAS",
         " KILOMETROS RECORRIDOS POR MICRO EN UN AÑO",
         " RECAUDACION POR GENERO EN UN AÑO",
-        " VIAJES POR CHOFER EN UN MES",
+        " VIAJES POR CHOFER EN UN AÑO",
         " MENU PRINCIPAL"
     };
     bool salir=false;
@@ -3786,7 +3773,7 @@ void SUBMENU_6(){
                 recaudacion_por_genero_anio();
                 break;
             case 6:
-                viajes_chofer_mes();
+                viajes_chofer_anio();
                 break;
             case 7:
                 salir=true;
@@ -4338,10 +4325,9 @@ void LISTADO_MICROS(){
 }
 void LISTADO_VENTAS(){
     int seleccion=0;
-    const int opciones_submenu=3;
+    const int opciones_submenu=2;
     string submenu[opciones_submenu]={
         " POR PRECIO",
-        " POR DESTINO",
         " MENU PRINCIPAL"
     };
     bool salir=false;
@@ -4349,8 +4335,8 @@ void LISTADO_VENTAS(){
     while(!salir){
         cls();
         setColor(WHITE);
-        for(int i=0; i<4; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<4; i++){locate(75,11+i); cout << "|";}
+        for(int i=0; i<3; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<3; i++){locate(75,11+i); cout << "|";}
         locate(44,10);
         cout<<"-------------VENTAS------------"<<endl;
         locate(44,11);
@@ -4365,7 +4351,7 @@ void LISTADO_VENTAS(){
             }else cout<<"  "<<submenu[i]<<endl;
         }
         setColor(WHITE);
-        locate(44,15);
+        locate(44,14);
         cout<<"-------------------------------"<<endl;
         setColor(WHITE);
         int tecla=getkey();
@@ -4382,9 +4368,6 @@ void LISTADO_VENTAS(){
                 Ventas_ordenados_Precio();
                 break;
             case 1:
-                Ventas_ordenados_destinos();
-                break;
-            case 2:
                 salir=true;
                 break;
             }
@@ -4725,3 +4708,6 @@ void mostrarCartelUTN(){
     locate(40, 17); cout << "======= INICIO DE SESION =======";
     setColor(WHITE);
 }
+
+
+
