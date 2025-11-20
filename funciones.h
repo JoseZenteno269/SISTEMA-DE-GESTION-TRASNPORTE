@@ -26,10 +26,10 @@
 
 bool existePatente(const char *patente, int idMicroAExcluir);
 void LimpiarLineas(int,int,int);
-float plusxbutaca(Viajes viaje);
+float plusxbutaca(Viaje viaje);
 bool esNumero(const std::string&);
 bool validar_numero();
-void fecha_y_hora_fin(Destinos , Archivo_destinos , Fecha &, Hora &, Fecha , Hora , int);
+void fecha_y_hora_fin(Destino , Archivo_destino , Fecha &, Hora &, Fecha , Hora , int);
 bool chequearSalidaESC(std::string);
 bool esFechaPosterior(Fecha, Fecha);
 void cargarCadena(char *, int );
@@ -43,7 +43,7 @@ std::string nombreMes(int);
 int diaSemanaPrimeroMes(int, int);
 void calendario(int, int);
 int viajes_disponibles();
-int selecion_de_butacas(int , Micros , int );
+int selecion_de_butacas(int , Micro , int );
 
 ///Funciones viajes-pasajes
 void venta_de_pasaje();

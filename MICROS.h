@@ -1,7 +1,7 @@
 #ifndef MICROS_H_INCLUDED
 #define MICROS_H_INCLUDED
 
-class Micros{
+class Micro{
 private:
     int idMicro;
     char marca[30];

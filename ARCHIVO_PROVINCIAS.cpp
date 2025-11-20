@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Archivo_provincias::Archivo_provincias (const char *a){
+Archivo_provincia::Archivo_provincia (const char *a){
     strcpy(archivo, a);
     FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p == nullptr){               // si no existe, lo creo vacío
@@ -13,7 +13,7 @@ Archivo_provincias::Archivo_provincias (const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_provincias::contarRegistros(){
+int Archivo_provincia::contarRegistros(){
     FILE *p=fopen(archivo,"rb");
     if(p==nullptr){
         cout<<"no existe el archivo"<<endl;
@@ -25,7 +25,7 @@ int Archivo_provincias::contarRegistros(){
     return bytes/sizeof(Provincia);
 }
 
-int Archivo_provincias::buscarRegistros(int cp){
+int Archivo_provincia::buscarRegistros(int cp){
     Provincia provincia;
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
@@ -36,7 +36,7 @@ int Archivo_provincias::buscarRegistros(int cp){
     }
 }
 
-Provincia Archivo_provincias::leerRegistros(int pos){
+Provincia Archivo_provincia::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Provincia provincia;
     if(p==nullptr){
@@ -50,7 +50,7 @@ Provincia Archivo_provincias::leerRegistros(int pos){
     return provincia;
 }
 
-bool Archivo_provincias::grabarRegistro(Provincia provincia){
+bool Archivo_provincia::grabarRegistro(Provincia provincia){
     FILE *p=fopen(archivo,"ab");
     if(p==nullptr){
         return false;
@@ -60,7 +60,7 @@ bool Archivo_provincias::grabarRegistro(Provincia provincia){
     return escribo;
 }
 
-bool Archivo_provincias::modificarRegistro(Provincia provincia ,int pos){
+bool Archivo_provincia::modificarRegistro(Provincia provincia ,int pos){
     FILE *p=fopen(archivo,"rb+");
     if(p==nullptr){
         return false;
@@ -71,7 +71,7 @@ bool Archivo_provincias::modificarRegistro(Provincia provincia ,int pos){
     return escribo;
 }
 
-void Archivo_provincias::listar(){
+void Archivo_provincia::listar(){
     Provincia provincia;
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Archivo_destinos::Archivo_destinos (const char *a){
+Archivo_destino::Archivo_destino (const char *a){
     strcpy(archivo, a);
     FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p == nullptr){               // si no existe, lo creo vacío
@@ -13,7 +13,7 @@ Archivo_destinos::Archivo_destinos (const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_destinos::contarRegistros(){
+int Archivo_destino::contarRegistros(){
     FILE *p=fopen(archivo,"rb");
     if(p==nullptr){
         cout<<"no existe el archivo"<<endl;
@@ -22,11 +22,11 @@ int Archivo_destinos::contarRegistros(){
     fseek(p,0,2);
     int bytes=ftell(p);
     fclose(p);
-    return bytes/sizeof(Destinos);
+    return bytes/sizeof(Destino);
 }
 
-int Archivo_destinos::buscarRegistros(int idd){
-    Destinos destino;
+int Archivo_destino::buscarRegistros(int idd){
+    Destino destino;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         destino=leerRegistros(i);
@@ -37,9 +37,9 @@ int Archivo_destinos::buscarRegistros(int idd){
     return -2;
 }
 
-Destinos Archivo_destinos::leerRegistros(int pos){
+Destino Archivo_destino::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
-    Destinos destino;
+    Destino destino;
     if(p==nullptr){
         destino.setidDestino(-3);
         return destino;
@@ -51,7 +51,7 @@ Destinos Archivo_destinos::leerRegistros(int pos){
     return destino;
 }
 
-bool Archivo_destinos::grabarRegistro(Destinos destino){
+bool Archivo_destino::grabarRegistro(Destino destino){
     FILE *p=fopen(archivo,"ab");
     if(p==nullptr){
         return false;
@@ -61,7 +61,7 @@ bool Archivo_destinos::grabarRegistro(Destinos destino){
     return escribo;
 }
 
-bool Archivo_destinos::modificarRegistro(Destinos destino ,int pos){
+bool Archivo_destino::modificarRegistro(Destino destino ,int pos){
     FILE *p=fopen(archivo,"rb+");
     if(p==nullptr){
         return false;
@@ -72,8 +72,8 @@ bool Archivo_destinos::modificarRegistro(Destinos destino ,int pos){
     return escribo;
 }
 
-void Archivo_destinos::listar(){
-    Destinos destino;
+void Archivo_destino::listar(){
+    Destino destino;
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         destino=leerRegistros(i);

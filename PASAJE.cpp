@@ -5,25 +5,24 @@
 using namespace rlutil;
 using namespace std;
 
-void Pasajes::setpasaje(int pasj){pasaje=pasj;}
-void Pasajes::setidviaje(int idv){idviaje=idv; }
-void Pasajes::setbutaca(int but){butaca=but; }
-void Pasajes::setprecioxkm(int pxkm){precioxkm=pxkm; }
-void Pasajes::settipo_butaca(const char* tb){strcpy(tipo_butaca, tb); }
-void Pasajes::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
-void Pasajes::setprovincia_destino(const char * pd){strcpy(provincia_destino, pd); }
-void Pasajes::setdatos(Viajes d){ datos=d; }
+void Pasaje::setpasaje(int pasj){pasaje=pasj;}
+void Pasaje::setidviaje(int idv){idviaje=idv; }
+void Pasaje::setbutaca(int but){butaca=but; }
+void Pasaje::setprecioxkm(int pxkm){precioxkm=pxkm; }
+void Pasaje::settipo_butaca(const char* tb){strcpy(tipo_butaca, tb); }
+void Pasaje::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
+void Pasaje::setprovincia_destino(const char * pd){strcpy(provincia_destino, pd); }
 
-int Pasajes::getpasaje(){return pasaje; }
-int Pasajes::getidviaje(){return idviaje; }
-int Pasajes::getbutaca(){return butaca; }
-int Pasajes::getprecioxkm(){return precioxkm; }
-const char *Pasajes::gettipo_butaca(){return tipo_butaca; }
-const char *Pasajes::getnombre_destino(){return nombre_destino; }
-const char *Pasajes::getprovincia_destino(){return provincia_destino; }
+int Pasaje::getpasaje(){return pasaje; }
+int Pasaje::getidviaje(){return idviaje; }
+int Pasaje::getbutaca(){return butaca; }
+int Pasaje::getprecioxkm(){return precioxkm; }
+const char *Pasaje::gettipo_butaca(){return tipo_butaca; }
+const char *Pasaje::getnombre_destino(){return nombre_destino; }
+const char *Pasaje::getprovincia_destino(){return provincia_destino; }
 
 
-void Pasajes::mostrar(){
+void Pasaje::mostrar(){
     setColor(YELLOW);
     locate(40, 3);  cout << "------------------------------------------";
     locate(40, 4);  cout << "            INFORMACION DEL PASAJE        ";

@@ -2,16 +2,16 @@
 #define ARCHIVO_DESTINOS_H_INCLUDED
 #include "DESTINOS.h"
 
-class Archivo_destinos{
+class Archivo_destino{
 private:
     char archivo[30];
 public:
-    Archivo_destinos(const char *a="Destinos.dat");
+    Archivo_destino(const char *a="Destinos.dat");
     int contarRegistros();
     int buscarRegistros(int);
-    Destinos leerRegistros(int);
-    bool grabarRegistro(Destinos);
-    bool modificarRegistro(Destinos,int);
+    Destino leerRegistros(int);
+    bool grabarRegistro(Destino);
+    bool modificarRegistro(Destino,int);
     void listar();
 };
 

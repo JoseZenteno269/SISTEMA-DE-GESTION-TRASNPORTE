@@ -6,28 +6,28 @@
 using namespace rlutil;
 using namespace std;
 
-void Personas::setnombre(const char *n){strcpy(nombre, n); }
-void Personas::setapellido(const char *a){strcpy(apellido, a); }
-void Personas::setdni(long long d){dni=d; }
-void Personas::settelefono(long long t){telefono=t; }
-void Personas::setemail(const char *e){strcpy(email,e);}
-void Personas::setgenero(int g){genero=g;}
-void Personas::setnacionalidad(const char *nac){strcpy(nacionalidad, nac); }
-void Personas::setfecha_Nacimiento(Fecha f){fecha_Nacimiento = f;}
-void Personas::setdomicilio(Domicilio d){domicilio=d;}
+void Persona::setnombre(const char *n){strcpy(nombre, n); }
+void Persona::setapellido(const char *a){strcpy(apellido, a); }
+void Persona::setdni(long long d){dni=d; }
+void Persona::settelefono(long long t){telefono=t; }
+void Persona::setemail(const char *e){strcpy(email,e);}
+void Persona::setgenero(int g){genero=g;}
+void Persona::setnacionalidad(const char *nac){strcpy(nacionalidad, nac); }
+void Persona::setfecha_Nacimiento(Fecha f){fecha_Nacimiento = f;}
+void Persona::setdomicilio(Domicilio d){domicilio=d;}
 
 
-const char *Personas::getnombre(){return nombre; }
-const char *Personas::getapellido(){return apellido; }
-long long Personas::getdni(){return dni; }
-long long Personas::gettelefono(){return telefono; }
-const char *Personas::getemail(){return email;}
-int Personas::getgenero(){return genero;}
-const char *Personas::getnacionalidad(){return nacionalidad; }
-Fecha Personas::getfecha_Nacimiento(){return fecha_Nacimiento;}
-Domicilio Personas::getdomicilio(){return domicilio;}
+const char *Persona::getnombre(){return nombre; }
+const char *Persona::getapellido(){return apellido; }
+long long Persona::getdni(){return dni; }
+long long Persona::gettelefono(){return telefono; }
+const char *Persona::getemail(){return email;}
+int Persona::getgenero(){return genero;}
+const char *Persona::getnacionalidad(){return nacionalidad; }
+Fecha Persona::getfecha_Nacimiento(){return fecha_Nacimiento;}
+Domicilio Persona::getdomicilio(){return domicilio;}
 
-const char* Personas::getgenerotexto()const{
+const char* Persona::getgenerotexto()const{
     switch(genero){
     case 1: return "Masculino";
         break;
@@ -40,7 +40,7 @@ const char* Personas::getgenerotexto()const{
     }
 }
 
-void Personas::cargar() {
+void Persona::cargar() {
 
     setColor(GREEN);
     locate(40,7); cout << "-------------- DATOS PERSONALES --------------";
@@ -169,7 +169,7 @@ void Personas::cargar() {
     LimpiarLineas(9,20,40);
 }
 
-void Personas::modificar(){
+void Persona::modificar(){
     int key;
     cls();
     setColor(GREEN);
@@ -406,7 +406,7 @@ void Personas::modificar(){
     cls();
 }
 
-void Personas::mostrar(int lineaBase){
+void Persona::mostrar(int lineaBase){
     setColor(YELLOW);
     locate(40, lineaBase); cout << "Nombre: " << nombre;
     locate(40, lineaBase+1); cout << "Apellido: " << apellido;

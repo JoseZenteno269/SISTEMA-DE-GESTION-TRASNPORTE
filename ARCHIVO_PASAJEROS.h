@@ -2,16 +2,16 @@
 #define ARCHIVO_PASAJEROS_H_INCLUDED
 #include "PASAJEROS.h"
 
-class Archivo_pasajeros{
+class Archivo_pasajero{
 private:
     char archivo[30];
 public:
-    Archivo_pasajeros(const char *a="Pasajeros.dat");
+    Archivo_pasajero(const char *a="Pasajeros.dat");
     int contarRegistros();
     int buscarRegistro(int);
-    Pasajeros leerRegistros(int);
-    bool grabarRegistro(Pasajeros);
-    bool modificarRegistro(Pasajeros, int);
+    Pasajero leerRegistros(int);
+    bool grabarRegistro(Pasajero);
+    bool modificarRegistro(Pasajero, int);
     void listar();
 };
 

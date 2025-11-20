@@ -1,7 +1,7 @@
 #ifndef PRECIO_H_INCLUDED
 #define PRECIO_H_INCLUDED
 
-class Precios{
+class Precio{
 private:
     float Precio;
     float Preciobutaca_cama;

@@ -2,16 +2,16 @@
 #define ARCHIVO_CHOFERES_H_INCLUDED
 #include "CHOFERES.h"
 
-class Archivo_choferes{
+class Archivo_chofer{
 private:
     char archivo[30];
 public:
-    Archivo_choferes(const char *a="Choferes.dat");
+    Archivo_chofer(const char *a="Choferes.dat");
     int contarRegistros();
     int buscarRegistro(int);
-    Choferes leerRegistros(int);
-    bool grabarRegistro(Choferes);
-    bool modificarRegistro(Choferes, int);
+    Chofer leerRegistros(int);
+    bool grabarRegistro(Chofer);
+    bool modificarRegistro(Chofer, int);
     void listar();
 };
 

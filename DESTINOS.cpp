@@ -7,21 +7,21 @@
 using namespace rlutil;
 using namespace std;
 
-void Destinos::setidDestino(int idd){idDestino=idd; }
-void Destinos::setnombre_provincia(const char *p){strcpy(nombre_provincia, p); }
-void Destinos::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
-void Destinos::setdistanciaKm(float dkm){distanciaKm=dkm; }
-void Destinos::setduracion(Hora hd){duracion=hd; }
-void Destinos::sethabilitado(bool h){habilitado=h; }
+void Destino::setidDestino(int idd){idDestino=idd; }
+void Destino::setnombre_provincia(const char *p){strcpy(nombre_provincia, p); }
+void Destino::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
+void Destino::setdistanciaKm(float dkm){distanciaKm=dkm; }
+void Destino::setduracion(Hora hd){duracion=hd; }
+void Destino::sethabilitado(bool h){habilitado=h; }
 
-int Destinos::getidDestino(){return idDestino; }
-const char*Destinos::getnombre_provincia(){return nombre_provincia; }
-const char *Destinos::getnombre_destino(){return nombre_destino; }
-float Destinos::getdistanciaKm(){return distanciaKm; }
-Hora Destinos::getduracion(){return duracion; }
-bool Destinos::gethabilitado(){return habilitado; }
+int Destino::getidDestino(){return idDestino; }
+const char*Destino::getnombre_provincia(){return nombre_provincia; }
+const char *Destino::getnombre_destino(){return nombre_destino; }
+float Destino::getdistanciaKm(){return distanciaKm; }
+Hora Destino::getduracion(){return duracion; }
+bool Destino::gethabilitado(){return habilitado; }
 
-void Destinos::cargar(int idd){
+void Destino::cargar(int idd){
     cls();
 
     setColor(GREEN);
@@ -96,7 +96,7 @@ void Destinos::cargar(int idd){
 
     cls();
 }
-void Destinos::mostrar(int X, int Y){
+void Destino::mostrar(int X, int Y){
     setColor(YELLOW);
     locate(X, Y);     cout << "----------------------------------------------";
     locate(X, Y + 1); cout << "             INFORMACION DEL DESTINO           ";

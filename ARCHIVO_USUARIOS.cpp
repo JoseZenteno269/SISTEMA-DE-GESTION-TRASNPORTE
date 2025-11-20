@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Archivo_usuarios::Archivo_usuarios(const char *a){
+Archivo_usuario::Archivo_usuario(const char *a){
     strcpy(archivo, a);
     FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p == nullptr){               // si no existe, lo creo vacío
@@ -13,7 +13,7 @@ Archivo_usuarios::Archivo_usuarios(const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_usuarios::contarRegistros(){
+int Archivo_usuario::contarRegistros(){
     FILE *p=fopen(archivo, "rb");
     if(p==nullptr){
         cout<<"no exite el erchivo"<<endl;
@@ -22,11 +22,11 @@ int Archivo_usuarios::contarRegistros(){
     fseek(p,0,2);
     int bytes=ftell(p);
     fclose(p);
-    return bytes/sizeof(Usuarios);
+    return bytes/sizeof(Usuario);
 }
 
-int Archivo_usuarios::buscarRegistro(int idu){
-    Usuarios u;
+int Archivo_usuario::buscarRegistro(int idu){
+    Usuario u;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         u=leerRegistros(i);
@@ -37,9 +37,9 @@ int Archivo_usuarios::buscarRegistro(int idu){
     return -2;
 }
 
-Usuarios Archivo_usuarios::leerRegistros(int pos){
+Usuario Archivo_usuario::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
-    Usuarios u;
+    Usuario u;
     if(p==nullptr){
         u.setidUsuario(-3);
         return u;
@@ -51,7 +51,7 @@ Usuarios Archivo_usuarios::leerRegistros(int pos){
     return u;
 }
 
-bool Archivo_usuarios::grabarRegistro(Usuarios u){
+bool Archivo_usuario::grabarRegistro(Usuario u){
     FILE *p=fopen(archivo, "ab");
     if(p==nullptr){
         return false;
@@ -61,7 +61,7 @@ bool Archivo_usuarios::grabarRegistro(Usuarios u){
     return escribo;
 }
 
-bool Archivo_usuarios::modificarRegistro(Usuarios u, int pos){
+bool Archivo_usuario::modificarRegistro(Usuario u, int pos){
     FILE *p=fopen(archivo, "rb+");
     if(p==nullptr){
         return false;
@@ -72,8 +72,8 @@ bool Archivo_usuarios::modificarRegistro(Usuarios u, int pos){
     return escribo;
 }
 
-void Archivo_usuarios::listar(){
-    Usuarios u;
+void Archivo_usuario::listar(){
+    Usuario u;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         u=leerRegistros(i);

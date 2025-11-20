@@ -4,7 +4,7 @@
 #include "HORA.h"
 #include "TIEMPO_ACTUAL.h"
 
-class Viajes{
+class Viaje{
 private:
     int idViaje;
     int idMicro;

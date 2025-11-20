@@ -8,17 +8,17 @@
 using namespace rlutil;
 using namespace std;
 
-void Choferes::setlegajo(int l){legajo=l; }
-void Choferes::setmail_laboral(const char *ml){strcpy(mail_laboral, ml); }
-void Choferes::setestado(bool e){estado=e; }
-void Choferes::setfecha_de_ingreso(Fecha f){fecha_de_ingreso=f; }
+void Chofer::setlegajo(int l){legajo=l; }
+void Chofer::setmail_laboral(const char *ml){strcpy(mail_laboral, ml); }
+void Chofer::setestado(bool e){estado=e; }
+void Chofer::setfecha_de_ingreso(Fecha f){fecha_de_ingreso=f; }
 
-int Choferes::getlegajo(){return legajo; }
-const char *Choferes::getmail_laboral(){return mail_laboral; }
-bool Choferes::getestado(){return estado; }
-Fecha Choferes::getfecha_de_ingreso(){return fecha_de_ingreso; }
+int Chofer::getlegajo(){return legajo; }
+const char *Chofer::getmail_laboral(){return mail_laboral; }
+bool Chofer::getestado(){return estado; }
+Fecha Chofer::getfecha_de_ingreso(){return fecha_de_ingreso; }
 
-void Choferes::cargar(int leg){
+void Chofer::cargar(int leg){
     cls();
 
     setColor(YELLOW);
@@ -33,7 +33,7 @@ void Choferes::cargar(int leg){
     setColor(WHITE);
     locate(70,6); cout << (legajo = leg);
 
-    Personas::cargar();
+    Persona::cargar();
 
     generarMailLaboral();
 
@@ -51,7 +51,7 @@ void Choferes::cargar(int leg){
     cls();
 }
 
-void Choferes::mostrar(){
+void Chofer::mostrar(){
     setColor(YELLOW);
     locate(40, 2); cout << "----------------------------------------------";
     locate(40, 3); cout << "              INFORMACION DEL CHOFER          ";
@@ -64,7 +64,7 @@ void Choferes::mostrar(){
     setColor(GREEN);
     locate(40, 9); cout << "-------------- DATOS PERSONALES --------------";
     setColor(WHITE);
-    Personas::mostrar(10);
+    Persona::mostrar(10);
 
     setColor(GREEN);
     locate(40, 27); cout << "--------------- FECHA DE INGRESO -------------";
@@ -79,14 +79,14 @@ void Choferes::mostrar(){
 }
 
 
-void Choferes::generarMailLaboral(){
+void Chofer::generarMailLaboral(){
 
     if(nombre[0]=='\0' or apellido[0]=='\0'){
     strcpy(mail_laboral, "desconocido@viautn.com");
     }else sprintf(mail_laboral, "%c%s%d@viautn.com", nombre[0], apellido, legajo);
 }
 
-int Choferes::calcularAntiguedad(){
+int Chofer::calcularAntiguedad(){
     Tiempo_Actual hoy;
 
     int antiguedad=hoy.getAnio()-fecha_de_ingreso.getanio();

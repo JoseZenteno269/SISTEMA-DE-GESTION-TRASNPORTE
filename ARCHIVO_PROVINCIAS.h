@@ -2,11 +2,11 @@
 #define ARCHIVO_PROVINCIAS_H_INCLUDED
 #include "PROVINCIAS.h"
 
-class Archivo_provincias{
+class Archivo_provincia{
 private:
     char archivo[30];
 public:
-    Archivo_provincias(const char *a="Provincias.dat");
+    Archivo_provincia(const char *a="Provincias.dat");
     int contarRegistros();
     int buscarRegistros(int);
     Provincia leerRegistros(int);

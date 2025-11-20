@@ -17,7 +17,7 @@ int Provincia::getidprovincia(){return idprovincia; }
 void Provincia::cargar(){
     cout<<"ingrese el nombre de la provincia: "; cargarCadena(nombre,39);
     cout<<"ingrese Codigo de provincia: "; cargarCadena(codigo_provincias, 4);
-    Archivo_provincias archivo;
+    Archivo_provincia archivo;
     idprovincia=archivo.contarRegistros();
 }
 void Provincia::mostrar(){

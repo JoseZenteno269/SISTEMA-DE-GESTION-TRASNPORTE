@@ -3,7 +3,7 @@
 #include "FECHAS.h"
 #include "Domicilio.h"
 
-class Personas{
+class Persona{
 protected:
     char nombre[40];
     char apellido[40];

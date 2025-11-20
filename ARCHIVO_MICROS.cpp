@@ -6,7 +6,7 @@ using namespace rlutil;
 
 using namespace std;
 
-Archivo_micros::Archivo_micros(const char *a){
+Archivo_micro::Archivo_micro(const char *a){
     strcpy(archivo, a);
     FILE *p=fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p==nullptr){               // si no existe, lo creo vacío
@@ -15,7 +15,7 @@ Archivo_micros::Archivo_micros(const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_micros::contarRegistros(){
+int Archivo_micro::contarRegistros(){
     FILE *p=fopen(archivo,"rb");
     if (p==nullptr){
         cout<<"no existe el archivo"<<endl;
@@ -24,10 +24,10 @@ int Archivo_micros::contarRegistros(){
     fseek(p,0,2);
     int bytes=ftell(p);
     fclose(p);
-    return bytes/sizeof(Micros);
+    return bytes/sizeof(Micro);
 }
-int Archivo_micros::buscarRegsitro(int idm){
-    Micros micro;
+int Archivo_micro::buscarRegsitro(int idm){
+    Micro micro;
     int contreg=contarRegistros();
     for (int i=0;i<contreg;i++){
         micro=leerRegistros(i);
@@ -38,9 +38,9 @@ int Archivo_micros::buscarRegsitro(int idm){
     return -2;
 }
 
-Micros Archivo_micros::leerRegistros(int pos){
+Micro Archivo_micro::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
-    Micros micro;
+    Micro micro;
     if(p==nullptr){
         micro.setidMicro(-3);
         return micro;
@@ -52,7 +52,7 @@ Micros Archivo_micros::leerRegistros(int pos){
     return micro;
 
 }
-bool Archivo_micros::grabarRegistro(Micros micro){
+bool Archivo_micro::grabarRegistro(Micro micro){
     FILE *p=fopen(archivo,"ab");
     if(p==nullptr){
         return false;
@@ -61,7 +61,7 @@ bool Archivo_micros::grabarRegistro(Micros micro){
     fclose(p);
     return escribo;
 }
-bool Archivo_micros::modificarRegistro(Micros micro, int pos){
+bool Archivo_micro::modificarRegistro(Micro micro, int pos){
     FILE *p=fopen(archivo,"rb+");
     if(p==nullptr){
         return false;
@@ -72,8 +72,8 @@ bool Archivo_micros::modificarRegistro(Micros micro, int pos){
     return escribo;
 }
 
-void Archivo_micros::listar(){
-    Micros micro;
+void Archivo_micro::listar(){
+    Micro micro;
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         micro=leerRegistros(i);
@@ -83,10 +83,10 @@ void Archivo_micros::listar(){
         }
     }
 }
-void Archivo_micros::listartabla(){
+void Archivo_micro::listartabla(){
     system("cls");
 
-    Micros micro;
+    Micro micro;
     int contreg = contarRegistros();
 
     if(contreg < 0){

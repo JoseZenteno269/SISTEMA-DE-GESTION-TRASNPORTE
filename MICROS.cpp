@@ -8,23 +8,23 @@ using namespace rlutil;
 using namespace std;
 
 
-void Micros::setidMicro(int idm){idMicro=idm; }
-void Micros::setmarca(const char *mrc){strcpy(marca, mrc); }
-void Micros::settipo(const char *t){strcpy(tipo, t); }
-void Micros::setcapacidad(int c){capacidad=c; }
-void Micros::settipoButaca(const char *tb){strcpy(tipoButaca,tb); }
-void Micros::setpatente(const char *p){strcpy(patente,p); }
-void Micros::setdisponible(bool disp){disponible=disp; }
+void Micro::setidMicro(int idm){idMicro=idm; }
+void Micro::setmarca(const char *mrc){strcpy(marca, mrc); }
+void Micro::settipo(const char *t){strcpy(tipo, t); }
+void Micro::setcapacidad(int c){capacidad=c; }
+void Micro::settipoButaca(const char *tb){strcpy(tipoButaca,tb); }
+void Micro::setpatente(const char *p){strcpy(patente,p); }
+void Micro::setdisponible(bool disp){disponible=disp; }
 
-int Micros::getidMicro(){return idMicro; }
-const char *Micros::getmarca(){return marca; }
-const char *Micros::gettipo(){return tipo; }
-int Micros::getcapacidad(){return capacidad; }
-const char *Micros::gettipoButaca(){return tipoButaca; }
-const char *Micros::getpatente(){return patente; }
-bool Micros::getdisponible(){return disponible; }
+int Micro::getidMicro(){return idMicro; }
+const char *Micro::getmarca(){return marca; }
+const char *Micro::gettipo(){return tipo; }
+int Micro::getcapacidad(){return capacidad; }
+const char *Micro::gettipoButaca(){return tipoButaca; }
+const char *Micro::getpatente(){return patente; }
+bool Micro::getdisponible(){return disponible; }
 
-void Micros::capacidadportipo(){
+void Micro::capacidadportipo(){
     if (strcmp(tipoButaca,"comun")==0) capacidad=60;
     else if(strcmp(tipoButaca,"cama")==0)capacidad=30;
     else if(strcmp(tipoButaca,"semi-cama")==0)capacidad=40;
@@ -32,7 +32,7 @@ void Micros::capacidadportipo(){
     if(strcmp(tipo,"simple-piso")==0)capacidad=capacidad/2;
 }
 
-void Micros::cargar(int idm){
+void Micro::cargar(int idm){
     system("cls");
 
     setColor(GREEN);
@@ -149,7 +149,7 @@ void Micros::cargar(int idm){
     system("cls");
 }
 
-void Micros::mostrar(int X, int Y){
+void Micro::mostrar(int X, int Y){
     setColor(YELLOW);
     locate(X, Y);     cout << "------------------------------------------";
     locate(X, Y + 1); cout << "              INFORMACION DEL MICRO        ";

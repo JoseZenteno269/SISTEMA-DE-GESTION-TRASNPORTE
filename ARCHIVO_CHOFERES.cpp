@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Archivo_choferes::Archivo_choferes(const char *a){
+Archivo_chofer::Archivo_chofer(const char *a){
     strcpy(archivo, a);
     FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p == nullptr){               // si no existe, lo creo vacío
@@ -13,7 +13,7 @@ Archivo_choferes::Archivo_choferes(const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_choferes::contarRegistros(){
+int Archivo_chofer::contarRegistros(){
     FILE *p=fopen(archivo, "rb");
     if(p==nullptr){
         cout<<"no existe el archivo"<<endl;
@@ -22,11 +22,11 @@ int Archivo_choferes::contarRegistros(){
     fseek(p,0,2);
     int bytes=ftell(p);
     fclose(p);
-    return bytes/sizeof(Choferes);
+    return bytes/sizeof(Chofer);
 }
 
-int Archivo_choferes::buscarRegistro(int leg){
-    Choferes chofer;
+int Archivo_chofer::buscarRegistro(int leg){
+    Chofer chofer;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         chofer=leerRegistros(i);
@@ -37,9 +37,9 @@ int Archivo_choferes::buscarRegistro(int leg){
     return -2;
 }
 
-Choferes Archivo_choferes::leerRegistros(int pos){
+Chofer Archivo_chofer::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
-    Choferes chofer;
+    Chofer chofer;
     if(p==nullptr){
         chofer.setlegajo(-3);
         return chofer;
@@ -51,7 +51,7 @@ Choferes Archivo_choferes::leerRegistros(int pos){
     return chofer;
 }
 
-bool Archivo_choferes::grabarRegistro(Choferes chofer){
+bool Archivo_chofer::grabarRegistro(Chofer chofer){
     FILE *p=fopen(archivo, "ab");
     if(p==nullptr){
         return false;
@@ -61,7 +61,7 @@ bool Archivo_choferes::grabarRegistro(Choferes chofer){
     return escribo;
 }
 
-bool Archivo_choferes::modificarRegistro(Choferes chofer, int pos){
+bool Archivo_chofer::modificarRegistro(Chofer chofer, int pos){
     FILE *p=fopen(archivo, "rb+");
     if(p==nullptr){
         return false;
@@ -72,8 +72,8 @@ bool Archivo_choferes::modificarRegistro(Choferes chofer, int pos){
     return escribo;
 }
 
-void Archivo_choferes::listar(){
-    Choferes chofer;
+void Archivo_chofer::listar(){
+    Chofer chofer;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         chofer=leerRegistros(i);

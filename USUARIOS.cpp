@@ -8,19 +8,19 @@
 using namespace rlutil;
 using namespace std;
 
-void Usuarios::setidUsuario(int idu){idUsuario=idu; }
-void Usuarios::setcontrasena(const char *c){strcpy(contrasena, c); }
-void Usuarios::setingreso(Fecha i){ingreso=i; }
-void Usuarios::setnivel(int n){nivel=n; }
-void Usuarios::setestado(bool e){estado=e; }
+void Usuario::setidUsuario(int idu){idUsuario=idu; }
+void Usuario::setcontrasena(const char *c){strcpy(contrasena, c); }
+void Usuario::setingreso(Fecha i){ingreso=i; }
+void Usuario::setnivel(int n){nivel=n; }
+void Usuario::setestado(bool e){estado=e; }
 
-int Usuarios::getidUsuario(){return idUsuario; }
-const char *Usuarios::getcontrasena(){return contrasena; }
-Fecha Usuarios::getingreso(){return ingreso; }
-int Usuarios::getnivel(){return nivel; }
-bool Usuarios::getestado(){return estado; }
+int Usuario::getidUsuario(){return idUsuario; }
+const char *Usuario::getcontrasena(){return contrasena; }
+Fecha Usuario::getingreso(){return ingreso; }
+int Usuario::getnivel(){return nivel; }
+bool Usuario::getestado(){return estado; }
 
-void Usuarios::cargar(int idu){
+void Usuario::cargar(int idu){
     system("cls");
 
     setColor(GREEN);
@@ -32,7 +32,7 @@ void Usuarios::cargar(int idu){
     locate(40,6);
     cout << "ID de usuario asignado: " << (idUsuario = idu);
 
-    Personas::cargar();
+    Persona::cargar();
 
     Tiempo_Actual tiempo;
     Fecha fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
@@ -70,7 +70,7 @@ void Usuarios::cargar(int idu){
     system("cls");
 }
 
-void Usuarios::mostrar() {
+void Usuario::mostrar() {
 
     setColor(YELLOW);
     locate(40, 3);  cout << "----------------------------------------------";

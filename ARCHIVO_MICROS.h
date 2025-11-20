@@ -2,16 +2,16 @@
 #define ARCHIVO_MICROS_H_INCLUDED
 #include "MICROS.h"
 
-class Archivo_micros{
+class Archivo_micro{
 private:
     char archivo[30];
 public:
-    Archivo_micros(const char *a="Micros.dat");
+    Archivo_micro(const char *a="Micros.dat");
     int contarRegistros();
     int buscarRegsitro(int);
-    Micros leerRegistros(int);
-    bool grabarRegistro(Micros);
-    bool modificarRegistro(Micros, int);
+    Micro leerRegistros(int);
+    bool grabarRegistro(Micro);
+    bool modificarRegistro(Micro, int);
     void listar();
     void listartabla();
 };

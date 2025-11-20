@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Archivo_pasajeros::Archivo_pasajeros(const char *a){
+Archivo_pasajero::Archivo_pasajero(const char *a){
     strcpy(archivo, a);
     FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p == nullptr){               // si no existe, lo creo vacío
@@ -13,7 +13,7 @@ Archivo_pasajeros::Archivo_pasajeros(const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_pasajeros::contarRegistros(){
+int Archivo_pasajero::contarRegistros(){
     FILE *p=fopen(archivo, "rb");
     if(p==nullptr){
         cout<<"no exite el erchivo"<<endl;
@@ -22,11 +22,11 @@ int Archivo_pasajeros::contarRegistros(){
     fseek(p,0,2);
     int bytes=ftell(p);
     fclose(p);
-    return bytes/sizeof(Pasajeros);
+    return bytes/sizeof(Pasajero);
 }
 
-int Archivo_pasajeros::buscarRegistro(int num_p){
-    Pasajeros pasajero;
+int Archivo_pasajero::buscarRegistro(int num_p){
+    Pasajero pasajero;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         pasajero=leerRegistros(i);
@@ -37,9 +37,9 @@ int Archivo_pasajeros::buscarRegistro(int num_p){
     return -2;
 }
 
-Pasajeros Archivo_pasajeros::leerRegistros(int pos){
+Pasajero Archivo_pasajero::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
-    Pasajeros pasajero;
+    Pasajero pasajero;
     if(p==nullptr){
         pasajero.setnumero_pasaje(-3);
         return pasajero;
@@ -51,7 +51,7 @@ Pasajeros Archivo_pasajeros::leerRegistros(int pos){
     return pasajero;
 }
 
-bool Archivo_pasajeros::grabarRegistro(Pasajeros pasajero){
+bool Archivo_pasajero::grabarRegistro(Pasajero pasajero){
     FILE *p=fopen(archivo, "ab");
     if(p==nullptr){
         return false;
@@ -61,7 +61,7 @@ bool Archivo_pasajeros::grabarRegistro(Pasajeros pasajero){
     return escribo;
 }
 
-bool Archivo_pasajeros::modificarRegistro(Pasajeros pasajero, int pos){
+bool Archivo_pasajero::modificarRegistro(Pasajero pasajero, int pos){
     FILE *p=fopen(archivo, "rb+");
     if(p==nullptr){
         return false;
@@ -72,8 +72,8 @@ bool Archivo_pasajeros::modificarRegistro(Pasajeros pasajero, int pos){
     return escribo;
 }
 
-void Archivo_pasajeros::listar(){
-    Pasajeros pasajero;
+void Archivo_pasajero::listar(){
+    Pasajero pasajero;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         pasajero=leerRegistros(i);

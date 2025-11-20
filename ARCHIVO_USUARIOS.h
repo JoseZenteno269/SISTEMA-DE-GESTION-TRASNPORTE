@@ -2,16 +2,16 @@
 #define ARCHIVO_USUARIOS_H_INCLUDED
 #include "USUARIOS.h"
 
-class Archivo_usuarios{
+class Archivo_usuario{
 private:
     char archivo[30];
 public:
-    Archivo_usuarios(const char *a="Usuarios.dat");
+    Archivo_usuario(const char *a="Usuarios.dat");
     int contarRegistros();
     int buscarRegistro(int);
-    Usuarios leerRegistros(int);
-    bool grabarRegistro(Usuarios);
-    bool modificarRegistro(Usuarios, int);
+    Usuario leerRegistros(int);
+    bool grabarRegistro(Usuario);
+    bool modificarRegistro(Usuario, int);
     void listar();
 };
 

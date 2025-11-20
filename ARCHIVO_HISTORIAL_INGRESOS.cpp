@@ -4,9 +4,9 @@
 
 using namespace std;
 
-Archivo_historial_usuarios::Archivo_historial_usuarios(const char *ah){strcpy(archivo_historial, ah); }
+Archivo_historial_usuario::Archivo_historial_usuario(const char *ah){strcpy(archivo_historial, ah); }
 
-int Archivo_historial_usuarios::contarRegistros(){
+int Archivo_historial_usuario::contarRegistros(){
     FILE *p=fopen(archivo_historial, "rb");
     if(p==nullptr){
         cout<<"no se ingreso al archivo"<<endl;
@@ -18,7 +18,7 @@ int Archivo_historial_usuarios::contarRegistros(){
     return bytes/sizeof(Historial_ingreso);
 }
 
-int Archivo_historial_usuarios::buscarRegistro(int idu){
+int Archivo_historial_usuario::buscarRegistro(int idu){
     Historial_ingreso historial;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
@@ -30,7 +30,7 @@ int Archivo_historial_usuarios::buscarRegistro(int idu){
     return -2;
 }
 
-Historial_ingreso Archivo_historial_usuarios::leerRegistros(int pos){
+Historial_ingreso Archivo_historial_usuario::leerRegistros(int pos){
     FILE *p=fopen(archivo_historial, "rb");
     Historial_ingreso historial;
     if(p==nullptr){
@@ -44,7 +44,7 @@ Historial_ingreso Archivo_historial_usuarios::leerRegistros(int pos){
     return historial;
 }
 
-bool Archivo_historial_usuarios::grabarRegistro(Historial_ingreso historial){
+bool Archivo_historial_usuario::grabarRegistro(Historial_ingreso historial){
     FILE *p=fopen(archivo_historial, "ab");
     if(p==nullptr){
         return false;
@@ -54,7 +54,7 @@ bool Archivo_historial_usuarios::grabarRegistro(Historial_ingreso historial){
     return escribo;
 }
 
-void Archivo_historial_usuarios::listar(){
+void Archivo_historial_usuario::listar(){
     Historial_ingreso historial;
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){

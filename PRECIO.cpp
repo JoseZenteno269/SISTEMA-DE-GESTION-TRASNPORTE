@@ -7,17 +7,17 @@ using namespace rlutil;
 
 using namespace std;
 
-void Precios::setPrecio(float p){Precio=p; }
-void Precios::setPreciobutaca_cama(float pca){Preciobutaca_cama=pca; }
-void Precios::setPreciobutaca_comun(float pco){Preciobutaca_comun=pco; }
-void Precios::setPreciobutaca_semicama(float psc){Preciobutaca_semicama=psc; }
+void Precio::setPrecio(float p){Precio=p; }
+void Precio::setPreciobutaca_cama(float pca){Preciobutaca_cama=pca; }
+void Precio::setPreciobutaca_comun(float pco){Preciobutaca_comun=pco; }
+void Precio::setPreciobutaca_semicama(float psc){Preciobutaca_semicama=psc; }
 
-float Precios::getPrecio(){return Precio; }
-float Precios::getPreciobutaca_cama(){return Preciobutaca_cama; }
-float Precios::getPreciobutaca_comun(){return Preciobutaca_comun; }
-float Precios::getPreciobutaca_semicama(){return Preciobutaca_semicama; }
+float Precio::getPrecio(){return Precio; }
+float Precio::getPreciobutaca_cama(){return Preciobutaca_cama; }
+float Precio::getPreciobutaca_comun(){return Preciobutaca_comun; }
+float Precio::getPreciobutaca_semicama(){return Preciobutaca_semicama; }
 
-void Precios::cargar(){
+void Precio::cargar(){
     while(true){
         setColor(CYAN);
         locate(40,10); cout<<"Ingrese el Precio x Kilometro: ";
@@ -84,7 +84,7 @@ void Precios::cargar(){
         LimpiarLineas(10,12,40);
     }
 }
-void Precios::mostrar(){
+void Precio::mostrar(){
     cls();
     setColor(YELLOW);
     locate(40,3); cout<<"----------------------------------------------";

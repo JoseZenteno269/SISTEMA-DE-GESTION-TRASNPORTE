@@ -3,7 +3,7 @@
 #include "PERSONA.h"
 #include "FECHAS.h"
 
-class Choferes:public Personas{
+class Chofer :public Persona{
 private:
     int legajo;
     char mail_laboral[100];

@@ -7,8 +7,8 @@ private:
     char archivo[30];
 public:
     Archivo_Precio(const char *a="Precio.dat");
-    Precios leerRegistros();
-    bool grabarRegistro(Precios);
+    Precio leerRegistros();
+    bool grabarRegistro(Precio);
     void listar();
 };
 

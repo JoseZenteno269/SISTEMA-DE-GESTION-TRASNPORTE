@@ -2,7 +2,7 @@
 #define PASAJEROS_H_INCLUDED
 #include "PERSONA.h"
 
-class Pasajeros:public Personas{
+class Pasajero:public Persona{
 private:
     int numero_pasaje;
     bool habilitado;

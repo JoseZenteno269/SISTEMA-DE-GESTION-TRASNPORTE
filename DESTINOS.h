@@ -2,7 +2,7 @@
 #define DESTINOS_H_INCLUDED
 #include "HORA.h"
 
-class Destinos{
+class Destino{
 private:
     int idDestino;
     char nombre_provincia[40];

@@ -6,7 +6,7 @@
 using namespace rlutil;
 using namespace std;
 
-Archivo_viajes::Archivo_viajes(const char *a){
+Archivo_viaje::Archivo_viaje(const char *a){
     strcpy(archivo, a);
     FILE *p=fopen(archivo, "rb"); // intento abrir en modo lectura
     if(p==nullptr){               // si no existe, lo creo vacío
@@ -15,7 +15,7 @@ Archivo_viajes::Archivo_viajes(const char *a){
     if(p) fclose(p);
 }
 
-int Archivo_viajes::contarRegistros(){
+int Archivo_viaje::contarRegistros(){
     FILE *p=fopen(archivo,"rb");
     if (p==nullptr){
         cout<<"no existe el archivo"<<endl;
@@ -24,10 +24,10 @@ int Archivo_viajes::contarRegistros(){
     fseek(p,0,2);
     int bytes=ftell(p);
     fclose(p);
-    return bytes/sizeof(Viajes);
+    return bytes/sizeof(Viaje);
 }
-int Archivo_viajes::buscarRegistro(int idv){
-    Viajes viaje;
+int Archivo_viaje::buscarRegistro(int idv){
+    Viaje viaje;
     int contreg=contarRegistros();
     for (int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
@@ -38,9 +38,9 @@ int Archivo_viajes::buscarRegistro(int idv){
     return -2;
 }
 
-Viajes Archivo_viajes::leerRegistros(int pos){
+Viaje Archivo_viaje::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
-    Viajes viaje;
+    Viaje viaje;
     if(p==nullptr){
         viaje.setidViaje(-3);
         return viaje;
@@ -52,7 +52,7 @@ Viajes Archivo_viajes::leerRegistros(int pos){
     return viaje;
 
 }
-bool Archivo_viajes::grabarRegistro(Viajes viaje){
+bool Archivo_viaje::grabarRegistro(Viaje viaje){
     FILE *p=fopen(archivo,"ab");
     if(p==nullptr){
         return false;
@@ -61,7 +61,7 @@ bool escribo=fwrite(&viaje,sizeof viaje,1,p);
 fclose(p);
 return escribo;
 }
-bool Archivo_viajes::modificarRegistro(Viajes viaje, int pos){
+bool Archivo_viaje::modificarRegistro(Viaje viaje, int pos){
     FILE *p=fopen(archivo,"rb+");
     if(p==nullptr){
         return false;
@@ -72,8 +72,8 @@ bool Archivo_viajes::modificarRegistro(Viajes viaje, int pos){
     return escribo;
 }
 
-void Archivo_viajes::listar(){
-    Viajes viaje;
+void Archivo_viaje::listar(){
+    Viaje viaje;
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
@@ -84,8 +84,8 @@ void Archivo_viajes::listar(){
     }
 }
 
-void Archivo_viajes::listartabla(){
-    Viajes viaje;
+void Archivo_viaje::listartabla(){
+    Viaje viaje;
     bool mostrar=false;
     int contreg=contarRegistros();
 
