@@ -10,13 +10,13 @@ using namespace std;
 
 void Usuarios::setidUsuario(int idu){idUsuario=idu; }
 void Usuarios::setcontrasena(const char *c){strcpy(contrasena, c); }
-void Usuarios::setingreso(Fechas i){ingreso=i; }
+void Usuarios::setingreso(Fecha i){ingreso=i; }
 void Usuarios::setnivel(int n){nivel=n; }
 void Usuarios::setestado(bool e){estado=e; }
 
 int Usuarios::getidUsuario(){return idUsuario; }
 const char *Usuarios::getcontrasena(){return contrasena; }
-Fechas Usuarios::getingreso(){return ingreso; }
+Fecha Usuarios::getingreso(){return ingreso; }
 int Usuarios::getnivel(){return nivel; }
 bool Usuarios::getestado(){return estado; }
 
@@ -35,7 +35,7 @@ void Usuarios::cargar(int idu){
     Personas::cargar();
 
     Tiempo_Actual tiempo;
-    Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
+    Fecha fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
     setingreso(fecha);
 
     setColor(CYAN);
@@ -78,7 +78,8 @@ void Usuarios::mostrar() {
     locate(40, 5);  cout << "----------------------------------------------";
     setColor(WHITE);
 
-    locate(40, 7);  cout << "ID de usuario:         " << idUsuario;
+    locate(40, 6);  cout << "ID de usuario:         " << idUsuario;
+    locate(40, 7);  cout << "Contraseña:            " << contrasena;
     locate(40, 8);  cout << "Nombre:                " << nombre;
     locate(40, 9);  cout << "Apellido:              " << apellido;
     locate(40, 10); cout << "DNI:                   " << dni;

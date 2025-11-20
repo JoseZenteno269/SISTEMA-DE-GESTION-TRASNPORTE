@@ -194,31 +194,31 @@ void Domicilio::Mostrar(int X, int Y) {
     setColor(CYAN);
     locate(X, Y);     cout << "Calle:   ";
     setColor(WHITE);
-    locate(X + 15, Y); cout << calle;
+    locate(X + 30, Y); cout << calle;
 
     setColor(CYAN);
     locate(X, Y + 1); cout << "Altura:  ";
     setColor(WHITE);
-    locate(X + 15, Y + 1); cout << altura;
+    locate(X + 30, Y + 1); cout << altura;
 
     setColor(CYAN);
     locate(X, Y + 2); cout << "Código Postal:   ";
     setColor(WHITE);
-    locate(X + 15, Y + 2); cout << codigoPostal;
+    locate(X + 30, Y + 2); cout << codigoPostal;
 
     setColor(CYAN);
     locate(X, Y + 3); cout << "Localidad:   ";
     setColor(WHITE);
-    locate(X + 15, Y + 3); cout << localidad;
+    locate(X + 30, Y + 3); cout << localidad;
 
     setColor(CYAN);
     locate(X, Y + 4); cout << "Partido:     ";
     setColor(WHITE);
-    locate(X + 15, Y + 4); cout << partido;
+    locate(X + 30, Y + 4); cout << partido;
 
     setColor(CYAN);
     locate(X, Y + 5); cout << "Provincia:   ";
     setColor(WHITE);
-    locate(X + 15, Y + 5); cout << provincia;
+    locate(X + 30, Y + 5); cout << provincia;
 }
 

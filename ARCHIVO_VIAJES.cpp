@@ -1,7 +1,9 @@
 #include<iostream>
 #include "ARCHIVO_VIAJES.h"
 #include<cstring>
+#include "rlutil.h"
 
+using namespace rlutil;
 using namespace std;
 
 Archivo_viajes::Archivo_viajes(const char *a){
@@ -86,14 +88,13 @@ void Archivo_viajes::listartabla(){
     Viajes viaje;
     bool mostrar=false;
     int contreg=contarRegistros();
+
     for(int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
         if(viaje.getrealizado()){
-            mostrar=true;
+            viaje.listartabla();
+
         }
     }
-        if(mostrar){
-            viaje.listartabla();
-        }
 }
 

@@ -11,12 +11,12 @@ using namespace std;
 void Choferes::setlegajo(int l){legajo=l; }
 void Choferes::setmail_laboral(const char *ml){strcpy(mail_laboral, ml); }
 void Choferes::setestado(bool e){estado=e; }
-void Choferes::setfecha_de_ingreso(Fechas f){fecha_de_ingreso=f; }
+void Choferes::setfecha_de_ingreso(Fecha f){fecha_de_ingreso=f; }
 
 int Choferes::getlegajo(){return legajo; }
 const char *Choferes::getmail_laboral(){return mail_laboral; }
 bool Choferes::getestado(){return estado; }
-Fechas Choferes::getfecha_de_ingreso(){return fecha_de_ingreso; }
+Fecha Choferes::getfecha_de_ingreso(){return fecha_de_ingreso; }
 
 void Choferes::cargar(int leg){
     cls();
@@ -41,7 +41,7 @@ void Choferes::cargar(int leg){
     locate(40,9); cout << "FECHA DE INGRESO: ";
     setColor(WHITE);
     Tiempo_Actual tiempo;
-    Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
+    Fecha fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
     setfecha_de_ingreso(fecha);
     fecha.mostrarEn(60,9);
 

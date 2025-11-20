@@ -73,7 +73,7 @@ bool validar_numero(){
     return true;
 }
 
-void fecha_y_hora_fin(Destinos destino, Archivo_destinos archivodestino, Fechas &fecha_Fin_Viaje, Hora &hora_Fin_Viaje, Fechas fecha_Inicio_Viaje, Hora hora_Inicio_Viaje, int idDestino){
+void fecha_y_hora_fin(Destinos destino, Archivo_destinos archivodestino, Fecha &fecha_Fin_Viaje, Hora &hora_Fin_Viaje, Fecha fecha_Inicio_Viaje, Hora hora_Inicio_Viaje, int idDestino){
     int pos=archivodestino.buscarRegistros(idDestino);
     destino=archivodestino.leerRegistros(pos);
 
@@ -152,20 +152,20 @@ bool chequearSalidaESC(string mensaje){
     return false;
 }
 
-bool chequearSalidaESCsinRlutil(string mensaje){
-    cls();
-    cout<<mensaje<<endl<<endl;
-    cout<<"Presione ESC para cancelar y volver al menu"<<endl;
-    cout<<"Presione cualquier otra tecla para continuar..."<<endl;
+//bool chequearSalidaESCsinRlutil(string mensaje){
+//    cls();
+//    cout<<mensaje<<endl<<endl;
+//    cout<<"Presione ESC para cancelar y volver al menu"<<endl;
+//    cout<<"Presione cualquier otra tecla para continuar..."<<endl;
+//
+//    int tecla=getkey();
+//    cls();
+//    if(tecla==KEY_ESCAPE)return true;
+//
+//    return false;
+//}
 
-    int tecla=getkey();
-    cls();
-    if(tecla==KEY_ESCAPE)return true;
-
-    return false;
-}
-
-bool esFechaPosterior(Fechas inicio ,Fechas presente){
+bool esFechaPosterior(Fecha inicio ,Fecha presente){
     if(inicio.getanio()>presente.getanio())return true;
     if(inicio.getanio()<presente.getanio())return false;
 
@@ -293,14 +293,14 @@ void calendario(int mes, int anio){
     locate(40, 5); cout << "ENTER para seleccionar el mes";
     locate(40, 6); cout << "Presione ESC para salir";
 
-    locate(50, 7); cout << nombreMes(mes) << " " << anio;
+    locate(50, 8); cout << nombreMes(mes) << " " << anio;
 
-    locate(40, 9); cout << " Do  Lu  Ma  Mi  Ju  Vi  Sa";
+    locate(40, 10); cout << " Do  Lu  Ma  Mi  Ju  Vi  Sa";
 
     int primerDia = diaSemanaPrimeroMes(mes, anio);
     int totalDias = diasEnMes(mes, anio);
 
-    int filaInicio = 10;
+    int filaInicio = 11;
     int colInicio = 40;
 
     Archivo_viajes archivo;
@@ -314,9 +314,7 @@ void calendario(int mes, int anio){
         bool tieneViaje = false;
         for(int i = 0; i < contreg; i++){
             Viajes viaje = archivo.leerRegistros(i);
-            if(viaje.getfecha_Inicio_Viaje().getdia() == dia &&
-               viaje.getfecha_Inicio_Viaje().getmes() == mes &&
-               viaje.getfecha_Inicio_Viaje().getanio() == anio){
+            if(viaje.getfecha_Inicio_Viaje().getdia() == dia and viaje.getfecha_Inicio_Viaje().getmes() == mes and viaje.getfecha_Inicio_Viaje().getanio() == anio){
                 tieneViaje = true;
                 break;
             }
@@ -377,12 +375,26 @@ int viajes_disponibles() {
         }
 
         setColor(CYAN);
-        locate(40, 15); cout << "Ingrese el día para ver los viajes disponibles: ";
+        locate(40, 19); cout << "Ingrese el día para ver los viajes disponibles: ";
         setColor(WHITE);
-        locate(40, 16); cin >> dia;
+        bool bandera2=true;
+        while(true){
+            locate(40, 20); cin >> dia;
+            if(validar_numero())break;
+            else{bandera2=false; break;}
+
+            LimpiarLineas(20, 23, 40);
+        }
+
+        if(!bandera2)continue;
 
         int contreg = archivo.contarRegistros();
         bool bandera = false;
+
+        cls();
+        setColor(YELLOW);
+        locate(40, 3); cout << "=============== VIAJES DISPONIBLES ===============";
+        setColor(WHITE);
 
         for (int i = 0; i < contreg; i++) {
             viaje = archivo.leerRegistros(i);
@@ -390,35 +402,42 @@ int viajes_disponibles() {
             if (dia == viaje.getfecha_Inicio_Viaje().getdia() &&
                 mes == viaje.getfecha_Inicio_Viaje().getmes() &&
                 anio == viaje.getfecha_Inicio_Viaje().getanio()) {
-
-                cls();
-                setColor(YELLOW);
-                locate(40, 3); cout << "=============== VIAJES DISPONIBLES ===============";
-                setColor(WHITE);
-                viaje.listartabla();
-
-                setColor(CYAN);
-                locate(40, 3); cout << "Ingrese el ID del viaje a seleccionar o presione (ESC) para salir: ";
-                setColor(WHITE);
-
-                int tecla = getkey();
-                if (tecla == KEY_ESCAPE) {
-                    bandera = true;
-                    break;
-                }
-
-                int idv;
-                locate(40, 4); cin >> idv;
-                return idv;
+                LimpiarLineas(3,3,40);
+                viaje.mostrar();
+                anykey();
+                bandera = true;
             }
         }
-
+        LimpiarLineas(2,25,40);
         if (!bandera) {
             setColor(RED);
-            locate(40, 17); cout << "No hay viajes pendientes para la fecha seleccionada.";
+            locate(40, 19); cout << "No hay viajes pendientes para la fecha seleccionada.";
             setColor(WHITE);
             anykey();
+            continue;
         }
+        int idv;
+        bool bandera1=false;
+        while(true){
+
+            setColor(CYAN);
+            locate(40, 3); cout << "Ingrese el ID del viaje a seleccionar o presione (ESC) para salir: ";
+            setColor(WHITE);
+
+            int tecla = getkey();
+            if (tecla == KEY_ESCAPE){ bandera1=true; break;}
+
+            locate(40, 4); cin >> idv;
+            int pos=archivo.buscarRegistro(idv);
+            if(pos<0){locate(40, 6); cout<<"Error, no se encontro el archivo"<<endl;  anykey(); LimpiarLineas(4, 7, 40); continue; }
+            viaje=archivo.leerRegistros(pos);
+
+            if(validar_numero() and viaje.getidViaje()==idv and viaje.getfecha_Inicio_Viaje().getdia()==dia)break;
+
+            LimpiarLineas(4, 7, 40);
+        }
+        if(!bandera1) return idv;
+        else continue;
     }
     return -1;
 }
@@ -443,8 +462,9 @@ int selecion_de_butacas(int cant, Micros micro, int idViaje){
         while(true){
             cls();
             int filas=(cant+columnas-1)/columnas;
+            locate(52, 3); cout<<"BUTACAS"<<endl;
             for(int f=0; f<filas; f++){
-                int colInicio=(40 + (columnas*4)/2); // ajustar según pantalla
+                int colInicio=(40 + (columnas*4)/2);
                 for(int c=0; c<columnas; c++){
                     int i=f*columnas+c;
                     if(i>=cant) break;
@@ -475,10 +495,10 @@ int selecion_de_butacas(int cant, Micros micro, int idViaje){
     }else if(strcmp(micro.gettipo(), "doble-piso")==0){
         int cantPorPiso=cant/2;
         int filas=(cantPorPiso + columnas - 1) / columnas;
-        //int filas=cantPorPiso/columnas;
+        locate(52, 3); cout<<"BUTACAS"<<endl;
         while(true){
             cls();
-            locate(40, 2); cout<<"Piso Inferior\t\t\t\tPiso Superior\n\n";
+            locate(40, 2); cout<<"Piso Inferior\t\tPiso Superior\n\n";
             for(int fila=0; fila<filas; fila++){
                 int colInicio=40;
                 for(int col=0; col<columnas; col++){
@@ -489,8 +509,7 @@ int selecion_de_butacas(int cant, Micros micro, int idViaje){
                         cout<<"    ";
                         if(col<columnas-1)cout<<" ";
                         continue;
-                    }//if(num>cantPorPiso) break;
-
+                    }
 
                     bool estaOcupada=false;
                     for(int j=0; j<numOcupadas; j++){ if(ocupadas[j]==num){ estaOcupada=true; break; } }
@@ -509,8 +528,6 @@ int selecion_de_butacas(int cant, Micros micro, int idViaje){
                         if(col<columnas-1)cout<<" ";
                         continue;
                     }
-                    //if(num>cant) break;
-
 
                     bool estaOcupada=false;
                     for(int j=0; j<numOcupadas; j++){ if(ocupadas[j]==num){ estaOcupada=true; break; } }
@@ -551,9 +568,6 @@ void venta_de_pasaje() {
     Pasajes pasaje;
     Archivo_pasajes archivoPasaje;
 
-    Destinos destino;
-    Archivo_destinos archivoDestinos;
-
     Micros micro;
     Archivo_micros archivoMicros;
 
@@ -570,10 +584,10 @@ void venta_de_pasaje() {
     }
 
     int idViaje = viajes_disponibles();
-    if (idViaje < 0) return;
 
     if (idViaje < 0) {
         setColor(RED);
+        cls();
         locate(40, 12); cout << "ERROR AL VER LOS ARCHIVOS";
         setColor(WHITE);
         anykey();
@@ -612,15 +626,14 @@ void venta_de_pasaje() {
         int posdestino = archivoDestinos.buscarRegistros(viaje.getidDestino());
         destino = archivoDestinos.leerRegistros(posdestino);
         if (viaje.getidDestino() == destino.getidDestino()) {
-            pasaje.setnombre_destino(destino.getnombre_destino());
-            pasaje.setprovincia_destino(destino.getnombre_provincia());
             precio = archivoPrecio.leerRegistros();
-            pasaje.setprecioxkm(destino.getdistanciaKm() * precio.getPrecio());
+            float butaca=plusxbutaca(viaje);
+            pasaje.setprecioxkm(destino.getdistanciaKm()*precio.getPrecio()+butaca);
         }
 
         pasajero.cargar(pasaje.getpasaje());
 
-        if (archivoPasaje.grabarRegistro(pasaje) && archivoPasajeros.grabarRegistro(pasajero)) {
+        if (archivoPasaje.grabarRegistro(pasaje) and archivoPasajeros.grabarRegistro(pasajero)) {
             setColor(GREEN);
             locate(40, 18); cout << "Pasaje " << numeroPasaje << " registrado correctamente.";
             setColor(WHITE);
@@ -641,7 +654,7 @@ void mostrar_pasajes_vendidos(){
     cls();
     Archivo_pasajes archivopasaje;
     archivopasaje.listar();
-    system("pause");
+    anykey();
     system("cls");
 }
 void cargar_viaje(){
@@ -809,7 +822,6 @@ void mostrar_precios(){
 }
 
 ///Funciones usuarios
-
 void ingresar_usuario() {
     system("cls");
 
@@ -895,8 +907,16 @@ void eliminar_usuario(){
     locate(40, 5);  cout << "----------------------------------------------";
     setColor(WHITE);
 
-    locate(40, 8);  cout << "ID de usuario a dar de baja: ";
-    locate(70, 8);  cin >> idu;
+    locate(40, 7);  cout << "ID de usuario a dar de baja: ";
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>idu;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
 
     int pos = archivo.buscarRegistro(idu);
 
@@ -927,6 +947,60 @@ void eliminar_usuario(){
     anykey();
     cls();
 }
+void dar_alta_usuario(){
+    cls();
+
+    if(chequearSalidaESC("Usted esta por dar de alta un Usuario.")) return;
+
+    Archivo_usuarios archivo;
+    int idu;
+
+    setColor(YELLOW);
+    locate(40, 3);  cout << "----------------------------------------------";
+    locate(40, 4);  cout << "              ALTA DE USUARIO                 ";
+    locate(40, 5);  cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40, 7);  cout << "ID de usuario a dar de alta: ";
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>idu;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
+
+    int pos = archivo.buscarRegistro(idu);
+
+    if(pos < 0){
+        setColor(RED);
+        locate(40, 10); cout << "NO EXISTE UN USUARIO CON ESE ID EN EL ARCHIVO";
+        anykey();
+        cls();
+        return;
+    }
+
+    Usuarios usuario = archivo.leerRegistros(pos);
+
+    if(usuario.getestado() == true){
+        setColor(YELLOW);
+        locate(40, 12); cout << "EL USUARIO YA FUE DADO DE ALTA";
+        anykey();
+        cls();
+        return;
+    }
+
+    usuario.setestado(true);
+    archivo.modificarRegistro(usuario, pos);
+
+    setColor(GREEN);
+    locate(40, 12); cout << "SE DIO DE ALTA AL USUARIO CORRECTAMENTE";
+
+    anykey();
+    cls();
+}
 void cambiar_contrasena(){
     cls();
     Archivo_usuarios archivo;
@@ -938,8 +1012,16 @@ void cambiar_contrasena(){
     locate(40, 5);  cout << "----------------------------------------------";
     setColor(WHITE);
 
-    locate(40, 8);  cout << "ID de usuario: ";
-    locate(60, 8);  cin >> idu;
+    locate(40, 7);  cout << "ID de usuario: ";
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>idu;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
 
     int pos = archivo.buscarRegistro(idu);
 
@@ -978,23 +1060,39 @@ void cambiar_datos_usuario(){
     if(chequearSalidaESC("Usted esta por cambiar los datos de un usuario."))return;
     Archivo_usuarios archivo;
     Usuarios usuario;
-    int leg;
-    cout<<"INGRESE EL ID DEL USUARIO: ";
-    cin>>leg;
-    int pos=archivo.buscarRegistro(leg);
+    int idu;
+    while(true){
+        locate(40, 15);
+        setColor(GREEN);
+        cout<<"INGRESE EL ID DEL USUARIO: ";
+        locate(40, 16);
+        setColor(WHITE);
+        cin>>idu;
+        if(validar_numero())break;
+
+        LimpiarLineas(16, 18, 40);
+    }
+    int pos=archivo.buscarRegistro(idu);
 
     if(pos<0){
+        locate(40, 17);
         cout<<"NO EXISTE UN USUARIO CON ESE ID EN EL ARCHIVO"<<endl;
+        anykey();
+        cls();
         return;
     }
     usuario=archivo.leerRegistros(pos);
     if(usuario.getestado()){
         usuario.modificar();
         archivo.modificarRegistro(usuario, pos);
+        locate(40, 17);
         cout<<"SE CAMBIARON LOS DATOS CORRECTAMENTE"<<endl;
-    }else cout<<"USUARIO INEXISTENTE"<<endl;
+    }else {
+        locate(40, 18);
+        cout<<"USUARIO INEXISTENTE"<<endl;
+    }
 
-    system("pause");
+    anykey();
     system("cls");
 
 }
@@ -1009,8 +1107,8 @@ void listar_ingresos(){
     anykey();
     system("cls");
 }
-///Funciones micros
 
+///Funciones micros
 void ingresar_Micro(){
     cls();
 
@@ -1086,7 +1184,13 @@ void eliminar_Micro() {
 
     locate(44, 11); cout << "Ingrese ID de micro a dar de baja:";
     locate(44, 12); cout << "> ";
-    cin >> idm;
+    while(true){
+        locate(48, 12);
+        cin >> idm;
+        if(validar_numero())break;
+
+        LimpiarLineas(12, 13, 48);
+    }
 
     int pos = archivo.buscarRegsitro(idm);
 
@@ -1118,13 +1222,66 @@ void eliminar_Micro() {
     locate(44, 14); anykey();
     system("cls");
 }
+void dar_alta_Micro(){
+    system("cls");
+    if (chequearSalidaESC("Usted está por dar de alta un Micro.")) return;
+
+    Archivo_micros archivo;
+    int idm;
+
+    setColor(WHITE);
+
+    locate(44, 8);  cout << "--------- DAR ALTA MICRO ---------";
+    locate(44, 9);  cout << "----------------------------------";
+
+    locate(44, 11); cout << "Ingrese ID de micro a dar de alta:";
+    locate(44, 12); cout << "> ";
+    while(true){
+        locate(48, 12);
+        cin >> idm;
+        if(validar_numero())break;
+
+        LimpiarLineas(12, 13, 48);
+    }
+
+
+    int pos = archivo.buscarRegsitro(idm);
+
+    system("cls");
+
+    locate(44, 8);  cout << "--------- DAR ALTA MICRO ---------";
+    locate(44, 9);  cout << "----------------------------------";
+
+    if (pos < 0) {
+        locate(44, 11); cout << "No existe un micro con ese ID.";
+        locate(44, 14); anykey();
+        system("cls");
+        return;
+    }
+
+    Micros micros = archivo.leerRegistros(pos);
+
+    if (micros.getdisponible()) {
+        locate(44, 11); cout << "El micro ya esta dado de alta.";
+        locate(44, 14); anykey();
+        system("cls");
+        return;
+    }
+
+    micros.setdisponible(true);
+    archivo.modificarRegistro(micros, pos);
+
+    locate(44, 11); cout << "Micro dado de alta correctamente.";
+    locate(44, 14); anykey();
+    system("cls");
+}
 void cambiar_patente_Micro() {
     system("cls");
     if (chequearSalidaESC("Usted está por cambiar la patente de un Micro.")) return;
 
     Archivo_micros archivo;
     Micros micro;
-    int id;
+    int idm;
 
     setColor(WHITE);
     locate(44, 8);  cout << "------- CAMBIAR PATENTE -------";
@@ -1132,11 +1289,17 @@ void cambiar_patente_Micro() {
 
     locate(44, 11); cout << "Ingrese el ID del micro:";
     locate(44, 12); cout << "> ";
-    cin >> id;
+    while(true){
+        locate(48, 12);
+        cin >> idm;
+        if(validar_numero())break;
+
+        LimpiarLineas(12, 13, 48);
+    }
 
     system("cls");
 
-    int pos = archivo.buscarRegsitro(id);
+    int pos = archivo.buscarRegsitro(idm);
 
     locate(44, 8);  cout << "------- CAMBIAR PATENTE -------";
     locate(44, 9);  cout << "-------------------------------";
@@ -1170,7 +1333,7 @@ void cambiar_patente_Micro() {
         ok = validarPatente(patenteNueva);
 
         if (ok) {
-            if (existePatente(patenteNueva, id)) {
+            if (existePatente(patenteNueva, idm)) {
                 locate(44, 14); cout << "ERROR: La patente ya existe. Intente con otra.";
                 ok = false;
             }
@@ -1206,9 +1369,15 @@ void cambiar_unidad_Micro() {
     locate(40, 5);  cout << "------------------------------------------";
     setColor(WHITE);
 
-    locate(40, 8); cout << "Ingrese ID del micro:";
-    locate(40, 9); cout << "> ";
-    cin >> idm;
+    while(true){
+        locate(40, 8); cout << "Ingrese ID del micro:";
+        locate(40, 9); cout << "> ";
+        cin >> idm;
+
+        if(validar_numero())break;
+        LimpiarLineas(9, 12, 40);
+    }
+
 
     system("cls");
 
@@ -1326,7 +1495,14 @@ void eliminar_destino(){
     setColor(WHITE);
 
     locate(40,8); cout << "ID del destino a dar de baja: ";
-    locate(70,8); cin >> idd;
+
+    while(true){
+        locate(40, 9);
+        cin >> idd;
+        if(validar_numero())break;
+
+        LimpiarLineas(9, 11, 40);
+    }
 
     int pos = archivo.buscarRegistros(idd);
 
@@ -1354,6 +1530,59 @@ void eliminar_destino(){
 
     setColor(GREEN);
     locate(40,12); cout << "SE DIO DE BAJA EL DESTINO CORRECTAMENTE";
+
+    anykey();
+    cls();
+}
+void dar_alta_destino(){
+cls();
+
+    if(chequearSalidaESC("Usted esta por dar de alta un Destino.")) return;
+
+    Archivo_destinos archivo;
+    int idd;
+
+    setColor(YELLOW);
+    locate(40,3); cout << "----------------------------------------------";
+    locate(40,4); cout << "               ALTA DE DESTINO               ";
+    locate(40,5); cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40,8); cout << "ID del destino a dar de alta: ";
+    while(true){
+        locate(40, 9);
+        cin >> idd;
+        if(validar_numero())break;
+
+        LimpiarLineas(9, 11, 40);
+    }
+
+    int pos = archivo.buscarRegistros(idd);
+
+    if(pos < 0){
+        setColor(RED);
+        locate(40,10); cout << "NO EXISTE UN DESTINO CON ESE ID EN EL ARCHIVO";
+        anykey();
+        cls();
+        return;
+    }
+
+    Destinos destinos = archivo.leerRegistros(pos);
+
+    if(destinos.gethabilitado() == true){
+        setColor(YELLOW);
+        locate(40,12); cout << "EL DESTINO YA FUE DADO DE ALTA";
+        setColor(WHITE);
+        anykey();
+        cls();
+        return;
+    }
+
+    destinos.sethabilitado(true);
+    archivo.modificarRegistro(destinos, pos);
+
+    setColor(GREEN);
+    locate(40,12); cout << "SE DIO DE ALTA EL DESTINO CORRECTAMENTE";
 
     anykey();
     cls();
@@ -1460,8 +1689,17 @@ void eliminar_chofer(){
     locate(40, 5);  cout << "----------------------------------------------";
     setColor(WHITE);
 
+    setColor(GREEN);
     locate(40, 7); cout << "INGRESE LEGAJO DEL CHOFER A DAR DE BAJA: ";
-    locate(40, 8); cin >> leg;
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>leg;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
 
     int pos = archivo.buscarRegistro(leg);
 
@@ -1494,6 +1732,63 @@ void eliminar_chofer(){
     anykey();
     LimpiarLineas(7, 9, 40);
 }
+void dar_alta_chofer(){
+    cls();
+
+    if(chequearSalidaESC("Usted esta por dar de alta un Chofer.")) return;
+
+    Archivo_choferes archivo;
+    Choferes chofer;
+    int leg;
+
+    setColor(YELLOW);
+    locate(40, 3);  cout << "----------------------------------------------";
+    locate(40, 4);  cout << "              ALTA DE CHOFER                 ";
+    locate(40, 5);  cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40, 7); cout << "INGRESE LEGAJO DEL CHOFER A DAR DE ALTA: ";
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>leg;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
+
+    int pos = archivo.buscarRegistro(leg);
+
+    if(pos < 0){
+        setColor(RED);
+        locate(40, 9); cout << "NO EXISTE UN CHOFER CON ESE LEGAJO EN EL ARCHIVO";
+        setColor(WHITE);
+        anykey();
+        LimpiarLineas(7, 9, 40);
+        return;
+    }
+
+    chofer = archivo.leerRegistros(pos);
+
+    if(chofer.getestado() == true){
+        setColor(YELLOW);
+        locate(40, 9); cout << "EL CHOFER YA FUE DADO DE ALTA";
+        setColor(WHITE);
+        anykey();
+        LimpiarLineas(7, 9, 40);
+        return;
+    }
+
+    chofer.setestado(true);
+    archivo.modificarRegistro(chofer, pos);
+
+    setColor(GREEN);
+    locate(40, 9); cout << "SE DIO DE ALTA AL CHOFER CORRECTAMENTE";
+    setColor(WHITE);
+    anykey();
+    LimpiarLineas(7, 9, 40);
+}
 void cambiar_mail_chofer(){
     cls();
 
@@ -1508,7 +1803,15 @@ void cambiar_mail_chofer(){
     setColor(WHITE);
 
     locate(40, 7); cout << "INGRESE EL LEGAJO DEL CHOFER: ";
-    locate(70, 7); cin >> leg;
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>leg;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
 
     int pos = archivo.buscarRegistro(leg);
 
@@ -1557,7 +1860,15 @@ void cambiar_telefono_chofer(){
     setColor(WHITE);
 
     locate(40, 7); cout << "INGRESE EL LEGAJO DEL CHOFER: ";
-    locate(70, 7); cin >> leg;
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>leg;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
 
     int pos = archivo.buscarRegistro(leg);
 
@@ -1592,10 +1903,51 @@ void cambiar_telefono_chofer(){
         LimpiarLineas(3, 9, 40);
     }
 }
+void cambiar_datos_chofer(){
+    if(chequearSalidaESC("Usted esta por cambiar los datos de un chofer."))return;
+    Archivo_choferes archivo;
+    Choferes chofer;
+    int leg;
 
+    setColor(GREEN);
+    locate(40, 7);
+    cout<<"INGRESE EL LEGAJO: ";
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>leg;
+
+        if(validar_numero())break;
+
+        LimpiarLineas(8, 10, 40);
+    }
+    int pos=archivo.buscarRegistro(leg);
+
+    if(pos<0){
+        locate(40, 9);
+        cout<<"NO EXISTE UN CHOFER CON ESE LEGAJO EN EL ARCHIVO"<<endl;
+        anykey();
+        cls();
+        return;
+    }
+    chofer=archivo.leerRegistros(pos);
+    if(chofer.getestado()){
+        chofer.modificar();
+        archivo.modificarRegistro(chofer, pos);
+        locate(40, 10);
+        cout<<"SE CAMBIARON LOS DATOS CORRECTAMENTE"<<endl;
+    }else {
+        locate(40, 10);
+        cout<<"CHOFER INEXISTENTE"<<endl;
+    }
+
+    anykey();
+    system("cls");
+}
 
 ///REPORTES
 void por_anio(){
+    cls();
     Pasajes pasaje;
     Archivo_pasajes archivopasaje;
 
@@ -1603,7 +1955,24 @@ void por_anio(){
     Archivo_viajes archivoviaje;
 
     int anio;
-    cout<<"ingrese un año: "; cin>>anio;
+    while(true){
+        setColor(YELLOW);
+        locate(40, 15); cout<<"Ingrese el año: ";
+        setColor(WHITE);
+        cin>>anio;
+        int longitud=to_string(anio).length();
+        if(validar_numero() and (longitud>=4 and longitud<=4)) break;
+        else{
+            setColor(RED);
+            locate(40, 17);
+            cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+            anykey();
+            LimpiarLineas(15, 20, 40);
+            setColor(WHITE);
+            continue;
+        }
+    }
+
 
     float acumulador=0;
 
@@ -1621,11 +1990,15 @@ void por_anio(){
             }
         }
     }
-    cout<<"RECAUDACION TOTAL EN EL AÑO "<<anio<<": "<<acumulador<<endl;
+    setColor(GREEN);
+    locate(40, 15);
+    cout<<"RECAUDACION TOTAL EN EL AÑO "<<anio<<" $:"<<acumulador<<endl;
+    setColor(WHITE);
     anykey();
     cls();
 }
 void por_micro(){
+    cls();
     Micros micros;
     Archivo_micros archivomicro;
 
@@ -1635,29 +2008,48 @@ void por_micro(){
     Viajes viaje;
     Archivo_viajes archivoviaje;
 
-    int id;
-    cout<<"ingrese el ID del micro: "; cin>>id;
-    float acumulador;
+  int id;
+    while(true){
+        setColor(YELLOW);
+        locate(40, 15); cout<<"Ingrese el id del micro: ";
+        setColor(WHITE);
+        cin>>id;
+        if(validar_numero() and (id>=1000 and id<=2000)) break;
+        else {
+            setColor(RED);
+            locate(40, 17);
+            cout << "ID de micro invalido, intente nuevamente: ";
+            anykey();
+            LimpiarLineas(15, 20, 40);
+            setColor(WHITE);
+            continue;
+        }
+    }
+
+    float acumulador=0;
     int cantregmicro=archivomicro.contarRegistros();
     int cantregviaje=archivoviaje.contarRegistros();
     int cantregpasaje=archivopasaje.contarRegistros();
 
     int posmicro=archivomicro.buscarRegsitro(id);
+    if(posmicro<0)return;
     micros=archivomicro.leerRegistros(posmicro);
 
     for(int i=0; i<cantregviaje; i++){
         viaje=archivoviaje.leerRegistros(i);
         if(viaje.getidMicro()==micros.getidMicro()){
             for(int z=0; z<cantregpasaje; z++){
-                pasaje=archivopasaje.leerRegistros(i);
+                pasaje=archivopasaje.leerRegistros(z);
                 if(pasaje.getidviaje()==viaje.getidViaje()){
                     acumulador+=pasaje.getprecioxkm();
                 }
             }
         }
     }
-
+    setColor(GREEN);
+    locate(40, 15);
     cout << "RECAUDACION TOTAL DEL MICRO "<<micros.getidMicro()<<" ES DE $"<<acumulador<<endl;
+    setColor(WHITE);
     anykey();
     cls();
 }
@@ -1687,8 +2079,16 @@ void por_provincia(){
         for(int z=0; z<contregdestino; z++){
             destino=archivodestino.leerRegistros(z);
             if(viaje.getidDestino()==destino.getidDestino()){
-                for(int x=0; x<23; x++){
-                    const char *provincia=funcion_provincias(x);
+                for(int x=0; x<24; x++){
+                    const char *provincia=funcion_provincias(x, 1);
+                    if(strcmp(provincia, destino.getnombre_provincia())==0){
+                        recaudacio_provincia[x]+=pasaje.getprecioxkm();
+                    }
+                    provincia=funcion_provincias(x, 2);
+                    if(strcmp(provincia, destino.getnombre_provincia())==0){
+                        recaudacio_provincia[x]+=pasaje.getprecioxkm();
+                    }
+                    provincia=funcion_provincias(x, 3);
                     if(strcmp(provincia, destino.getnombre_provincia())==0){
                         recaudacio_provincia[x]+=pasaje.getprecioxkm();
                     }
@@ -1706,7 +2106,7 @@ void por_provincia(){
         locate(0, i+8);
         cout<<funcion_provincias(i);
         locate(33, i+7);
-        cout<<recaudacio_provincia[i]<<endl;
+        cout<<recaudacio_provincia[i+1]<<endl;
     }
     anykey();
     cls();
@@ -1715,44 +2115,44 @@ void cantPasajes_destino_mes(){
     cls();
     Archivo_destinos archivodestino;
     Archivo_pasajes archivopasajes;
+    Archivo_viajes archivoviaje;
 
     int cant_pasajes=archivopasajes.contarRegistros();
     int cant_destinos=archivodestino.contarRegistros();
+    int cant_viajes=archivoviaje.contarRegistros();
 
     int *por_destino=new int[cant_destinos];
     for (int i=0;i<cant_destinos;i++){
         por_destino[i]=0;
     }
+Fecha fecha_desde;
+    setColor(YELLOW);
+    locate(40, 8); cout << "Ingrese FECHA DESDE:";
+    setColor(WHITE);
+    fecha_desde.cargar();
 
-    int anio_desde,mes_desde,dia_desde;
-    int anio_hasta,mes_hasta,dia_hasta;
+    anykey();
+    cls();
 
-    cout<<"ingrese fecha desde(dia,mes,anio): ";
-    cin>>dia_desde>>mes_desde>>anio_desde;
+    Fecha fecha_hasta;
+    setColor(YELLOW);
+    locate(40, 8); cout << "Ingrese FECHA HASTA:";
+    setColor(WHITE);
+    fecha_hasta.cargar();
 
-    if(anio_desde==0){
-        time_t t=time (NULL);
-        tm*ahora=localtime(&t);
-        int anio_actual=ahora->tm_year+1900;
+    int fecha_desde_num =
+        fecha_desde.getanio() * 10000 +
+        fecha_desde.getmes() * 100 +
+        fecha_desde.getdia();
 
-        anio_desde=anio_actual;
-        mes_desde=1;
-        dia_desde=1;
-
-        anio_hasta=anio_actual;
-        mes_hasta=12;
-        dia_hasta=31;
-    } else {
-    cout<<"ingrese fecha hasta(dia,mes,anio): ";
-    cin>>dia_hasta>>mes_hasta>>anio_hasta;
-    }
-    int fecha_desde_num=anio_desde*10000+mes_desde*100+dia_desde;
-    int fecha_hasta_num=anio_hasta*10000+mes_hasta*100+dia_hasta;
-
+    int fecha_hasta_num =
+        fecha_hasta.getanio() * 10000 +
+        fecha_hasta.getmes() * 100 +
+        fecha_hasta.getdia();
 
     for(int i=0;i<cant_pasajes;i++){
         Pasajes p= archivopasajes.leerRegistros(i);
-        Fechas f;
+        Fecha f;
         int a=f.getanio();
         int m=f.getmes();
         int d=f.getdia();
@@ -1760,44 +2160,54 @@ void cantPasajes_destino_mes(){
         int fecha_pasaje_num=a*10000+m*100+d;
         if(fecha_pasaje_num>=fecha_desde_num&&fecha_pasaje_num<=fecha_hasta_num){
 
-            Destinos p;
-            int idDestino=p.getidDestino();
+            Destinos destino;
+            Viajes viaje;
+            Pasajes pasaje;
+            for(int i=0; i<cant_viajes; i++){
+                viaje=archivoviaje.leerRegistros(i);
+                int posdestino=archivodestino.buscarRegistros(viaje.getidDestino());
+                destino=archivodestino.leerRegistros(posdestino);
 
-        int posDestino=-1;
+                for(int x=0; x<cant_pasajes; x++){
+                    pasaje=archivopasajes.leerRegistros(x);
+                    if(pasaje.getidviaje()==viaje.getidViaje()){
+                        por_destino[destino.getidDestino()-1]++;
+                    }
+                }
 
-        for(int j=0;j<cant_destinos;j++){
-            Destinos dest=archivodestino.leerRegistros(j);
-            if(dest.getidDestino()==idDestino){
-                posDestino=j;
-                break;
             }
-        }
-          if(posDestino!=-1){
-            por_destino[posDestino]++;
-        }
+
+//            int idDestino=p.getidDestino();
+//
+//        int posDestino=-1;
+//
+//        for(int j=0;j<cant_destinos;j++){
+//            Destinos dest=archivodestino.leerRegistros(j);
+//            if(dest.getidDestino()==idDestino){
+//                posDestino=j;
+//                break;
+//            }
+//        }posDestino
+//          if(!=-1){
+//            por_destino[posDestino]++;
+//        }
     }
 }
-
-    rlutil::cls;
-    cout<<"CANTIDAD DE PASAJES  VENDIDOS:  "<<endl;
-    cout<<"Periodo: "
-    <<dia_desde<<"/"<<mes_desde<<"/"<<anio_desde
-    <<" al "
-    <<dia_hasta<<"/"<<mes_hasta<<"/"<<anio_hasta<<endl<<endl;
-
-    cout<<left<<setw(20)<<"destino"
-    <<right<<setw(10)<<"pasaje"<<endl;
-    cout<<"------------------------------------------------"<<endl;
-
-    for(int j=0;j<cant_destinos;j++){
-        Destinos dest=archivodestino.leerRegistros(j);
-        cout<<left<<setw(20)<<dest.getnombre_destino()
-            <<right<<setw(10)<<por_destino[j]<<endl;
-    }
-    cout<<endl;
-
-    anykey();
     rlutil::cls();
+    cout << "CANTIDAD DE PASAJES VENDIDOS\n\n";
+    cout << "Periodo: " << fecha_desde.getdia() << "/" << fecha_desde.getmes() << "/" << fecha_desde.getanio()<< "  al  "
+    << fecha_hasta.getdia() << "/" << fecha_hasta.getmes() << "/" << fecha_hasta.getanio()<< endl << endl;
+    cout << left << setw(20) <<  "Destino"<< right << setw(10) << "Pasajes" << endl;
+    cout << "----------------------------------------------\n";
+    for (int j = 0; j < cant_destinos; j++) {
+        Destinos dest = archivodestino.leerRegistros(j);
+        cout << left << setw(20) << dest.getnombre_destino()<< right << setw(10) << por_destino[j] << endl;
+    }
+
+    cout << endl;
+    anykey();
+    cls();
+    delete[] por_destino;
 }
 void kilometros_micro(){
     cls();
@@ -1819,12 +2229,24 @@ void kilometros_micro(){
     }
 
     for(int i=0; i<cantmicros; i++)micros[i]=0;
-
-    int anio;
+ int anio;
     while(true){
-        cout<<"Ingrese año: "; cin>>anio;
-        if(validar_numero())break;
-    }
+            setColor(GREEN);
+            locate(40, 15); cout<<"Ingrese el anio: ";
+            setColor(WHITE);
+            cin>>anio;
+            int longitud=to_string(anio).length();
+            if(validar_numero() and (longitud>=4 and longitud<=4)) break;
+            else {
+                setColor(RED);
+                locate(40, 17);
+                 cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+                 anykey();
+                 LimpiarLineas(15, 20, 40);
+                 setColor(WHITE);
+                 continue;
+             }
+        }
 
     int contador=0;
     for(int i=0; i<cantviajes; i++){
@@ -1838,79 +2260,32 @@ void kilometros_micro(){
             }
         }
     }
-    cout<<"\nKILOMETROS RECORRIDOS POR MICRO EN EL ANIO "<<anio<<":\n\n";
-    cout<<"Micros"<<setw(20)<<" "<<"kilometros recorridos"<<endl;
-    cout<<"---------------------------------------------------\n";
+
+
+    cls();
+    setColor(YELLOW);
+    int fila=0, columna=40;
+    locate(40, 10); cout<<"=================================================="<<endl;
+    locate(40, 11); cout<<"KILOMETROS RECORRIDOS POR MICRO EN EL ANIO "<<anio<<endl;
+    locate(40, 13); cout<<"Micros"<<setw(20)<<" "<<"kilometros recorridos"<<endl;
+    locate(40, 14); cout<<"--------------------------------------------------"<<endl;
     for(int i=0; i<cantmicros; i++){
         micro=archivomicro.leerRegistros(i);
         if(micro.getdisponible()){
-            cout<<micro.getidMicro()<<setw(30)<<" "<<micros[i]<<endl;
+            locate(columna, i+14); cout<<micro.getidMicro()<<setw(30)<<" "<<micros[i]<<endl;
+            fila=i+15;
         }
     }
+    locate(40, fila+1); cout<<"================================================"<<endl;
+
 
     delete[] micros;
     anykey();
     cls();
-
-
-//    Archivo_viajes   archivoviaje;
-//    Archivo_micros   archivomicro;
-//    Archivo_destinos archivodestino;
-//
-//    int cantViajes = archivoviaje.contarRegistros();
-//    int cantMicros = archivomicro.contarRegistros();
-//
-//    int* porMicro = new int[cantMicros];
-//
-//    for (int i = 0; i < cantMicros; i++) {
-//        porMicro[i] = 0;
-//    }
-//    int anio;
-//    cout << "ingrese el año (0 para actual): ";
-//    cin >> anio;
-//
-//    if (anio == 0) {
-//        time_t t = time(NULL);
-//        tm *ahora = localtime(&t);
-//        anio = ahora->tm_year + 1900;
-//    }
-//    for (int i = 0; i < cantViajes; i++) {
-//
-//        Viajes v = archivoviaje.leerRegistros(i);
-//        int anioviaje = v.getfecha_Inicio_Viaje().getanio();
-//
-//        if (anioviaje == anio) {
-//
-//            int idmicro = v.getidMicro();
-//            int iddestino = v.getidDestino();
-//
-//
-//            int posMicro = -1;
-//            for (int j = 0; j < cantMicros; j++) {
-//                Micros m = archivomicro.leerRegistros(j);
-//                if (m.getidMicro() == idmicro) {
-//                    posMicro = j;
-//                    break;
-//                }
-//            }
-//            if (posMicro != -1) {
-//                Destinos d = archivodestino.leerRegistros(iddestino);
-//                porMicro[posMicro] += d.getdistanciaKm();
-//            }
-//        }
-//    }
-//    cout << "\nKILOMETROS RECORRIDOS POR MICRO EN EL ANIO " << anio << ":\n\n";
-//    for (int i = 0; i < cantMicros; i++) {
-//        Micros m = archivomicro.leerRegistros(i);
-//        cout << "Micro " << m.getidMicro()
-//             << ": " << porMicro[i] << " km\n";
-//    }
-//
-//    delete[] porMicro;
-//    anykey();
-//    rlutil::cls();
 }
 void recaudacion_por_genero_anio(){
+
+
     cls();
     Pasajes pasaje;
     Archivo_pasajes archivopasajes;
@@ -1923,12 +2298,25 @@ void recaudacion_por_genero_anio(){
 
     float recaudacion_generos[3]={0};
 
-    int anio;
+ int anio;
     while(true){
-        cout<<"Ingrese el año: ";
-        cin>>anio;
-        if(validar_numero())break;
-    }
+            setColor(GREEN);
+            locate(40, 15); cout<<"Ingrese el anio: ";
+            setColor(WHITE);
+            cin>>anio;
+            int longitud=to_string(anio).length();
+            if(validar_numero() and (longitud>=4 and longitud<=4)) break;
+            else {
+                setColor(RED);
+                locate(40, 17);
+                 cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+                 anykey();
+                 LimpiarLineas(15, 20, 40);
+                 setColor(WHITE);
+                 continue;
+             }
+        }
+        cls();
 
     int cant_pasajes=archivopasajes.contarRegistros();
     int cant_viajes=archivoviajes.contarRegistros();
@@ -1946,37 +2334,48 @@ void recaudacion_por_genero_anio(){
             recaudacion_generos[pasajero.getgenero()-1]+=pasaje.getprecioxkm();
         }
     }
+    setColor(YELLOW);
 
-    cout<<"=============================================="<<endl;
-    cout<<"   RECAUDACION POR GENERO - AÑO "<<anio<<endl;
-    cout<<"==============================================" << endl;
-    cout<<endl;
-
-    cout<<"Masculino:         $ "<<recaudacion_generos[0]<<endl;
-    cout<<"Femenino:          $ "<<recaudacion_generos[1]<<endl;
-    cout<<"No binario:        $ "<<recaudacion_generos[2]<<endl;
+    locate(40, 10);cout<<"=============================================="<<endl;
+    locate(40, 11);cout<<"   RECAUDACION POR GENERO - AÑO "<<anio<<endl;
+    locate(40, 12);cout<<"==============================================" << endl;
+    locate(40, 13);cout<<endl;
+    locate(40, 14);cout<<"Masculino:         $ "<<recaudacion_generos[0]<<endl;
+    locate(40, 15);cout<<"Femenino:          $ "<<recaudacion_generos[1]<<endl;
+    locate(40, 16);cout<<"No binario:        $ "<<recaudacion_generos[2]<<endl;
     anykey();
     cls();
 
 }
 void viajes_chofer_mes(){
+    cls();
 Archivo_viajes archivoviaje;
     Archivo_choferes archivochoferes;
 
     int cant_choferes = archivochoferes.contarRegistros();
     int cant_viajes   = archivoviaje.contarRegistros();
 
+
     int anio;
-    cout << "ingrese el anio: ";
-    cin  >> anio;
-
-    if (anio == 0) {
-        time_t t = time(NULL);
-        tm *ahora = localtime(&t);
-        anio = ahora->tm_year + 1900;
-    }
-
+    while(true){
+            setColor(GREEN);
+            locate(40, 15); cout<<"Ingrese el anio: ";
+            setColor(WHITE);
+            cin>>anio;
+            int longitud=to_string(anio).length();
+            if(validar_numero() and (longitud>=4 and longitud<=4)) break;
+            else {
+                setColor(RED);
+                locate(40, 17);
+                 cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+                 anykey();
+                 LimpiarLineas(15, 20, 40);
+                 setColor(WHITE);
+                 continue;
+             }
+        }
     rlutil::cls();
+    setColor(YELLOW);
 
     for (int c = 0; c < cant_choferes; c++) {
 
@@ -1988,7 +2387,7 @@ Archivo_viajes archivoviaje;
             Viajes viaje = archivoviaje.leerRegistros(i);
 
             if (viaje.getidChofer() == legajoActual) {
-                Fechas f = viaje.getfecha_Inicio_Viaje();
+                Fecha f = viaje.getfecha_Inicio_Viaje();
                 if (f.getanio() == anio) {
                     int mes = f.getmes();
                     if (mes >= 1 && mes <= 12) {
@@ -2011,7 +2410,7 @@ Archivo_viajes archivoviaje;
         cout << endl << "----------------------------------------" << endl;
     }
     anykey();
-    rlutil::cls();
+    cls();
 }
 
 ///MENUS Y SUBMENUS
@@ -2083,11 +2482,12 @@ void SUBMENU_1(){
 
 void SUBMENU_2(){
     int seleccion=0;
-    const int opciones_submenu=6;
+    const int opciones_submenu=7;
     string submenu[opciones_submenu]={
         " INGRESA MICRO",
         " MOSTRAR MICROS",
         " DAR DE BAJA MICRO",
+        " DAR DE ALTA MICRO",
         " CAMBIAR PATENTE",
         " CAMBIAR LA UNIDAD",
         " MENU PRINCIPAL"
@@ -2096,8 +2496,8 @@ void SUBMENU_2(){
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<9; i++){locate(43,10+i); cout << "|";}
-        for(int i=0; i<9; i++){locate(72,10+i); cout << "|";}
+        for(int i=0; i<10; i++){locate(43,10+i); cout << "|";}
+        for(int i=0; i<10; i++){locate(72,10+i); cout << "|";}
         locate(44,10);
         cout << "---------- MICROS ----------"<<endl;
         locate(44,11);
@@ -2112,7 +2512,7 @@ void SUBMENU_2(){
             }else cout<<"  "<<submenu[i]<<endl;
         }
         setColor(WHITE);
-        locate(44,18);
+        locate(44,19);
         cout<<"----------------------------"<<endl;
         setColor(WHITE);
 
@@ -2138,12 +2538,15 @@ void SUBMENU_2(){
                 eliminar_Micro();
                 break;
             case 3:
-                cambiar_patente_Micro();
+                dar_alta_Micro();
                 break;
             case 4:
-                cambiar_unidad_Micro();
+                cambiar_patente_Micro();
                 break;
             case 5:
+                cambiar_unidad_Micro();
+                break;
+            case 6:
                 salir=true;
                 break;
             }
@@ -2154,14 +2557,91 @@ void SUBMENU_2(){
 
 void SUBMENU_3(){
     int seleccion=0;
-    const int opciones_submenu=6;
+    const int opciones_submenu=8;
     string submenu[opciones_submenu]={
         " ALTA DE NUEVO CONDUCTOR",
         " LISTA DE CONDUCTORES",
-        " DAR DE BAJA",
+        " DAR DE BAJA CHOFER",
+        " DAR DE ALTA CHOFER",
         " CAMBIAR MAIL ",
         " CAMBIAR TELEFONO",
+        " CAMBIAR DATOS DE CHOFER",
         " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        setColor(WHITE);
+        for(int i=0; i<9; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(73,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"----------CHOFERES-----------"<<endl;
+        locate(44,11);
+        cout<<"-----------------------------"<<endl;
+
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,20);
+        cout<<"-----------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+
+            switch(seleccion){
+            case 0:
+                ingresar_chofer();
+                break;
+            case 1:
+                mostrar_choferes();
+                break;
+            case 2:
+                eliminar_chofer();
+                break;;
+            case 3:
+                dar_alta_chofer();
+                break;
+            case 4:
+                cambiar_mail_chofer();
+                break;
+            case 5:
+                cambiar_telefono_chofer();
+                break;
+            case 6:
+                cambiar_datos_chofer();
+                break;
+            case 7:
+                salir=true;
+                break;
+            }
+
+        }
+    }
+}
+
+void SUBMENU_4(){
+    int seleccion=0;
+    const int opciones_submenu=6;
+    string submenu[opciones_submenu]={
+        " INGRESAR DESTINO",
+        " MOSTRAR DESTINO",
+        " DAR DE BAJA UN DESTINO",
+        " DAR DE ALTA UN DESTINO",
+        " PROVINCIAS",
+        " SALIR AL MENU"
     };
     bool salir=false;
 
@@ -2170,10 +2650,9 @@ void SUBMENU_3(){
         for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
         for(int i=0; i<7; i++){locate(73,11+i); cout << "|";}
         locate(44,10);
-        cout<<"----------CHOFERES-----------"<<endl;
+        cout<<"----------DESTINOS-----------"<<endl;
         locate(44,11);
         cout<<"-----------------------------"<<endl;
-
         for(int i=0; i<opciones_submenu; i++){
             setColor(WHITE);
             locate(45,12+i);
@@ -2198,73 +2677,6 @@ void SUBMENU_3(){
 
             switch(seleccion){
             case 0:
-                ingresar_chofer();
-                break;
-            case 1:
-                mostrar_choferes();
-                break;
-            case 2:
-                eliminar_chofer();
-                break;
-            case 3:
-                cambiar_mail_chofer();
-                break;
-            case 4:
-                cambiar_telefono_chofer();
-                break;
-            case 5:
-                salir=true;
-                break;
-            }
-
-        }
-    }
-}
-
-void SUBMENU_4(){
-    int seleccion=0;
-    const int opciones_submenu=5;
-    string submenu[opciones_submenu]={
-        " INGRESAR DESTINO",
-        " MOSTRAR DESTINO",
-        " DAR DE BAJA UN DESTINO",
-        " PROVINCIAS",
-        " SALIR AL MENU"
-    };
-    bool salir=false;
-
-    while(!salir){
-        setColor(WHITE);
-        for(int i=0; i<6; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<6; i++){locate(73,11+i); cout << "|";}
-        locate(44,10);
-        cout<<"----------DESTINOS-----------"<<endl;
-        locate(44,11);
-        cout<<"-----------------------------"<<endl;
-        for(int i=0; i<opciones_submenu; i++){
-            setColor(WHITE);
-            locate(45,12+i);
-            if(i==seleccion){
-                setColor(GREEN);
-                cout<<"> "<<submenu[i]<<endl;
-                setColor(WHITE);
-            }else cout<<"  "<<submenu[i]<<endl;
-        }
-        setColor(WHITE);
-        locate(44,17);
-        cout<<"-----------------------------"<<endl;
-        setColor(WHITE);
-        int tecla=getkey();
-        if(tecla==KEY_UP){
-            seleccion--;
-            if(seleccion<0)seleccion=opciones_submenu-1;
-        }else if(tecla==KEY_DOWN){
-            seleccion++;
-            if(seleccion>=opciones_submenu)seleccion=0;
-        }else if(tecla==KEY_ENTER){
-
-            switch(seleccion){
-            case 0:
                 ingresar_destino();
                 break;
             case 1:
@@ -2274,9 +2686,12 @@ void SUBMENU_4(){
                 eliminar_destino();
                 break;
             case 3:
-                mostrar_provincias();
+                dar_alta_destino();
                 break;
             case 4:
+                mostrar_provincias();
+                break;
+            case 5:
                 salir=true;
                 break;
             }
@@ -2286,12 +2701,13 @@ void SUBMENU_4(){
 
 void SUBMENU_5(){
     int seleccion=0;
-    const int opciones_submenu=7;
+    const int opciones_submenu=8;
     string submenu[opciones_submenu]={
         " INGRESAR NUEVO USUARIO",
         " MOSTRAR USUARIOS",
         " MOSTRAR SESIONES",
         " DAR DE BAJA USUARIO",
+        " DAR DE ALTA USUARIO",
         " CAMBIAR CONTRASEÑA",
         " CAMBIR DATOS PERSONALES",
         " MENU PRINCIPAL"
@@ -2300,8 +2716,8 @@ void SUBMENU_5(){
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<8; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<8; i++){locate(73,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(73,11+i); cout << "|";}
         locate(44,10);
         cout<<"----------USUARIOS-----------"<<endl;
         locate(44,11);
@@ -2316,7 +2732,7 @@ void SUBMENU_5(){
             }else cout<<"  "<<submenu[i]<<endl;
         }
         setColor(WHITE);
-        locate(44,19);
+        locate(44,20);
         cout<<"-----------------------------"<<endl;
         setColor(WHITE);
         int tecla=getkey();
@@ -2342,12 +2758,15 @@ void SUBMENU_5(){
                 eliminar_usuario();
                 break;
             case 4:
-                cambiar_contrasena();
+                dar_alta_usuario();
                 break;
             case 5:
-                cambiar_datos_usuario();
+                cambiar_contrasena();
                 break;
             case 6:
+                cambiar_datos_usuario();
+                break;
+            case 7:
                 salir=true;
                 break;
             }
@@ -2670,7 +3089,6 @@ void inicio_de_sesion(){
             getline(cin, id);
             if(id.empty() or !esNumero(id) or id.length()>=9){
                 LimpiarLineas(20,25,40);
-                //locate(40, 20); cout<<"                                                            ";
                 continue;
             }
             break;
@@ -2683,13 +3101,12 @@ void inicio_de_sesion(){
             getline(cin, contrasena);
             if(contrasena.empty()){
                 LimpiarLineas(23,28,40);
-                //locate(40, 23); cout<<"                                                            ";
                 continue;
             }
             break;
         }
 
-        Fechas fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
+        Fecha fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
         Hora actual;
 
         int contreg=archivos.contarRegistros();

@@ -1,7 +1,10 @@
 #include<iostream>
 #include<cstring>
 #include "ARCHIVO_PASAJE.h"
+#include "rlutil.h"
 
+
+using namespace rlutil;
 using namespace std;
 
 Archivo_pasajes::Archivo_pasajes(const char *a){
@@ -67,6 +70,8 @@ void Archivo_pasajes::listar(){
     for(int i=0; i<contreg; i++){
         pasaje=leerRegistros(i);
         pasaje.mostrar();
+        anykey();
+        cls();
         cout<<endl;
     }
 }

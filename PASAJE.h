@@ -13,7 +13,6 @@ private:
     char tipo_butaca[30];
     char nombre_destino[40];
     char provincia_destino[40];
-    Viajes datos;
 
 public:
 

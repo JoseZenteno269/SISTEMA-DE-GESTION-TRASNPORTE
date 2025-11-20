@@ -20,8 +20,8 @@ void Viajes::setidViaje(int idv){idViaje=idv; }
 void Viajes::setidMicro(int idm){idMicro=idm; }
 void Viajes::setidChofer(int idc){idChofer=idc; }
 void Viajes::setidDestino(int idd){idDestino=idd; }
-void Viajes::setfecha_Inicio_Viaje(Fechas fiv){fecha_Inicio_Viaje=fiv; }
-void Viajes::setfecha_Fin_Viaje(Fechas ffv){fecha_Fin_Viaje=ffv; }
+void Viajes::setfecha_Inicio_Viaje(Fecha fiv){fecha_Inicio_Viaje=fiv; }
+void Viajes::setfecha_Fin_Viaje(Fecha ffv){fecha_Fin_Viaje=ffv; }
 void Viajes::sethora_Inicio_Viaje(Hora hiv){hora_Inicio_Viaje=hiv; }
 void Viajes::sethora_Fin_Viaje(Hora hfv){hora_Fin_Viaje=hfv; }
 void Viajes::setrealizado(bool r){realizado=r; }
@@ -30,8 +30,8 @@ int Viajes::getidViaje(){return idViaje; }
 int Viajes::getidMicro(){return idMicro; }
 int Viajes::getidChofer(){return idChofer; }
 int Viajes::getidDestino(){return idDestino; }
-Fechas Viajes::getfecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
-Fechas Viajes::getfecha_Fin_Viaje(){return fecha_Fin_Viaje; }
+Fecha Viajes::getfecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
+Fecha Viajes::getfecha_Fin_Viaje(){return fecha_Fin_Viaje; }
 Hora Viajes::gethora_Inicio_Viaje(){return hora_Inicio_Viaje; }
 Hora Viajes::gethora_Fin_Viaje(){return hora_Fin_Viaje; }
 bool Viajes::getrealizado(){return realizado; }
@@ -40,19 +40,19 @@ void Viajes::cargar(int idv){
     Archivo_micros archivomicro;
     Archivo_choferes archivochofer;
     Archivo_destinos archivodestino;
+    Archivo_viajes archivoviaje;
     Tiempo_Actual actual;
-    Fechas presente(actual.getDia(), actual.getMes(), actual.getAnio());
+    Fecha presente(actual.getDia(), actual.getMes(), actual.getAnio());
 
     cls();
     setColor(GREEN);
-    locate(40,3); cout << "----------------------------------------------";
-    locate(40,4); cout << "              CARGA DE NUEVO VIAJE           ";
-    locate(40,5); cout << "----------------------------------------------";
+    locate(40,3); cout<<"----------------------------------------------";
+    locate(40,4); cout<<"              CARGA DE NUEVO VIAJE           ";
+    locate(40,5); cout<<"----------------------------------------------";
     setColor(WHITE);
-    locate(40,6); cout << "ID de viaje asignado: " << (idViaje = idv);
+    locate(40,6); cout<<"ID de viaje asignado: "<<(idViaje = idv);
 
     Micros micro;
-
     while(true){
         LimpiarLineas(8,16,40);
         setColor(CYAN);
@@ -64,7 +64,7 @@ void Viajes::cargar(int idv){
         if(idMicro == 0){ setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
 
         int pos = archivomicro.buscarRegsitro(idMicro);
-        if(pos < 0){
+        if(pos<0){
             setColor(RED);
             LimpiarLineas(8,16,40);
             locate(40,8);
@@ -80,7 +80,6 @@ void Viajes::cargar(int idv){
     }
 
     Destinos destino;
-
     while(true){
         LimpiarLineas(8,16,40);
         setColor(CYAN);
@@ -91,8 +90,8 @@ void Viajes::cargar(int idv){
         if(!validar_numero()) continue;
         if(idDestino == 0){ setColor(RED); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
 
-        int pos = archivodestino.buscarRegistros(idDestino);
-        if(pos < 0){
+        int pos=archivodestino.buscarRegistros(idDestino);
+        if(pos<0){
             setColor(RED);
             LimpiarLineas(8,16,40);
             locate(40,8);
@@ -114,19 +113,19 @@ void Viajes::cargar(int idv){
         locate(40,8); cout << "Ingrese ID de chofer (0 para salir): ";
         setColor(WHITE);
         locate(40,9); cin >> idChofer;
-         if(!validar_numero()) continue;
+        if(!validar_numero()) continue;
         if(idChofer == 0){ setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
 
         int pos = archivochofer.buscarRegistro(idChofer);
         if(pos < 0){
             setColor(RED);
             LimpiarLineas(8,16,40);
-        locate(40,8);
-        cout << "ERROR, chofer no registrado";
-        setColor(WHITE);
-        anykey();
-         continue;
-         }
+            locate(40,8);
+            cout << "ERROR, chofer no registrado";
+            setColor(WHITE);
+            anykey();
+            continue;
+        }
 
         chofer = archivochofer.leerRegistros(pos);
         break;
@@ -150,15 +149,7 @@ void Viajes::cargar(int idv){
     setColor(WHITE);
     locate(40,9); hora_Inicio_Viaje.cargar();
 
-    fecha_y_hora_fin(
-        destino,
-        archivodestino,
-        fecha_Fin_Viaje,
-        hora_Fin_Viaje,
-        fecha_Inicio_Viaje,
-        hora_Inicio_Viaje,
-        idDestino
-    );
+    fecha_y_hora_fin(destino, archivodestino, fecha_Fin_Viaje, hora_Fin_Viaje, fecha_Inicio_Viaje, hora_Inicio_Viaje,idDestino);
 
     realizado = true;
     LimpiarLineas(8,18,40);
@@ -171,7 +162,6 @@ void Viajes::cargar(int idv){
 }
 
 void Viajes::mostrar(){
-    cls();
 
     setColor(YELLOW);
     locate(40, 3);  cout << "----------------------------------------------";
@@ -182,7 +172,7 @@ void Viajes::mostrar(){
     locate(40, 7);  cout << "==============================================";
     locate(40, 8);  cout << "ID de Viaje:               " << idViaje;
 
-    // MICRO
+
     Micros micro;
     Archivo_micros archivomicro;
     int pos1 = archivomicro.buscarRegsitro(idMicro);
@@ -197,10 +187,10 @@ void Viajes::mostrar(){
         locate(40, 9); cout << "Error al cargar datos del micro";
     }
 
-    // CHOFER
+
     locate(40, 13); cout << "ID de chofer:              " << idChofer;
 
-    // DESTINO
+
     Destinos destino;
     Archivo_destinos archivodestino;
     int pos2 = archivodestino.buscarRegistros(idDestino);
@@ -215,7 +205,7 @@ void Viajes::mostrar(){
         locate(40, 15); cout << "Destino no encontrado";
     }
 
-    // FECHAS Y HORARIOS
+
     locate(40, 18); cout << "Fecha de inicio:           ";
     fecha_Inicio_Viaje.mostrarEn(18, 70);
 
@@ -229,8 +219,6 @@ void Viajes::mostrar(){
     hora_Fin_Viaje.mostrarEn(21, 70);
 
     locate(40, 23); cout << "==============================================";
-
-    anykey();
 }
 
 void Viajes::listartabla() {
@@ -253,9 +241,9 @@ void Viajes::listartabla() {
     Precios precioBase = Arch_Precio.leerRegistros();
 
     setColor(YELLOW);
-    locate(5, 3);  cout << "--------------------------------------------------------------------------------------------------------";
-    locate(5, 4);  cout << "                                             LISTADO DE VIAJES                                           ";
-    locate(5, 5);  cout << "--------------------------------------------------------------------------------------------------------";
+    locate(5, 3);  cout << "----------------------------------------------------------------------------------------------------------";
+    locate(5, 4);  cout << "                                             LISTADO DE VIAJES                                            ";
+    locate(5, 5);  cout << "----------------------------------------------------------------------------------------------------------";
     setColor(WHITE);
 
     locate(5, 7);
@@ -265,11 +253,11 @@ void Viajes::listartabla() {
     locate(40, 7); cout << "DESTINO";
     locate(55, 7); cout << "DURACION";
     locate(65, 7); cout << "DISTANCIA";
-    locate(75, 7); cout << "PRECIO";
-    locate(85, 7); cout << "FECHA";
+    locate(77, 7); cout << "PRECIO";
+    locate(90, 7); cout << "FECHA";
     locate(100, 7); cout << "HORA INICIO";
 
-    locate(5, 8); cout << "--------------------------------------------------------------------------------------------------------";
+    locate(5, 8); cout << "----------------------------------------------------------------------------------------------------------";
 
     int fila = 9;
     Viajes viaje;
@@ -292,7 +280,8 @@ void Viajes::listartabla() {
             duracion = destino.getduracion();
         }
 
-        float precioTotal = distancia * precioBase.getPrecio();
+        float butaca=plusxbutaca(viaje);
+        float precioTotal=distancia*precioBase.getPrecio()+butaca;
 
         locate(5, fila); cout << viaje.getidViaje();
         locate(15, fila); cout << idMicro;
@@ -301,8 +290,8 @@ void Viajes::listartabla() {
         locate(55, fila); duracion.mostrarEn(fila, 55);
         locate(65, fila); cout << distancia;
         locate(75, fila); cout << precioTotal;
-        locate(85, fila); viaje.getfecha_Inicio_Viaje().mostrarEn(fila, 85);
-        locate(100, fila); viaje.gethora_Inicio_Viaje().mostrarEn(fila, 100);
+        locate(85, fila); viaje.getfecha_Inicio_Viaje().mostrarEn(90, fila);
+        locate(100, fila); viaje.gethora_Inicio_Viaje().mostrarEn(105, fila);
 
         fila++;
     }

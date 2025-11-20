@@ -28,6 +28,8 @@ void Micros::capacidadportipo(){
     if (strcmp(tipoButaca,"comun")==0) capacidad=60;
     else if(strcmp(tipoButaca,"cama")==0)capacidad=30;
     else if(strcmp(tipoButaca,"semi-cama")==0)capacidad=40;
+
+    if(strcmp(tipo,"simple-piso")==0)capacidad=capacidad/2;
 }
 
 void Micros::cargar(int idm){
@@ -125,9 +127,9 @@ void Micros::cargar(int idm){
         if(validarPatente(patente)){
             if(existePatente(patente, idMicro)){
                 setColor(RED);
-                LimpiarLineas(9, 15, 40);
                 locate(40, 12);
                 cout << "ERROR: La patente ya existe. Intente con otra.";
+                LimpiarLineas(9, 15, 40);
                 setColor(WHITE);
             } else {
                 break;
@@ -136,21 +138,9 @@ void Micros::cargar(int idm){
             setColor(RED);
             locate(40, 12);
             cout << "Patente inválida. Intente nuevamente.";
+            LimpiarLineas(9, 15, 40);
             setColor(WHITE);
-
         }
-
-//        if(validarPatente(patente)){
-//            LimpiarLineas(9, 15, 40);
-//            break;
-//        }
-
-//        setColor(RED);
-//        locate(40, 12);
-//        cout << "Patente inválida. Intente nuevamente.";
-//        setColor(WHITE);
-//        anykey();
-//        LimpiarLineas(9, 15, 40);
     }
 
     capacidadportipo();

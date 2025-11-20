@@ -89,7 +89,7 @@ void Archivo_micros::listartabla(){
     Micros micro;
     int contreg = contarRegistros();
 
-    if(contreg <= 0){
+    if(contreg < 0){
         setColor(RED);
         locate(40, 10); cout << "NO HAY MICROS REGISTRADOS";
         setColor(WHITE);

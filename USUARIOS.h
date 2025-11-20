@@ -7,20 +7,20 @@ class Usuarios:public Personas{
 private:
     int idUsuario;
     char contrasena[30];
-    Fechas ingreso;
+    Fecha ingreso;
     int nivel;
     bool estado;
 public:
 
     void setidUsuario(int );
     void setcontrasena(const char *);
-    void setingreso(Fechas );
+    void setingreso(Fecha );
     void setnivel(int);
     void setestado(bool );
 
     int getidUsuario();
     const char *getcontrasena();
-    Fechas getingreso();
+    Fecha getingreso();
     int getnivel();
     bool getestado();
 

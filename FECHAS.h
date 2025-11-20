@@ -1,13 +1,13 @@
 #ifndef FECHAS_H_INCLUDED
 #define FECHAS_H_INCLUDED
 
-class Fechas{
+class Fecha{
 private:
     int dia;
     int mes;
     int anio;
 public:
-    Fechas(int d=1, int m=1, int a=1900);
+    Fecha(int d=1, int m=1, int a=1900);
 
     void setdia(int );
     void setmes(int );

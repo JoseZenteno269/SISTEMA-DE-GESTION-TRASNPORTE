@@ -8,19 +8,19 @@ private:
     int legajo;
     char mail_laboral[100];
     bool estado;
-    Fechas fecha_de_ingreso;
+    Fecha fecha_de_ingreso;
 
 public:
 
     void setlegajo(int );
     void setmail_laboral(const char *);
     void setestado(bool );
-    void setfecha_de_ingreso(Fechas );
+    void setfecha_de_ingreso(Fecha );
 
     int getlegajo();
     const char *getmail_laboral();
     bool getestado();
-    Fechas getfecha_de_ingreso();
+    Fecha getfecha_de_ingreso();
 
     void cargar(int);
     void mostrar();

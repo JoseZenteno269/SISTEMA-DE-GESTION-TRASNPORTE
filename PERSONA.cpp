@@ -13,7 +13,7 @@ void Personas::settelefono(long long t){telefono=t; }
 void Personas::setemail(const char *e){strcpy(email,e);}
 void Personas::setgenero(int g){genero=g;}
 void Personas::setnacionalidad(const char *nac){strcpy(nacionalidad, nac); }
-void Personas::setfecha_Nacimiento(Fechas f){fecha_Nacimiento = f;}
+void Personas::setfecha_Nacimiento(Fecha f){fecha_Nacimiento = f;}
 void Personas::setdomicilio(Domicilio d){domicilio=d;}
 
 
@@ -24,7 +24,7 @@ long long Personas::gettelefono(){return telefono; }
 const char *Personas::getemail(){return email;}
 int Personas::getgenero(){return genero;}
 const char *Personas::getnacionalidad(){return nacionalidad; }
-Fechas Personas::getfecha_Nacimiento(){return fecha_Nacimiento;}
+Fecha Personas::getfecha_Nacimiento(){return fecha_Nacimiento;}
 Domicilio Personas::getdomicilio(){return domicilio;}
 
 const char* Personas::getgenerotexto()const{
@@ -200,8 +200,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Nombre actualizado." << endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
 
     setColor(CYAN);
@@ -226,8 +228,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Apellido actualizado."<<endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
     setColor(CYAN);
     locate(40,12); cout<<"DNI actual: "<<getdni()<<endl;
@@ -250,8 +254,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> DNI actualizado."<<endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
     setColor(CYAN);
     locate(40,12); cout<<"Telefono actual: "<<gettelefono()<<endl;
@@ -274,8 +280,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Telefono actualizado."<<endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
 
     setColor(CYAN);
@@ -294,8 +302,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Email actualizado."<<endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
 
     setColor(CYAN);
@@ -318,8 +328,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Genero actualizado."<<endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
     setColor(CYAN);
     locate(40,12); cout<<"Nacionalidad actual: "<<getnacionalidad()<<endl;
@@ -341,8 +353,10 @@ void Personas::modificar(){
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Nacionalidad actualizada."<<endl;
-        LimpiarLineas(15, 25, 40);
+        anykey();
+        LimpiarLineas(12, 25, 40);
     }
+    LimpiarLineas(12, 25, 40);
 
 
     setColor(CYAN);
@@ -352,7 +366,7 @@ void Personas::modificar(){
 
     key=getkey();
     if(key==KEY_ENTER){
-        Fechas temp_fecha;
+        Fecha temp_fecha;
         setColor(YELLOW);
         locate(40, 15); cout<<"--- Cargando nueva Fecha de Nacimiento ---"<<endl;
         temp_fecha.cargarEn(42, 17);
@@ -361,6 +375,7 @@ void Personas::modificar(){
         locate(40, 22);
         cout<<">> Fecha de Nacimiento actualizada."<<endl;
     }
+    anykey();
     LimpiarLineas(11, 25, 40);
 
     setColor(CYAN);
@@ -379,6 +394,7 @@ void Personas::modificar(){
         locate(40, 22);
         cout<<">> Domicilio actualizado."<<endl;
     }
+    anykey();
     LimpiarLineas(12, 25, 40);
 
     locate(40, 13);

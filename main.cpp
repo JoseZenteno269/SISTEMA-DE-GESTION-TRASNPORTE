@@ -19,11 +19,12 @@ int main(){
     //HWND console = GetConsoleWindow();
     //ShowWindow(console, SW_MAXIMIZE);
     //setBackgroundColor(BLUE);
-    //hidecursor();
+
+    hidecursor();
     MENU();
     //inicio_de_sesion();
+    showcursor();
 
-    //showcursor();
     cout<<endl<<endl;
 
     system("pause");

@@ -10,8 +10,8 @@ private:
     int idMicro;
     int idChofer;
     int idDestino;
-    Fechas fecha_Inicio_Viaje;
-    Fechas fecha_Fin_Viaje;
+    Fecha fecha_Inicio_Viaje;
+    Fecha fecha_Fin_Viaje;
     Hora hora_Inicio_Viaje;
     Hora hora_Fin_Viaje;
     bool realizado;
@@ -20,8 +20,8 @@ public:
     void setidMicro(int);
     void setidChofer(int);
     void setidDestino(int);
-    void setfecha_Inicio_Viaje(Fechas);
-    void setfecha_Fin_Viaje(Fechas);
+    void setfecha_Inicio_Viaje(Fecha);
+    void setfecha_Fin_Viaje(Fecha);
     void sethora_Inicio_Viaje(Hora);
     void sethora_Fin_Viaje(Hora);
     void setrealizado(bool);
@@ -30,8 +30,8 @@ public:
     int getidMicro();
     int getidChofer();
     int getidDestino();
-    Fechas getfecha_Inicio_Viaje();
-    Fechas getfecha_Fin_Viaje();
+    Fecha getfecha_Inicio_Viaje();
+    Fecha getfecha_Fin_Viaje();
     Hora gethora_Inicio_Viaje();
     Hora gethora_Fin_Viaje();
     bool getrealizado();

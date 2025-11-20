@@ -6,21 +6,21 @@
 using namespace std;
 using namespace rlutil;
 
-Fechas::Fechas(int d, int m, int a){
+Fecha::Fecha(int d, int m, int a){
     dia=d;
     mes=m;
     anio=a;
 }
 
-void Fechas::setdia(int d){dia=d; }
-void Fechas::setmes(int m){mes=m; }
-void Fechas::setanio(int a){anio=a; }
+void Fecha::setdia(int d){dia=d; }
+void Fecha::setmes(int m){mes=m; }
+void Fecha::setanio(int a){anio=a; }
 
-int Fechas::getdia(){return dia; }
-int Fechas::getmes(){return mes; }
-int Fechas::getanio(){return anio; }
+int Fecha::getdia(){return dia; }
+int Fecha::getmes(){return mes; }
+int Fecha::getanio(){return anio; }
 
-void Fechas::cargar(){
+void Fecha::cargar(){
     while (true) {
         locate(40, 10); cout << "Año: ";
         locate(45, 10); cin >> anio;
@@ -63,7 +63,7 @@ void Fechas::cargar(){
     }
 }
 
-void Fechas::cargarEn(int x, int y){
+void Fecha::cargarEn(int x, int y){
     while (true) {
         locate(x, y); cout << "Año: ";
         locate(x+5, y); cin >> anio;
@@ -107,13 +107,13 @@ void Fechas::cargarEn(int x, int y){
 }
 
 
-void Fechas::mostrar() {
+void Fecha::mostrar() {
 
     setColor(WHITE);
     locate(40, 17); cout << dia << "/" << mes << "/" << anio;
 
 }
-void Fechas::mostrarEn(int x, int y) {
+void Fecha::mostrarEn(int x, int y) {
     setColor(WHITE);
     locate(x, y);
     cout << dia << "/" << mes << "/" << anio;

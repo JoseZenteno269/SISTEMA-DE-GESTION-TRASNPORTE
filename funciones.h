@@ -27,13 +27,13 @@
 bool existePatente(const char *patente, int idMicroAExcluir);
 void LimpiarLineas(int,int,int);
 float plusxbutaca(Viajes viaje);
+bool esNumero(const std::string&);
 bool validar_numero();
-void fecha_y_hora_fin(Destinos , Archivo_destinos , Fechas &, Hora &, Fechas , Hora , int);
+void fecha_y_hora_fin(Destinos , Archivo_destinos , Fecha &, Hora &, Fecha , Hora , int);
 bool chequearSalidaESC(std::string);
-void ocultarCursor();
-void mostrarCursor();
-bool esFechaPosterior(Fechas, Fechas);
+bool esFechaPosterior(Fecha, Fecha);
 void cargarCadena(char *, int );
+const char *funcion_provincias(int pos);
 const char *funcion_provincias(int,int );
 bool validarPatente(const char *);
 bool validarPalabra(const char *);
@@ -50,6 +50,8 @@ void venta_de_pasaje();
 void pasajes_vendidos();
 void cargar_viaje();
 void mostrar_viajes();
+
+/// funcion precios
 void valor_kilometro();
 void cargar_precio_butaca();
 void mostrar_precio_butacas();
@@ -58,12 +60,16 @@ void mostrar_precio_butacas();
 void ingresar_usuario();
 void mostrar_usuarios();
 void eliminar_usuario();
+void dar_alta_usuario();
 void cambiar_contrasena();
+void cambiar_datos_usuario();
+void listar_ingresos();
 
 ///Funciones micros
 void ingresar_Micro();
 void mostrar_Micro();
 void eliminar_Micro();
+void dar_alta_Micro();
 void cambiar_patente_Micro();
 void cambiar_unidad_Micro();
 
@@ -71,6 +77,7 @@ void cambiar_unidad_Micro();
 void ingresar_destino();
 void mostrar_destino();
 void eliminar_destino();
+void dar_alta_destino();
 void cargar_prvincias();
 void mostar_provincias();
 
@@ -78,6 +85,7 @@ void mostar_provincias();
 void ingresar_chofer();
 void mostrar_choferes();
 void eliminar_chofer();
+void dar_alta_chofer();
 void cambiar_mail_chofer();
 void cambiar_telefeno_chofer();
 
