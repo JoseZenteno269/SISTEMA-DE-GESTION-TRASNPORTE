@@ -31,7 +31,7 @@ int Archivo_micro::buscarRegsitro(int idm){
     int contreg=contarRegistros();
     for (int i=0;i<contreg;i++){
         micro=leerRegistros(i);
-        if(micro.getidMicro()==idm){
+        if(micro.getIdMicro()==idm){
             return i;
         }
     }
@@ -42,11 +42,11 @@ Micro Archivo_micro::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Micro micro;
     if(p==nullptr){
-        micro.setidMicro(-3);
+        micro.setIdMicro(-3);
         return micro;
     }
     fseek(p,pos*sizeof micro,0);
-    micro.setidMicro(-4);
+    micro.setIdMicro(-4);
     fread(&micro,sizeof micro,1,p);
     fclose(p);
     return micro;
@@ -77,7 +77,7 @@ void Archivo_micro::listar(){
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         micro=leerRegistros(i);
-        if(micro.getdisponible()){
+        if(micro.getDisponible()){
             micro.mostrar();
             cout<<endl;
         }
@@ -120,25 +120,25 @@ void Archivo_micro::listartabla(){
     for(int i = 0; i < contreg; i++){
         micro = leerRegistros(i);
 
-        if(micro.getdisponible()){
+        if(micro.getDisponible()){
 
             locate(20, fila);
-            cout << micro.getidMicro();
+            cout << micro.getIdMicro();
 
             locate(27, fila);
-            cout << micro.getmarca();
+            cout << micro.getMarca();
 
             locate(43, fila);
-            cout << micro.gettipo();
+            cout << micro.getTipo();
 
             locate(59, fila);
-            cout << micro.getcapacidad();
+            cout << micro.getCapacidad();
 
             locate(65, fila);
-            cout << micro.gettipoButaca();
+            cout << micro.getTipoButaca();
 
             locate(78, fila);
-            cout << micro.getpatente();
+            cout << micro.getPatente();
 
             fila++;
         }

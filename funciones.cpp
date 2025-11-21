@@ -14,7 +14,7 @@ bool existePatente(const char *patente, int idMicroAExcluir) {
 
     for (int i = 0; i < cantidadRegistros; i++) {
         micro = archivo.leerRegistros(i);
-        if (strcmp(micro.getpatente(), patente) == 0 && micro.getidMicro() != idMicroAExcluir) {
+        if (strcmp(micro.getPatente(), patente) == 0 && micro.getIdMicro() != idMicroAExcluir) {
             return true;
         }
     }
@@ -39,8 +39,8 @@ float plusxbutaca(Viaje viaje){
     for (int i = 0; i < N; i++) {
         micro = archivoMicro.leerRegistros(i);
 
-        if (viaje.getidMicro() == micro.getidMicro()) {
-            const char *tipo = micro.gettipoButaca();
+        if (viaje.getIdMicro() == micro.getIdMicro()) {
+            const char *tipo = micro.getTipoButaca();
 
             if (strcmp(tipo, "cama") == 0) return valorbutaca.getPreciobutaca_cama();
             if (strcmp(tipo, "semi-cama") == 0) return valorbutaca.getPreciobutaca_semicama();
@@ -77,11 +77,11 @@ void fecha_y_hora_fin(Destino destino, Archivo_destino archivodestino, Fecha &fe
     int pos=archivodestino.buscarRegistros(idDestino);
     destino=archivodestino.leerRegistros(pos);
 
-    int dias=destino.getduracion().gethora()/24;
-    int horas=destino.getduracion().gethora()%24;
+    int dias=destino.getDuracion().getHora()/24;
+    int horas=destino.getDuracion().getHora()%24;
 
-    int nuevahora=hora_Inicio_Viaje.gethora()+horas;
-    int nuevominuto=hora_Inicio_Viaje.getminuto()+destino.getduracion().getminuto();
+    int nuevahora=hora_Inicio_Viaje.getHora()+horas;
+    int nuevominuto=hora_Inicio_Viaje.getMinuto()+destino.getDuracion().getMinuto();
 
     if(nuevominuto>=60){
         nuevominuto-=60;
@@ -92,24 +92,24 @@ void fecha_y_hora_fin(Destino destino, Archivo_destino archivodestino, Fecha &fe
         nuevahora-=24;
         dias++;
     }
-    hora_Fin_Viaje.sethora(nuevahora);
-    hora_Fin_Viaje.setminuto(nuevominuto);
+    hora_Fin_Viaje.setHora(nuevahora);
+    hora_Fin_Viaje.setMinuto(nuevominuto);
 
-    int dias_mes=diasEnMes(fecha_Inicio_Viaje.getmes(), fecha_Inicio_Viaje.getanio());
+    int dias_mes=diasEnMes(fecha_Inicio_Viaje.getMes(), fecha_Inicio_Viaje.getAnio());
 
-    if((fecha_Inicio_Viaje.getdia()+dias)>dias_mes){
-        fecha_Fin_Viaje.setdia((fecha_Inicio_Viaje.getdia()+dias)-dias_mes);
-        if((fecha_Inicio_Viaje.getmes()+1)==13){
-            fecha_Fin_Viaje.setmes(1);
-            fecha_Fin_Viaje.setanio(fecha_Inicio_Viaje.getanio()+1);
+    if((fecha_Inicio_Viaje.getDia()+dias)>dias_mes){
+        fecha_Fin_Viaje.setDia((fecha_Inicio_Viaje.getDia()+dias)-dias_mes);
+        if((fecha_Inicio_Viaje.getMes()+1)==13){
+            fecha_Fin_Viaje.setMes(1);
+            fecha_Fin_Viaje.setAnio(fecha_Inicio_Viaje.getAnio()+1);
         }else{
-            fecha_Fin_Viaje.setmes(fecha_Inicio_Viaje.getmes()+1);
-            fecha_Fin_Viaje.setanio(fecha_Inicio_Viaje.getanio());
+            fecha_Fin_Viaje.setMes(fecha_Inicio_Viaje.getMes()+1);
+            fecha_Fin_Viaje.setAnio(fecha_Inicio_Viaje.getAnio());
         }
     }else{
-        fecha_Fin_Viaje.setdia(fecha_Inicio_Viaje.getdia()+dias);
-        fecha_Fin_Viaje.setmes(fecha_Inicio_Viaje.getmes());
-        fecha_Fin_Viaje.setanio(fecha_Inicio_Viaje.getanio());
+        fecha_Fin_Viaje.setDia(fecha_Inicio_Viaje.getDia()+dias);
+        fecha_Fin_Viaje.setMes(fecha_Inicio_Viaje.getMes());
+        fecha_Fin_Viaje.setAnio(fecha_Inicio_Viaje.getAnio());
     }
 }
 
@@ -166,13 +166,13 @@ bool chequearSalidaESC(string mensaje){
 //}
 
 bool esFechaPosterior(Fecha inicio ,Fecha presente){
-    if(inicio.getanio()>presente.getanio())return true;
-    if(inicio.getanio()<presente.getanio())return false;
+    if(inicio.getAnio()>presente.getAnio())return true;
+    if(inicio.getAnio()<presente.getAnio())return false;
 
-    if(inicio.getmes()>presente.getmes())return true;
-    if(inicio.getmes()<presente.getmes())return false;
+    if(inicio.getMes()>presente.getMes())return true;
+    if(inicio.getMes()<presente.getMes())return false;
 
-    if(inicio.getdia()>=presente.getdia())return true;
+    if(inicio.getDia()>=presente.getDia())return true;
 
     return false;
 }
@@ -314,7 +314,7 @@ void calendario(int mes, int anio){
         bool tieneViaje = false;
         for(int i = 0; i < contreg; i++){
             Viaje viaje = archivo.leerRegistros(i);
-            if(viaje.getfecha_Inicio_Viaje().getdia() == dia and viaje.getfecha_Inicio_Viaje().getmes() == mes and viaje.getfecha_Inicio_Viaje().getanio() == anio){
+            if(viaje.getFecha_Inicio_Viaje().getDia() == dia and viaje.getFecha_Inicio_Viaje().getMes() == mes and viaje.getFecha_Inicio_Viaje().getAnio() == anio){
                 tieneViaje = true;
                 break;
             }
@@ -399,9 +399,9 @@ int viajes_disponibles() {
         for (int i = 0; i < contreg; i++) {
             viaje = archivo.leerRegistros(i);
 
-            if (dia == viaje.getfecha_Inicio_Viaje().getdia() &&
-                mes == viaje.getfecha_Inicio_Viaje().getmes() &&
-                anio == viaje.getfecha_Inicio_Viaje().getanio()) {
+            if (dia == viaje.getFecha_Inicio_Viaje().getDia() &&
+                mes == viaje.getFecha_Inicio_Viaje().getMes() &&
+                anio == viaje.getFecha_Inicio_Viaje().getAnio()) {
                 LimpiarLineas(3,3,40);
                 viaje.mostrar();
                 anykey();
@@ -432,7 +432,7 @@ int viajes_disponibles() {
             if(pos<0){locate(40, 6); cout<<"Error, no se encontro el archivo"<<endl;  anykey(); LimpiarLineas(4, 7, 40); continue; }
             viaje=archivo.leerRegistros(pos);
 
-            if(validar_numero() and viaje.getidViaje()==idv and viaje.getfecha_Inicio_Viaje().getdia()==dia)break;
+            if(validar_numero() and viaje.getIdViaje()==idv and viaje.getFecha_Inicio_Viaje().getDia()==dia)break;
 
             LimpiarLineas(4, 7, 40);
         }
@@ -447,18 +447,18 @@ int selecion_de_butacas(int cant, Micro micro, int idViaje){
     int posSeleccionada=1;
 
     Archivo_pasaje archivo;
-    Pasaje pasaje;
+    Pasaje Pasaje;
     int cont=archivo.contarRegistros();
     int* ocupadas=new int[cont];
     int numOcupadas=0;
     for(int i=0; i<cont; i++){
-        pasaje=archivo.leerRegistros(i);
-        if(pasaje.getidviaje()==idViaje){
-            ocupadas[numOcupadas++]=pasaje.getbutaca();
+        Pasaje=archivo.leerRegistros(i);
+        if(Pasaje.getIdviaje()==idViaje){
+            ocupadas[numOcupadas++]=Pasaje.getButaca();
         }
     }
 
-    if(strcmp(micro.gettipo(), "simple-piso")==0){
+    if(strcmp(micro.getTipo(), "simple-piso")==0){
         while(true){
             cls();
             int filas=(cant+columnas-1)/columnas;
@@ -492,7 +492,7 @@ int selecion_de_butacas(int cant, Micro micro, int idViaje){
                 setColor(WHITE);
             }else if(tecla==KEY_ESCAPE){ delete[] ocupadas; break; }
         }
-    }else if(strcmp(micro.gettipo(), "doble-piso")==0){
+    }else if(strcmp(micro.getTipo(), "doble-piso")==0){
         int cantPorPiso=cant/2;
         int filas=(cantPorPiso + columnas - 1) / columnas;
         locate(52, 3); cout<<"BUTACAS"<<endl;
@@ -568,7 +568,7 @@ void venta_de_pasaje() {
     Destino destino;
     Archivo_destino archivoDestinos;
 
-    Pasaje pasaje;
+    Pasaje Pasaje;
     Archivo_pasaje archivoPasaje;
 
     Micro micro;
@@ -609,34 +609,34 @@ void venta_de_pasaje() {
         setColor(WHITE);
 
         int numeroPasaje = contregPasajeros + 1 + i;
-        pasaje.setpasaje(numeroPasaje);
+        Pasaje.setPasaje(numeroPasaje);
 
         int posviaje = archivoViajes.buscarRegistro(idViaje);
         viaje = archivoViajes.leerRegistros(posviaje);
-        if (viaje.getidViaje() == idViaje) {
-            pasaje.setidviaje(viaje.getidViaje());
+        if (viaje.getIdViaje() == idViaje) {
+            Pasaje.setIdviaje(viaje.getIdViaje());
         }
 
-        int posmicro = archivoMicros.buscarRegsitro(viaje.getidMicro());
+        int posmicro = archivoMicros.buscarRegsitro(viaje.getIdMicro());
         micro = archivoMicros.leerRegistros(posmicro);
-        if (viaje.getidMicro() == micro.getidMicro()) {
-            int butaca = selecion_de_butacas(micro.getcapacidad(), micro, idViaje);
+        if (viaje.getIdMicro() == micro.getIdMicro()) {
+            int butaca = selecion_de_butacas(micro.getCapacidad(), micro, idViaje);
             LimpiarLineas(1,40,40);
-            pasaje.setbutaca(butaca);
-            pasaje.settipo_butaca(micro.gettipoButaca());
+            Pasaje.setButaca(butaca);
+            Pasaje.setTipo_butaca(micro.getTipoButaca());
         }
 
-        int posdestino = archivoDestinos.buscarRegistros(viaje.getidDestino());
+        int posdestino = archivoDestinos.buscarRegistros(viaje.getIdDestino());
         destino = archivoDestinos.leerRegistros(posdestino);
-        if (viaje.getidDestino() == destino.getidDestino()) {
+        if (viaje.getIdDestino() == destino.getIdDestino()) {
             precio = archivoPrecio.leerRegistros();
             float butaca=plusxbutaca(viaje);
-            pasaje.setprecioxkm(destino.getdistanciaKm()*precio.getPrecio()+butaca);
+            Pasaje.setPrecio(destino.getDistanciaKm()*precio.getPrecio()+butaca);
         }
 
-        pasajero.cargar(pasaje.getpasaje());
+        pasajero.cargar(Pasaje.getPasaje());
 
-        if (archivoPasaje.grabarRegistro(pasaje) and archivoPasajeros.grabarRegistro(pasajero)) {
+        if (archivoPasaje.grabarRegistro(Pasaje) and archivoPasajeros.grabarRegistro(pasajero)) {
             setColor(GREEN);
             locate(40, 18); cout << "Pasaje " << numeroPasaje << " registrado correctamente.";
             setColor(WHITE);
@@ -680,12 +680,12 @@ void cargar_viaje(){
     }else{
         int idmax=999;
         viaje=archivo.leerRegistros(contreg-1);
-        if(viaje.getidViaje()>idmax) idmax=viaje.getidViaje();
+        if(viaje.getIdViaje()>idmax) idmax=viaje.getIdViaje();
         idv=idmax+1;
     }
     viaje.cargar(idv);
 
-    if(viaje.getidMicro()==0 or viaje.getidDestino()==0 or viaje.getidChofer()==0)return;
+    if(viaje.getIdMicro()==0 or viaje.getIdDestino()==0 or viaje.getIdChofer()==0)return;
 
     if(archivo.grabarRegistro(viaje))cout<<endl<<"VIAJE REGISTRADO SATISFACTORIAMENTE. ID: "<<idv<<endl;
     else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
@@ -850,7 +850,7 @@ void ingresar_usuario() {
     }
     else {
         usuario = archivo.leerRegistros(contreg - 1);
-        int idmax = usuario.getidUsuario();
+        int idmax = usuario.getIdUsuario();
         if (idmax < 9999) idmax = 9999;
         idu = idmax + 1;
     }
@@ -933,7 +933,7 @@ void eliminar_usuario(){
 
     Usuario usuario = archivo.leerRegistros(pos);
 
-    if(usuario.getestado() == false){
+    if(usuario.getEstado() == false){
         setColor(YELLOW);
         locate(40, 12); cout << "EL USUARIO YA FUE DADO DE BAJA";
         anykey();
@@ -941,7 +941,7 @@ void eliminar_usuario(){
         return;
     }
 
-    usuario.setestado(false);
+    usuario.setEstado(false);
     archivo.modificarRegistro(usuario, pos);
 
     setColor(GREEN);
@@ -987,7 +987,7 @@ void dar_alta_usuario(){
 
     Usuario usuario = archivo.leerRegistros(pos);
 
-    if(usuario.getestado() == true){
+    if(usuario.getEstado() == true){
         setColor(YELLOW);
         locate(40, 12); cout << "EL USUARIO YA FUE DADO DE ALTA";
         anykey();
@@ -995,7 +995,7 @@ void dar_alta_usuario(){
         return;
     }
 
-    usuario.setestado(true);
+    usuario.setEstado(true);
     archivo.modificarRegistro(usuario, pos);
 
     setColor(GREEN);
@@ -1040,12 +1040,12 @@ void cambiar_contrasena(){
 
     char nueva_contrasena[30];
 
-    if(usuario.getestado()){
+    if(usuario.getEstado()){
         setColor(WHITE);
         locate(40, 12); cout << "Nueva contrasena: ";
         locate(60, 12); cin >> nueva_contrasena;
 
-        usuario.setcontrasena(nueva_contrasena);
+        usuario.setContrasena(nueva_contrasena);
         archivo.modificarRegistro(usuario, pos);
 
         setColor(GREEN);
@@ -1085,7 +1085,7 @@ void cambiar_datos_usuario(){
         return;
     }
     usuario=archivo.leerRegistros(pos);
-    if(usuario.getestado()){
+    if(usuario.getEstado()){
         usuario.modificar();
         archivo.modificarRegistro(usuario, pos);
         locate(40, 17);
@@ -1137,7 +1137,7 @@ void ingresar_Micro(){
     }else{
         int idmax=999;
         micros=archivo.leerRegistros(contreg-1);
-        if(micros.getidMicro()>idmax)idmax=micros.getidMicro();
+        if(micros.getIdMicro()>idmax)idmax=micros.getIdMicro();
         idm=idmax+1;
     }
 
@@ -1211,14 +1211,14 @@ void eliminar_Micro() {
 
     Micro micros = archivo.leerRegistros(pos);
 
-    if (!micros.getdisponible()) {
+    if (!micros.getDisponible()) {
         locate(44, 11); cout << "El micro ya fue dado de baja anteriormente.";
         locate(44, 14); anykey();
         system("cls");
         return;
     }
 
-    micros.setdisponible(false);
+    micros.setDisponible(false);
     archivo.modificarRegistro(micros, pos);
 
     locate(44, 11); cout << "Micro dado de baja correctamente.";
@@ -1264,14 +1264,14 @@ void dar_alta_Micro(){
 
     Micro micros = archivo.leerRegistros(pos);
 
-    if (micros.getdisponible()) {
+    if (micros.getDisponible()) {
         locate(44, 11); cout << "El micro ya esta dado de alta.";
         locate(44, 14); anykey();
         system("cls");
         return;
     }
 
-    micros.setdisponible(true);
+    micros.setDisponible(true);
     archivo.modificarRegistro(micros, pos);
 
     locate(44, 11); cout << "Micro dado de alta correctamente.";
@@ -1316,7 +1316,7 @@ void cambiar_patente_Micro() {
 
     micro = archivo.leerRegistros(pos);
 
-    if (!micro.getdisponible()) {
+    if (!micro.getDisponible()) {
         locate(44, 11); cout << "El micro no está disponible.";
         locate(44, 15); anykey();
         system("cls");
@@ -1350,7 +1350,7 @@ void cambiar_patente_Micro() {
         }
     }
 
-    micro.setpatente(patenteNueva);
+    micro.setPatente(patenteNueva);
     archivo.modificarRegistro(micro, pos);
 
     locate(44, 14); cout << "Patente cambiada correctamente.";
@@ -1395,7 +1395,7 @@ void cambiar_unidad_Micro() {
 
     micro = archivo.leerRegistros(pos);
 
-    if (!micro.getdisponible()) {
+    if (!micro.getDisponible()) {
         locate(40, 8); cout << "El micro no está disponible.";
         locate(40, 11); anykey();
         system("cls");
@@ -1441,7 +1441,7 @@ void ingresar_destino(){
     } else {
         int idmax = 99999;
         destinos = archivo.leerRegistros(contreg - 1);
-        if(destinos.getidDestino() > idmax) idmax = destinos.getidDestino();
+        if(destinos.getIdDestino() > idmax) idmax = destinos.getIdDestino();
         idd = idmax + 1;
     }
 
@@ -1519,7 +1519,7 @@ void eliminar_destino(){
 
     Destino destinos = archivo.leerRegistros(pos);
 
-    if(destinos.gethabilitado() == false){
+    if(destinos.getHabilitado() == false){
         setColor(YELLOW);
         locate(40,12); cout << "EL DESTINO YA FUE DADO DE BAJA";
         setColor(WHITE);
@@ -1528,7 +1528,7 @@ void eliminar_destino(){
         return;
     }
 
-    destinos.sethabilitado(false);
+    destinos.setHabilitado(false);
     archivo.modificarRegistro(destinos, pos);
 
     setColor(GREEN);
@@ -1572,7 +1572,7 @@ cls();
 
     Destino destinos = archivo.leerRegistros(pos);
 
-    if(destinos.gethabilitado() == true){
+    if(destinos.getHabilitado() == true){
         setColor(YELLOW);
         locate(40,12); cout << "EL DESTINO YA FUE DADO DE ALTA";
         setColor(WHITE);
@@ -1581,7 +1581,7 @@ cls();
         return;
     }
 
-    destinos.sethabilitado(true);
+    destinos.setHabilitado(true);
     archivo.modificarRegistro(destinos, pos);
 
     setColor(GREEN);
@@ -1648,7 +1648,7 @@ void ingresar_chofer(){
     } else {
         int idmax = 99;
         chofer = archivo.leerRegistros(contreg-1);
-        if(chofer.getlegajo() > idmax) idmax = chofer.getlegajo();
+        if(chofer.getLegajo() > idmax) idmax = chofer.getLegajo();
         leg = idmax + 1;
     }
 
@@ -1717,7 +1717,7 @@ void eliminar_chofer(){
 
     chofer = archivo.leerRegistros(pos);
 
-    if(chofer.getestado() == false){
+    if(chofer.getEstado() == false){
         setColor(YELLOW);
         locate(40, 9); cout << "EL CHOFER YA FUE DADO DE BAJA";
         setColor(WHITE);
@@ -1726,7 +1726,7 @@ void eliminar_chofer(){
         return;
     }
 
-    chofer.setestado(false);
+    chofer.setEstado(false);
     archivo.modificarRegistro(chofer, pos);
 
     setColor(GREEN);
@@ -1774,7 +1774,7 @@ void dar_alta_chofer(){
 
     chofer = archivo.leerRegistros(pos);
 
-    if(chofer.getestado() == true){
+    if(chofer.getEstado() == true){
         setColor(YELLOW);
         locate(40, 9); cout << "EL CHOFER YA FUE DADO DE ALTA";
         setColor(WHITE);
@@ -1783,7 +1783,7 @@ void dar_alta_chofer(){
         return;
     }
 
-    chofer.setestado(true);
+    chofer.setEstado(true);
     archivo.modificarRegistro(chofer, pos);
 
     setColor(GREEN);
@@ -1830,10 +1830,10 @@ void cambiar_mail_chofer(){
     chofer = archivo.leerRegistros(pos);
     char Mail_Nuevo[40];
 
-    if(chofer.getestado()){
+    if(chofer.getEstado()){
         locate(40, 9); cout << "INGRESE NUEVO MAIL: ";
         locate(60, 9); cin >> Mail_Nuevo;
-        chofer.setemail(Mail_Nuevo);
+        chofer.setEmail(Mail_Nuevo);
         archivo.modificarRegistro(chofer, pos);
 
         setColor(GREEN);
@@ -1887,10 +1887,10 @@ void cambiar_telefono_chofer(){
     chofer = archivo.leerRegistros(pos);
     int Tel_Nuevo;
 
-    if(chofer.getestado()){
+    if(chofer.getEstado()){
         locate(40, 9); cout << "INGRESE NUEVO TELEFONO: ";
         locate(66, 9); cin >> Tel_Nuevo;
-        chofer.settelefono(Tel_Nuevo);
+        chofer.setTelefono(Tel_Nuevo);
         archivo.modificarRegistro(chofer, pos);
 
         setColor(GREEN);
@@ -1934,7 +1934,7 @@ void cambiar_datos_chofer(){
         return;
     }
     chofer=archivo.leerRegistros(pos);
-    if(chofer.getestado()){
+    if(chofer.getEstado()){
         chofer.modificar();
         archivo.modificarRegistro(chofer, pos);
         locate(40, 10);
@@ -1951,7 +1951,7 @@ void cambiar_datos_chofer(){
 ///REPORTES
 void por_anio(){
     cls();
-    Pasaje pasaje;
+    Pasaje Pasaje;
     Archivo_pasaje archivopasaje;
 
     Viaje viaje;
@@ -1983,12 +1983,12 @@ void por_anio(){
     int cant=archivoviaje.contarRegistros();
 
     for(int i=0; i<tam; i++){
-        pasaje=archivopasaje.leerRegistros(i);
+        Pasaje=archivopasaje.leerRegistros(i);
         for(int x=0; x<cant; x++){
             viaje=archivoviaje.leerRegistros(x);
-            if(viaje.getidViaje()==pasaje.getidviaje()){
-                if(viaje.getfecha_Inicio_Viaje().getanio()==anio){
-                    acumulador+=pasaje.getprecioxkm();
+            if(viaje.getIdViaje()==Pasaje.getIdviaje()){
+                if(viaje.getFecha_Inicio_Viaje().getAnio()==anio){
+                    acumulador+=Pasaje.getPrecio();
                 }
             }
         }
@@ -2005,7 +2005,7 @@ void por_micro(){
     Micro micros;
     Archivo_micro archivomicro;
 
-    Pasaje pasaje;
+    Pasaje Pasaje;
     Archivo_pasaje archivopasaje;
 
     Viaje viaje;
@@ -2040,25 +2040,25 @@ void por_micro(){
 
     for(int i=0; i<cantregviaje; i++){
         viaje=archivoviaje.leerRegistros(i);
-        if(viaje.getidMicro()==micros.getidMicro()){
+        if(viaje.getIdMicro()==micros.getIdMicro()){
             for(int z=0; z<cantregpasaje; z++){
-                pasaje=archivopasaje.leerRegistros(z);
-                if(pasaje.getidviaje()==viaje.getidViaje()){
-                    acumulador+=pasaje.getprecioxkm();
+                Pasaje=archivopasaje.leerRegistros(z);
+                if(Pasaje.getIdviaje()==viaje.getIdViaje()){
+                    acumulador+=Pasaje.getPrecio();
                 }
             }
         }
     }
     setColor(GREEN);
     locate(40, 15);
-    cout << "RECAUDACION TOTAL DEL MICRO "<<micros.getidMicro()<<" ES DE $"<<acumulador<<endl;
+    cout << "RECAUDACION TOTAL DEL MICRO "<<micros.getIdMicro()<<" ES DE $"<<acumulador<<endl;
     setColor(WHITE);
     anykey();
     cls();
 }
 void por_provincia(){
     cls();
-    Pasaje pasaje;
+    Pasaje Pasaje;
     Archivo_pasaje archivopasaje;
 
     Viaje viaje;
@@ -2074,26 +2074,26 @@ void por_provincia(){
     float recaudacio_provincia[23]={0};
 
     for(int i=0; i<contregpasaje; i++){
-        pasaje=archivopasaje.leerRegistros(i);
-        int posviaje=archivoviaje.buscarRegistro(pasaje.getidviaje());
+        Pasaje=archivopasaje.leerRegistros(i);
+        int posviaje=archivoviaje.buscarRegistro(Pasaje.getIdviaje());
         if(posviaje<0)continue;
         viaje=archivoviaje.leerRegistros(posviaje);
 
         for(int z=0; z<contregdestino; z++){
             destino=archivodestino.leerRegistros(z);
-            if(viaje.getidDestino()==destino.getidDestino()){
+            if(viaje.getIdDestino()==destino.getIdDestino()){
                 for(int x=0; x<24; x++){
                     const char *provincia=funcion_provincias(x, 1);
-                    if(strcmp(provincia, destino.getnombre_provincia())==0){
-                        recaudacio_provincia[x]+=pasaje.getprecioxkm();
+                    if(strcmp(provincia, destino.getNombre_provincia())==0){
+                        recaudacio_provincia[x]+=Pasaje.getPrecio();
                     }
                     provincia=funcion_provincias(x, 2);
-                    if(strcmp(provincia, destino.getnombre_provincia())==0){
-                        recaudacio_provincia[x]+=pasaje.getprecioxkm();
+                    if(strcmp(provincia, destino.getNombre_provincia())==0){
+                        recaudacio_provincia[x]+=Pasaje.getPrecio();
                     }
                     provincia=funcion_provincias(x, 3);
-                    if(strcmp(provincia, destino.getnombre_provincia())==0){
-                        recaudacio_provincia[x]+=pasaje.getprecioxkm();
+                    if(strcmp(provincia, destino.getNombre_provincia())==0){
+                        recaudacio_provincia[x]+=Pasaje.getPrecio();
                     }
                 }
             }
@@ -2144,37 +2144,37 @@ Fecha fecha_desde;
     fecha_hasta.cargar();
 
     int fecha_desde_num =
-        fecha_desde.getanio() * 10000 +
-        fecha_desde.getmes() * 100 +
-        fecha_desde.getdia();
+        fecha_desde.getAnio() * 10000 +
+        fecha_desde.getMes() * 100 +
+        fecha_desde.getDia();
 
     int fecha_hasta_num =
-        fecha_hasta.getanio() * 10000 +
-        fecha_hasta.getmes() * 100 +
-        fecha_hasta.getdia();
+        fecha_hasta.getAnio() * 10000 +
+        fecha_hasta.getMes() * 100 +
+        fecha_hasta.getDia();
 
     for(int i=0;i<cant_pasajes;i++){
         Pasaje p= archivopasajes.leerRegistros(i);
         Fecha f;
-        int a=f.getanio();
-        int m=f.getmes();
-        int d=f.getdia();
+        int a=f.getAnio();
+        int m=f.getMes();
+        int d=f.getDia();
 
         int fecha_pasaje_num=a*10000+m*100+d;
         if(fecha_pasaje_num>=fecha_desde_num&&fecha_pasaje_num<=fecha_hasta_num){
 
             Destino destino;
             Viaje viaje;
-            Pasaje pasaje;
+            Pasaje Pasaje;
             for(int i=0; i<cant_viajes; i++){
                 viaje=archivoviaje.leerRegistros(i);
-                int posdestino=archivodestino.buscarRegistros(viaje.getidDestino());
+                int posdestino=archivodestino.buscarRegistros(viaje.getIdDestino());
                 destino=archivodestino.leerRegistros(posdestino);
 
                 for(int x=0; x<cant_pasajes; x++){
-                    pasaje=archivopasajes.leerRegistros(x);
-                    if(pasaje.getidviaje()==viaje.getidViaje()){
-                        por_destino[destino.getidDestino()-1]++;
+                    Pasaje=archivopasajes.leerRegistros(x);
+                    if(Pasaje.getIdviaje()==viaje.getIdViaje()){
+                        por_destino[destino.getIdDestino()-1]++;
                     }
                 }
 
@@ -2198,13 +2198,13 @@ Fecha fecha_desde;
 }
     rlutil::cls();
     cout << "CANTIDAD DE PASAJES VENDIDOS\n\n";
-    cout << "Periodo: " << fecha_desde.getdia() << "/" << fecha_desde.getmes() << "/" << fecha_desde.getanio()<< "  al  "
-    << fecha_hasta.getdia() << "/" << fecha_hasta.getmes() << "/" << fecha_hasta.getanio()<< endl << endl;
+    cout << "Periodo: " << fecha_desde.getDia() << "/" << fecha_desde.getMes() << "/" << fecha_desde.getAnio()<< "  al  "
+    << fecha_hasta.getDia() << "/" << fecha_hasta.getMes() << "/" << fecha_hasta.getAnio()<< endl << endl;
     cout << left << setw(20) <<  "Destino"<< right << setw(10) << "Pasajes" << endl;
     cout << "----------------------------------------------\n";
     for (int j = 0; j < cant_destinos; j++) {
         Destino dest = archivodestino.leerRegistros(j);
-        cout << left << setw(20) << dest.getnombre_destino()<< right << setw(10) << por_destino[j] << endl;
+        cout << left << setw(20) << dest.getNombre_destino()<< right << setw(10) << por_destino[j] << endl;
     }
 
     cout << endl;
@@ -2254,12 +2254,12 @@ void kilometros_micro(){
     int contador=0;
     for(int i=0; i<cantviajes; i++){
         viaje=archivoviaje.leerRegistros(i);
-        int pos=archivodestino.buscarRegistros(viaje.getidDestino());
+        int pos=archivodestino.buscarRegistros(viaje.getIdDestino());
         destino=archivodestino.leerRegistros(pos);
         for(int x=0; x<cantmicros; x++){
             micro=archivomicro.leerRegistros(x);
-            if(viaje.getidMicro()==micro.getidMicro() and viaje.getfecha_Inicio_Viaje().getanio()==anio){
-                micros[viaje.getidMicro()-1000]+=destino.getdistanciaKm();
+            if(viaje.getIdMicro()==micro.getIdMicro() and viaje.getFecha_Inicio_Viaje().getAnio()==anio){
+                micros[viaje.getIdMicro()-1000]+=destino.getDistanciaKm();
             }
         }
     }
@@ -2274,8 +2274,8 @@ void kilometros_micro(){
     locate(40, 14); cout<<"--------------------------------------------------"<<endl;
     for(int i=0; i<cantmicros; i++){
         micro=archivomicro.leerRegistros(i);
-        if(micro.getdisponible()){
-            locate(columna, i+14); cout<<micro.getidMicro()<<setw(30)<<" "<<micros[i]<<endl;
+        if(micro.getDisponible()){
+            locate(columna, i+14); cout<<micro.getIdMicro()<<setw(30)<<" "<<micros[i]<<endl;
             fila=i+15;
         }
     }
@@ -2290,7 +2290,7 @@ void recaudacion_por_genero_anio(){
 
 
     cls();
-    Pasaje pasaje;
+    Pasaje Pasaje;
     Archivo_pasaje archivopasajes;
 
     Viaje viaje;
@@ -2326,15 +2326,15 @@ void recaudacion_por_genero_anio(){
     int cant_pasajeros=archivopasajero.contarRegistros();
 
     for(int i=0; i<cant_pasajes; i++){
-        pasaje=archivopasajes.leerRegistros(i);
-        int pospasaje=archivopasajero.buscarRegistro(pasaje.getpasaje());
+        Pasaje=archivopasajes.leerRegistros(i);
+        int pospasaje=archivopasajero.buscarRegistro(Pasaje.getPasaje());
         pasajero=archivopasajero.leerRegistros(pospasaje);
 
-        int posviaje=archivoviajes.buscarRegistro(pasaje.getidviaje());
+        int posviaje=archivoviajes.buscarRegistro(Pasaje.getIdviaje());
         viaje=archivoviajes.leerRegistros(posviaje);
 
-        if(pasajero.gethabilitado() and viaje.getfecha_Inicio_Viaje().getanio()==anio){
-            recaudacion_generos[pasajero.getgenero()-1]+=pasaje.getprecioxkm();
+        if(pasajero.getHabilitado() and viaje.getFecha_Inicio_Viaje().getAnio()==anio){
+            recaudacion_generos[pasajero.getGenero()-1]+=Pasaje.getPrecio();
         }
     }
     setColor(YELLOW);
@@ -2384,23 +2384,23 @@ Archivo_viaje archivoviaje;
 
         Chofer chofer = archivochoferes.leerRegistros(c);
         int vmes[12] = {0};
-        int legajoActual = chofer.getlegajo();
+        int legajoActual = chofer.getLegajo();
 
         for (int i = 0; i < cant_viajes; i++) {
             Viaje viaje = archivoviaje.leerRegistros(i);
 
-            if (viaje.getidChofer() == legajoActual) {
-                Fecha f = viaje.getfecha_Inicio_Viaje();
-                if (f.getanio() == anio) {
-                    int mes = f.getmes();
+            if (viaje.getIdChofer() == legajoActual) {
+                Fecha f = viaje.getFecha_Inicio_Viaje();
+                if (f.getAnio() == anio) {
+                    int mes = f.getMes();
                     if (mes >= 1 && mes <= 12) {
                         vmes[mes - 1]++;
                     }
                 }
             }
         }
-        cout << "chofer legajo: " << chofer.getlegajo();
-        cout << " - " << chofer.getapellido() << ", " << chofer.getnombre() << endl;
+        cout << "chofer legajo: " << chofer.getLegajo();
+        cout << " - " << chofer.getApellido() << ", " << chofer.getNombre() << endl;
         cout << "Mes:   ";
         for (int m = 1; m <= 12; m++) {
             cout << setw(4) << m;
@@ -3117,11 +3117,11 @@ void inicio_de_sesion(){
         for(int i=0; i<contreg; i++){
             usuarios=archivos.leerRegistros(i);
 
-            if(usuarios.getidUsuario()==idu and contrasena==usuarios.getcontrasena() and usuarios.getestado()){
-                historial.setidusuario(idu);
-                historial.setnombre_usuario(usuarios.getnombre());
-                historial.setingreso_sesion(fecha);
-                historial.setinicio(actual);
+            if(usuarios.getIdUsuario()==idu and contrasena==usuarios.getContrasena() and usuarios.getEstado()){
+                historial.setIdusuario(idu);
+                historial.setNombre_usuario(usuarios.getNombre());
+                historial.setIngreso_sesion(fecha);
+                historial.setInicio(actual);
                 historial_usuario.grabarRegistro(historial);
                 bandera=true;
                 break;
@@ -3135,7 +3135,7 @@ void inicio_de_sesion(){
             cls();
         }
         if(bandera){
-            switch(usuarios.getnivel()){
+            switch(usuarios.getNivel()){
             case 1:
                 cls();
                 hidecursor();

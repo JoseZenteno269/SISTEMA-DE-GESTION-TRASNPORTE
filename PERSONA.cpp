@@ -6,28 +6,28 @@
 using namespace rlutil;
 using namespace std;
 
-void Persona::setnombre(const char *n){strcpy(nombre, n); }
-void Persona::setapellido(const char *a){strcpy(apellido, a); }
-void Persona::setdni(long long d){dni=d; }
-void Persona::settelefono(long long t){telefono=t; }
-void Persona::setemail(const char *e){strcpy(email,e);}
-void Persona::setgenero(int g){genero=g;}
-void Persona::setnacionalidad(const char *nac){strcpy(nacionalidad, nac); }
-void Persona::setfecha_Nacimiento(Fecha f){fecha_Nacimiento = f;}
-void Persona::setdomicilio(Domicilio d){domicilio=d;}
+void Persona::setNombre(const char *n){strcpy(nombre, n); }
+void Persona::setApellido(const char *a){strcpy(apellido, a); }
+void Persona::setDni(long long d){dni=d; }
+void Persona::setTelefono(long long t){telefono=t; }
+void Persona::setEmail(const char *e){strcpy(email,e);}
+void Persona::setGenero(int g){genero=g;}
+void Persona::setNacionalidad(const char *nac){strcpy(nacionalidad, nac); }
+void Persona::setFecha_Nacimiento(Fecha f){fecha_Nacimiento = f;}
+void Persona::setDomicilio(Domicilio d){domicilio=d;}
 
 
-const char *Persona::getnombre(){return nombre; }
-const char *Persona::getapellido(){return apellido; }
-long long Persona::getdni(){return dni; }
-long long Persona::gettelefono(){return telefono; }
-const char *Persona::getemail(){return email;}
-int Persona::getgenero(){return genero;}
-const char *Persona::getnacionalidad(){return nacionalidad; }
-Fecha Persona::getfecha_Nacimiento(){return fecha_Nacimiento;}
-Domicilio Persona::getdomicilio(){return domicilio;}
+const char *Persona::getNombre(){return nombre; }
+const char *Persona::getApellido(){return apellido; }
+long long Persona::getDni(){return dni; }
+long long Persona::getTelefono(){return telefono; }
+const char *Persona::getEmail(){return email;}
+int Persona::getGenero(){return genero;}
+const char *Persona::getNacionalidad(){return nacionalidad; }
+Fecha Persona::getFecha_Nacimiento(){return fecha_Nacimiento;}
+Domicilio Persona::getDomicilio(){return domicilio;}
 
-const char* Persona::getgenerotexto()const{
+const char* Persona::getGenerotexto()const{
     switch(genero){
     case 1: return "Masculino";
         break;
@@ -179,7 +179,7 @@ void Persona::modificar(){
     setColor(WHITE);
 
     setColor(CYAN);
-    locate(40,12); cout<<"Nombre actual: "<<getnombre()<<endl;
+    locate(40,12); cout<<"Nombre actual: "<<getNombre()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -196,7 +196,7 @@ void Persona::modificar(){
                 continue;
             }break;
         }
-        setnombre(temp_nombre);
+        setNombre(temp_nombre);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Nombre actualizado." << endl;
@@ -207,7 +207,7 @@ void Persona::modificar(){
 
 
     setColor(CYAN);
-    locate(40,12); cout<<"Apellido actual: "<<getapellido()<<endl;
+    locate(40,12); cout<<"Apellido actual: "<<getApellido()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -224,7 +224,7 @@ void Persona::modificar(){
                 continue;
             }break;
         }
-        setapellido(temp_apellido);
+        setApellido(temp_apellido);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Apellido actualizado."<<endl;
@@ -234,7 +234,7 @@ void Persona::modificar(){
     LimpiarLineas(12, 25, 40);
 
     setColor(CYAN);
-    locate(40,12); cout<<"DNI actual: "<<getdni()<<endl;
+    locate(40,12); cout<<"DNI actual: "<<getDni()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -250,7 +250,7 @@ void Persona::modificar(){
             if(validar_numero() and (longitud>=7 and longitud<=11)) break;
             else {LimpiarLineas(15, 20, 40); continue; }
         }
-        setdni(temp_dni);
+        setDni(temp_dni);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> DNI actualizado."<<endl;
@@ -260,7 +260,7 @@ void Persona::modificar(){
     LimpiarLineas(12, 25, 40);
 
     setColor(CYAN);
-    locate(40,12); cout<<"Telefono actual: "<<gettelefono()<<endl;
+    locate(40,12); cout<<"Telefono actual: "<<getTelefono()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -276,7 +276,7 @@ void Persona::modificar(){
             if (validar_numero() and longitud==10) break;
             else {LimpiarLineas(15, 20, 40); continue; }
         }
-        settelefono(temp_tel);
+        setTelefono(temp_tel);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Telefono actualizado."<<endl;
@@ -287,7 +287,7 @@ void Persona::modificar(){
 
 
     setColor(CYAN);
-    locate(40,12); cout<<"Email actual: "<<getemail()<<endl;
+    locate(40,12); cout<<"Email actual: "<<getEmail()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -298,7 +298,7 @@ void Persona::modificar(){
         locate(40, 15); cout<<"Ingrese su nuevo email: ";
         setColor(WHITE);
         cargarCadena(temp_email, 99);
-        setemail(temp_email);
+        setEmail(temp_email);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Email actualizado."<<endl;
@@ -309,7 +309,7 @@ void Persona::modificar(){
 
 
     setColor(CYAN);
-    locate(40,12); cout<<"Genero actual: "<<getgenerotexto()<<endl;
+    locate(40,12); cout<<"Genero actual: "<<getGenerotexto()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -324,7 +324,7 @@ void Persona::modificar(){
             if(validar_numero() and (temp_gen==1 or temp_gen==2 or temp_gen==3)) break;
             else {LimpiarLineas(15, 20, 40); continue;}
         }
-        setgenero(temp_gen);
+        setGenero(temp_gen);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Genero actualizado."<<endl;
@@ -334,7 +334,7 @@ void Persona::modificar(){
     LimpiarLineas(12, 25, 40);
 
     setColor(CYAN);
-    locate(40,12); cout<<"Nacionalidad actual: "<<getnacionalidad()<<endl;
+    locate(40,12); cout<<"Nacionalidad actual: "<<getNacionalidad()<<endl;
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -349,7 +349,7 @@ void Persona::modificar(){
             if(validarPalabra(temp_nac)) break;
             else {LimpiarLineas(15, 20, 40); continue;}
         }
-        setnacionalidad(temp_nac);
+        setNacionalidad(temp_nac);
         setColor(GREEN);
         locate(40, 17);
         cout<<">> Nacionalidad actualizada."<<endl;
@@ -360,7 +360,7 @@ void Persona::modificar(){
 
 
     setColor(CYAN);
-    locate(40,12); cout<<"Fecha de Nacimiento actual: "; getfecha_Nacimiento().mostrarEn(70, 12);
+    locate(40,12); cout<<"Fecha de Nacimiento actual: "; getFecha_Nacimiento().mostrarEn(70, 12);
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -370,7 +370,7 @@ void Persona::modificar(){
         setColor(YELLOW);
         locate(40, 15); cout<<"--- Cargando nueva Fecha de Nacimiento ---"<<endl;
         temp_fecha.cargarEn(42, 17);
-        setfecha_Nacimiento(temp_fecha);
+        setFecha_Nacimiento(temp_fecha);
         setColor(GREEN);
         locate(40, 22);
         cout<<">> Fecha de Nacimiento actualizada."<<endl;
@@ -379,7 +379,7 @@ void Persona::modificar(){
     LimpiarLineas(11, 25, 40);
 
     setColor(CYAN);
-    locate(40,12); cout<<"Domicilio actual: "<<endl; getdomicilio().Mostrar(40, 15);
+    locate(40,12); cout<<"Domicilio actual: "<<endl; getDomicilio().Mostrar(40, 15);
     locate(40,13); cout<<"ENTER para modificar o tecla cualquiera para saltar..."<<endl;
     setColor(WHITE);
 
@@ -390,7 +390,7 @@ void Persona::modificar(){
         setColor(YELLOW);
         locate(40, 10); cout<<"--- Cargando nuevo Domicilio ---"<<endl;
         temp_dom.CargarEn(40, 12);
-        setdomicilio(temp_dom);
+        setDomicilio(temp_dom);
         locate(40, 22);
         cout<<">> Domicilio actualizado."<<endl;
     }
@@ -413,7 +413,7 @@ void Persona::mostrar(int lineaBase){
     locate(40, lineaBase+2); cout << "N° de DNI: " << dni;
     locate(40, lineaBase+3); cout << "N° de contacto: " << telefono;
     locate(40, lineaBase+4); cout << "Email: " << email;
-    locate(40, lineaBase+5); cout << "Genero: " << getgenerotexto();
+    locate(40, lineaBase+5); cout << "Genero: " << getGenerotexto();
     locate(40, lineaBase+6); cout << "Nacionalidad: " << nacionalidad;
 
     setColor(GREEN);

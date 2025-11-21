@@ -30,7 +30,7 @@ int Archivo_usuario::buscarRegistro(int idu){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         u=leerRegistros(i);
-        if(u.getidUsuario()==idu){
+        if(u.getIdUsuario()==idu){
             return i;
         }
     }
@@ -41,11 +41,11 @@ Usuario Archivo_usuario::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
     Usuario u;
     if(p==nullptr){
-        u.setidUsuario(-3);
+        u.setIdUsuario(-3);
         return u;
     }
     fseek(p, pos*sizeof u, 0);
-    u.setidUsuario(-4);
+    u.setIdUsuario(-4);
     fread(&u, sizeof u, 1, p);
     fclose(p);
     return u;
@@ -77,7 +77,7 @@ void Archivo_usuario::listar(){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         u=leerRegistros(i);
-        if(u.getestado()){
+        if(u.getEstado()){
             u.mostrar();
             cout<<endl;
         }

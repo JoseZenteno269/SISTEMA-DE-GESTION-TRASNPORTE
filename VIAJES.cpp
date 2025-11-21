@@ -16,25 +16,25 @@
 using namespace rlutil;
 using namespace std;
 
-void Viaje::setidViaje(int idv){idViaje=idv; }
-void Viaje::setidMicro(int idm){idMicro=idm; }
-void Viaje::setidChofer(int idc){idChofer=idc; }
-void Viaje::setidDestino(int idd){idDestino=idd; }
-void Viaje::setfecha_Inicio_Viaje(Fecha fiv){fecha_Inicio_Viaje=fiv; }
-void Viaje::setfecha_Fin_Viaje(Fecha ffv){fecha_Fin_Viaje=ffv; }
-void Viaje::sethora_Inicio_Viaje(Hora hiv){hora_Inicio_Viaje=hiv; }
-void Viaje::sethora_Fin_Viaje(Hora hfv){hora_Fin_Viaje=hfv; }
-void Viaje::setrealizado(bool r){realizado=r; }
+void Viaje::setIdViaje(int idv){idViaje=idv; }
+void Viaje::setIdMicro(int idm){idMicro=idm; }
+void Viaje::setIdChofer(int idc){idChofer=idc; }
+void Viaje::setIdDestino(int idd){idDestino=idd; }
+void Viaje::setFecha_Inicio_Viaje(Fecha fiv){fecha_Inicio_Viaje=fiv; }
+void Viaje::setFecha_Fin_Viaje(Fecha ffv){fecha_Fin_Viaje=ffv; }
+void Viaje::setHora_Inicio_Viaje(Hora hiv){hora_Inicio_Viaje=hiv; }
+void Viaje::setHora_Fin_Viaje(Hora hfv){hora_Fin_Viaje=hfv; }
+void Viaje::setRealizado(bool r){realizado=r; }
 
-int Viaje::getidViaje(){return idViaje; }
-int Viaje::getidMicro(){return idMicro; }
-int Viaje::getidChofer(){return idChofer; }
-int Viaje::getidDestino(){return idDestino; }
-Fecha Viaje::getfecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
-Fecha Viaje::getfecha_Fin_Viaje(){return fecha_Fin_Viaje; }
-Hora Viaje::gethora_Inicio_Viaje(){return hora_Inicio_Viaje; }
-Hora Viaje::gethora_Fin_Viaje(){return hora_Fin_Viaje; }
-bool Viaje::getrealizado(){return realizado; }
+int Viaje::getIdViaje(){return idViaje; }
+int Viaje::getIdMicro(){return idMicro; }
+int Viaje::getIdChofer(){return idChofer; }
+int Viaje::getIdDestino(){return idDestino; }
+Fecha Viaje::getFecha_Inicio_Viaje(){return fecha_Inicio_Viaje; }
+Fecha Viaje::getFecha_Fin_Viaje(){return fecha_Fin_Viaje; }
+Hora Viaje::getHora_Inicio_Viaje(){return hora_Inicio_Viaje; }
+Hora Viaje::getHora_Fin_Viaje(){return hora_Fin_Viaje; }
+bool Viaje::getRealizado(){return realizado; }
 
 void Viaje::cargar(int idv){
     Archivo_micro archivomicro;
@@ -117,7 +117,7 @@ void Viaje::cargar(int idv){
         if(idChofer == 0){ setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "Operación cancelada"; setColor(WHITE); anykey(); return; }
 
         int pos = archivochofer.buscarRegistro(idChofer);
-        if(pos < 0){
+        if(pos<0){
             setColor(RED);
             LimpiarLineas(8,16,40);
             locate(40,8);
@@ -126,7 +126,6 @@ void Viaje::cargar(int idv){
             anykey();
             continue;
         }
-
         chofer = archivochofer.leerRegistros(pos);
         break;
     }
@@ -180,8 +179,8 @@ void Viaje::mostrar(){
         micro = archivomicro.leerRegistros(pos1);
 
         locate(40, 9);  cout << "ID de Micro:               " << idMicro;
-        locate(40, 10); cout << "Marca/Modelo:              " << micro.getmarca();
-        locate(40, 11); cout << "Patente:                   " << micro.getpatente();
+        locate(40, 10); cout << "Marca/Modelo:              " << micro.getMarca();
+        locate(40, 11); cout << "Patente:                   " << micro.getPatente();
     }
     else {
         locate(40, 9); cout << "Error al cargar datos del micro";
@@ -198,8 +197,8 @@ void Viaje::mostrar(){
     if(pos2 >= 0){
         destino = archivodestino.leerRegistros(pos2);
 
-        locate(40, 15); cout << "Destino:                   " << destino.getnombre_destino();
-        locate(40, 16); cout << "Provincia:                 " << destino.getnombre_provincia();
+        locate(40, 15); cout << "Destino:                   " << destino.getNombre_destino();
+        locate(40, 16); cout << "Provincia:                 " << destino.getNombre_provincia();
     }
     else {
         locate(40, 15); cout << "Destino no encontrado";
@@ -265,33 +264,33 @@ void Viaje::listartabla() {
     for (int i = 0; i < contViajes; i++) {
         viaje = Arch_Via.leerRegistros(i);
 
-        int idMicro = viaje.getidMicro();
+        int idMicro = viaje.getIdMicro();
         string provincia = "-";
         string nombreDestino = "-";
         float distancia = 0;
         Hora duracion;
 
-        int posDest = Arch_Dest.buscarRegistros(viaje.getidDestino());
+        int posDest = Arch_Dest.buscarRegistros(viaje.getIdDestino());
         if (posDest >= 0) {
             Destino destino = Arch_Dest.leerRegistros(posDest);
-            nombreDestino = destino.getnombre_destino();
-            provincia = destino.getnombre_provincia();
-            distancia = destino.getdistanciaKm();
-            duracion = destino.getduracion();
+            nombreDestino = destino.getNombre_destino();
+            provincia = destino.getNombre_provincia();
+            distancia = destino.getDistanciaKm();
+            duracion = destino.getDuracion();
         }
 
         float butaca=plusxbutaca(viaje);
         float precioTotal=distancia*precioBase.getPrecio()+butaca;
 
-        locate(5, fila); cout << viaje.getidViaje();
+        locate(5, fila); cout << viaje.getIdViaje();
         locate(15, fila); cout << idMicro;
         locate(25, fila); cout << provincia;
         locate(40, fila); cout << nombreDestino;
         locate(55, fila); duracion.mostrarEn(fila, 55);
         locate(65, fila); cout << distancia;
         locate(75, fila); cout << precioTotal;
-        locate(85, fila); viaje.getfecha_Inicio_Viaje().mostrarEn(90, fila);
-        locate(100, fila); viaje.gethora_Inicio_Viaje().mostrarEn(105, fila);
+        locate(85, fila); viaje.getFecha_Inicio_Viaje().mostrarEn(90, fila);
+        locate(100, fila); viaje.getHora_Inicio_Viaje().mostrarEn(105, fila);
 
         fila++;
     }

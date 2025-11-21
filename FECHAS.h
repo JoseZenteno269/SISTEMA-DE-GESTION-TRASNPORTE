@@ -9,13 +9,13 @@ private:
 public:
     Fecha(int d=1, int m=1, int a=1900);
 
-    void setdia(int );
-    void setmes(int );
-    void setanio(int );
+    void setDia(int );
+    void setMes(int );
+    void setAnio(int );
 
-    int getdia();
-    int getmes();
-    int getanio();
+    int getDia();
+    int getMes();
+    int getAnio();
 
     void cargar();
     void cargarEn(int, int);

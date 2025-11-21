@@ -12,19 +12,19 @@ private:
     bool habilitado;
 public:
 
-    void setidDestino(int );
-    void setnombre_provincia(const char *);
-    void setnombre_destino(const char *);
-    void setdistanciaKm(float );
-    void setduracion(Hora);
-    void sethabilitado(bool );
+    void setIdDestino(int );
+    void setNombre_provincia(const char *);
+    void setNombre_destino(const char *);
+    void setDistanciaKm(float );
+    void setDuracion(Hora);
+    void setHabilitado(bool );
 
-    int getidDestino();
-    const char *getnombre_provincia();
-    const char *getnombre_destino();
-    float getdistanciaKm();
-    Hora getduracion();
-    bool gethabilitado();
+    int getIdDestino();
+    const char *getNombre_provincia();
+    const char *getNombre_destino();
+    float getDistanciaKm();
+    Hora getDuracion();
+    bool getHabilitado();
 
     void cargar(int);
     void mostrar(int X=40,int Y=3);

@@ -8,21 +8,21 @@ using namespace rlutil;
 using namespace std;
 
 
-void Micro::setidMicro(int idm){idMicro=idm; }
-void Micro::setmarca(const char *mrc){strcpy(marca, mrc); }
-void Micro::settipo(const char *t){strcpy(tipo, t); }
-void Micro::setcapacidad(int c){capacidad=c; }
-void Micro::settipoButaca(const char *tb){strcpy(tipoButaca,tb); }
-void Micro::setpatente(const char *p){strcpy(patente,p); }
-void Micro::setdisponible(bool disp){disponible=disp; }
+void Micro::setIdMicro(int idm){idMicro=idm; }
+void Micro::setMarca(const char *mrc){strcpy(marca, mrc); }
+void Micro::setTipo(const char *t){strcpy(tipo, t); }
+void Micro::setCapacidad(int c){capacidad=c; }
+void Micro::setTipoButaca(const char *tb){strcpy(tipoButaca,tb); }
+void Micro::setPatente(const char *p){strcpy(patente,p); }
+void Micro::setDisponible(bool disp){disponible=disp; }
 
-int Micro::getidMicro(){return idMicro; }
-const char *Micro::getmarca(){return marca; }
-const char *Micro::gettipo(){return tipo; }
-int Micro::getcapacidad(){return capacidad; }
-const char *Micro::gettipoButaca(){return tipoButaca; }
-const char *Micro::getpatente(){return patente; }
-bool Micro::getdisponible(){return disponible; }
+int Micro::getIdMicro(){return idMicro; }
+const char *Micro::getMarca(){return marca; }
+const char *Micro::getTipo(){return tipo; }
+int Micro::getCapacidad(){return capacidad; }
+const char *Micro::getTipoButaca(){return tipoButaca; }
+const char *Micro::getPatente(){return patente; }
+bool Micro::getDisponible(){return disponible; }
 
 void Micro::capacidadportipo(){
     if (strcmp(tipoButaca,"comun")==0) capacidad=60;

@@ -33,7 +33,7 @@ int Archivo_pasaje::buscarRegistro(int pasj){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         pasaje=leerRegistros(i);
-        if(pasaje.getpasaje()==pasj){
+        if(pasaje.getPasaje()==pasj){
             return i;
         }
     }
@@ -44,11 +44,11 @@ Pasaje Archivo_pasaje::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
     Pasaje pasaje;
     if(p==nullptr){
-        pasaje.setpasaje(-3);
+        pasaje.setPasaje(-3);
         return pasaje;
     }
     fseek(p, pos*sizeof (Pasaje), 0);
-    pasaje.setpasaje(-4);
+    pasaje.setPasaje(-4);
     fread(&pasaje, sizeof (Pasaje), 1, p);
     fclose(p);
     return pasaje;

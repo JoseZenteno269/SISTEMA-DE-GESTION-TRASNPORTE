@@ -30,7 +30,7 @@ int Archivo_destino::buscarRegistros(int idd){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         destino=leerRegistros(i);
-        if(destino.getidDestino()==idd){
+        if(destino.getIdDestino()==idd){
             return i;
         }
     }
@@ -41,11 +41,11 @@ Destino Archivo_destino::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Destino destino;
     if(p==nullptr){
-        destino.setidDestino(-3);
+        destino.setIdDestino(-3);
         return destino;
     }
     fseek(p,pos*sizeof destino,0);
-    destino.setidDestino(-4);
+    destino.setIdDestino(-4);
     fread(&destino,sizeof destino,1,p);
     fclose(p);
     return destino;
@@ -77,7 +77,7 @@ void Archivo_destino::listar(){
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         destino=leerRegistros(i);
-        if(destino.gethabilitado()){
+        if(destino.getHabilitado()){
             destino.mostrar();
             cout<<endl;
         }

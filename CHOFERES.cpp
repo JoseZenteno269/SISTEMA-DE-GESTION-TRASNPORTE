@@ -8,15 +8,15 @@
 using namespace rlutil;
 using namespace std;
 
-void Chofer::setlegajo(int l){legajo=l; }
-void Chofer::setmail_laboral(const char *ml){strcpy(mail_laboral, ml); }
-void Chofer::setestado(bool e){estado=e; }
-void Chofer::setfecha_de_ingreso(Fecha f){fecha_de_ingreso=f; }
+void Chofer::setLegajo(int l){legajo=l; }
+void Chofer::setMail_laboral(const char *ml){strcpy(mail_laboral, ml); }
+void Chofer::setEstado(bool e){estado=e; }
+void Chofer::setFecha_de_ingreso(Fecha f){fecha_de_ingreso=f; }
 
-int Chofer::getlegajo(){return legajo; }
-const char *Chofer::getmail_laboral(){return mail_laboral; }
-bool Chofer::getestado(){return estado; }
-Fecha Chofer::getfecha_de_ingreso(){return fecha_de_ingreso; }
+int Chofer::getLegajo(){return legajo; }
+const char *Chofer::getMail_laboral(){return mail_laboral; }
+bool Chofer::getEstado(){return estado; }
+Fecha Chofer::getFecha_de_ingreso(){return fecha_de_ingreso; }
 
 void Chofer::cargar(int leg){
     cls();
@@ -42,7 +42,7 @@ void Chofer::cargar(int leg){
     setColor(WHITE);
     Tiempo_Actual tiempo;
     Fecha fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
-    setfecha_de_ingreso(fecha);
+    setFecha_de_ingreso(fecha);
     fecha.mostrarEn(60,9);
 
     estado = true;
@@ -89,9 +89,9 @@ void Chofer::generarMailLaboral(){
 int Chofer::calcularAntiguedad(){
     Tiempo_Actual hoy;
 
-    int antiguedad=hoy.getAnio()-fecha_de_ingreso.getanio();
+    int antiguedad=hoy.getAnio()-fecha_de_ingreso.getAnio();
 
-    if(hoy.getMes()<fecha_de_ingreso.getmes() or (hoy.getMes() == fecha_de_ingreso.getmes() and hoy.getDia()<fecha_de_ingreso.getdia())){
+    if(hoy.getMes()<fecha_de_ingreso.getMes() or (hoy.getMes() == fecha_de_ingreso.getMes() and hoy.getDia()<fecha_de_ingreso.getDia())){
         antiguedad--;
     }
     return antiguedad;

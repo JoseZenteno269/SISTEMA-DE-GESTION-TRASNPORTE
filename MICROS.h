@@ -12,21 +12,22 @@ private:
     bool disponible;
 public:
 
-    void setidMicro(int );
-    void setmarca(const char *mrc);
-    void settipo(const char *t);
-    void setcapacidad(int );
-    void settipoButaca(const char *tb);
-    void setpatente(const char *p);
-    void setdisponible(bool );
+    void setIdMicro(int );
+    void setMarca(const char *mrc);
+    void setTipo(const char *t);
+    void setCapacidad(int );
+    void setTipoButaca(const char *tb);
+    void setPatente(const char *p);
+    void setDisponible(bool );
 
-    int getidMicro();
-    const char *getmarca();
-    const char *gettipo();
-    int getcapacidad();
-    const char *gettipoButaca();
-    const char *getpatente();
-    bool getdisponible();
+    int getIdMicro();
+    const char *getMarca();
+    const char *getTipo();
+    int getCapacidad();
+    const char *getTipoButaca();
+    const char *getPatente();
+    bool getDisponible();
+
     void capacidadportipo();
 
     void cargar(int);

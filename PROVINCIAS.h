@@ -8,12 +8,12 @@ private:
     int idprovincia;
 public:
     void setNombre(const char *);
-    void setcodigo_provincias(const char *);
-    void setidprovincia(int);
+    void setCodigo_provincias(const char *);
+    void setIdprovincia(int);
 
     const char *getNombre();
-    const char *getcodigo_provincias();
-    int getidprovincia();
+    const char *getCodigo_provincias();
+    int getIdprovincia();
 
     void cargar();
     void mostrar();

@@ -30,7 +30,7 @@ int Archivo_pasajero::buscarRegistro(int num_p){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         pasajero=leerRegistros(i);
-        if(pasajero.getnumero_pasaje()==num_p){
+        if(pasajero.getNumero_pasaje()==num_p){
             return i;
         }
     }
@@ -41,11 +41,11 @@ Pasajero Archivo_pasajero::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
     Pasajero pasajero;
     if(p==nullptr){
-        pasajero.setnumero_pasaje(-3);
+        pasajero.setNumero_pasaje(-3);
         return pasajero;
     }
     fseek(p, pos*sizeof pasajero, 0);
-    pasajero.setnumero_pasaje(-4);
+    pasajero.setNumero_pasaje(-4);
     fread(&pasajero, sizeof pasajero, 1, p);
     fclose(p);
     return pasajero;
@@ -77,7 +77,7 @@ void Archivo_pasajero::listar(){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         pasajero=leerRegistros(i);
-        if(pasajero.gethabilitado()){
+        if(pasajero.getHabilitado()){
             pasajero.mostrar();
             cout<<endl;
         }

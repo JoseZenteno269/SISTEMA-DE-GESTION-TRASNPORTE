@@ -12,13 +12,13 @@ Fecha::Fecha(int d, int m, int a){
     anio=a;
 }
 
-void Fecha::setdia(int d){dia=d; }
-void Fecha::setmes(int m){mes=m; }
-void Fecha::setanio(int a){anio=a; }
+void Fecha::setDia(int d){dia=d; }
+void Fecha::setMes(int m){mes=m; }
+void Fecha::setAnio(int a){anio=a; }
 
-int Fecha::getdia(){return dia; }
-int Fecha::getmes(){return mes; }
-int Fecha::getanio(){return anio; }
+int Fecha::getDia(){return dia; }
+int Fecha::getMes(){return mes; }
+int Fecha::getAnio(){return anio; }
 
 void Fecha::cargar(){
     while (true) {

@@ -8,17 +8,17 @@
 using namespace rlutil;
 using namespace std;
 
-void Usuario::setidUsuario(int idu){idUsuario=idu; }
-void Usuario::setcontrasena(const char *c){strcpy(contrasena, c); }
-void Usuario::setingreso(Fecha i){ingreso=i; }
-void Usuario::setnivel(int n){nivel=n; }
-void Usuario::setestado(bool e){estado=e; }
+void Usuario::setIdUsuario(int idu){idUsuario=idu; }
+void Usuario::setContrasena(const char *c){strcpy(contrasena, c); }
+void Usuario::setIngreso(Fecha i){ingreso=i; }
+void Usuario::setNivel(int n){nivel=n; }
+void Usuario::setEstado(bool e){estado=e; }
 
-int Usuario::getidUsuario(){return idUsuario; }
-const char *Usuario::getcontrasena(){return contrasena; }
-Fecha Usuario::getingreso(){return ingreso; }
-int Usuario::getnivel(){return nivel; }
-bool Usuario::getestado(){return estado; }
+int Usuario::getIdUsuario(){return idUsuario; }
+const char *Usuario::getContrasena(){return contrasena; }
+Fecha Usuario::getIngreso(){return ingreso; }
+int Usuario::getNivel(){return nivel; }
+bool Usuario::getEstado(){return estado; }
 
 void Usuario::cargar(int idu){
     system("cls");
@@ -36,7 +36,7 @@ void Usuario::cargar(int idu){
 
     Tiempo_Actual tiempo;
     Fecha fecha(tiempo.getDia(), tiempo.getMes(), tiempo.getAnio());
-    setingreso(fecha);
+    setIngreso(fecha);
 
     setColor(CYAN);
     locate(40,9); cout << "Fecha de ingreso: ";

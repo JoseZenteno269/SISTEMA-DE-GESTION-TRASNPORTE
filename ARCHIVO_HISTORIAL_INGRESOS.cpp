@@ -23,7 +23,7 @@ int Archivo_historial_usuario::buscarRegistro(int idu){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         historial=leerRegistros(i);
-        if(historial.getidusuario()==idu){
+        if(historial.getIdusuario()==idu){
             return i;
         }
     }
@@ -34,11 +34,11 @@ Historial_ingreso Archivo_historial_usuario::leerRegistros(int pos){
     FILE *p=fopen(archivo_historial, "rb");
     Historial_ingreso historial;
     if(p==nullptr){
-        historial.setidusuario(-3);
+        historial.setIdusuario(-3);
         return historial;
     }
     fseek(p, pos*sizeof (Historial_ingreso), 0);
-    historial.setidusuario(-4);
+    historial.setIdusuario(-4);
     fread(&historial, sizeof (Historial_ingreso), 1, p);
     fclose(p);
     return historial;

@@ -7,12 +7,12 @@
 using namespace std;
 
 void Provincia::setNombre(const char *n){strcpy(nombre,n);}
-void Provincia::setcodigo_provincias(const char *cdp){strcpy(codigo_provincias, cdp); }
-void Provincia::setidprovincia(int idp){idprovincia=idp; }
+void Provincia::setCodigo_provincias(const char *cdp){strcpy(codigo_provincias, cdp); }
+void Provincia::setIdprovincia(int idp){idprovincia=idp; }
 
 const char *Provincia::getNombre(){return nombre;}
-const char *Provincia::getcodigo_provincias(){return codigo_provincias; }
-int Provincia::getidprovincia(){return idprovincia; }
+const char *Provincia::getCodigo_provincias(){return codigo_provincias; }
+int Provincia::getIdprovincia(){return idprovincia; }
 
 void Provincia::cargar(){
     cout<<"ingrese el nombre de la provincia: "; cargarCadena(nombre,39);

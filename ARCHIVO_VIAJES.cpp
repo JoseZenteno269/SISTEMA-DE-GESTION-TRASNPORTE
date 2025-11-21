@@ -31,7 +31,7 @@ int Archivo_viaje::buscarRegistro(int idv){
     int contreg=contarRegistros();
     for (int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
-        if(viaje.getidViaje()==idv){
+        if(viaje.getIdViaje()==idv){
             return i;
         }
     }
@@ -42,11 +42,11 @@ Viaje Archivo_viaje::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Viaje viaje;
     if(p==nullptr){
-        viaje.setidViaje(-3);
+        viaje.setIdViaje(-3);
         return viaje;
     }
     fseek(p,pos*sizeof viaje,0);
-    viaje.setidViaje(-4);
+    viaje.setIdViaje(-4);
     fread(&viaje,sizeof viaje,1,p);
     fclose(p);
     return viaje;
@@ -77,7 +77,7 @@ void Archivo_viaje::listar(){
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
-        if(viaje.getrealizado()){
+        if(viaje.getRealizado()){
             viaje.mostrar();
             cout<<endl;
         }
@@ -91,7 +91,7 @@ void Archivo_viaje::listartabla(){
 
     for(int i=0;i<contreg;i++){
         viaje=leerRegistros(i);
-        if(viaje.getrealizado()){
+        if(viaje.getRealizado()){
             viaje.listartabla();
 
         }

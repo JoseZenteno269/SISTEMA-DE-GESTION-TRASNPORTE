@@ -5,11 +5,11 @@ using namespace rlutil;
 
 using namespace std;
 
-void Pasajero::setnumero_pasaje(int np){numero_pasaje=np; }
-void Pasajero::sethabilitado(bool h){habilitado=h; }
+void Pasajero::setNumero_pasaje(int np){numero_pasaje=np; }
+void Pasajero::setHabilitado(bool h){habilitado=h; }
 
-int Pasajero::getnumero_pasaje(){return numero_pasaje; }
-bool Pasajero::gethabilitado(){return habilitado; }
+int Pasajero::getNumero_pasaje(){return numero_pasaje; }
+bool Pasajero::getHabilitado(){return habilitado; }
 
 void Pasajero::cargar(int np){
     numero_pasaje = np;

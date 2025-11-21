@@ -12,15 +12,15 @@ private:
 
 public:
 
-    void setlegajo(int );
-    void setmail_laboral(const char *);
-    void setestado(bool );
-    void setfecha_de_ingreso(Fecha );
+    void setLegajo(int );
+    void setMail_laboral(const char *);
+    void setEstado(bool );
+    void setFecha_de_ingreso(Fecha );
 
-    int getlegajo();
-    const char *getmail_laboral();
-    bool getestado();
-    Fecha getfecha_de_ingreso();
+    int getLegajo();
+    const char *getMail_laboral();
+    bool getEstado();
+    Fecha getFecha_de_ingreso();
 
     void cargar(int);
     void mostrar();

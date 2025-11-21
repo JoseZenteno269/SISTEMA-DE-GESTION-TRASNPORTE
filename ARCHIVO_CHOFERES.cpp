@@ -30,7 +30,7 @@ int Archivo_chofer::buscarRegistro(int leg){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         chofer=leerRegistros(i);
-        if(chofer.getlegajo()==leg){
+        if(chofer.getLegajo()==leg){
             return i;
         }
     }
@@ -41,11 +41,11 @@ Chofer Archivo_chofer::leerRegistros(int pos){
     FILE *p=fopen(archivo, "rb");
     Chofer chofer;
     if(p==nullptr){
-        chofer.setlegajo(-3);
+        chofer.setLegajo(-3);
         return chofer;
     }
     fseek(p, pos*sizeof chofer, 0);
-    chofer.setlegajo(-4);
+    chofer.setLegajo(-4);
     fread(&chofer, sizeof chofer, 1, p);
     fclose(p);
     return chofer;
@@ -77,7 +77,7 @@ void Archivo_chofer::listar(){
     int contreg=contarRegistros();
     for(int i=0; i<contreg; i++){
         chofer=leerRegistros(i);
-        if(chofer.getestado()){
+        if(chofer.getEstado()){
             chofer.mostrar();
             cout<<endl;
         }

@@ -16,29 +16,28 @@ private:
     Hora hora_Fin_Viaje;
     bool realizado;
 public:
-    void setidViaje(int);
-    void setidMicro(int);
-    void setidChofer(int);
-    void setidDestino(int);
-    void setfecha_Inicio_Viaje(Fecha);
-    void setfecha_Fin_Viaje(Fecha);
-    void sethora_Inicio_Viaje(Hora);
-    void sethora_Fin_Viaje(Hora);
-    void setrealizado(bool);
+    void setIdViaje(int);
+    void setIdMicro(int);
+    void setIdChofer(int);
+    void setIdDestino(int);
+    void setFecha_Inicio_Viaje(Fecha);
+    void setFecha_Fin_Viaje(Fecha);
+    void setHora_Inicio_Viaje(Hora);
+    void setHora_Fin_Viaje(Hora);
+    void setRealizado(bool);
 
-    int getidViaje();
-    int getidMicro();
-    int getidChofer();
-    int getidDestino();
-    Fecha getfecha_Inicio_Viaje();
-    Fecha getfecha_Fin_Viaje();
-    Hora gethora_Inicio_Viaje();
-    Hora gethora_Fin_Viaje();
-    bool getrealizado();
+    int getIdViaje();
+    int getIdMicro();
+    int getIdChofer();
+    int getIdDestino();
+    Fecha getFecha_Inicio_Viaje();
+    Fecha getFecha_Fin_Viaje();
+    Hora getHora_Inicio_Viaje();
+    Hora getHora_Fin_Viaje();
+    bool getRealizado();
 
     void cargar(int);
     void mostrar();
-    //void mostrar();
     void listartabla();
 };
 

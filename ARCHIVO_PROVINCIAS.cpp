@@ -30,7 +30,7 @@ int Archivo_provincia::buscarRegistros(int cp){
     int contreg=contarRegistros();
     for(int i=0;i<contreg;i++){
         provincia=leerRegistros(i);
-        if(provincia.getidprovincia()==cp){
+        if(provincia.getIdprovincia()==cp){
             return i;
         }
     }
@@ -40,11 +40,11 @@ Provincia Archivo_provincia::leerRegistros(int pos){
     FILE *p=fopen(archivo,"rb");
     Provincia provincia;
     if(p==nullptr){
-        provincia.setidprovincia(-3);
+        provincia.setIdprovincia(-3);
         return provincia;
     }
     fseek(p,pos*sizeof provincia,0);
-    provincia.setidprovincia(-4);
+    provincia.setIdprovincia(-4);
     fread(&provincia,sizeof provincia,1,p);
     fclose(p);
     return provincia;

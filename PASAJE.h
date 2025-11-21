@@ -4,34 +4,31 @@
 #include "HORA.h"
 #include "VIAJES.h"
 
-class Pasaje{
+class Pasaje {
 private:
     int pasaje;
     int idviaje;
     int butaca;
-    float precioxkm;
+    float precio;
     char tipo_butaca[30];
-    char nombre_destino[40];
-    char provincia_destino[40];
 
 public:
 
-    void setpasaje(int);
-    void setidviaje(int);
-    void setbutaca(int);
-    void setprecioxkm(int);
-    void settipo_butaca(const char*);
-    void setnombre_destino(const char *);
-    void setprovincia_destino(const char *);
-    void setdatos(Viaje);
+    void setPasaje(int);
+    void setIdviaje(int);
+    void setButaca(int);
+    void setPrecio(float);
+    void setTipo_butaca(const char*);
+    void setNombre_destino(const char *);
+    void setProvincia_destino(const char *);
 
-    int getpasaje();
-    int getidviaje();
-    int getbutaca();
-    int getprecioxkm();
-    const char *gettipo_butaca();
-    const char *getnombre_destino();
-    const char *getprovincia_destino();
+    int getPasaje();
+    int getIdviaje();
+    int getButaca();
+    int getPrecio();
+    const char *getTipo_butaca();
+    const char *getNombre_destino();
+    const char *getProvincia_destino();
 
     void mostrar();
 };

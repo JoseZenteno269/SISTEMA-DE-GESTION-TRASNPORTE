@@ -16,26 +16,26 @@ protected:
     Domicilio domicilio;
 public:
 
-    void setnombre(const char *);
-    void setapellido(const char *);
-    void setdni(long long );
-    void settelefono(long long );
-    void setemail(const char *);
-    void setgenero(int);
-    void setnacionalidad(const char *);
-    void setfecha_Nacimiento(Fecha);
-    void setdomicilio(Domicilio);
+    void setNombre(const char *);
+    void setApellido(const char *);
+    void setDni(long long );
+    void setTelefono(long long );
+    void setEmail(const char *);
+    void setGenero(int);
+    void setNacionalidad(const char *);
+    void setFecha_Nacimiento(Fecha);
+    void setDomicilio(Domicilio);
 
-    const char *getnombre();
-    const char *getapellido();
-    long long getdni();
-    long long gettelefono();
-    const char *getemail();
-    int getgenero();
-    const char *getnacionalidad();
-    Fecha getfecha_Nacimiento();
-    Domicilio getdomicilio();
-    const char* getgenerotexto() const;
+    const char *getNombre();
+    const char *getApellido();
+    long long getDni();
+    long long getTelefono();
+    const char *getEmail();
+    int getGenero();
+    const char *getNacionalidad();
+    Fecha getFecha_Nacimiento();
+    Domicilio getDomicilio();
+    const char* getGenerotexto() const;
 
     void cargar();
     void modificar();

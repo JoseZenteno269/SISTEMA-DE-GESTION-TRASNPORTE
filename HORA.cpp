@@ -2,8 +2,8 @@
 #include "HORA.h"
 #include "funciones.h"
 #include "rlutil.h"
-using namespace rlutil;
 
+using namespace rlutil;
 using namespace std;
 
 
@@ -33,31 +33,33 @@ Hora::Hora(int h, int m){
     }
 }
 
-void Hora::sethora(int h){
+void Hora::setHora(int h){
     if(h>=0 and h<24) hora=h;
 }
 
-void Hora::setminuto(int m){
+void Hora::setMinuto(int m){
     if(m>=0 and m<60) minuto=m;
 }
 
-void Hora::sethora_viaje(int h){
+void Hora::setHora_viaje(int h){
     if(h>=0 and h<96) hora=h;
 }
 
-void Hora::setminuto_viaje(int m){
+void Hora::setMinuto_viaje(int m){
     if(m>=0 and m<60) minuto=m;
 }
 
-void Hora::settiempo(int h, int m){
+void Hora::setTiempo(int h, int m){
     if(validar(h,m)){
         hora=h;
         minuto=m;
     }
 }
 
-int Hora::gethora(){return hora; }
-int Hora::getminuto(){return minuto; }
+int Hora::getHora(){return hora; }
+int Hora::getMinuto(){return minuto; }
+int Hora::getHora_viaje(){return hora; }
+int Hora::getMinuto_viaje(){return minuto; }
 
 void Hora::cargar(){
     while(true){
@@ -75,9 +77,6 @@ void Hora::cargar(){
                 setColor(WHITE);
                 continue;
             }else break;
-
-            //LimpiarLineas(11,15,40);
-
         }
 
         while(true){
@@ -156,7 +155,6 @@ void Hora::cargar_viaje(){
     }
 }
 
-
 void Hora::mostrarEn(int X, int Y){
     setColor(WHITE);
     locate(X, Y); cout << (hora < 10 ? "0" : "") << hora << ":" << (minuto < 10 ? "0" : "") << minuto;
@@ -169,3 +167,7 @@ void Hora::mostrar(int col, int fila){
     locate(col + 20, fila);
     cout<<(hora<10 ? "0" : "")<<hora<<":"<<(minuto<10 ? "0" : "")<<minuto<<endl;
 }
+
+
+
+

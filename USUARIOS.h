@@ -3,7 +3,7 @@
 #include "PERSONA.h"
 #include "FECHAS.h"
 
-class Usuario : public Persona{
+class Usuario:public Persona{
 private:
     int idUsuario;
     char contrasena[30];
@@ -12,17 +12,17 @@ private:
     bool estado;
 public:
 
-    void setidUsuario(int );
-    void setcontrasena(const char *);
-    void setingreso(Fecha );
-    void setnivel(int);
-    void setestado(bool );
+    void setIdUsuario(int );
+    void setContrasena(const char *);
+    void setIngreso(Fecha );
+    void setNivel(int);
+    void setEstado(bool );
 
-    int getidUsuario();
-    const char *getcontrasena();
-    Fecha getingreso();
-    int getnivel();
-    bool getestado();
+    int getIdUsuario();
+    const char *getContrasena();
+    Fecha getIngreso();
+    int getNivel();
+    bool getEstado();
 
     void cargar(int);
     void mostrar();

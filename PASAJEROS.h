@@ -7,11 +7,11 @@ private:
     int numero_pasaje;
     bool habilitado;
 public:
-    void setnumero_pasaje(int);
-    void sethabilitado(bool);
+    void setNumero_pasaje(int);
+    void setHabilitado(bool);
 
-    int getnumero_pasaje();
-    bool gethabilitado();
+    int getNumero_pasaje();
+    bool getHabilitado();
 
     void cargar(int);
     void mostrar();

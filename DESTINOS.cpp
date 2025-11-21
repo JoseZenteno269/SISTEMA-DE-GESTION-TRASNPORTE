@@ -7,19 +7,19 @@
 using namespace rlutil;
 using namespace std;
 
-void Destino::setidDestino(int idd){idDestino=idd; }
-void Destino::setnombre_provincia(const char *p){strcpy(nombre_provincia, p); }
-void Destino::setnombre_destino(const char *nd){strcpy(nombre_destino, nd); }
-void Destino::setdistanciaKm(float dkm){distanciaKm=dkm; }
-void Destino::setduracion(Hora hd){duracion=hd; }
-void Destino::sethabilitado(bool h){habilitado=h; }
+void Destino::setIdDestino(int idd){idDestino=idd; }
+void Destino::setNombre_provincia(const char *p){strcpy(nombre_provincia, p); }
+void Destino::setNombre_destino(const char *nd){strcpy(nombre_destino, nd); }
+void Destino::setDistanciaKm(float dkm){distanciaKm=dkm; }
+void Destino::setDuracion(Hora hd){duracion=hd; }
+void Destino::setHabilitado(bool h){habilitado=h; }
 
-int Destino::getidDestino(){return idDestino; }
-const char*Destino::getnombre_provincia(){return nombre_provincia; }
-const char *Destino::getnombre_destino(){return nombre_destino; }
-float Destino::getdistanciaKm(){return distanciaKm; }
-Hora Destino::getduracion(){return duracion; }
-bool Destino::gethabilitado(){return habilitado; }
+int Destino::getIdDestino(){return idDestino; }
+const char*Destino::getNombre_provincia(){return nombre_provincia; }
+const char *Destino::getNombre_destino(){return nombre_destino; }
+float Destino::getDistanciaKm(){return distanciaKm; }
+Hora Destino::getDuracion(){return duracion; }
+bool Destino::getHabilitado(){return habilitado; }
 
 void Destino::cargar(int idd){
     cls();
@@ -103,11 +103,11 @@ void Destino::mostrar(int X, int Y){
     locate(X, Y + 2); cout << "----------------------------------------------";
     setColor(WHITE);
 
-    locate(X, Y + 4);  setColor(CYAN); cout << "ID de destino: "; setColor(WHITE); cout << idDestino;
-    locate(X, Y + 5);  setColor(CYAN); cout << "Provincia: ";    setColor(WHITE); cout << nombre_provincia;
-    locate(X, Y + 6);  setColor(CYAN); cout << "Lugar de destino: "; setColor(WHITE); cout << nombre_destino;
-    locate(X, Y + 7);  setColor(CYAN); cout << "Duracion del viaje: "; setColor(WHITE); duracion.mostrar(X + 20, Y + 7);
-    locate(X, Y + 8);  setColor(CYAN); cout << "Distancia (KM): "; setColor(WHITE); cout << distanciaKm;
+    locate(X, Y + 4);  setColor(CYAN); cout << "ID de destino: "; locate(X+30, Y+4); setColor(WHITE); cout << idDestino;
+    locate(X, Y + 5);  setColor(CYAN); cout << "Provincia: "; locate(X+30, Y+5); setColor(WHITE); cout << nombre_provincia;
+    locate(X, Y + 6);  setColor(CYAN); cout << "Lugar de destino: "; locate(X+30, Y+6); setColor(WHITE); cout << nombre_destino;
+    locate(X, Y + 7);  setColor(CYAN); cout << "Duracion del viaje: "; setColor(WHITE); duracion.mostrar(X + 10, Y + 7);
+    locate(X, Y + 8);  setColor(CYAN); cout << "Distancia (KM): "; locate(X+30, Y+8);setColor(WHITE); cout << distanciaKm;
 
     anykey();
     LimpiarLineas(Y + 4, Y + 8, X);
