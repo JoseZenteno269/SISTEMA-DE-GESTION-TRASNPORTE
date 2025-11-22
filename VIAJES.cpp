@@ -43,6 +43,7 @@ void Viaje::cargar(int idv){
     Archivo_viaje archivoviaje;
     Tiempo_Actual actual;
     Fecha presente(actual.getDia(), actual.getMes(), actual.getAnio());
+    Viaje viajes;
 
     cls();
     setColor(GREEN);
@@ -74,9 +75,23 @@ void Viaje::cargar(int idv){
             continue;
         }
 
+        int contregviaje=archivoviaje.contarRegistros();
+        for(int i=0; i<contregviaje; i++) viajes=archivoviaje.leerRegistros(i);
+
+        if(viajes.getIdMicro()==idMicro){
+            if(!esFechaPosterior(fecha_Inicio_Viaje, presente) and esFechaPosterior(fecha_Fin_Viaje, presente)){
+                setColor(RED);
+                locate(40, 8);
+                cout<<"No se puede asignar un micro que ya esta en viaje"<<endl;
+                LimpiarLineas(9, 16, 40);
+                setColor(WHITE);
+                anykey();
+                continue;
+            }
+        }
+
         micro = archivomicro.leerRegistros(pos);
         break;
-
     }
 
     Destino destino;
@@ -136,10 +151,8 @@ void Viaje::cargar(int idv){
         locate(40,8); cout << "Ingrese fecha de inicio (dd/mm/yyyy): ";
         setColor(WHITE);
         locate(40,9); fecha_Inicio_Viaje.cargar();
-
         if(esFechaPosterior(fecha_Inicio_Viaje, presente)) break;
         setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "ERROR: no puede ser anterior a la fecha actual"; setColor(WHITE); anykey();
-
     }
 
     LimpiarLineas(8,15,40);

@@ -402,7 +402,7 @@ int viajes_disponibles() {
             if (dia == viaje.getFecha_Inicio_Viaje().getDia() &&
                 mes == viaje.getFecha_Inicio_Viaje().getMes() &&
                 anio == viaje.getFecha_Inicio_Viaje().getAnio()) {
-                LimpiarLineas(3,3,40);
+                LimpiarLineas(3,25,40);
                 viaje.mostrar();
                 anykey();
                 bandera = true;
@@ -433,7 +433,12 @@ int viajes_disponibles() {
             viaje=archivo.leerRegistros(pos);
 
             if(validar_numero() and viaje.getIdViaje()==idv and viaje.getFecha_Inicio_Viaje().getDia()==dia)break;
+            else{
+                locate(40, 6);
+                cout<<"ID de viaje no disponible, Ingrese la ID que disponga un viaje"<<endl;
+            }
 
+            anykey();
             LimpiarLineas(4, 7, 40);
         }
         if(!bandera1) return idv;
