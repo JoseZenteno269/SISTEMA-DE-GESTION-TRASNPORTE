@@ -688,7 +688,7 @@
 1763674095 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_usuarios.h
 	"USUARIOS.h"
 
-1763835597 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_viajes.cpp
+1763926577 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_viajes.cpp
 	<iostream>
 	"ARCHIVO_VIAJES.h"
 	<cstring>
@@ -769,7 +769,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1763835905 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
+1763926684 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
@@ -832,7 +832,7 @@
 	"TIEMPO_ACTUAL.h"
 	"rlutil.h"
 
-1763835330 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
+1763836010 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
 	<iostream>
 	"funciones.h"
 	"VIAJES.h"
@@ -1406,7 +1406,7 @@
 
 1763674095 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\precio.h
 
-1763674095 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\precio.cpp
+1763926528 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\precio.cpp
 	<iostream>
 	"PRECIO.h"
 	"funciones.h"

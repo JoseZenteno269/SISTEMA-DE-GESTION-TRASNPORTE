@@ -94,8 +94,8 @@ void Precio::mostrar(){
 
     locate(40,6); cout<<"Precio x Kilomretro:           "<<"$"<<Precio;
     locate(40,7); cout<<"Precio x butaca cama:          "<<"$"<<Preciobutaca_cama;
-    locate(40,8); cout<<"Precio x butaca semi-cama:     "<<"$"<<Preciobutaca_semicama;
-    locate(40,9); cout<<"Precio x butaca comun:         "<<"$"<<Preciobutaca_comun;
+    locate(40,8); cout<<"Precio x butaca comun:         "<<"$"<<Preciobutaca_comun;
+    locate(40,9); cout<<"Precio x butaca semi-cama:     "<<"$"<<Preciobutaca_semicama;
 
     setColor(WHITE);
     anykey();
