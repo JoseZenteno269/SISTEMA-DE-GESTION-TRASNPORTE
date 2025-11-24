@@ -769,7 +769,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1763926684 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
+1763998307 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
@@ -782,7 +782,7 @@
 	"funciones.h"
 	"rlutil.h"
 
-1763553640 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\main.cpp
+1764001287 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\main.cpp
 	<iostream>
 	<conio.h>
 	"rlutil.h"

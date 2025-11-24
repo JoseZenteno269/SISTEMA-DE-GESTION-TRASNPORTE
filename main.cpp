@@ -10,7 +10,7 @@ using namespace std;
 using namespace rlutil;
 
 int main(){
-
+    system("mode con: cols=150 lines=70");
     cout<<fixed<<setprecision(2);
     srand(time(NULL));
     setlocale(LC_ALL, "spanish");

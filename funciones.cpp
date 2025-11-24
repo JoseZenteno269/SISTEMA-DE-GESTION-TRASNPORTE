@@ -2166,101 +2166,98 @@ void por_provincia(){
 }
 void cantPasajes_destino_mes(){
     cls();
-    Archivo_destino archivodestino;
-    Archivo_pasaje archivopasajes;
-    Archivo_viaje archivoviaje;
-
-    int cant_pasajes=archivopasajes.contarRegistros();
-    int cant_destinos=archivodestino.contarRegistros();
-    int cant_viajes=archivoviaje.contarRegistros();
-
-    int *por_destino=new int[cant_destinos];
-    for (int i=0;i<cant_destinos;i++){
-        por_destino[i]=0;
-    }
-Fecha fecha_desde;
-    setColor(YELLOW);
-    locate(40, 8); cout << "Ingrese FECHA DESDE:";
+    setColor(GREEN);
+    locate(40,4); cout << "REPORTE: PASAJES VENDIDOS POR DESTINO";
     setColor(WHITE);
-    fecha_desde.cargar();
 
-    anykey();
+    Fecha desde, hasta;
+
+    locate(35,7);  cout << "FECHA DESDE:";
+    desde.cargar();
     cls();
 
-    Fecha fecha_hasta;
-    setColor(YELLOW);
-    locate(40, 8); cout << "Ingrese FECHA HASTA:";
-    setColor(WHITE);
-    fecha_hasta.cargar();
+    locate(35,7); cout << "FECHA HASTA:";
+    hasta.cargar();
 
-    int fecha_desde_num =
-        fecha_desde.getAnio() * 10000 +
-        fecha_desde.getMes() * 100 +
-        fecha_desde.getDia();
+    Archivo_pasaje archPas("Pasajes.dat");
+    Archivo_viaje archVia("Viajes.dat");
+    Archivo_destino archDes("Destinos.dat");
 
-    int fecha_hasta_num =
-        fecha_hasta.getAnio() * 10000 +
-        fecha_hasta.getMes() * 100 +
-        fecha_hasta.getDia();
+    int cantPas = archPas.contarRegistros();
+    int cantVia = archVia.contarRegistros();
+    int cantDes = archDes.contarRegistros();
 
-    for(int i=0;i<cant_pasajes;i++){
-        Pasaje p= archivopasajes.leerRegistros(i);
-        Fecha f;
-        int a=f.getAnio();
-        int m=f.getMes();
-        int d=f.getDia();
+    if(cantPas == 0){
+        locate(40,12);
+        cout << "NO HAY PASAJES REGISTRADOS.";
+        anykey();
+        return;
+    }
 
-        int fecha_pasaje_num=a*10000+m*100+d;
-        if(fecha_pasaje_num>=fecha_desde_num&&fecha_pasaje_num<=fecha_hasta_num){
+    int *conteo = new int[cantDes];
+    for(int i=0; i<cantDes; i++) conteo[i] = 0;
 
-            Destino destino;
-            Viaje viaje;
-            Pasaje Pasaje;
-            for(int i=0; i<cant_viajes; i++){
-                viaje=archivoviaje.leerRegistros(i);
-                int posdestino=archivodestino.buscarRegistros(viaje.getIdDestino());
-                destino=archivodestino.leerRegistros(posdestino);
+    for(int i=0; i < cantPas; i++){
+        Pasaje p = archPas.leerRegistros(i);
 
-                for(int x=0; x<cant_pasajes; x++){
-                    Pasaje=archivopasajes.leerRegistros(x);
-                    if(Pasaje.getIdviaje()==viaje.getIdViaje()){
-                        por_destino[destino.getIdDestino()-1]++;
-                    }
-                }
+        Viaje v;
+        bool encontrado = false;
 
+        for(int j=0; j < cantVia && !encontrado; j++){
+            v = archVia.leerRegistros(j);
+
+            if(v.getIdViaje() == p.getIdviaje()){
+                encontrado = true;
             }
+        }
 
-//            int idDestino=p.getidDestino();
-//
-//        int posDestino=-1;
-//
-//        for(int j=0;j<cant_destinos;j++){
-//            Destinos dest=archivodestino.leerRegistros(j);
-//            if(dest.getidDestino()==idDestino){
-//                posDestino=j;
-//                break;
-//            }
-//        }posDestino
-//          if(!=-1){
-//            por_destino[posDestino]++;
-//        }
-    }
-}
-    rlutil::cls();
-    cout << "CANTIDAD DE PASAJES VENDIDOS\n\n";
-    cout << "Periodo: " << fecha_desde.getDia() << "/" << fecha_desde.getMes() << "/" << fecha_desde.getAnio()<< "  al  "
-    << fecha_hasta.getDia() << "/" << fecha_hasta.getMes() << "/" << fecha_hasta.getAnio()<< endl << endl;
-    cout << left << setw(20) <<  "Destino"<< right << setw(10) << "Pasajes" << endl;
-    cout << "----------------------------------------------\n";
-    for (int j = 0; j < cant_destinos; j++) {
-        Destino dest = archivodestino.leerRegistros(j);
-        cout << left << setw(20) << dest.getNombre_destino()<< right << setw(10) << por_destino[j] << endl;
+        if(!encontrado) continue;
+
+        Fecha fv = v.getFecha_Inicio_Viaje();
+
+        if(fv.getAnio() < desde.getAnio()) continue;
+        if(fv.getAnio() > hasta.getAnio()) continue;
+
+        if(fv.getAnio() == desde.getAnio()){
+            if(fv.getMes() < desde.getMes()) continue;
+            if(fv.getMes() == desde.getMes() && fv.getDia() < desde.getDia()) continue;
+        }
+
+        if(fv.getAnio() == hasta.getAnio()){
+            if(fv.getMes() > hasta.getMes()) continue;
+            if(fv.getMes() == hasta.getMes() && fv.getDia() > hasta.getDia()) continue;
+        }
+
+        int idDes = v.getIdDestino();
+
+        for(int k=0; k < cantDes; k++){
+            Destino d = archDes.leerRegistros(k);
+
+            if(d.getIdDestino() == idDes){
+                conteo[k]++;
+                break;
+            }
+        }
     }
 
-    cout << endl;
+    cls();
+    locate(40,4); cout << "RESULTADOS DEL REPORTE";
+    int y = 8;
+
+    for(int i=0; i < cantDes; i++){
+        Destino d = archDes.leerRegistros(i);
+        locate(30,i+y);
+        cout << left << setw(35) << d.getNombre_destino()<< right << setw(3) << conteo[i]<< " pasajes vendidos"<<endl;
+
+        //cout << d.getNombre_destino() << "        " << conteo[i] << " pasajes vendidos"<<endl;
+        //y++;
+    }
+
+    delete[] conteo;
+
+    locate(35, y+2);
     anykey();
     cls();
-    delete[] por_destino;
 }
 void kilometros_micro(){
     cls();
