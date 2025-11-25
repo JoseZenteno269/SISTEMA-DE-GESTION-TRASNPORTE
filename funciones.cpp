@@ -111,6 +111,63 @@ void fecha_y_hora_fin(Destino destino, Archivo_destino archivodestino, Fecha &fe
     }
 }
 
+bool estaOcupadoEnViaje(int idMicro, int idChofer, Fecha fechaNuevo, Hora horaNuevo) {
+    Archivo_viaje archivoViajes;
+    Viaje viajeExistente;
+    int cantidadViajes = archivoViajes.contarRegistros();
+
+    for (int i = 0; i < cantidadViajes; i++) {
+        viajeExistente = archivoViajes.leerRegistros(i);
+
+        if (viajeExistente.getRealizado() == false) continue;
+
+        if (viajeExistente.getIdMicro() != idMicro && viajeExistente.getIdChofer() != idChofer) {
+            continue;
+        }
+
+        Fecha fechaInicioExistente = viajeExistente.getFecha_Inicio_Viaje();
+        Hora horaInicioExistente = viajeExistente.getHora_Inicio_Viaje();
+
+        Fecha fechaFinExistente = viajeExistente.getFecha_Fin_Viaje();
+        Hora horaFinExistente = viajeExistente.getHora_Fin_Viaje();
+
+        bool hayConflicto = false;
+
+        bool EmpiezaAntesOTarde = false;
+
+        if (fechaInicioExistente.getAnio() < fechaNuevo.getAnio() ||
+            (fechaInicioExistente.getAnio() == fechaNuevo.getAnio() && fechaInicioExistente.getMes() < fechaNuevo.getMes()) ||
+            (fechaInicioExistente.getAnio() == fechaNuevo.getAnio() && fechaInicioExistente.getMes() == fechaNuevo.getMes() && fechaInicioExistente.getDia() < fechaNuevo.getDia()) ||
+            (fechaInicioExistente.getAnio() == fechaNuevo.getAnio() && fechaInicioExistente.getMes() == fechaNuevo.getMes() && fechaInicioExistente.getDia() == fechaNuevo.getDia())
+        ) {
+            EmpiezaAntesOTarde = true;
+        }
+
+        if (EmpiezaAntesOTarde) {
+            if (esFechaPosterior(fechaFinExistente, fechaNuevo)) {
+                if (fechaFinExistente.getAnio() > fechaNuevo.getAnio() ||
+                    (fechaFinExistente.getAnio() == fechaNuevo.getAnio() && fechaFinExistente.getMes() > fechaNuevo.getMes()) ||
+                    (fechaFinExistente.getAnio() == fechaNuevo.getAnio() && fechaFinExistente.getMes() == fechaNuevo.getMes() && fechaFinExistente.getDia() > fechaNuevo.getDia())
+                ) {
+                    hayConflicto = true;
+                }
+
+                else if (fechaFinExistente.getDia() == fechaNuevo.getDia()) {
+                    if (horaFinExistente.getHora() > horaNuevo.getHora() ||
+                        (horaFinExistente.getHora() == horaNuevo.getHora() && horaFinExistente.getMinuto() > horaNuevo.getMinuto()) ||
+                        (horaFinExistente.getHora() == horaNuevo.getHora() && horaFinExistente.getMinuto() == horaNuevo.getMinuto())) {
+                        hayConflicto = true;
+                    }
+                }
+            }
+        }
+        if (hayConflicto) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool chequearSalidaESC(string mensaje){
     system("cls");
 
@@ -149,19 +206,6 @@ bool chequearSalidaESC(string mensaje){
 
     return false;
 }
-
-//bool chequearSalidaESCsinRlutil(string mensaje){
-//    cls();
-//    cout<<mensaje<<endl<<endl;
-//    cout<<"Presione ESC para cancelar y volver al menu"<<endl;
-//    cout<<"Presione cualquier otra tecla para continuar..."<<endl;
-//
-//    int tecla=getkey();
-//    cls();
-//    if(tecla==KEY_ESCAPE)return true;
-//
-//    return false;
-//}
 
 bool esFechaPosterior(Fecha inicio ,Fecha presente){
     if(inicio.getAnio()>presente.getAnio())return true;
@@ -396,7 +440,8 @@ int viajes_disponibles(){
 
         for(int i=0; i<contreg; i++) {
             viaje = archivo.leerRegistros(i);
-            if(dia==viaje.getFecha_Inicio_Viaje().getDia() and mes==viaje.getFecha_Inicio_Viaje().getMes() and anio==viaje.getFecha_Inicio_Viaje().getAnio()){
+            if(dia==viaje.getFecha_Inicio_Viaje().getDia() and mes==viaje.getFecha_Inicio_Viaje().getMes() and anio==viaje.getFecha_Inicio_Viaje().getAnio()
+                and tiempo.getDia()<viaje.getFecha_Inicio_Viaje().getDia()){
                 LimpiarLineas(3,25,40);
                 viaje.mostrar();
                 anykey();
@@ -681,6 +726,16 @@ void cargar_viaje(){
     viaje.cargar(idv);
 
     if(viaje.getIdMicro()==0 or viaje.getIdDestino()==0 or viaje.getIdChofer()==0)return;
+
+    if(estaOcupadoEnViaje(viaje.getIdMicro(), viaje.getIdChofer(), viaje.getFecha_Inicio_Viaje(), viaje.getHora_Inicio_Viaje())) {
+        setColor(RED);
+        locate(40, 23);
+        std::cout << "IMPOSIBLE INICIAR VIAJE. Presione una tecla para volver.";
+        setColor(WHITE);
+        anykey();
+        system("cls");
+        return;
+    }
 
     if(archivo.grabarRegistro(viaje))cout<<endl<<"VIAJE REGISTRADO SATISFACTORIAMENTE. ID: "<<idv<<endl;
     else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
@@ -1640,30 +1695,52 @@ void dar_alta_destino(){
     anykey();
     cls();
 }
-void mostrar_provincias(){
+void ingresar_Provincia(){
     cls();
 
-    setColor(YELLOW);
-    locate(40,3);  cout << "----------------------------------------------";
-    locate(40,4);  cout << "            LISTADO DE PROVINCIAS             ";
-    locate(40,5);  cout << "----------------------------------------------";
-    setColor(WHITE);
+    if(chequearSalidaESC("Usted esta por ingresar una provincia."))return;
 
-    int fila = 7;
+    Provincia P;
+    Archivo_provincia archivo;
 
-    for(int i = 1; i <= 9; i++){
-        locate(40, fila);
-        cout << i << " - " << funcion_provincias(i,3);
-        fila++;
-    }
-    for(int i = 10; i <= 23; i++){
-        locate(39, fila);
-        cout << i << " - " << funcion_provincias(i,3);
-        fila++;
+    int contreg=archivo.contarRegistros();
+
+    if(contreg<0){
+        setColor(RED);
+        locate(44, 13);
+        cout << "ERROR AL LEER EL ARCHIVO. NO SE PUEDE REGISTRAR.";
+        setColor(WHITE);
+        system("pause");
+        return;
     }
 
-    anykey();
+    P.cargar();
+
+    if(archivo.grabarRegistro(P)){
+        setColor(WHITE);
+        locate(44, 11);
+        cout << "----------------------------------------";
+        setColor(GREEN);
+        locate(44, 12);
+        cout << "PROVINCIA REGISTRADA SATISFACTORIAMENTE";
+        locate(44, 13);
+    }
+    else {
+        setColor(RED);
+        locate(44, 13);
+        cout << "ERROR AL GUARDAR EL REGISTRO.";
+        setColor(WHITE);
+    }
+
+
+    system("pause");
+    system("cls");
+}
+void mostrar_Provincia(){
     cls();
+    Provincia archivo;
+    archivo.mostrar();
+    system("cls");
 }
 
 ///Funciones choferes
@@ -2213,20 +2290,12 @@ void cantPasajes_destino_mes(){
 
         if(!encontrado) continue;
 
-        Fecha fv = v.getFecha_Inicio_Viaje();
+        Fecha fechaviaje = v.getFecha_Inicio_Viaje();
 
-        if(fv.getAnio() < desde.getAnio()) continue;
-        if(fv.getAnio() > hasta.getAnio()) continue;
+        bool mayorOIgualDesde = esFechaPosterior(fechaviaje, desde);
+        bool menorOIgualHasta = esFechaPosterior(hasta, fechaviaje);
 
-        if(fv.getAnio() == desde.getAnio()){
-            if(fv.getMes() < desde.getMes()) continue;
-            if(fv.getMes() == desde.getMes() && fv.getDia() < desde.getDia()) continue;
-        }
-
-        if(fv.getAnio() == hasta.getAnio()){
-            if(fv.getMes() > hasta.getMes()) continue;
-            if(fv.getMes() == hasta.getMes() && fv.getDia() > hasta.getDia()) continue;
-        }
+        if(!(mayorOIgualDesde && menorOIgualHasta)) continue;
 
         int idDes = v.getIdDestino();
 
@@ -2240,17 +2309,14 @@ void cantPasajes_destino_mes(){
         }
     }
 
+    system("mode con: cols=120 lines=70");
     cls();
     locate(40,4); cout << "RESULTADOS DEL REPORTE";
     int y = 8;
-
     for(int i=0; i < cantDes; i++){
         Destino d = archDes.leerRegistros(i);
         locate(30,i+y);
-        cout << left << setw(35) << d.getNombre_destino()<< right << setw(3) << conteo[i]<< " pasajes vendidos"<<endl;
-
-        //cout << d.getNombre_destino() << "        " << conteo[i] << " pasajes vendidos"<<endl;
-        //y++;
+        cout<<left<<setw(35)<<d.getNombre_destino()<<right<<setw(3)<<conteo[i]<<" pasajes vendidos"<<endl;
     }
 
     delete[] conteo;
@@ -2399,7 +2465,7 @@ void recaudacion_por_genero_anio(){
 }
 void viajes_chofer_mes(){
     cls();
-Archivo_viaje archivoviaje;
+    Archivo_viaje archivoviaje;
     Archivo_chofer archivochoferes;
 
     int cant_choferes = archivochoferes.contarRegistros();
@@ -2739,7 +2805,7 @@ void SUBMENU_4(){
                 dar_alta_destino();
                 break;
             case 4:
-                mostrar_provincias();
+                mostrar_Provincia();
                 break;
             case 5:
                 salir=true;

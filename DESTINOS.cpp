@@ -24,6 +24,9 @@ bool Destino::getHabilitado(){return habilitado; }
 void Destino::cargar(int idd){
     cls();
 
+    Archivo_provincia A_Prov;
+    Provincia Provincia;
+
     setColor(GREEN);
     locate(40,3);  cout << "----------------------------------------------";
     locate(40,4);  cout << "            CARGA DE NUEVO DESTINO            ";
@@ -44,12 +47,15 @@ void Destino::cargar(int idd){
         locate(40,11); cargarCadena(nombre_provincia,39);
 
         bool bandera = false;
+      int X = A_Prov.contarRegistros();
+      for(int i=0;i<X;i++){
+        Provincia=A_Prov.leerRegistros(i);
+        if(strcasecmp(nombre_provincia,Provincia.getNombre())==0){
+            bandera = true;
+            break;
+        }
+      }
 
-      for(int i=1; i<=23; i++){
-        if(strcmp(funcion_provincias(i,1), nombre_provincia) == 0) bandera = true;
-        if(strcmp(funcion_provincias(i,2), nombre_provincia) == 0) bandera = true;
-        if(strcmp(funcion_provincias(i,3), nombre_provincia) == 0) bandera = true;
-    }
         if(bandera){
             LimpiarLineas(10,15,40);
             break;

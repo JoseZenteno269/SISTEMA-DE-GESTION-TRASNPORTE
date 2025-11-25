@@ -75,21 +75,6 @@ void Viaje::cargar(int idv){
             continue;
         }
 
-        int contregviaje=archivoviaje.contarRegistros();
-        for(int i=0; i<contregviaje; i++) viajes=archivoviaje.leerRegistros(i);
-
-        if(viajes.getIdMicro()==idMicro){
-            if(!esFechaPosterior(fecha_Inicio_Viaje, presente) and esFechaPosterior(fecha_Fin_Viaje, presente)){
-                setColor(RED);
-                locate(40, 8);
-                cout<<"No se puede asignar un micro que ya esta en viaje"<<endl;
-                LimpiarLineas(9, 16, 40);
-                setColor(WHITE);
-                anykey();
-                continue;
-            }
-        }
-
         micro = archivomicro.leerRegistros(pos);
         break;
     }

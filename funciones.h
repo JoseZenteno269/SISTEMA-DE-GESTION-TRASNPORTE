@@ -32,6 +32,7 @@ bool validar_numero();
 void fecha_y_hora_fin(Destino , Archivo_destino , Fecha &, Hora &, Fecha , Hora , int);
 bool chequearSalidaESC(std::string);
 bool esFechaPosterior(Fecha, Fecha);
+bool estaOcupadoEnViaje(int , int , Fecha , Hora);
 void cargarCadena(char *, int );
 const char *funcion_provincias(int pos);
 const char *funcion_provincias(int,int );
@@ -78,8 +79,8 @@ void ingresar_destino();
 void mostrar_destino();
 void eliminar_destino();
 void dar_alta_destino();
-void cargar_prvincias();
-void mostar_provincias();
+void ingresar_Provincia();
+void mostrar_Provincia();
 
 ///Funciones choferes
 void ingresar_chofer();
