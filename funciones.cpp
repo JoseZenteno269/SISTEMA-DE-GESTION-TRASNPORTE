@@ -3717,8 +3717,8 @@ void SUBMENU_6(){
         " RECAUDACION POR AÑO",
         " RECAUDACION POR MICRO",
         " RECAUDACION POR DESTINO",
-        " PASAJES VENDIDOS POR DESTINO",
-        " KILOMETROS RECORRIDOS POR MICRO",
+        " PASAJES VENDIDOS POR DESTINO ENTRE FECHAS",
+        " KILOMETROS RECORRIDOS POR MICRO EN UN AÑO",
         " RECAUDACION POR GENERO EN UN AÑO",
         " VIAJES POR CHOFER EN UN MES",
         " MENU PRINCIPAL"
@@ -3729,11 +3729,11 @@ void SUBMENU_6(){
     while(!salir){
         setColor(WHITE);
         for(int i=0; i<9; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<9; i++){locate(86,11+i); cout << "|";}
+        for(int i=0; i<9; i++){locate(90,11+i); cout << "|";}
         locate(44,10);
-        cout<<"-----------------REPORTES-----------------"<<endl;
+        cout<<"-------------------REPORTES-------------------"<<endl;
         locate(44,11);
-        cout<<"------------------------------------------"<<endl;
+        cout<<"----------------------------------------------"<<endl;
         for(int i=0; i<opciones_submenu; i++){
             setColor(WHITE);
             locate(45,12+i);
@@ -3745,7 +3745,7 @@ void SUBMENU_6(){
         }
         setColor(WHITE);
         locate(44,20);
-        cout<<"------------------------------------------"<<endl;
+        cout<<"----------------------------------------------"<<endl;
         setColor(WHITE);
         int tecla=getkey();
         if(tecla==KEY_UP){
