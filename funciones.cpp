@@ -388,6 +388,7 @@ int viajes_disponibles(){
     Viaje viaje;
     Archivo_viaje archivo;
     Tiempo_Actual tiempo;
+    Fecha fechas, fechas1;
 
     int mes=tiempo.getMes();
     int anio=tiempo.getAnio();
@@ -438,10 +439,18 @@ int viajes_disponibles(){
         locate(40, 3); cout<<"=============== VIAJES DISPONIBLES ===============";
         setColor(WHITE);
 
+        fechas.setAnio(anio);
+        fechas.setMes(mes);
+        fechas.setDia(dia);
+
+        fechas1.setAnio(tiempo.getAnio());
+        fechas1.setMes(tiempo.getMes());
+        fechas1.setDia(tiempo.getDia());
+
         for(int i=0; i<contreg; i++) {
             viaje = archivo.leerRegistros(i);
             if(dia==viaje.getFecha_Inicio_Viaje().getDia() and mes==viaje.getFecha_Inicio_Viaje().getMes() and anio==viaje.getFecha_Inicio_Viaje().getAnio()
-                and tiempo.getDia()<viaje.getFecha_Inicio_Viaje().getDia()){
+               and esFechaPosterior(fechas, fechas1)){
                 LimpiarLineas(3,25,40);
                 viaje.mostrar();
                 anykey();
@@ -2086,7 +2095,7 @@ void por_anio(){
 
     int anio;
     while(true){
-        setColor(YELLOW);
+        setColor(GREEN);
         locate(40, 15); cout<<"Ingrese el año: ";
         setColor(WHITE);
         cin>>anio;
@@ -2120,9 +2129,19 @@ void por_anio(){
             }
         }
     }
-    setColor(GREEN);
+    setColor(WHITE);
     locate(40, 15);
-    cout<<"RECAUDACION TOTAL EN EL AÑO "<<anio<<" $:"<<acumulador<<endl;
+    cout << "RECAUDACION TOTAL EN EL AÑO ";
+    setColor(RED);
+    cout << anio;
+    setColor(WHITE);
+    cout <<":";
+    setColor(GREEN);
+    cout << "  $";
+
+    setColor(WHITE);
+    cout << fixed << setprecision(2) << acumulador << endl;
+
     setColor(WHITE);
     anykey();
     cls();
@@ -2140,7 +2159,7 @@ void por_micro(){
 
   int id;
     while(true){
-        setColor(YELLOW);
+        setColor(GREEN);
         locate(40, 15); cout<<"Ingrese el id del micro: ";
         setColor(WHITE);
         cin>>id;
@@ -2162,7 +2181,14 @@ void por_micro(){
     int cantregpasaje=archivopasaje.contarRegistros();
 
     int posmicro=archivomicro.buscarRegsitro(id);
-    if(posmicro<0)return;
+    if(posmicro<0){
+         setColor(RED);
+            locate(40, 17);
+            cout << "ID de micro NO ";
+            anykey();
+            LimpiarLineas(15, 20, 40);
+            setColor(WHITE);
+        return;}
     micros=archivomicro.leerRegistros(posmicro);
 
     for(int i=0; i<cantregviaje; i++){
@@ -2176,12 +2202,19 @@ void por_micro(){
             }
         }
     }
-    setColor(GREEN);
+  setColor(WHITE);
     locate(40, 15);
-    cout << "RECAUDACION TOTAL DEL MICRO "<<micros.getIdMicro()<<" ES DE $"<<acumulador<<endl;
+    cout << "RECAUDACION TOTAL DEL MICRO " << micros.getIdMicro() << " ES DE ";
+
+    setColor(GREEN);
+    cout << "$" << fixed << setprecision(2) << acumulador;
+
     setColor(WHITE);
+    cout << endl;
+
     anykey();
     cls();
+
 }
 void por_provincia(){
     cls();
@@ -2194,11 +2227,15 @@ void por_provincia(){
     Destino destino;
     Archivo_destino archivodestino;
 
+    Provincia Provincia;
+    Archivo_provincia Arch_Prov;
+
     int contregpasaje=archivopasaje.contarRegistros();
     int contregviaje=archivoviaje.contarRegistros();
     int contregdestino=archivodestino.contarRegistros();
-
-    float recaudacio_provincia[23]={0};
+    int cantprov=Arch_Prov.contarRegistros();
+    float* recaudacio_provincia = new float[cantprov];
+    for(int i=0; i<cantprov; i++) recaudacio_provincia[i] = 0;
 
     for(int i=0; i<contregpasaje; i++){
         Pasaje=archivopasaje.leerRegistros(i);
@@ -2209,56 +2246,76 @@ void por_provincia(){
         for(int z=0; z<contregdestino; z++){
             destino=archivodestino.leerRegistros(z);
             if(viaje.getIdDestino()==destino.getIdDestino()){
-                for(int x=0; x<24; x++){
-                    const char *provincia=funcion_provincias(x, 1);
-                    if(strcmp(provincia, destino.getNombre_provincia())==0){
-                        recaudacio_provincia[x]+=Pasaje.getPrecio();
-                    }
-                    provincia=funcion_provincias(x, 2);
-                    if(strcmp(provincia, destino.getNombre_provincia())==0){
-                        recaudacio_provincia[x]+=Pasaje.getPrecio();
-                    }
-                    provincia=funcion_provincias(x, 3);
-                    if(strcmp(provincia, destino.getNombre_provincia())==0){
+                for(int x=0; x<cantprov; x++){
+                    Provincia=Arch_Prov.leerRegistros(x);
+                    if(strcasecmp(Provincia.getNombre(),destino.getNombre_provincia())==0){
                         recaudacio_provincia[x]+=Pasaje.getPrecio();
                     }
                 }
             }
         }
     }
-    cout<<"=============================================="<<endl;
-    cout<<"        RECAUDACION TOTAL POR DESTINO         "<<endl;
-    cout<<"=============================================="<<endl;
-    cout<<endl;
-    cout<<"PROVINCIA"<<setw(20)<<" "<<"RECAUDACION"<<endl;
-    cout<<"-----------------------------------------"<<endl;
-    for(int i=0; i<23; i++){
-        locate(0, i+8);
-        cout<<funcion_provincias(i);
-        locate(33, i+7);
-        cout<<recaudacio_provincia[i+1]<<endl;
+
+    setColor(GREEN);locate(40,1);cout<<"===================================================="<<endl;
+    setColor(WHITE);locate(40,2);cout<<"            RECAUDACION TOTAL POR PROVINCIA         "<<endl;
+    setColor(GREEN);locate(40,3);cout<<"===================================================="<<endl;
+    setColor(WHITE);locate(40,4);cout << left << setw(25) << "PROVINCIA" << setw(15) << "RECAUDACION" << endl;
+    setColor(GREEN);locate(40,5);cout<<"----------------------------------------------------"<<endl;
+
+    setColor(WHITE);
+    for(int i=0; i<cantprov; i++){
+    Provincia = Arch_Prov.leerRegistros(i);
+
+    locate(40, 6 + i);
+    cout << left << setw(25) << Provincia.getNombre();
+
+    setColor(GREEN);
+    cout << "$ ";
+
+    setColor(WHITE);
+    cout << fixed << setprecision(2) << recaudacio_provincia[i];
     }
+
+    delete[] recaudacio_provincia;
+
     anykey();
     cls();
 }
-void cantPasajes_destino_mes(){
+void cantPasajes_destino_fecha(){
     cls();
     setColor(GREEN);
     locate(40,4); cout << "REPORTE: PASAJES VENDIDOS POR DESTINO";
     setColor(WHITE);
 
     Fecha desde, hasta;
-
+    setColor(YELLOW);
     locate(35,7);  cout << "FECHA DESDE:";
     desde.cargar();
     cls();
 
+    bool dale=false;
+    while(!dale){
+            setColor(YELLOW);
     locate(35,7); cout << "FECHA HASTA:";
     hasta.cargar();
 
-    Archivo_pasaje archPas("Pasajes.dat");
-    Archivo_viaje archVia("Viajes.dat");
-    Archivo_destino archDes("Destinos.dat");
+    if(esFechaPosterior(desde,hasta)){
+            locate(40,15);
+            setColor(RED);
+       cout<<left<<setw(20)<<"La fecha no puede ser anterior a la fecha ya ingresada"<<endl;
+
+    anykey();
+    cls();
+    } else {
+    dale=true;
+    }
+
+    }
+
+
+    Archivo_pasaje archPas;
+    Archivo_viaje archVia;
+    Archivo_destino archDes;
 
     int cantPas = archPas.contarRegistros();
     int cantVia = archVia.contarRegistros();
@@ -2379,22 +2436,41 @@ void kilometros_micro(){
 
 
     cls();
-    setColor(YELLOW);
-    int fila=0, columna=40;
-    locate(40, 10); cout<<"=================================================="<<endl;
-    locate(40, 11); cout<<"KILOMETROS RECORRIDOS POR MICRO EN EL ANIO "<<anio<<endl;
-    locate(40, 13); cout<<"Micros"<<setw(20)<<" "<<"kilometros recorridos"<<endl;
-    locate(40, 14); cout<<"--------------------------------------------------"<<endl;
+    setColor(GREEN);
+    locate(40, 8);  cout<<"============================================================";
+    setColor(WHITE);locate(40, 9);  cout<<"     KILOMETROS RECORRIDOS POR MICRO EN EL ANIO "<<anio;
+    setColor(GREEN);locate(40, 10); cout<<"============================================================";
+
+    setColor(WHITE);
+    locate(40, 12);
+    cout << left << setw(12) << "MICRO"
+         << left << setw(20) << " "
+         << "KILOMETROS" << endl;
+
+    setColor(GREEN);
+    locate(40, 13);
+    cout<<"------------------------------------------------------------";
+
+    setColor(WHITE);
+
+    int filaBase = 14;
     for(int i=0; i<cantmicros; i++){
-        micro=archivomicro.leerRegistros(i);
+        micro = archivomicro.leerRegistros(i);
         if(micro.getDisponible()){
-            locate(columna, i+14); cout<<micro.getIdMicro()<<setw(30)<<" "<<micros[i]<<endl;
-            fila=i+15;
+            locate(40, filaBase + i);
+            cout << left << setw(12) << micro.getIdMicro();
+            cout << left << setw(20) << " ";
+            setColor(YELLOW);
+            cout << fixed << setprecision(2) << micros[i];
+            setColor(WHITE);
         }
     }
-    locate(40, fila+1); cout<<"================================================"<<endl;
 
+    locate(40, filaBase + cantmicros + 1);
+    setColor(GREEN);
+    cout<<"============================================================";
 
+    setColor(WHITE);
     delete[] micros;
     anykey();
     cls();
@@ -2450,18 +2526,32 @@ void recaudacion_por_genero_anio(){
             recaudacion_generos[pasajero.getGenero()-1]+=Pasaje.getPrecio();
         }
     }
-    setColor(YELLOW);
+    setColor(GREEN);
+    locate(40, 8);  cout << "==============================================";
+    setColor(WHITE);locate(40, 9);  cout << "      RECAUDACION POR GENERO - AÑO " << anio;
+    setColor(GREEN);locate(40, 10); cout << "==============================================";
 
-    locate(40, 10);cout<<"=============================================="<<endl;
-    locate(40, 11);cout<<"   RECAUDACION POR GENERO - AÑO "<<anio<<endl;
-    locate(40, 12);cout<<"==============================================" << endl;
-    locate(40, 13);cout<<endl;
-    locate(40, 14);cout<<"Masculino:         $ "<<recaudacion_generos[0]<<endl;
-    locate(40, 15);cout<<"Femenino:          $ "<<recaudacion_generos[1]<<endl;
-    locate(40, 16);cout<<"No binario:        $ "<<recaudacion_generos[2]<<endl;
+    setColor(WHITE);
+    locate(40, 12); cout << left << setw(20) << "Masculino";
+    setColor(YELLOW);
+    cout << "$ " << fixed << setprecision(2) << recaudacion_generos[0] << endl;
+
+    setColor(WHITE);
+    locate(40, 13); cout << left << setw(20) << "Femenino";
+    setColor(YELLOW);
+    cout << "$ " << fixed << setprecision(2) << recaudacion_generos[1] << endl;
+
+    setColor(WHITE);
+    locate(40, 14); cout << left << setw(20) << "No binario";
+    setColor(YELLOW);
+    cout << "$ " << fixed << setprecision(2) << recaudacion_generos[2] << endl;
+
+    setColor(GREEN);
+    locate(40, 16); cout << "==============================================";
+
+    setColor(WHITE);
     anykey();
     cls();
-
 }
 void viajes_chofer_mes(){
     cls();
@@ -2471,28 +2561,25 @@ void viajes_chofer_mes(){
     int cant_choferes = archivochoferes.contarRegistros();
     int cant_viajes   = archivoviaje.contarRegistros();
 
-
     int anio;
     while(true){
-            setColor(GREEN);
-            locate(40, 15); cout<<"Ingrese el anio: ";
+        setColor(GREEN);
+        locate(40, 15); cout<<"Ingrese el anio: ";
+        setColor(WHITE);
+        cin>>anio;
+        int longitud=to_string(anio).length();
+        if(validar_numero() and longitud==4) break;
+        else {
+            setColor(RED);
+            locate(40, 17);
+            cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+            anykey();
+            LimpiarLineas(15, 20, 40);
             setColor(WHITE);
-            cin>>anio;
-            int longitud=to_string(anio).length();
-            if(validar_numero() and (longitud>=4 and longitud<=4)) break;
-            else {
-                setColor(RED);
-                locate(40, 17);
-                 cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
-                 anykey();
-                 LimpiarLineas(15, 20, 40);
-                 setColor(WHITE);
-                 continue;
-             }
         }
-    rlutil::cls();
-    setColor(YELLOW);
+    }
 
+    cls();
     for (int c = 0; c < cant_choferes; c++) {
 
         Chofer chofer = archivochoferes.leerRegistros(c);
@@ -2512,21 +2599,41 @@ void viajes_chofer_mes(){
                 }
             }
         }
-        cout << "chofer legajo: " << chofer.getLegajo();
-        cout << " - " << chofer.getApellido() << ", " << chofer.getNombre() << endl;
-        cout << "Mes:   ";
-        for (int m = 1; m <= 12; m++) {
-            cout << setw(4) << m;
-        }
-        cout << endl;
-        cout << "Viajes:";
-        for (int m = 0; m < 12; m++) {
-            cout << setw(4) << vmes[m];
-        }
-        cout << endl << "----------------------------------------" << endl;
+
+       setColor(GREEN);
+       locate(40,1); cout << "----------------------------------------------\n";
+
+       setColor(WHITE);
+       locate(40,2); cout << "Chofer: ";
+
+       setColor(CYAN);
+       cout << chofer.getApellido() << ", " << chofer.getNombre();
+
+       setColor(WHITE);
+       cout << "  | Legajo: "<<chofer.getLegajo();
+
+       setColor(WHITE);
+       locate(40,4); cout << "Mes   | Viajes\n";
+
+       setColor(GREEN);
+       locate(40,5); cout << "-----------------\n";
+
+       for (int m = 0; m < 12; m++) {
+           locate(40, 6 + m);
+           setColor(WHITE);
+           cout << setw(2) << (m + 1) << "    | ";
+
+           setColor(CYAN);
+           cout << vmes[m];
+       }
+
+       setColor(GREEN);
+       locate(40,18); cout << "----------------------------------------------";
+
+       setColor(WHITE);
+       anykey();
+       cls();
     }
-    anykey();
-    cls();
 }
 
 ///MENUS Y SUBMENUS
@@ -2898,7 +3005,7 @@ void SUBMENU_6(){
         " RECAUDACION POR AÑO",
         " RECAUDACION POR MICRO",
         " RECAUDACION POR DESTINO",
-        " PASAJES VENDIDOS POR DESTINO EN UN MES",
+        " PASAJES VENDIDOS POR DESTINO",
         " KILOMETROS RECORRIDOS POR MICRO",
         " RECAUDACION POR GENERO EN UN AÑO",
         " VIAJES POR CHOFER EN UN MES",
@@ -2948,7 +3055,7 @@ void SUBMENU_6(){
                 por_provincia();
                 break;
             case 3:
-                cantPasajes_destino_mes();
+                cantPasajes_destino_fecha();
                 break;
             case 4:
                 kilometros_micro();

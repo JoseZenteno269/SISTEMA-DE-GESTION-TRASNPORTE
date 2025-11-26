@@ -94,7 +94,7 @@ void cambiar_telefeno_chofer();
 void por_anio();
 void por_micro();
 void por_destino();
-void cantPasajes_destino_mes();
+void cantPasajes_destino_fecha();
 void kilometros_micro();
 void por_genero_anio();
 void viajes_chofer_mes();
