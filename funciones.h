@@ -100,6 +100,41 @@ void kilometros_micro();
 void por_genero_anio();
 void viajes_chofer_mes();
 
+///LISTADOS
+//CHOFERES
+void Choferes_ordenados_apellido();
+void Choferes_ordenados_edad();
+
+//CLIENTES
+void Pasajeros_ordenados_apellido();
+void Pasajeros_ordenados_edad();
+
+//UNIDADES
+void Micros_ordenados_Fabricante();
+void Micros_ordenados_Carroceria();
+void Micros_ordenados_Asientos();
+
+//VENTAS
+void Ventas_ordenados_Precio();
+void Ventas_ordenados_destinos();
+
+//DESTINOS
+void Destinos_ordenados_Provincia();
+void Destinos_ordenados_Kilometros();
+
+///CONSULTAS
+//CLIENTES
+void buscar_x_DNI();
+void buscar_x_Apellido();
+//UNIDADES
+void buscar_x_ID();
+void buscar_x_Destino();
+void buscar_x_cant_lugares();
+//VENTAS
+void buscar_x_pasaje();
+void buscar_x_provincia();
+void buscar_x_tipo_butaca();
+
 ///MENUS Y SUBMENUS
 void SUBMENU_1();
 void SUBMENU_2();
@@ -108,8 +143,21 @@ void SUBMENU_4();
 void SUBMENU_5();
 void SUBMENU_6();
 void SUBMENU_7();
+void SUBMENU_8();
+void SUBMENU_9();
 void MENU_VENTAS();
 void MENU();
+
+void LISTADO_CHOFERES();
+void LISTADO_CLIENTES();
+void LISTADO_MICROS();
+void LISTADO_VENTAS();
+void LISTADO_DESTINOS();
+
+void CONSULTAS_CLIENTES();
+void CONSULTAS_MICROS();
+void CONSULTAS_VENTAS();
+
 void inicio_de_sesion();
 void mostrarCartelUTN();
 #endif // FUNCIONES_H_INCLUDED

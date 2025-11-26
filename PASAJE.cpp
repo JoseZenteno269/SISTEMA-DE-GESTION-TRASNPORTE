@@ -6,7 +6,8 @@
 #include "ARCHIVO_VIAJES.h"
 #include "DESTINOS.h"
 #include "ARCHIVO_DESTINOS.h"
-
+#include "PASAJEROS.h"
+#include "ARCHIVO_PASAJEROS.h"
 using namespace rlutil;
 using namespace std;
 
@@ -29,6 +30,9 @@ void Pasaje::mostrar(){
     Destino destinos;
     Archivo_destino archivodestino;
 
+    Pasajero Pas;
+    Archivo_pasajero a_pas;
+
     int contregviaje=archivoviaje.contarRegistros();
 
     for(int i=0; i<contregviaje; i++){
@@ -38,6 +42,10 @@ void Pasaje::mostrar(){
             if(posdestino<0)cout<<"ERROR AL LEER LOS ARCHIVOS"<<endl;
             destinos=archivodestino.leerRegistros(posdestino);
         }
+    }
+    int pospasajero = a_pas.buscarRegistro(pasaje); // suponiendo que tienes dni_pasajero
+    if(pospasajero >= 0){
+        Pas = a_pas.leerRegistros(pospasajero);
     }
 
 
@@ -55,5 +63,8 @@ void Pasaje::mostrar(){
     locate(40, 13);cout<<"Precio $                "<<precio;
     locate(40, 14);cout<<"Lugar de Destino:       "<<destinos.getNombre_destino();
     locate(40, 15);cout<<"Provincia de Destino:   "<<destinos.getNombre_provincia();
+    locate(40, 16);cout<<"DNI:                    "<<Pas.getDni();
     locate(40, 17);cout<<"========================================";
+    anykey();
+        cls();
 }

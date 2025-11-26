@@ -157,60 +157,63 @@ void Viaje::cargar(int idv){
 void Viaje::mostrar(){
 
     setColor(YELLOW);
-    locate(40, 3);  cout<<"----------------------------------------------";
-    locate(40, 4);  cout<<"             INFORMACION DEL VIAJE            ";
-    locate(40, 5);  cout<<"----------------------------------------------";
+    locate(40, 3);  cout << "----------------------------------------------";
+    locate(40, 4);  cout << "             INFORMACION DEL VIAJE            ";
+    locate(40, 5);  cout << "----------------------------------------------";
     setColor(WHITE);
 
-    locate(40, 7);  cout<<"==============================================";
-    locate(40, 8);  cout<<"ID de Viaje:               "<<idViaje;
+    locate(40, 7);  cout << "==============================================";
+    locate(40, 8);  cout << "ID de Viaje:               " << idViaje;
 
 
     Micro micro;
     Archivo_micro archivomicro;
-    int pos1=archivomicro.buscarRegsitro(idMicro);
-    if(pos1>=0){
-        micro=archivomicro.leerRegistros(pos1);
+    int pos1 = archivomicro.buscarRegsitro(idMicro);
+    if(pos1 >= 0){
+        micro = archivomicro.leerRegistros(pos1);
 
-        locate(40, 9);  cout<<"ID de Micro:               "<<idMicro;
-        locate(40, 10); cout<<"Marca/Modelo:              "<<micro.getMarca();
-        locate(40, 11); cout<<"Patente:                   "<<micro.getPatente();
+        locate(40, 9);  cout << "ID de Micro:               " << idMicro;
+        locate(40, 10); cout << "Marca/Modelo:              " << micro.getMarca();
+        locate(40, 11); cout << "Patente:                   " << micro.getPatente();
     }
     else {
-        locate(40, 9); cout<<"Error al cargar datos del micro";
+        locate(40, 9); cout << "Error al cargar datos del micro";
     }
 
 
-    locate(40, 13); cout<<"ID de chofer:              "<<idChofer;
+    locate(40, 13); cout << "ID de chofer:              " << idChofer;
 
 
     Destino destino;
     Archivo_destino archivodestino;
-    int pos2=archivodestino.buscarRegistros(idDestino);
+    int pos2 = archivodestino.buscarRegistros(idDestino);
 
     if(pos2 >= 0){
-        destino=archivodestino.leerRegistros(pos2);
+        destino = archivodestino.leerRegistros(pos2);
 
-        locate(40, 15); cout<<"Destino:                   "<<destino.getNombre_destino();
-        locate(40, 16); cout<<"Provincia:                 "<<destino.getNombre_provincia();
+        locate(40, 15); cout << "Destino:                   " << destino.getNombre_destino();
+        locate(40, 16); cout << "Provincia:                 " << destino.getNombre_provincia();
     }
     else {
-        locate(40, 15); cout<<"Destino no encontrado";
+        locate(40, 15); cout << "Destino no encontrado";
     }
 
-    locate(40, 18); cout<<"Fecha de inicio:           ";
+
+    locate(40, 18); cout << "Fecha de inicio:           ";
     fecha_Inicio_Viaje.mostrarEn(18, 70);
 
-    locate(40, 19); cout<<"Fecha de fin:              ";
+    locate(40, 19); cout << "Fecha de fin:              ";
     fecha_Fin_Viaje.mostrarEn(19, 70);
 
-    locate(40, 20); cout<<"Hora de inicio:            ";
+    locate(40, 20); cout << "Hora de inicio:            ";
     hora_Inicio_Viaje.mostrarEn(20, 70);
 
-    locate(40, 21); cout<<"Hora de fin:               ";
+    locate(40, 21); cout << "Hora de fin:               ";
     hora_Fin_Viaje.mostrarEn(21, 70);
 
-    locate(40, 23); cout<<"==============================================";
+    locate(40, 23); cout << "==============================================";
+    anykey();
+    cls();
 }
 
 void Viaje::listartabla() {

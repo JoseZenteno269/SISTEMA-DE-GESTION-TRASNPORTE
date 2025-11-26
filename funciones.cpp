@@ -3,7 +3,7 @@
 #include<cstring>
 #include "funciones.h"
 #include "rlutil.h"
-
+#include "limits"
 using namespace std;
 using namespace rlutil;
 
@@ -2686,6 +2686,663 @@ void viajes_chofer_mes(){
     }
 }
 
+///LISTADOS
+//CHOFERES
+void Choferes_ordenados_apellido(){
+    cls();
+    Archivo_chofer arch;
+    int n=arch.contarRegistros();
+    if(n<=0){anykey(); return;}
+
+    Chofer *v=new Chofer[n];
+    for(int i=0; i<n; i++) v[i]=arch.leerRegistros(i);
+
+   for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-1-i; j++){
+            if(strcasecmp(v[j].getApellido(), v[j+1].getApellido())>0){
+                swap(v[j], v[j+1]);
+            }
+        }
+    }
+    setColor(GREEN); locate(40,1); cout<<"-------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"CHOFERES ORDENADOS POR APELLIDO\n";
+    setColor(GREEN); locate(40,3); cout<<"-------------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Apellido: ";
+        setColor(CYAN); cout<<v[i].getApellido();
+        setColor(WHITE); cout<<"  Nombre: ";
+        setColor(CYAN); cout<<v[i].getNombre();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Choferes_ordenados_edad(){
+    cls();
+    Archivo_chofer arch;
+    int n = arch.contarRegistros();
+    if(n <= 0){ anykey(); return; }
+
+    Chofer *v = new Chofer[n];
+    for(int i=0;i<n;i++) v[i] = arch.leerRegistros(i);
+
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-1-i;j++){
+            if(v[j].calcularEdad() > v[j+1].calcularEdad()){
+                Chofer temp = v[j];
+                v[j] = v[j+1];
+                v[j+1] = temp;
+            }
+        }
+    }
+
+    setColor(GREEN); locate(40,1); cout<<"---------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"CHOFERES ORDENADOS POR EDAD\n";
+    setColor(GREEN); locate(40,3); cout<<"---------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Edad: ";
+        setColor(CYAN); cout<<v[i].calcularEdad();
+        setColor(WHITE); cout<<"  Nombre: ";
+        setColor(CYAN); cout<<v[i].getApellido()<<", "<<v[i].getNombre();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+
+//CLIENTES
+void Pasajeros_ordenados_apellido(){
+    cls();
+    Archivo_pasajero arch;
+    int n = arch.contarRegistros();
+    if(n<=0){ anykey(); return; }
+
+    Pasajero *v = new Pasajero[n];
+    for(int i=0;i<n;i++) v[i]=arch.leerRegistros(i);
+
+    for(int i=0;i<n-1;i++)
+        for(int j=0;j<n-1-i;j++)
+            if(strcasecmp(v[j].getApellido(), v[j+1].getApellido())>0)
+                swap(v[j], v[j+1]);
+
+    setColor(GREEN); locate(40,1); cout<<"---------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"PASAJEROS ORDENADOS POR APELLIDO\n";
+    setColor(GREEN); locate(40,3); cout<<"---------------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Apellido: ";
+        setColor(CYAN); cout<<v[i].getApellido();
+        setColor(WHITE); cout<<"  Nombre: ";
+        setColor(CYAN); cout<<v[i].getNombre();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Pasajeros_ordenados_edad(){
+    cls();
+    Archivo_pasajero arch;
+    int n = arch.contarRegistros();
+    if(n<=0){ anykey(); return; }
+
+    Pasajero *v = new Pasajero[n];
+    for(int i=0;i<n;i++) v[i] = arch.leerRegistros(i);
+
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-1-i;j++){
+            if(v[j].calcularEdad() > v[j+1].calcularEdad()){
+                Pasajero temp = v[j];
+                v[j] = v[j+1];
+                v[j+1] = temp;
+            }
+        }
+    }
+
+    setColor(GREEN); locate(40,1); cout<<"------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"PASAJEROS ORDENADOS POR EDAD\n";
+    setColor(GREEN); locate(40,3); cout<<"------------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Edad: ";
+        setColor(CYAN); cout<<v[i].calcularEdad();
+        setColor(WHITE); cout<<"  Nombre: ";
+        setColor(CYAN); cout<<v[i].getApellido()<<", "<<v[i].getNombre();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Pasajeros(){
+    cls();
+    Archivo_pasajero archivo;
+    archivo.listar();
+
+    anykey();
+    cls();
+}
+
+
+//UNIDADES
+void Micros_ordenados_Fabricante(){
+    cls();
+    Archivo_micro arch;
+    int n = arch.contarRegistros();
+    if(n<=0){ anykey(); return; }
+
+    Micro *v = new Micro[n];
+    for(int i=0;i<n;i++) v[i]=arch.leerRegistros(i);
+
+    for(int i=0;i<n-1;i++)
+        for(int j=0;j<n-1-i;j++)
+            if(strcasecmp(v[j].getMarca(), v[j+1].getMarca())>0)
+                swap(v[j], v[j+1]);
+
+    setColor(GREEN); locate(40,1); cout<<"----------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"MICROS ORDENADOS POR FABRICANTE\n";
+    setColor(GREEN); locate(40,3); cout<<"----------------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Fabricante: ";
+        setColor(CYAN); cout<<v[i].getMarca();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Micros_ordenados_Carroceria(){
+    cls();
+    Archivo_micro arch;
+    int n = arch.contarRegistros();
+    if(n<=0){ anykey(); return; }
+
+    Micro *v = new Micro[n];
+    for(int i=0;i<n;i++) v[i]=arch.leerRegistros(i);
+
+    for(int i=0;i<n-1;i++)
+        for(int j=0;j<n-1-i;j++)
+            if(strcasecmp(v[j].getTipo(), v[j+1].getTipo())>0)
+                swap(v[j], v[j+1]);
+
+    setColor(GREEN); locate(40,1); cout<<"----------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"MICROS ORDENADOS POR CARROCERIA\n";
+    setColor(GREEN); locate(40,3); cout<<"----------------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Carroceria: ";
+        setColor(CYAN); cout<<v[i].getTipo();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Micros_ordenados_Asientos(){
+    cls();
+    Archivo_micro arch;
+    int n = arch.contarRegistros();
+    if(n <= 0){ anykey(); return; }
+
+    Micro *v = new Micro[n];
+    for(int i=0; i<n; i++) v[i] = arch.leerRegistros(i);
+
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-1-i; j++){
+            if(v[j].getCapacidad() > v[j+1].getCapacidad()){
+                Micro temp = v[j];
+                v[j] = v[j+1];
+                v[j+1] = temp;
+            }
+        }
+    }
+
+    setColor(GREEN); locate(40,1); cout<<"--------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"MICROS ORDENADOS POR ASIENTOS\n";
+    setColor(GREEN); locate(40,3); cout<<"--------------------------------\n";
+
+    for(int i=0; i<n; i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Asientos: ";
+        setColor(CYAN); cout<<v[i].getCapacidad();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+
+//VENTAS
+void Ventas_ordenados_Precio(){
+    cls();
+    Archivo_pasaje arch;
+    int n = arch.contarRegistros();
+    if(n <= 0){ anykey(); return; }
+
+    Pasaje *v = new Pasaje[n];
+    for(int i=0; i<n; i++) v[i] = arch.leerRegistros(i);
+
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-1-i; j++){
+            if(v[j].getPrecio() > v[j+1].getPrecio()){
+                Pasaje temp = v[j];
+                v[j] = v[j+1];
+                v[j+1] = temp;
+            }
+        }
+    }
+
+    setColor(GREEN); locate(40,1); cout<<"----------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"VENTAS ORDENADAS POR PRECIO\n";
+    setColor(GREEN); locate(40,3); cout<<"----------------------------\n";
+
+    for(int i=0; i<n; i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Precio: ";
+        setColor(CYAN); cout<<v[i].getPrecio() << endl;
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Ventas_ordenados_destinos(){
+    cls();
+    Archivo_pasaje archPasaje;
+    Archivo_viaje archViaje;
+    Archivo_destino archDestino;
+
+    int n = archPasaje.contarRegistros();
+    if(n <= 0){ anykey(); return; }
+
+    Pasaje *v = new Pasaje[n];
+    for(int i=0; i<n; i++) v[i] = archPasaje.leerRegistros(i);
+
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-1-i; j++){
+            int idDest_j = archViaje.leerRegistros(v[j].getIdviaje()).getIdDestino();
+            int idDest_j1 = archViaje.leerRegistros(v[j+1].getIdviaje()).getIdDestino();
+
+            char nombre_j[40], nombre_j1[40];
+            strcpy(nombre_j, archDestino.leerRegistros(idDest_j).getNombre_destino());
+            strcpy(nombre_j1, archDestino.leerRegistros(idDest_j1).getNombre_destino());
+
+            if(strcasecmp(nombre_j, nombre_j1) > 0){
+                swap(v[j], v[j+1]);
+            }
+        }
+    }
+
+    setColor(GREEN); locate(40,1); cout<<"-------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"VENTAS ORDENADAS POR DESTINO\n";
+    setColor(GREEN); locate(40,3); cout<<"-------------------------------\n";
+
+    for(int i=0; i<n; i++){
+        int idDest = archViaje.leerRegistros(v[i].getIdviaje()).getIdDestino();
+        Destino dest = archDestino.leerRegistros(idDest);
+        setColor(WHITE); locate(40,5+i); cout<<"Destino: ";
+        setColor(CYAN); cout<<dest.getNombre_destino();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+
+//DESTINOS
+void Destinos_ordenados_Provincia(){
+    cls();
+    Archivo_destino arch;
+    int n = arch.contarRegistros();
+    if(n<=0){ anykey(); return; }
+
+    Destino *v = new Destino[n];
+    for(int i=0;i<n;i++) v[i]=arch.leerRegistros(i);
+
+    for(int i=0;i<n-1;i++)
+        for(int j=0;j<n-1-i;j++)
+            if(strcasecmp(v[j].getNombre_provincia(), v[j+1].getNombre_provincia())>0)
+                swap(v[j], v[j+1]);
+
+    setColor(GREEN); locate(40,1); cout<<"----------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"DESTINOS ORDENADOS POR PROVINCIA\n";
+    setColor(GREEN); locate(40,3); cout<<"----------------------------------\n";
+
+    for(int i=0;i<n;i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Provincia: ";
+        setColor(CYAN); cout<<v[i].getNombre_provincia();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+void Destinos_ordenados_Kilometros(){
+    cls();
+    Archivo_destino arch;
+    int n = arch.contarRegistros();
+    if(n <= 0){ anykey(); return; }
+
+    Destino *v = new Destino[n];
+    for(int i=0; i<n; i++) v[i] = arch.leerRegistros(i);
+
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-1-i; j++){
+            if(v[j].getDistanciaKm() > v[j+1].getDistanciaKm()){
+                Destino temp = v[j];
+                v[j] = v[j+1];
+                v[j+1] = temp;
+            }
+        }
+    }
+
+    setColor(GREEN); locate(40,1); cout<<"----------------------------------\n";
+    setColor(WHITE); locate(40,2); cout<<"DESTINOS ORDENADOS POR KILOMETROS\n";
+    setColor(GREEN); locate(40,3); cout<<"----------------------------------\n";
+
+    for(int i=0; i<n; i++){
+        setColor(WHITE); locate(40,5+i); cout<<"Km: ";
+        setColor(CYAN); cout<<v[i].getDistanciaKm();
+    }
+
+    delete[] v;
+    setColor(WHITE);
+    anykey();
+    cls();
+}
+
+///CONSULTAS
+//CLIENTES
+void buscar_x_DNI(){
+    cls();
+    Archivo_pasajero archivo;
+    Pasajero p;
+    long long dni;
+    setColor(GREEN); locate(40,8); cout<<"BUSCAR PASAJERO POR DNI"; setColor(WHITE);
+    while(true){
+        locate(40,10); cout<<"DNI: "; cin>>dni;
+        if(validar_numero()){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+
+    int n = archivo.contarRegistros();
+    bool encontrado=false;
+    for(int i=0;i<n;i++){
+        p = archivo.leerRegistros(i);
+        if(p.getDni() == dni){
+            LimpiarLineas(8,15,40);
+            p.mostrar();
+            encontrado = true;
+            break;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,14); cout<<"No se encontro pasajero con ese DNI"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+void buscar_x_Apellido(){
+    cls();
+    Archivo_pasajero archivo;
+    Pasajero p;
+    char buscado[40];
+    setColor(GREEN); locate(40,8); cout<<"BUSCAR PASAJERO POR APELLIDO"; setColor(WHITE);
+    while(true){
+        locate(40,10); cargarCadena(buscado,39);
+        if(validarPalabra(buscado)){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+    int n = archivo.contarRegistros();
+    bool encontrado=false;
+    int fila=12;
+    for(int i=0;i<n;i++){
+        p = archivo.leerRegistros(i);
+        if(strcasecmp(buscado, p.getApellido())==0){
+            LimpiarLineas(8,15,40);
+            locate(40,fila); p.mostrar();
+            fila+=4;
+            encontrado=true;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,12); cout<<"No se encontraron resultados"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+
+//UNIDADES
+void buscar_x_ID(){
+    cls();
+    Archivo_micro archivo;
+    Micro m;
+    int id;
+    setColor(GREEN); locate(40,8); cout<<"BUSCAR MICRO POR ID"; setColor(WHITE);
+    while(true){
+        locate(40,10); cout<<"ID: "; cin>>id;
+        if(validar_numero()){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+
+    int n = archivo.contarRegistros();
+    bool encontrado=false;
+    for(int i=0;i<n;i++){
+        m = archivo.leerRegistros(i);
+        if(m.getIdMicro() == id){
+            m.mostrar();
+            encontrado=true;
+            break;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,14); cout<<"Micro no encontrado"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+void buscar_x_Destino(){
+    cls();
+    Archivo_viaje arhViaje;
+    Viaje v;
+    int idDestino;
+    setColor(GREEN); locate(40,8); cout<<"BUSCAR VIAJES POR DESTINO (ID)"; setColor(WHITE);
+    while(true){
+        locate(40,10); cout<<"ID Destino: "; cin>>idDestino;
+        if(validar_numero()){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+    int n = arhViaje.contarRegistros();
+    bool encontrado=false;
+    int fila=12;
+    for(int i=0;i<n;i++){
+        v = arhViaje.leerRegistros(i);
+        if(v.getIdDestino() == idDestino){
+            locate(40,fila); v.mostrar();
+            fila+=3;
+            encontrado=true;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,12); cout<<"No hay viajes para ese destino"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+void buscar_x_cant_lugares(){
+    cls();
+    Archivo_micro archivo;
+    Micro m;
+    int cant;
+    setColor(GREEN); locate(40,8); cout<<"BUSCAR MICROS POR CANTIDAD DE LUGARES"; setColor(WHITE);
+    while(true){
+        locate(40,10); cout<<"Cantidad de asientos: "; cin>>cant;
+        if(validar_numero()){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+    int n = archivo.contarRegistros();
+    bool encontrado=false;
+    int fila=12;
+    for(int i=0;i<n;i++){
+        m = archivo.leerRegistros(i);
+        if(m.getCapacidad() == cant){
+            locate(40,fila); m.mostrar(40, fila);
+            fila+=3;
+            encontrado=true;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,12); cout<<"No se encontraron micros con esa capacidad"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+//VENTAS
+void buscar_x_pasaje(){
+    cls();
+    Archivo_pasaje archivoPasaje;
+    Pasaje ps;
+
+    int numPasaje;
+    setColor(GREEN); locate(40,8); cout<<"BUSCAR INFO DE PASAJE POR NUMERO DE PASAJE"; setColor(WHITE);
+    while(true){
+        locate(40,10); cout<<"Numero de pasaje: "; cin>>numPasaje;
+        if(validar_numero()){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+    int n = archivoPasaje.contarRegistros();
+    bool encontrado=false;
+    int fila=12;
+    for(int i=0;i<n;i++){
+        ps = archivoPasaje.leerRegistros(i);
+        if(ps.getPasaje() == numPasaje){
+            LimpiarLineas(8,15,40);
+            locate(40,fila); ps.mostrar();
+            fila+=3;
+            encontrado=true;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,12); cout<<"No se encontraron pasajes para ese numero"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+void buscar_x_provincia(){
+    cls();
+    Archivo_pasaje archivoPasaje;
+    Archivo_viaje archivoViaje;
+    Archivo_destino archivoDestino;
+    Pasaje ps;
+    Viaje v;
+    Destino d;
+    char provincia[40];
+    setColor(GREEN);
+    locate(40,8); cout<<"BUSCAR PASAJES POR PROVINCIA"; setColor(WHITE);
+    while(true){
+        locate(40,10); cargarCadena(provincia,39);
+        if(validarPalabra(provincia)){
+            break;
+        }
+        LimpiarLineas(10, 15, 40);
+    }
+    int n = archivoPasaje.contarRegistros();
+    bool encontrado=false;
+    int fila=12;
+    for(int i=0; i<n; i++){
+        ps = archivoPasaje.leerRegistros(i);
+
+        int posViaje = archivoViaje.buscarRegistro(ps.getIdviaje());
+        if(posViaje<0) continue;
+        v = archivoViaje.leerRegistros(posViaje);
+
+
+        int posDestino = archivoDestino.buscarRegistros(v.getIdDestino());
+        if(posDestino<0) continue;
+        d = archivoDestino.leerRegistros(posDestino);
+
+        if(strcasecmp(provincia, d.getNombre_provincia())==0){
+            LimpiarLineas(8,14,40);
+            ps.mostrar();
+            fila += 6;
+            encontrado=true;
+        }
+    }
+    if(!encontrado){
+        setColor(RED); locate(40,12); cout<<"No se encontraron pasajes para esa provincia"; setColor(WHITE);
+    }
+    anykey();
+    cls();
+}
+void buscar_x_tipo_butaca(){
+    cls();
+    Archivo_pasaje archivoPasaje;
+    Pasaje ps;
+    int idViaje;
+    char tipo[20];
+
+    setColor(GREEN); locate(40,8);
+    cout<<"BUSCAR PASAJE POR TIPO DE BUTACA";
+    setColor(WHITE);
+    while(true){
+        locate(40,10); cout<<"ID Viaje: "; cin>>idViaje;
+        if(validar_numero()){
+            break;
+        }
+        LimpiarLineas(10, 11, 40);
+    }
+
+    locate(40,11); cout<<"Tipo de butaca (Cama, Semi-Cama, Comun): "; cargarCadena(tipo,19);
+
+    int n = archivoPasaje.contarRegistros();
+    bool encontrado=false;
+    int fila=13;
+
+    for(int i=0;i<n;i++){
+        ps = archivoPasaje.leerRegistros(i);
+        if(ps.getIdviaje() == idViaje and strcmp(ps.getTipo_butaca(), tipo) == 0){
+            LimpiarLineas(8,14,40);
+            ps.mostrar();
+            fila += 6;
+            encontrado=true;
+        }
+    }
+
+    if(!encontrado){
+        setColor(RED); locate(40,fila);
+        cout<<"No se encontraron pasajes con ese tipo de butaca";
+        setColor(WHITE);
+    }
+
+    anykey();
+    cls();
+}
+
 ///MENUS Y SUBMENUS
 void SUBMENU_1(){
     int seleccion=0;
@@ -3193,10 +3850,150 @@ void SUBMENU_7(){
     }
 }
 
+void SUBMENU_8(){
+    int seleccion=0;
+    const int opciones_submenu=6;
+    string submenu[opciones_submenu]={
+        " CHOFERES",
+        " CLIENTES",
+        " MICROS",
+        " VENTAS",
+        " DESTINOS",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        setColor(WHITE);
+        for(int i=0; i<7; i++){locate(43, 11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(72, 11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-----------LISTADOS---------"<<endl;
+        locate(44,11);
+        cout<<"----------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,18);
+        cout<<"----------------------------"<<endl;
+        setColor(WHITE);
+
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+
+            switch(seleccion){
+            case 0:
+                LISTADO_CHOFERES();
+                cls();
+                break;
+            case 1:
+                LISTADO_CLIENTES();
+                cls();
+                break;
+            case 2:
+                LISTADO_MICROS();
+                cls();
+                break;
+            case 3:
+                LISTADO_VENTAS();
+                cls();
+                break;
+            case 4:
+                LISTADO_DESTINOS();
+                cls();
+                break;
+            case 5:
+                salir=true;
+                break;
+            }
+
+        }
+    }
+    cls();
+}
+
+void SUBMENU_9(){
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " CLIENTES",
+        " MICROS",
+        " VENTAS",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        setColor(WHITE);
+        for(int i=0; i<7; i++){locate(43,10+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(72,10+i); cout << "|";}
+        locate(44,10);
+        cout << "---------CONSULTAS---------"<<endl;
+        locate(44,11);
+        cout<<"----------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,16);
+        cout<<"----------------------------"<<endl;
+        setColor(WHITE);
+
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+
+            switch(seleccion){
+            case 0:
+                CONSULTAS_CLIENTES();
+                cls();
+                break;
+            case 1:
+                CONSULTAS_MICROS();
+                cls();
+                break;
+            case 2:
+                CONSULTAS_VENTAS();
+                cls();
+                break;
+            case 3:
+                salir=true;
+                break;
+            }
+
+        }
+    }
+    cls();
+}
+
 void MENU(){
     int seleccion=0;
     int opcion;
-    const int opciones_menu=8;
+    const int opciones_menu=10;
     string menu[opciones_menu]={
         " INCIAR VIAJE",
         " MICROS",
@@ -3205,14 +4002,16 @@ void MENU(){
         " USUARIOS",
         " REPORTES",
         " PRECIO",
+        " LISTADOS",
+        " CONSULTAS",
         " SALIR"
     };
     bool salir=false;
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<9; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<9; i++){locate(73,11+i); cout << "|";}
+        for(int i=0; i<11; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<11; i++){locate(73,11+i); cout << "|";}
         locate(44,10);
         cout<<"------------MENU-------------"<<endl;
         locate(44,11);
@@ -3227,7 +4026,7 @@ void MENU(){
             } else {cout<<"  "<<menu[i]<<endl;}
         }
         setColor(WHITE);
-        locate(44,20);
+        locate(44,22);
         cout<<"-----------------------------"<<endl;
 
         setColor(WHITE);
@@ -3271,6 +4070,12 @@ void MENU(){
                 cls();
                 break;
             case 7:
+                SUBMENU_8();
+                break;
+            case 8:
+                SUBMENU_9();
+                break;
+            case 9:
                 salir=true;
                 break;
             }
@@ -3343,6 +4148,463 @@ void MENU_VENTAS(){
                 salir=true;
                 break;
 
+            }
+        }
+    }
+}
+
+void LISTADO_CHOFERES(){
+    int seleccion=0;
+    const int opciones_submenu=3;
+    string submenu[opciones_submenu]={
+        " POR APELLIDO",
+        " POR EDAD",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<4; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<4; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"------------CHOFERES-----------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,15);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                Choferes_ordenados_apellido();
+                break;
+            case 1:
+                Choferes_ordenados_edad();
+                break;
+            case 2:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void LISTADO_CLIENTES(){
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " POR APELLIDO",
+        " POR EDAD",
+        " PASAJEROS",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<5; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"------------CLIENTES-----------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,16);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                Pasajeros_ordenados_apellido();
+                break;
+            case 1:
+                Pasajeros_ordenados_edad();
+                break;
+            case 2:
+                Pasajeros();
+                break;
+            case 3:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void LISTADO_MICROS(){
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " POR FABRICANTE",
+        " POR CARROCERIA",
+        " POR ASIENTO",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<5; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-------------MICROS------------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,16);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                Micros_ordenados_Fabricante();
+                break;
+            case 1:
+                Micros_ordenados_Carroceria();
+                break;
+            case 2:
+                Micros_ordenados_Asientos();
+                break;
+            case 3:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void LISTADO_VENTAS(){
+    int seleccion=0;
+    const int opciones_submenu=3;
+    string submenu[opciones_submenu]={
+        " POR PRECIO",
+        " POR DESTINO",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<4; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<4; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-------------VENTAS------------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,15);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                Ventas_ordenados_Precio();
+                break;
+            case 1:
+                Ventas_ordenados_destinos();
+                break;
+            case 2:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void LISTADO_DESTINOS(){
+    int seleccion=0;
+    const int opciones_submenu=3;
+    string submenu[opciones_submenu]={
+        " POR PROVINCIA",
+        " POR KILOMETROS",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<4; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<4; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"------------DESTINOS-----------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,15);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                Destinos_ordenados_Provincia();
+                break;
+            case 1:
+                Destinos_ordenados_Kilometros();
+                break;
+            case 2:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void CONSULTAS_CLIENTES(){
+    int seleccion=0;
+    const int opciones_submenu=3;
+    string submenu[opciones_submenu]={
+        " POR DNI",
+        " POR APELLIDO",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<4; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<4; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"------------CLIENTES-----------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,15);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                buscar_x_DNI();
+                break;
+            case 1:
+                buscar_x_Apellido();
+                break;
+            case 2:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void CONSULTAS_MICROS(){
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " POR ID",
+        " POR DESTINO",
+        " POR CANT. LUGARES",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<5; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-------------MICROS------------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,16);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                buscar_x_ID();
+                break;
+            case 1:
+                buscar_x_Destino();
+                break;
+            case 2:
+                buscar_x_cant_lugares();
+                break;
+            case 3:
+                salir=true;
+                break;
+            }
+        }
+    }
+}
+void CONSULTAS_VENTAS(){
+    int seleccion=0;
+    const int opciones_submenu=4;
+    string submenu[opciones_submenu]={
+        " POR PASAJE",
+        " POR PROVINCIA",
+        " POR BUTACA",
+        " MENU PRINCIPAL"
+    };
+    bool salir=false;
+
+    while(!salir){
+        cls();
+        setColor(WHITE);
+        for(int i=0; i<5; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(75,11+i); cout << "|";}
+        locate(44,10);
+        cout<<"-------------VENTAS------------"<<endl;
+        locate(44,11);
+        cout<<"-------------------------------"<<endl;
+        for(int i=0; i<opciones_submenu; i++){
+            setColor(WHITE);
+            locate(45,12+i);
+            if(i==seleccion){
+                setColor(GREEN);
+                cout<<"> "<<submenu[i]<<endl;
+                setColor(WHITE);
+            }else cout<<"  "<<submenu[i]<<endl;
+        }
+        setColor(WHITE);
+        locate(44,16);
+        cout<<"-------------------------------"<<endl;
+        setColor(WHITE);
+        int tecla=getkey();
+        if(tecla==KEY_UP){
+            seleccion--;
+            if(seleccion<0)seleccion=opciones_submenu-1;
+        }else if(tecla==KEY_DOWN){
+            seleccion++;
+            if(seleccion>=opciones_submenu)seleccion=0;
+        }else if(tecla==KEY_ENTER){
+            cls();
+            switch(seleccion){
+            case 0:
+                buscar_x_pasaje();
+                break;
+            case 1:
+                buscar_x_provincia();
+                break;
+            case 2:
+                buscar_x_tipo_butaca();
+                break;
+            case 3:
+                salir=true;
+                break;
             }
         }
     }

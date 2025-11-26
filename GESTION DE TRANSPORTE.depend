@@ -669,7 +669,7 @@
 
 1764122332 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\micros.h
 
-1764122332 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_pasajeros.cpp
+1764193775 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_pasajeros.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJEROS.h"
@@ -710,7 +710,7 @@
 	<cstring>
 	"rlutil.h"
 
-1764171596 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.h
+1764180772 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.h
 	"MICROS.h"
 	"ARCHIVO_MICROS.h"
 	"CHOFERES.h"
@@ -769,12 +769,13 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1764175497 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
+1764195219 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
 	"funciones.h"
 	"rlutil.h"
+	"limits"
 
 1764172181 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\hora.cpp
 	<iostream>
@@ -798,7 +799,7 @@
 	"funciones.h"
 	"rlutil.h"
 
-1764122332 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasaje.cpp
+1764180772 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasaje.cpp
 	<iostream>
 	<cstring>
 	"PASAJE.h"
@@ -807,11 +808,14 @@
 	"ARCHIVO_VIAJES.h"
 	"DESTINOS.h"
 	"ARCHIVO_DESTINOS.h"
+	"PASAJEROS.h"
+	"ARCHIVO_PASAJEROS.h"
 
-1764122332 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasajeros.cpp
+1764193890 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\pasajeros.cpp
 	<iostream>
 	"PASAJEROS.h"
 	"rlutil.h"
+	"funciones.h"
 
 1764174753 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\persona.cpp
 	<iostream>
@@ -832,7 +836,7 @@
 	"TIEMPO_ACTUAL.h"
 	"rlutil.h"
 
-1764171950 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
+1764180772 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
 	<iostream>
 	"funciones.h"
 	"VIAJES.h"
@@ -871,7 +875,7 @@
 	"ARCHIVO_PROVINCIAS.h"
 	"rlutil.h"
 
-1764122332 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_pasaje.cpp
+1764194757 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\archivo_pasaje.cpp
 	<iostream>
 	<cstring>
 	"ARCHIVO_PASAJE.h"

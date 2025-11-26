@@ -70,8 +70,6 @@ void Archivo_pasaje::listar(){
     for(int i=0; i<contreg; i++){
         pasaje=leerRegistros(i);
         pasaje.mostrar();
-        anykey();
-        cls();
         cout<<endl;
     }
 }

@@ -1,6 +1,8 @@
 #include<iostream>
 #include "PASAJEROS.h"
 #include "rlutil.h"
+#include "funciones.h"
+
 using namespace rlutil;
 
 using namespace std;
@@ -33,9 +35,10 @@ void Pasajero::mostrar(){
     locate(40, 5);  cout << "==========================================";
     setColor(WHITE);
 
+    setColor(YELLOW);
     locate(40, 7); cout << "Numero de pasaje:       " << numero_pasaje;
 
     Persona::mostrar(8);
-
-
+    anykey();
+    LimpiarLineas(3, 30, 40);
 }
