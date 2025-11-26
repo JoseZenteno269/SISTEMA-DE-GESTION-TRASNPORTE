@@ -50,6 +50,7 @@ int selecion_de_butacas(int , Micro , int );
 void venta_de_pasaje();
 void pasajes_vendidos();
 void cargar_viaje();
+void eliminar_viaje();
 void mostrar_viajes();
 
 /// funcion precios

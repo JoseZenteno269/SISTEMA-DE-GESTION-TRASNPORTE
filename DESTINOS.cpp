@@ -98,22 +98,22 @@ void Destino::cargar(int idd){
         LimpiarLineas(10,15,40);
     }
 
-    habilitado = true;
+    habilitado=true;
 
     cls();
 }
 void Destino::mostrar(int X, int Y){
     setColor(YELLOW);
-    locate(X, Y);     cout << "----------------------------------------------";
-    locate(X, Y + 1); cout << "             INFORMACION DEL DESTINO           ";
-    locate(X, Y + 2); cout << "----------------------------------------------";
+    locate(X, Y);     cout<<"----------------------------------------------";
+    locate(X, Y+1); cout<<"             INFORMACION DEL DESTINO           ";
+    locate(X, Y+2); cout<<"----------------------------------------------";
     setColor(WHITE);
 
-    locate(X, Y + 4);  setColor(CYAN); cout << "ID de destino: "; locate(X+30, Y+4); setColor(WHITE); cout << idDestino;
-    locate(X, Y + 5);  setColor(CYAN); cout << "Provincia: "; locate(X+30, Y+5); setColor(WHITE); cout << nombre_provincia;
-    locate(X, Y + 6);  setColor(CYAN); cout << "Lugar de destino: "; locate(X+30, Y+6); setColor(WHITE); cout << nombre_destino;
-    locate(X, Y + 7);  setColor(CYAN); cout << "Duracion del viaje: "; setColor(WHITE); duracion.mostrar(X + 10, Y + 7);
-    locate(X, Y + 8);  setColor(CYAN); cout << "Distancia (KM): "; locate(X+30, Y+8);setColor(WHITE); cout << distanciaKm;
+    locate(X, Y+4);  setColor(CYAN); cout<<"ID de destino: "; locate(X+30, Y+4); setColor(WHITE); cout << idDestino;
+    locate(X, Y+5);  setColor(CYAN); cout<<"Provincia: "; locate(X+30, Y+5); setColor(WHITE); cout << nombre_provincia;
+    locate(X, Y+6);  setColor(CYAN); cout<<"Lugar de destino: "; locate(X+30, Y+6); setColor(WHITE); cout << nombre_destino;
+    locate(X, Y+7);  setColor(CYAN); cout<<"Duracion del viaje: "; setColor(WHITE); duracion.mostrar(X + 10, Y + 7);
+    locate(X, Y+8);  setColor(CYAN); cout<<"Distancia (KM): "; locate(X+30, Y+8);setColor(WHITE); cout << distanciaKm;
 
     anykey();
     LimpiarLineas(Y + 4, Y + 8, X);

@@ -35,7 +35,9 @@ public:
     const char *getNacionalidad();
     Fecha getFecha_Nacimiento();
     Domicilio getDomicilio();
+
     const char* getGenerotexto() const;
+    int calcularEdad();
 
     void cargar();
     void modificar();

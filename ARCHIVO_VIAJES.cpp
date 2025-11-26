@@ -86,15 +86,6 @@ void Archivo_viaje::listar(){
 
 void Archivo_viaje::listartabla(){
     Viaje viaje;
-    bool mostrar=false;
-    int contreg=contarRegistros();
-
-    for(int i=0;i<contreg;i++){
-        viaje=leerRegistros(i);
-        if(viaje.getRealizado()){
-            viaje.listartabla();
-
-        }
-    }
+    viaje.listartabla();
 }
 

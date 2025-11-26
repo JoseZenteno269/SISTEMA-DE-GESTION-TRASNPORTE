@@ -7,7 +7,7 @@
 using namespace std;
 using namespace rlutil;
 
-bool existePatente(const char *patente, int idMicroAExcluir) {
+bool existePatente(const char *patente, int idMicroAExcluir){
     Archivo_micro archivo;
     Micro micro;
     int cantidadRegistros=archivo.contarRegistros();
@@ -111,7 +111,7 @@ void fecha_y_hora_fin(Destino destino, Archivo_destino archivodestino, Fecha &fe
     }
 }
 
-bool estaOcupadoEnViaje(int idMicro, int idChofer, Fecha fechaNuevo, Hora horaNuevo) {
+bool estaOcupadoEnViaje(int idMicro, int idChofer, Fecha fechaNuevo, Hora horaNuevo){
     Archivo_viaje archivoViajes;
     Viaje viajeExistente;
     int cantidadViajes = archivoViajes.contarRegistros();
@@ -739,18 +739,77 @@ void cargar_viaje(){
     if(estaOcupadoEnViaje(viaje.getIdMicro(), viaje.getIdChofer(), viaje.getFecha_Inicio_Viaje(), viaje.getHora_Inicio_Viaje())) {
         setColor(RED);
         locate(40, 23);
-        std::cout << "IMPOSIBLE INICIAR VIAJE. Presione una tecla para volver.";
+        cout<<"IMPOSIBLE INICIAR VIAJE. Presione una tecla para volver.";
         setColor(WHITE);
         anykey();
         system("cls");
         return;
     }
 
-    if(archivo.grabarRegistro(viaje))cout<<endl<<"VIAJE REGISTRADO SATISFACTORIAMENTE. ID: "<<idv<<endl;
-    else cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
-
-    system("pause");
+    if(archivo.grabarRegistro(viaje)){
+        setColor(GREEN);
+        locate(40, 23);
+        cout<<endl<<"VIAJE REGISTRADO SATISFACTORIAMENTE. ID: "<<idv<<endl;
+    }else{
+        setColor(RED);
+        locate(40, 23);
+        cout<<"ERROR AL GUARDAR EL REGISTRO."<<endl;
+    }
+    setColor(WHITE);
+    anykey();
     system("cls");
+}
+void eliminar_viaje(){
+    cls();
+
+    if(chequearSalidaESC("Usted esta por eliminar un Viaje.")) return;
+
+    Archivo_viaje archivo;
+    int idv;
+
+    setColor(YELLOW);
+    locate(40, 3);  cout << "----------------------------------------------";
+    locate(40, 4);  cout << "               BAJA DE VIAJE                  ";
+    locate(40, 5);  cout << "----------------------------------------------";
+    setColor(WHITE);
+
+    locate(40, 7);  cout << "ID de Viaje a dar de baja: ";
+    while(true){
+        locate(40, 8);
+        setColor(WHITE);
+        cin>>idv;
+        if(validar_numero())break;
+        LimpiarLineas(8, 10, 40);
+    }
+
+    int pos=archivo.buscarRegistro(idv);
+
+    if(pos<0){
+        setColor(RED);
+        locate(40, 10); cout<<"NO EXISTE UN VIAJE CON ESE ID EN EL ARCHIVO";
+        anykey();
+        cls();
+        return;
+    }
+
+    Viaje viajes=archivo.leerRegistros(pos);
+
+    if(!viajes.getRealizado()){
+        setColor(YELLOW);
+        locate(40, 12); cout<<"EL USUARIO YA FUE DADO DE BAJA";
+        anykey();
+        cls();
+        return;
+    }
+
+    viajes.setRealizado(false);
+    archivo.modificarRegistro(viajes, pos);
+
+    setColor(GREEN);
+    locate(40, 12); cout<<"SE DIO DE BAJA EL VIAJE CORRECTAMENTE";
+
+    anykey();
+    cls();
 }
 void mostrar_viajes(){
     cls();
@@ -939,7 +998,7 @@ void mostrar_precios(){
 }
 
 ///Funciones usuarios
-void ingresar_usuario() {
+void ingresar_usuario(){
     system("cls");
 
     if (chequearSalidaESC("Usted está por ingresar un nuevo Usuario.")) return;
@@ -1287,7 +1346,7 @@ void mostrar_Micro(){
     archivo.listartabla();
     system("cls");
 }
-void eliminar_Micro() {
+void eliminar_Micro(){
     system("cls");
     if (chequearSalidaESC("Usted está por eliminar un Micro.")) return;
 
@@ -1392,7 +1451,7 @@ void dar_alta_Micro(){
     locate(44, 14); anykey();
     system("cls");
 }
-void cambiar_patente_Micro() {
+void cambiar_patente_Micro(){
     system("cls");
     if (chequearSalidaESC("Usted está por cambiar la patente de un Micro.")) return;
 
@@ -1472,7 +1531,7 @@ void cambiar_patente_Micro() {
     system("cls");
 
 }
-void cambiar_unidad_Micro() {
+void cambiar_unidad_Micro(){
     system("cls");
     if (chequearSalidaESC("Usted está por cambiar la unidad del Micro.")) return;
 
@@ -2264,16 +2323,13 @@ void por_provincia(){
 
     setColor(WHITE);
     for(int i=0; i<cantprov; i++){
-    Provincia = Arch_Prov.leerRegistros(i);
-
-    locate(40, 6 + i);
-    cout << left << setw(25) << Provincia.getNombre();
-
-    setColor(GREEN);
-    cout << "$ ";
-
-    setColor(WHITE);
-    cout << fixed << setprecision(2) << recaudacio_provincia[i];
+        Provincia=Arch_Prov.leerRegistros(i);
+        locate(40, 6+i);
+        cout<<left<<setw(25)<<Provincia.getNombre();
+        setColor(GREEN);
+        cout<<"$ ";
+        setColor(WHITE);
+        cout<<fixed<<setprecision(2)<<recaudacio_provincia[i];
     }
 
     delete[] recaudacio_provincia;
@@ -2284,32 +2340,27 @@ void por_provincia(){
 void cantPasajes_destino_fecha(){
     cls();
     setColor(GREEN);
-    locate(40,4); cout << "REPORTE: PASAJES VENDIDOS POR DESTINO";
+    locate(40,4); cout<<"REPORTE: PASAJES VENDIDOS POR DESTINO";
     setColor(WHITE);
 
     Fecha desde, hasta;
     setColor(YELLOW);
-    locate(35,7);  cout << "FECHA DESDE:";
+    locate(35,7);  cout<<"FECHA DESDE:";
     desde.cargar();
-    cls();
+    LimpiarLineas(5, 20, 30);
 
     bool dale=false;
     while(!dale){
-            setColor(YELLOW);
-    locate(35,7); cout << "FECHA HASTA:";
-    hasta.cargar();
-
-    if(esFechaPosterior(desde,hasta)){
+        setColor(YELLOW);
+        locate(35,7); cout<<"FECHA HASTA:";
+        hasta.cargar();
+        if(esFechaPosterior(desde,hasta)){
             locate(40,15);
             setColor(RED);
-       cout<<left<<setw(20)<<"La fecha no puede ser anterior a la fecha ya ingresada"<<endl;
-
-    anykey();
-    cls();
-    } else {
-    dale=true;
-    }
-
+            cout<<left<<setw(20)<<"La fecha no puede ser anterior a la fecha ya ingresada"<<endl;
+            anykey();
+            cls();
+        }else dale=true;
     }
 
 
@@ -2392,6 +2443,8 @@ void kilometros_micro(){
     Archivo_viaje archivoviaje;
     Archivo_destino archivodestino;
 
+    system("mode con: cols=120 lines=70");
+
     int cantviajes=archivoviaje.contarRegistros();
     int cantmicros=archivomicro.contarRegistros();
 
@@ -2436,16 +2489,13 @@ void kilometros_micro(){
 
 
     cls();
-    setColor(GREEN);
-    locate(40, 8);  cout<<"============================================================";
+    setColor(GREEN);locate(40, 8);  cout<<"============================================================";
     setColor(WHITE);locate(40, 9);  cout<<"     KILOMETROS RECORRIDOS POR MICRO EN EL ANIO "<<anio;
     setColor(GREEN);locate(40, 10); cout<<"============================================================";
 
     setColor(WHITE);
     locate(40, 12);
-    cout << left << setw(12) << "MICRO"
-         << left << setw(20) << " "
-         << "KILOMETROS" << endl;
+    cout<<left<<setw(12)<<"MICRO"<<left<<setw(20)<<" "<<"KILOMETROS"<<endl;
 
     setColor(GREEN);
     locate(40, 13);
@@ -2453,20 +2503,20 @@ void kilometros_micro(){
 
     setColor(WHITE);
 
-    int filaBase = 14;
+    int filaBase=14;
     for(int i=0; i<cantmicros; i++){
-        micro = archivomicro.leerRegistros(i);
+        micro=archivomicro.leerRegistros(i);
         if(micro.getDisponible()){
-            locate(40, filaBase + i);
-            cout << left << setw(12) << micro.getIdMicro();
-            cout << left << setw(20) << " ";
+            locate(40, filaBase+i);
+            cout<<left<<setw(12)<<micro.getIdMicro();
+            cout<<left<<setw(20)<<" ";
             setColor(YELLOW);
-            cout << fixed << setprecision(2) << micros[i];
+            cout<<fixed<<setprecision(2)<<micros[i];
             setColor(WHITE);
         }
     }
 
-    locate(40, filaBase + cantmicros + 1);
+    locate(40, filaBase+cantmicros+1);
     setColor(GREEN);
     cout<<"============================================================";
 
@@ -2639,20 +2689,21 @@ void viajes_chofer_mes(){
 ///MENUS Y SUBMENUS
 void SUBMENU_1(){
     int seleccion=0;
-    const int opciones_submenu=5;
+    const int opciones_submenu=6;
     string submenu[opciones_submenu]={
         " COMPRA DE PASAJE",
         " PASAJES VENDIDOS",
         " CARGAR VIAJES",
-        " MOSTRAR VIAJES DISPONIBLES",
+        " DAR DE BAJA UN VIAJE",
+        " MOSTRAR VIAJES",
         " MENU PRINCIPAL"
     };
     bool salir=false;
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<6; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<6; i++){locate(75,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<7; i++){locate(75,11+i); cout << "|";}
         locate(44,10);
         cout<<"-------------VENTA-------------"<<endl;
         locate(44,11);
@@ -2667,7 +2718,7 @@ void SUBMENU_1(){
             }else cout<<"  "<<submenu[i]<<endl;
         }
         setColor(WHITE);
-        locate(44,17);
+        locate(44,18);
         cout<<"-------------------------------"<<endl;
         setColor(WHITE);
         int tecla=getkey();
@@ -2692,10 +2743,14 @@ void SUBMENU_1(){
                 cls();
                 break;
             case 3:
-                mostrar_viajes();
+                eliminar_viaje();
                 cls();
                 break;
             case 4:
+                mostrar_viajes();
+                cls();
+                break;
+            case 5:
                 salir=true;
                 break;
             }
@@ -3229,7 +3284,7 @@ void MENU_VENTAS(){
     string submenu[opciones_submenu]={
         " VENTA DE PASAJE",
         " PASAJES VENDIDOS",
-        " MOSTRAR VIAJES DISPONIBLES",
+        " MOSTRAR VIAJES",
         " CERRAR SESION"
     };
     bool salir=false;
@@ -3339,7 +3394,6 @@ void inicio_de_sesion(){
 
             if(usuarios.getIdUsuario()==idu and contrasena==usuarios.getContrasena() and usuarios.getEstado()){
                 historial.setIdusuario(idu);
-                historial.setNombre_usuario(usuarios.getNombre());
                 historial.setIngreso_sesion(fecha);
                 historial.setInicio(actual);
                 historial_usuario.grabarRegistro(historial);

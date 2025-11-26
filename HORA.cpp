@@ -157,7 +157,7 @@ void Hora::cargar_viaje(){
 
 void Hora::mostrarEn(int X, int Y){
     setColor(WHITE);
-    locate(X, Y); cout << (hora < 10 ? "0" : "") << hora << ":" << (minuto < 10 ? "0" : "") << minuto;
+    locate(X, Y); cout<<(hora<10 ? "0" : "")<<hora<<":"<<(minuto<10 ? "0" : "")<<minuto;
     setColor(WHITE);
 }
 

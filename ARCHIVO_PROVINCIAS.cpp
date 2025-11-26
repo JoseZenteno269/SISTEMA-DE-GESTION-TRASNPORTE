@@ -6,9 +6,9 @@ using namespace std;
 
 Archivo_provincia::Archivo_provincia (const char *a){
     strcpy(archivo, a);
-    FILE *p = fopen(archivo, "rb"); // intento abrir en modo lectura
-    if(p == nullptr){               // si no existe, lo creo vacío
-        p = fopen(archivo, "wb");  // crear archivo vacío
+    FILE *p=fopen(archivo, "rb");
+    if(p==nullptr){
+        p=fopen(archivo, "wb");
     }
     if(p) fclose(p);
 }

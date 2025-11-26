@@ -4,7 +4,7 @@
 #include "HORA.h"
 #include "VIAJES.h"
 
-class Pasaje {
+class Pasaje{
 private:
     int pasaje;
     int idviaje;
@@ -19,16 +19,12 @@ public:
     void setButaca(int);
     void setPrecio(float);
     void setTipo_butaca(const char*);
-    void setNombre_destino(const char *);
-    void setProvincia_destino(const char *);
 
     int getPasaje();
     int getIdviaje();
     int getButaca();
     int getPrecio();
     const char *getTipo_butaca();
-    const char *getNombre_destino();
-    const char *getProvincia_destino();
 
     void mostrar();
 };

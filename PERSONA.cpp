@@ -39,6 +39,13 @@ const char* Persona::getGenerotexto()const{
         break;
     }
 }
+int Persona::calcularEdad(){
+    Tiempo_Actual hoy;
+    int edad=hoy.getAnio()-fecha_Nacimiento.getAnio();
+    if(hoy.getMes()<fecha_Nacimiento.getMes() or (hoy.getMes()==fecha_Nacimiento.getMes() and hoy.getDia()<fecha_Nacimiento.getDia())) edad--;
+
+    return edad;
+}
 
 void Persona::cargar() {
 
@@ -407,14 +414,16 @@ void Persona::modificar(){
 }
 
 void Persona::mostrar(int lineaBase){
+    int edad;
     setColor(YELLOW);
-    locate(40, lineaBase); cout << "Nombre: " << nombre;
-    locate(40, lineaBase+1); cout << "Apellido: " << apellido;
-    locate(40, lineaBase+2); cout << "N° de DNI: " << dni;
-    locate(40, lineaBase+3); cout << "N° de contacto: " << telefono;
-    locate(40, lineaBase+4); cout << "Email: " << email;
-    locate(40, lineaBase+5); cout << "Genero: " << getGenerotexto();
-    locate(40, lineaBase+6); cout << "Nacionalidad: " << nacionalidad;
+    locate(40, lineaBase); cout << "Nombre: "<<nombre;
+    locate(40, lineaBase+1); cout << "Apellido: "<<apellido;
+    locate(40, lineaBase+2); cout << "Edad: "<<(edad=calcularEdad());
+    locate(40, lineaBase+3); cout << "N° de DNI: "<<dni;
+    locate(40, lineaBase+4); cout << "N° de contacto: "<<telefono;
+    locate(40, lineaBase+5); cout << "Email: "<<email;
+    locate(40, lineaBase+6); cout << "Genero: "<<getGenerotexto();
+    locate(40, lineaBase+7); cout << "Nacionalidad: "<<nacionalidad;
 
     setColor(GREEN);
     locate(40, lineaBase+8); cout << "------------ FECHA DE NACIMIENTO -------------";

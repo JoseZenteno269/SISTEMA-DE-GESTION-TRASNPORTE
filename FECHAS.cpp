@@ -110,11 +110,11 @@ void Fecha::cargarEn(int x, int y){
 void Fecha::mostrar() {
 
     setColor(WHITE);
-    locate(40, 17); cout << dia << "/" << mes << "/" << anio;
+    locate(40, 17); cout<<(dia<10 ? "0" : "")<<dia<<"/"<<(mes<10 ? "0" : "")<<mes<<"/"<<anio;
 
 }
 void Fecha::mostrarEn(int x, int y) {
     setColor(WHITE);
     locate(x, y);
-    cout << dia << "/" << mes << "/" << anio;
+    cout<<(dia<10 ? "0" : "")<<dia<<"/"<<(mes<10 ? "0" : "")<<mes<<"/"<<anio;
 }
