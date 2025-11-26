@@ -3431,8 +3431,8 @@ void SUBMENU_2(){
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<10; i++){locate(43,10+i); cout << "|";}
-        for(int i=0; i<10; i++){locate(72,10+i); cout << "|";}
+        for(int i=0; i<8; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<8; i++){locate(72,11+i); cout << "|";}
         locate(44,10);
         cout << "---------- MICROS ----------"<<endl;
         locate(44,11);
@@ -3938,8 +3938,8 @@ void SUBMENU_9(){
 
     while(!salir){
         setColor(WHITE);
-        for(int i=0; i<7; i++){locate(43,10+i); cout << "|";}
-        for(int i=0; i<7; i++){locate(72,10+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(72,11+i); cout << "|";}
         locate(44,10);
         cout << "---------CONSULTAS---------"<<endl;
         locate(44,11);
