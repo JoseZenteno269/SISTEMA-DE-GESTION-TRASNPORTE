@@ -150,6 +150,7 @@ void Micro::cargar(int idm){
 }
 
 void Micro::mostrar(int X, int Y){
+    system("mode con: cols=120 lines=100");
     setColor(YELLOW);
     locate(X, Y);     cout << "------------------------------------------";
     locate(X, Y + 1); cout << "              INFORMACION DEL MICRO        ";

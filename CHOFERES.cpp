@@ -31,7 +31,7 @@ void Chofer::cargar(int leg){
     setColor(CYAN);
     cout << "El N° de legajo: ";
     setColor(WHITE);
-    locate(70,6); cout << (legajo = leg);
+    locate(70,6); cout<<(legajo=leg);
 
     Persona::cargar();
 
@@ -53,26 +53,26 @@ void Chofer::cargar(int leg){
 
 void Chofer::mostrar(){
     setColor(YELLOW);
-    locate(40, 2); cout << "----------------------------------------------";
-    locate(40, 3); cout << "              INFORMACION DEL CHOFER          ";
-    locate(40, 4); cout << "----------------------------------------------";
+    locate(40, 2); cout<<"----------------------------------------------";
+    locate(40, 3); cout<<"              INFORMACION DEL CHOFER          ";
+    locate(40, 4); cout<<"----------------------------------------------";
     setColor(WHITE);
 
-    locate(40, 6); cout << "N° de legajo: " << legajo;
-    locate(40, 7); cout << "Email Laboral: " << mail_laboral;
+    locate(40, 6); cout<<"N° de legajo: " << legajo;
+    locate(40, 7); cout<<"Email Laboral: " << mail_laboral;
 
     setColor(GREEN);
-    locate(40, 9); cout << "-------------- DATOS PERSONALES --------------";
+    locate(40, 9); cout<<"-------------- DATOS PERSONALES --------------";
     setColor(WHITE);
     Persona::mostrar(10);
 
     setColor(GREEN);
-    locate(40, 27); cout << "--------------- FECHA DE INGRESO -------------";
+    locate(40, 27); cout<<"--------------- FECHA DE INGRESO -------------";
     setColor(WHITE);
     fecha_de_ingreso.mostrarEn(40,28);
 
     int Antiguedad = calcularAntiguedad();
-    locate(40, 29); cout << "Antiguedad: " << Antiguedad << " años";
+    locate(40, 29); cout<<"Antiguedad: "<<Antiguedad<<" años";
 
     anykey();
     LimpiarLineas(2, 31, 40);

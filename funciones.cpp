@@ -2146,64 +2146,101 @@ void cambiar_datos_chofer(){
 ///REPORTES
 void por_anio(){
     cls();
-    Pasaje Pasaje;
-    Archivo_pasaje archivopasaje;
-
-    Viaje viaje;
-    Archivo_viaje archivoviaje;
-
-    int anio;
-    while(true){
-        setColor(GREEN);
-        locate(40, 15); cout<<"Ingrese el año: ";
-        setColor(WHITE);
-        cin>>anio;
-        int longitud=to_string(anio).length();
-        if(validar_numero() and (longitud>=4 and longitud<=4)) break;
-        else{
-            setColor(RED);
-            locate(40, 17);
-            cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
-            anykey();
-            LimpiarLineas(15, 20, 40);
-            setColor(WHITE);
-            continue;
-        }
-    }
 
 
-    float acumulador=0;
 
-    int tam=archivopasaje.contarRegistros();
-    int cant=archivoviaje.contarRegistros();
+//    Chofer choferes;
+//    Archivo_chofer archivo;
+//
+//    int cantreg=archivo.contarRegistros();
+//    int antiguedad=0;
+//
+//    for(int i=0; i<cantreg; i++){
+//        choferes=archivo.leerRegistros(i);
+//        antiguedad=choferes.calcularAntiguedad();
+//        if(antiguedad>=5 and choferes.getEstado()){
+//            choferes.mostrar();
+//        }
+//    }
 
-    for(int i=0; i<tam; i++){
-        Pasaje=archivopasaje.leerRegistros(i);
-        for(int x=0; x<cant; x++){
-            viaje=archivoviaje.leerRegistros(x);
-            if(viaje.getIdViaje()==Pasaje.getIdviaje()){
-                if(viaje.getFecha_Inicio_Viaje().getAnio()==anio){
-                    acumulador+=Pasaje.getPrecio();
-                }
-            }
-        }
-    }
-    setColor(WHITE);
-    locate(40, 15);
-    cout << "RECAUDACION TOTAL EN EL AÑO ";
-    setColor(RED);
-    cout << anio;
-    setColor(WHITE);
-    cout <<":";
-    setColor(GREEN);
-    cout << "  $";
 
-    setColor(WHITE);
-    cout << fixed << setprecision(2) << acumulador << endl;
-
-    setColor(WHITE);
+//    Chofer choferes;
+//    Archivo_chofer archivo;
+//
+//    int cantreg=archivo.contarRegistros();
+//    int cantidad=0;
+//
+//    for(int i=0; i<cantreg; i++){
+//        choferes=archivo.leerRegistros(i);
+//        if(choferes.getEstado() and choferes.getFecha_de_ingreso().getAnio() >= 2000){
+//            cantidad++;
+//            choferes.mostrar();
+//        }
+//    }
+//
+//    cout<<"cantidad de choferes, que ingresaron despues del año 2000: "<<cantidad<<endl;
     anykey();
     cls();
+
+//    cls();
+//    Pasaje Pasaje;
+//    Archivo_pasaje archivopasaje;
+//
+//    Viaje viaje;
+//    Archivo_viaje archivoviaje;
+//
+//    int anio;
+//    while(true){
+//        setColor(GREEN);
+//        locate(40, 15); cout<<"Ingrese el año: ";
+//        setColor(WHITE);
+//        cin>>anio;
+//        int longitud=to_string(anio).length();
+//        if(validar_numero() and (longitud>=4 and longitud<=4)) break;
+//        else{
+//            setColor(RED);
+//            locate(40, 17);
+//            cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+//            anykey();
+//            LimpiarLineas(15, 20, 40);
+//            setColor(WHITE);
+//            continue;
+//        }
+//    }
+//
+//
+//    float acumulador=0;
+//
+//    int tam=archivopasaje.contarRegistros();
+//    int cant=archivoviaje.contarRegistros();
+//
+//    for(int i=0; i<tam; i++){
+//        Pasaje=archivopasaje.leerRegistros(i);
+//        for(int x=0; x<cant; x++){
+//            viaje=archivoviaje.leerRegistros(x);
+//            if(viaje.getIdViaje()==Pasaje.getIdviaje()){
+//                if(viaje.getFecha_Inicio_Viaje().getAnio()==anio){
+//                    acumulador+=Pasaje.getPrecio();
+//                }
+//            }
+//        }
+//    }
+//    setColor(WHITE);
+//    locate(40, 15);
+//    cout << "RECAUDACION TOTAL EN EL AÑO ";
+//    setColor(RED);
+//    cout << anio;
+//    setColor(WHITE);
+//    cout <<":";
+//    setColor(GREEN);
+//    cout << "  $";
+//
+//    setColor(WHITE);
+//    cout << fixed << setprecision(2) << acumulador << endl;
+//
+//    setColor(WHITE);
+//    anykey();
+//    cls();
 }
 void por_micro(){
     cls();
@@ -2346,6 +2383,7 @@ void cantPasajes_destino_fecha(){
     Fecha desde, hasta;
     setColor(YELLOW);
     locate(35,7);  cout<<"FECHA DESDE:";
+    setColor(WHITE);
     desde.cargar();
     LimpiarLineas(5, 20, 30);
 
@@ -2353,6 +2391,7 @@ void cantPasajes_destino_fecha(){
     while(!dale){
         setColor(YELLOW);
         locate(35,7); cout<<"FECHA HASTA:";
+        setColor(WHITE);
         hasta.cargar();
         if(esFechaPosterior(desde,hasta)){
             locate(40,15);
@@ -2372,10 +2411,12 @@ void cantPasajes_destino_fecha(){
     int cantVia = archVia.contarRegistros();
     int cantDes = archDes.contarRegistros();
 
-    if(cantPas == 0){
+    if(cantPas<0){
+        cls();
         locate(40,12);
         cout << "NO HAY PASAJES REGISTRADOS.";
         anykey();
+        cls();
         return;
     }
 
@@ -2403,7 +2444,7 @@ void cantPasajes_destino_fecha(){
         bool mayorOIgualDesde = esFechaPosterior(fechaviaje, desde);
         bool menorOIgualHasta = esFechaPosterior(hasta, fechaviaje);
 
-        if(!(mayorOIgualDesde && menorOIgualHasta)) continue;
+        if(!(mayorOIgualDesde and menorOIgualHasta)) continue;
 
         int idDes = v.getIdDestino();
 

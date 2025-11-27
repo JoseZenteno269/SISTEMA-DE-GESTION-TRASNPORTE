@@ -72,38 +72,21 @@ void Usuario::cargar(int idu){
 
 void Usuario::mostrar() {
     int edad;
+
     setColor(YELLOW);
     locate(40, 3);  cout<<"----------------------------------------------";
     locate(40, 4);  cout<<"            INFORMACION DEL USUARIO           ";
     locate(40, 5);  cout<<"----------------------------------------------";
-    setColor(WHITE);
 
     locate(40, 6);  cout<<"ID de usuario:         "<<idUsuario;
     locate(40, 7);  cout<<"Contraseña:            "<<contrasena;
-    locate(40, 8);  cout<<"Nombre:                "<<nombre;
-    locate(40, 9);  cout<<"Apellido:              "<<apellido;
-    locate(40, 10); cout<<"Edad:                  "<<(edad=Persona::calcularEdad());
-    locate(40, 11); cout<<"DNI:                   "<<dni;
-    locate(40, 12); cout<<"Telefono:              "<<telefono;
-    locate(40, 13); cout<<"Email:                 "<<email;
-    locate(40, 14); cout<<"Genero:                "<<genero;
-    locate(40, 15); cout<<"Nacionalidad:          "<<nacionalidad;
+    Persona::mostrar(8);
 
     setColor(YELLOW);
-    locate(40, 16); cout<<"------------ FECHA DE NACIMIENTO ------------";
-    setColor(WHITE);
-    fecha_Nacimiento.mostrarEn(57, 17);
-    setColor(YELLOW);
-    locate(40, 19); cout<<"------------------ DOMICILIO -----------------";
-    setColor(WHITE);
-    domicilio.Mostrar();
-
-    setColor(YELLOW);
-    locate(40, 27); cout<<"----------------------------------------------";
+    locate(40, 25); cout<<"----------------------------------------------";
     setColor(WHITE);
     anykey();
-    LimpiarLineas(7,14,63);
-    LimpiarLineas(17,18,40);
-    LimpiarLineas(20,26,53);
+    LimpiarLineas(3, 30, 40);
+
 }
 

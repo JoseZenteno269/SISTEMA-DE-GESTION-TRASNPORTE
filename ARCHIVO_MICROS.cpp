@@ -85,7 +85,6 @@ void Archivo_micro::listar(){
 }
 void Archivo_micro::listartabla(){
     system("cls");
-
     Micro micro;
     int contreg = contarRegistros();
 
@@ -93,53 +92,41 @@ void Archivo_micro::listartabla(){
         setColor(RED);
         locate(40, 10); cout << "NO HAY MICROS REGISTRADOS";
         setColor(WHITE);
-        system("pause");
+        anykey();
         system("cls");
         return;
     }
 
     setColor(YELLOW);
-    locate(20, 3);  cout << "-------------------------------------------------------------------------------";
-    locate(20, 4);  cout << "                             LISTADO DE MICROS                                  ";
-    locate(20, 5);  cout << "-------------------------------------------------------------------------------";
+    locate(20, 3);  cout<<"-------------------------------------------------------------------------------";
+    locate(20, 4);  cout<<"                             LISTADO DE MICROS                                  ";
+    locate(20, 5);  cout<<"-------------------------------------------------------------------------------";
     setColor(WHITE);
 
 
-    locate(20, 7); cout << "ID";
-    locate(27, 7); cout << "MARCA";
-    locate(43, 7); cout << "TIPO";
-    locate(59, 7); cout << "CAP";
-    locate(65, 7); cout << "BUTACA";
-    locate(78, 7); cout << "PATENTE";
+    locate(20, 7); cout<<"ID";
+    locate(27, 7); cout<<"MARCA";
+    locate(43, 7); cout<<"TIPO";
+    locate(59, 7); cout<<"CAP";
+    locate(65, 7); cout<<"BUTACA";
+    locate(78, 7); cout<<"PATENTE";
 
     locate(20, 8);
     cout << "-------------------------------------------------------------------------------";
 
     int fila = 9;
 
-    for(int i = 0; i < contreg; i++){
-        micro = leerRegistros(i);
+    for(int i=0; i<contreg; i++){
 
+        micro=leerRegistros(i);
         if(micro.getDisponible()){
-
-            locate(20, fila);
-            cout << micro.getIdMicro();
-
-            locate(27, fila);
-            cout << micro.getMarca();
-
-            locate(43, fila);
-            cout << micro.getTipo();
-
-            locate(59, fila);
-            cout << micro.getCapacidad();
-
-            locate(65, fila);
-            cout << micro.getTipoButaca();
-
-            locate(78, fila);
-            cout << micro.getPatente();
-
+            locate(20, fila); cout<<micro.getIdMicro();
+            locate(27, fila); cout<<micro.getMarca();
+            locate(43, fila); cout<<micro.getTipo();
+            locate(59, fila); cout<<micro.getCapacidad();
+            locate(65, fila); cout<<micro.getTipoButaca();
+            locate(78, fila); cout<<micro.getPatente();
+            cout<<endl;
             fila++;
         }
     }
