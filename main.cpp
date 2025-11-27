@@ -21,8 +21,8 @@ int main(){
     //setBackgroundColor(BLUE);
 
     hidecursor();
-    MENU();
-    //inicio_de_sesion();
+    //MENU();
+    inicio_de_sesion();
     showcursor();
 
     cout<<endl<<endl;

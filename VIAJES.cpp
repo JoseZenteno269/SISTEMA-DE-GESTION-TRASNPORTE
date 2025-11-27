@@ -136,9 +136,8 @@ void Viaje::cargar(int idv){
         locate(40,8); cout<<"Ingrese fecha de inicio (dd/mm/yyyy): ";
         setColor(WHITE);
         locate(40,9); fecha_Inicio_Viaje.cargar();
-        //if(esFechaPosterior(fecha_Inicio_Viaje, presente)) break;
-        //setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "ERROR: no puede ser anterior a la fecha actual"; setColor(WHITE); anykey();
-        break;
+        if(esFechaPosterior(fecha_Inicio_Viaje, presente)) break;
+        setColor(RED); LimpiarLineas(8,16,40); locate(40,8); cout << "ERROR: no puede ser anterior a la fecha actual"; setColor(WHITE); anykey();
     }
 
     LimpiarLineas(8,15,40);
@@ -201,16 +200,16 @@ void Viaje::mostrar(){
 
 
     locate(40, 18); cout << "Fecha de inicio:           ";
-    fecha_Inicio_Viaje.mostrarEn(18, 70);
+    fecha_Inicio_Viaje.mostrarEn(70,18);
 
     locate(40, 19); cout << "Fecha de fin:              ";
-    fecha_Fin_Viaje.mostrarEn(19, 70);
+    fecha_Fin_Viaje.mostrarEn(70, 19);
 
     locate(40, 20); cout << "Hora de inicio:            ";
-    hora_Inicio_Viaje.mostrarEn(20, 70);
+    hora_Inicio_Viaje.mostrarEn(70, 20);
 
     locate(40, 21); cout << "Hora de fin:               ";
-    hora_Fin_Viaje.mostrarEn(21, 70);
+    hora_Fin_Viaje.mostrarEn(70, 21);
 
     locate(40, 23); cout << "==============================================";
     anykey();

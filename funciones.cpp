@@ -453,7 +453,6 @@ int viajes_disponibles(){
                and esFechaPosterior(fechas, fechas1)){
                 LimpiarLineas(3,25,40);
                 viaje.mostrar();
-                anykey();
                 bandera=true;
             }
         }
@@ -474,8 +473,11 @@ int viajes_disponibles(){
 
             int tecla=getkey();
             if (tecla==KEY_ESCAPE){bandera1=true; break;}
-
-            locate(40, 4); cin>>idv;
+            while(true){
+                locate(40, 4); cin>>idv;
+                if(validar_numero())break;
+                LimpiarLineas(4, 7, 40);
+            }
             int pos=archivo.buscarRegistro(idv);
             if(pos<0){locate(40, 6); cout<<"Error, no se encontro el archivo"<<endl;  anykey(); LimpiarLineas(4, 7, 40); continue; }
             viaje=archivo.leerRegistros(pos);
@@ -650,7 +652,11 @@ void venta_de_pasaje(){
     locate(40, 5); cout<<"Ingrese cantidad de personas: ";
     setColor(WHITE);
     int cantPasajes;
-    locate(40, 6); cin>>cantPasajes;
+    while(true){
+        locate(40, 6); cin>>cantPasajes;
+        if(validar_numero())break;
+        LimpiarLineas(6, 9, 40);
+    }
 
     for(int i=0; i<cantPasajes; i++){
         setColor(YELLOW);
@@ -2146,101 +2152,64 @@ void cambiar_datos_chofer(){
 ///REPORTES
 void por_anio(){
     cls();
+    Pasaje Pasaje;
+    Archivo_pasaje archivopasaje;
+
+    Viaje viaje;
+    Archivo_viaje archivoviaje;
+
+    int anio;
+    while(true){
+        setColor(GREEN);
+        locate(40, 15); cout<<"Ingrese el año: ";
+        setColor(WHITE);
+        cin>>anio;
+        int longitud=to_string(anio).length();
+        if(validar_numero() and (longitud>=4 and longitud<=4)) break;
+        else{
+            setColor(RED);
+            locate(40, 17);
+            cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
+            anykey();
+            LimpiarLineas(15, 20, 40);
+            setColor(WHITE);
+            continue;
+        }
+    }
 
 
+    float acumulador=0;
 
-//    Chofer choferes;
-//    Archivo_chofer archivo;
-//
-//    int cantreg=archivo.contarRegistros();
-//    int antiguedad=0;
-//
-//    for(int i=0; i<cantreg; i++){
-//        choferes=archivo.leerRegistros(i);
-//        antiguedad=choferes.calcularAntiguedad();
-//        if(antiguedad>=5 and choferes.getEstado()){
-//            choferes.mostrar();
-//        }
-//    }
+    int tam=archivopasaje.contarRegistros();
+    int cant=archivoviaje.contarRegistros();
 
+    for(int i=0; i<tam; i++){
+        Pasaje=archivopasaje.leerRegistros(i);
+        for(int x=0; x<cant; x++){
+            viaje=archivoviaje.leerRegistros(x);
+            if(viaje.getIdViaje()==Pasaje.getIdviaje()){
+                if(viaje.getFecha_Inicio_Viaje().getAnio()==anio){
+                    acumulador+=Pasaje.getPrecio();
+                }
+            }
+        }
+    }
+    setColor(WHITE);
+    locate(40, 15);
+    cout << "RECAUDACION TOTAL EN EL AÑO ";
+    setColor(RED);
+    cout << anio;
+    setColor(WHITE);
+    cout <<":";
+    setColor(GREEN);
+    cout << "  $";
 
-//    Chofer choferes;
-//    Archivo_chofer archivo;
-//
-//    int cantreg=archivo.contarRegistros();
-//    int cantidad=0;
-//
-//    for(int i=0; i<cantreg; i++){
-//        choferes=archivo.leerRegistros(i);
-//        if(choferes.getEstado() and choferes.getFecha_de_ingreso().getAnio() >= 2000){
-//            cantidad++;
-//            choferes.mostrar();
-//        }
-//    }
-//
-//    cout<<"cantidad de choferes, que ingresaron despues del año 2000: "<<cantidad<<endl;
+    setColor(WHITE);
+    cout << fixed << setprecision(2) << acumulador << endl;
+
+    setColor(WHITE);
     anykey();
     cls();
-
-//    cls();
-//    Pasaje Pasaje;
-//    Archivo_pasaje archivopasaje;
-//
-//    Viaje viaje;
-//    Archivo_viaje archivoviaje;
-//
-//    int anio;
-//    while(true){
-//        setColor(GREEN);
-//        locate(40, 15); cout<<"Ingrese el año: ";
-//        setColor(WHITE);
-//        cin>>anio;
-//        int longitud=to_string(anio).length();
-//        if(validar_numero() and (longitud>=4 and longitud<=4)) break;
-//        else{
-//            setColor(RED);
-//            locate(40, 17);
-//            cout << "Entrada invalida. Debe ingresar un anio de 4 cifras.";
-//            anykey();
-//            LimpiarLineas(15, 20, 40);
-//            setColor(WHITE);
-//            continue;
-//        }
-//    }
-//
-//
-//    float acumulador=0;
-//
-//    int tam=archivopasaje.contarRegistros();
-//    int cant=archivoviaje.contarRegistros();
-//
-//    for(int i=0; i<tam; i++){
-//        Pasaje=archivopasaje.leerRegistros(i);
-//        for(int x=0; x<cant; x++){
-//            viaje=archivoviaje.leerRegistros(x);
-//            if(viaje.getIdViaje()==Pasaje.getIdviaje()){
-//                if(viaje.getFecha_Inicio_Viaje().getAnio()==anio){
-//                    acumulador+=Pasaje.getPrecio();
-//                }
-//            }
-//        }
-//    }
-//    setColor(WHITE);
-//    locate(40, 15);
-//    cout << "RECAUDACION TOTAL EN EL AÑO ";
-//    setColor(RED);
-//    cout << anio;
-//    setColor(WHITE);
-//    cout <<":";
-//    setColor(GREEN);
-//    cout << "  $";
-//
-//    setColor(WHITE);
-//    cout << fixed << setprecision(2) << acumulador << endl;
-//
-//    setColor(WHITE);
-//    anykey();
-//    cls();
 }
 void por_micro(){
     cls();
@@ -4138,8 +4107,8 @@ void MENU_VENTAS(){
     while(!salir){
         cls();
         setColor(WHITE);
-        for(int i=0; i<7; i++){locate(43,11+i); cout << "|";}
-        for(int i=0; i<7; i++){locate(75,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(43,11+i); cout << "|";}
+        for(int i=0; i<5; i++){locate(75,11+i); cout << "|";}
         locate(44,10);
         cout<<"--------------MENU-------------"<<endl;
         locate(44,11);
@@ -4154,7 +4123,7 @@ void MENU_VENTAS(){
             }else cout<<"  "<<submenu[i]<<endl;
         }
         setColor(WHITE);
-        locate(44,18);
+        locate(44,16);
         cout<<"-------------------------------"<<endl;
         setColor(WHITE);
         int tecla=getkey();

@@ -769,7 +769,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1764201477 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
+1764208962 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\funciones.cpp
 	<iostream>
 	<iomanip>
 	<cstring>
@@ -783,7 +783,7 @@
 	"funciones.h"
 	"rlutil.h"
 
-1764199724 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\main.cpp
+1764209029 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\main.cpp
 	<iostream>
 	<conio.h>
 	"rlutil.h"
@@ -792,7 +792,7 @@
 	<ctime>
 	<iomanip>
 
-1764199361 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\micros.cpp
+1764208728 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\micros.cpp
 	<iostream>
 	"MICROS.h"
 	<cstring>
@@ -836,7 +836,7 @@
 	"TIEMPO_ACTUAL.h"
 	"rlutil.h"
 
-1764204085 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
+1764206681 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\viajes.cpp
 	<iostream>
 	"funciones.h"
 	"VIAJES.h"
@@ -867,7 +867,7 @@
 
 1764122332 d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\provincias.h
 
-1764122332 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\provincias.cpp
+1764208832 source:d:\utn\programacion\2025\programacion 2\codeblocks\gestion de transporte\provincias.cpp
 	<iostream>
 	"PROVINCIAS.h"
 	<cstring>

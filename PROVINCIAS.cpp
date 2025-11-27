@@ -93,7 +93,7 @@ void Provincia::mostrar(){
 
         locate(40, fila); cout << i+1;
         locate(65, fila); cout << P.getNombre();
-
+        cout<<endl;
         fila++;
     }
 

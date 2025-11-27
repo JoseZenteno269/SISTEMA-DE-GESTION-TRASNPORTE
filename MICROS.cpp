@@ -129,6 +129,7 @@ void Micro::cargar(int idm){
                 setColor(RED);
                 locate(40, 12);
                 cout << "ERROR: La patente ya existe. Intente con otra.";
+                anykey();
                 LimpiarLineas(9, 15, 40);
                 setColor(WHITE);
             } else {
@@ -138,6 +139,7 @@ void Micro::cargar(int idm){
             setColor(RED);
             locate(40, 12);
             cout << "Patente inválida. Intente nuevamente.";
+            anykey();
             LimpiarLineas(9, 15, 40);
             setColor(WHITE);
         }
