@@ -1,0 +1,142 @@
+#include<iostream>
+#include "ARCHIVO_MICROS.h"
+#include<cstring>
+#include "rlutil.h"
+using namespace rlutil;
+
+using namespace std;
+
+Archivo_micro::Archivo_micro(const char *a){
+    strcpy(archivo, a);
+    FILE *p=fopen(archivo, "rb"); // intento abrir en modo lectura
+    if(p==nullptr){               // si no existe, lo creo vacío
+        p=fopen(archivo, "wb");  // crear archivo vacío
+    }
+    if(p) fclose(p);
+}
+
+int Archivo_micro::contarRegistros(){
+    FILE *p=fopen(archivo,"rb");
+    if (p==nullptr){
+        cout<<"no existe el archivo"<<endl;
+        return -1;
+    }
+    fseek(p,0,2);
+    int bytes=ftell(p);
+    fclose(p);
+    return bytes/sizeof(Micro);
+}
+int Archivo_micro::buscarRegsitro(int idm){
+    Micro micro;
+    int contreg=contarRegistros();
+    for (int i=0;i<contreg;i++){
+        micro=leerRegistros(i);
+        if(micro.getIdMicro()==idm){
+            return i;
+        }
+    }
+    return -2;
+}
+
+Micro Archivo_micro::leerRegistros(int pos){
+    FILE *p=fopen(archivo,"rb");
+    Micro micro;
+    if(p==nullptr){
+        micro.setIdMicro(-3);
+        return micro;
+    }
+    fseek(p,pos*sizeof micro,0);
+    micro.setIdMicro(-4);
+    fread(&micro,sizeof micro,1,p);
+    fclose(p);
+    return micro;
+
+}
+bool Archivo_micro::grabarRegistro(Micro micro){
+    FILE *p=fopen(archivo,"ab");
+    if(p==nullptr){
+        return false;
+    }
+    bool escribo=fwrite(&micro,sizeof micro,1,p);
+    fclose(p);
+    return escribo;
+}
+bool Archivo_micro::modificarRegistro(Micro micro, int pos){
+    FILE *p=fopen(archivo,"rb+");
+    if(p==nullptr){
+        return false;
+    }
+    fseek(p,pos*sizeof micro,0 );
+    bool escribo=fwrite(&micro,sizeof micro,1,p);
+    fclose (p);
+    return escribo;
+}
+
+void Archivo_micro::listar(){
+    Micro micro;
+    int contreg=contarRegistros();
+    for(int i=0;i<contreg;i++){
+        micro=leerRegistros(i);
+        if(micro.getDisponible()){
+            micro.mostrar();
+            cout<<endl;
+        }
+    }
+}
+void Archivo_micro::listartabla(){
+    system("mode con: cols=120 lines=100");
+    system("cls");
+    Micro micro;
+    int contreg = contarRegistros();
+
+    if(contreg < 0){
+        setColor(RED);
+        locate(40, 10); cout << "NO HAY MICROS REGISTRADOS";
+        setColor(WHITE);
+        anykey();
+        system("cls");
+        return;
+    }
+
+    setColor(YELLOW);
+    locate(20, 3);  cout<<"-------------------------------------------------------------------------------";
+    locate(20, 4);  cout<<"                             LISTADO DE MICROS                                  ";
+    locate(20, 5);  cout<<"-------------------------------------------------------------------------------";
+    setColor(WHITE);
+
+
+    locate(20, 7); cout<<"ID";
+    locate(27, 7); cout<<"MARCA";
+    locate(43, 7); cout<<"TIPO";
+    locate(59, 7); cout<<"CAP";
+    locate(65, 7); cout<<"BUTACA";
+    locate(78, 7); cout<<"PATENTE";
+
+    locate(20, 8);
+    cout << "-------------------------------------------------------------------------------";
+
+    int fila = 9;
+
+    for(int i=0; i<contreg; i++){
+
+        micro=leerRegistros(i);
+        if(micro.getDisponible()){
+            locate(20, fila); cout<<micro.getIdMicro();
+            locate(27, fila); cout<<micro.getMarca();
+            locate(43, fila); cout<<micro.getTipo();
+            locate(59, fila); cout<<micro.getCapacidad();
+            locate(65, fila); cout<<micro.getTipoButaca();
+            locate(78, fila); cout<<micro.getPatente();
+            cout<<endl;
+            fila++;
+        }
+    }
+
+    setColor(YELLOW);
+    locate(20, fila + 2);
+    cout << "-------------------------------------------------------------------------------";
+    setColor(WHITE);
+
+    anykey();
+    system("mode con: cols=120 lines=30");
+}

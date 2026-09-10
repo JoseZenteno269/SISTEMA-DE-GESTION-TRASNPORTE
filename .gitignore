@@ -1,0 +1,25 @@
+# Archivos compilados
+*.o
+*.exe
+*.a
+
+# DLLs
+*.dll
+
+# Archivos de datos binarios
+*.dat
+
+# Directorios de build
+bin/
+obj/
+
+# Archivos de Code::Blocks generados
+*.layout
+*.depend
+
+# Archivos de sistema Windows
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/

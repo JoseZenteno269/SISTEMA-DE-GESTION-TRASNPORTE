@@ -1,0 +1,164 @@
+#ifndef FUNCIONES_H_INCLUDED
+#define FUNCIONES_H_INCLUDED
+#include "ARCHIVO_CHOFERES.h"
+#include "ARCHIVO_DESTINOS.h"
+#include "ARCHIVO_HISTORIAL_INGRESOS.h"
+#include "ARCHIVO_MICROS.h"
+#include "ARCHIVO_PASAJE.h"
+#include "ARCHIVO_PASAJEROS.h"
+#include "ARCHIVO_PRECIO.h"
+#include "ARCHIVO_PROVINCIAS.h"
+#include "ARCHIVO_USUARIOS.h"
+#include "ARCHIVO_VIAJES.h"
+#include "CHOFERES.h"
+#include "DESTINOS.h"
+#include "FECHAS.h"
+#include "HISTORIAL_INGRESOS.h"
+#include "HORA.h"
+#include "MICROS.h"
+#include "PASAJE.h"
+#include "PASAJEROS.h"
+#include "PRECIO.h"
+#include "PROVINCIAS.h"
+#include "TIEMPO_ACTUAL.h"
+#include "USUARIOS.h"
+#include "VIAJES.h"
+#include <iostream>
+
+bool existePatente(const char *patente, int idMicroAExcluir);
+void LimpiarLineas(int, int, int);
+float plusxbutaca(Viaje viaje);
+bool esNumero(const std::string &);
+bool validar_numero();
+void fecha_y_hora_fin(Destino, Archivo_destino, Fecha &, Hora &, Fecha, Hora,
+                      int);
+bool chequearSalidaESC(std::string);
+bool esFechaPosterior(Fecha, Fecha);
+bool estaOcupadoEnViaje(int, int, Fecha, Hora);
+void cargarCadena(char *, int);
+const char *funcion_provincias(int pos);
+const char *funcion_provincias(int, int);
+bool validarPatente(const char *);
+bool validarPalabra(const char *);
+bool esBisiesto(int);
+int diasEnMes(int, int);
+std::string nombreMes(int);
+int diaSemanaPrimeroMes(int, int);
+void calendario(int, int);
+int viajes_disponibles();
+int selecion_de_butacas(int, Micro, int);
+
+/// Funciones viajes-pasajes
+void venta_de_pasaje();
+void pasajes_vendidos();
+void cargar_viaje();
+void eliminar_viaje();
+void mostrar_viajes();
+
+/// funcion precios
+void valor_kilometro();
+void cargar_precio_butaca();
+void mostrar_precio_butacas();
+
+/// Funciones usuarios
+void ingresar_usuario();
+void mostrar_usuarios();
+void eliminar_usuario();
+void dar_alta_usuario();
+void cambiar_contrasena();
+void cambiar_datos_usuario();
+void listar_ingresos();
+
+/// Funciones micros
+void ingresar_Micro();
+void mostrar_Micro();
+void eliminar_Micro();
+void dar_alta_Micro();
+void cambiar_patente_Micro();
+void cambiar_unidad_Micro();
+
+/// Funciones destinos-provincias
+void ingresar_destino();
+void mostrar_destino();
+void eliminar_destino();
+void dar_alta_destino();
+void ingresar_Provincia();
+void mostrar_Provincia();
+
+/// Funciones choferes
+void ingresar_chofer();
+void mostrar_choferes();
+void eliminar_chofer();
+void dar_alta_chofer();
+void cambiar_mail_chofer();
+void cambiar_telefeno_chofer();
+
+/// Funciones reportes
+void por_anio();
+void por_micro();
+void por_destino();
+void cantPasajes_destino_fecha();
+void kilometros_micro();
+void por_genero_anio();
+void viajes_chofer_anio();
+
+/// LISTADOS
+// CHOFERES
+void Choferes_ordenados_apellido();
+void Choferes_ordenados_edad();
+
+// CLIENTES
+void Pasajeros_ordenados_apellido();
+void Pasajeros_ordenados_edad();
+
+// UNIDADES
+void Micros_ordenados_Fabricante();
+void Micros_ordenados_Carroceria();
+void Micros_ordenados_Asientos();
+
+// VENTAS
+void Ventas_ordenados_Precio();
+
+// DESTINOS
+void Destinos_ordenados_Provincia();
+void Destinos_ordenados_Kilometros();
+
+/// CONSULTAS
+// CLIENTES
+void buscar_x_DNI();
+void buscar_x_Apellido();
+// UNIDADES
+void buscar_x_ID();
+void buscar_x_Destino();
+void buscar_x_cant_lugares();
+// VENTAS
+void buscar_x_pasaje();
+void buscar_x_provincia();
+void buscar_x_tipo_butaca();
+
+/// MENUS Y SUBMENUS
+void SUBMENU_1();
+void SUBMENU_2();
+void SUBMENU_3();
+void SUBMENU_4();
+void SUBMENU_5();
+void SUBMENU_6();
+void SUBMENU_7();
+void SUBMENU_8();
+void SUBMENU_9();
+void MENU_VENTAS();
+void MENU();
+
+void LISTADO_CHOFERES();
+void LISTADO_CLIENTES();
+void LISTADO_MICROS();
+void LISTADO_VENTAS();
+void LISTADO_DESTINOS();
+
+void CONSULTAS_CLIENTES();
+void CONSULTAS_MICROS();
+void CONSULTAS_VENTAS();
+
+void inicio_de_sesion();
+void mostrarCartelUTN();
+#endif // FUNCIONES_H_INCLUDED
