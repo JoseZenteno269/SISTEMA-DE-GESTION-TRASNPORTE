@@ -54,7 +54,7 @@ docentes: Daniel Kloster
 
 | Menu | Lista de Viajes |
 | :---: | :---: |
-| ![Menu](docs/Menu.png) | ![Lista de viajes](docs/Lista-de-viajes.png) |
+| ![Menu](GESTION DE TRANSPORTE/docs/Menu.png) | ![Lista de viajes](docs/Lista-de-viajes.png) |
 
 | Calendario | Informacion de Viaje |
 | :---: | :---: |
