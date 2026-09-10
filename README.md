@@ -8,14 +8,23 @@ Organizadas en módulos:
 
 
 👤 Usuarios — Login con contraseña, niveles de acceso, historial de ingresos
+
 🚌 Micros (Unidades) — Alta/baja/modificación, patente, capacidad, tipo de butaca
+
 👨‍✈️ Choferes — ABM completo, mail, teléfono
+
 📍 Destinos y Provincias — Gestión de rutas con distancia en km y duración del viaje
+
 🗓️ Viajes — Programación de viajes con fecha/hora inicio y fin, chofer y micro asignados
+
 🎫 Venta de Pasajes — Selección de butacas, cálculo de precio automático
+
 💲 Precios — Configuración de precio por km y por tipo de butaca
+
 📊 Reportes — Por año, por micro, por destino, por género, kilómetros por micro, recaudación
+
 📋 Listados ordenados — Choferes, pasajeros, micros, ventas y destinos con diferentes criterios de orden
+
 🔍 Consultas — Por DNI, apellido, destino, ID, tipo de butaca, etc.
 
 
