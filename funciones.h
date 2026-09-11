@@ -1,11 +1,16 @@
 #ifndef FUNCIONES_H_INCLUDED
 #define FUNCIONES_H_INCLUDED
 
-// Compatibilidad Windows: strcasecmp no existe en MinGW/MSVC, usar _stricmp
-#ifdef _WIN32
+// Compatibilidad entre MSVC y MinGW/GCC:
+// - MSVC usa _stricmp
+// - MinGW/GCC usa strcasecmp en <strings.h>
+#if defined(_WIN32) && !defined(__MINGW32__) && !defined(__MINGW64__)
     #include <string.h>
     #define strcasecmp _stricmp
+#else
+    #include <strings.h>
 #endif
+
 #include "ARCHIVO_CHOFERES.h"
 #include "ARCHIVO_DESTINOS.h"
 #include "ARCHIVO_HISTORIAL_INGRESOS.h"
